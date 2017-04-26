@@ -1,5 +1,6 @@
 package Integracion;
 
-public class hjgg {
+public class hjgg 
+{
 
 }
