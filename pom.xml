@@ -70,6 +70,18 @@
 		  <artifactId>postgresql</artifactId>
 		  <version>9.4-1201-jdbc4</version>
 		</dependency>
+<<<<<<< HEAD
+=======
+		
+		
+	
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-jdbc</artifactId>
+		  <version>4.0.0.RELEASE</version>
+		</dependency>
+		
+>>>>>>> origin/master
     </dependencies>
 
     <build>
