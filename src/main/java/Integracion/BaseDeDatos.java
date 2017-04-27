@@ -64,8 +64,10 @@ public class BaseDeDatos {
 		
 	}
   
-  	public static void main(String[] args) {
-	
+  	public static void main(String[] args) 
+  	{
+  		BaseDeDatos b= new BaseDeDatos();
+  		b.insertDelete("insert into Es");
   	}
 
 	}
