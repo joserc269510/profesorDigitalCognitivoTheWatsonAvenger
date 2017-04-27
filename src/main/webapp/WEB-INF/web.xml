@@ -14,7 +14,7 @@
 		<description>Generar Speech</description>
 		<display-name />
 		<servlet-name>ServletSpeech</servlet-name>
-		<servlet-class>Servlet/ServletSpeech</servlet-class>
+		<servlet-class>Servlet.ServletSpeech</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -26,7 +26,7 @@
 		<description>Registrar_Estudiante</description>
 		<display-name />
 		<servlet-name>servletRegistrarEstudiante</servlet-name>
-		<servlet-class>Servlet/servletRegistrarEstudiante</servlet-class>
+		<servlet-class>Servlet.servletRegistrarEstudiante</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -38,7 +38,7 @@
 		<description>CREA PDF</description>
 		<display-name />
 		<servlet-name>ServletPDF</servlet-name>
-		<servlet-class>Servlet/ServletPDF</servlet-class>
+		<servlet-class>Servlet.ServletPDF</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
