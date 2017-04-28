@@ -13,7 +13,7 @@ public class Curso
 		setCodigo(pCodigo);
 		setDescripcionCurso(pDescripcion);
 		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into curso values (" + "'"+ pCodigo + "'" + "," + "'" + pDescripcion +"'" + ")");
+		conexion.insertDelete("insert into curso values (" + "'"+ pCodigo +  "'"  + "," +  "'" + pDescripcion + "'" + ")");
 	}
 	
 	public String getCodigo() 
@@ -21,9 +21,9 @@ public class Curso
 		return codigo;
 	}
 	
-	public void setCodigo(String codigo) 
+	public void setCodigo(String pCodigo) 
 	{
-		this.codigo = codigo;
+		codigo = pCodigo;
 	}
 	
 	public String getDescripcionCurso() 
@@ -31,9 +31,9 @@ public class Curso
 		return descripcionCurso;
 	}
 	
-	public void setDescripcionCurso(String descripcionCurso) 
+	public void setDescripcionCurso(String pDescripcionCurso) 
 	{
-		this.descripcionCurso = descripcionCurso;
+		this.descripcionCurso = pDescripcionCurso;
 	} 
 	
 	
