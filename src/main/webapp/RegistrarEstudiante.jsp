@@ -134,8 +134,12 @@
 			      <h2>Registrar Estudiante</h2>
 			      <div>
 			        <table>
-			          <tr>
-			            <td ><h3>Nombre </h3></td>
+			        <tr>
+			            <td ><h3 >Numero de Identificacion</h3></td>
+			            <td ><input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="X-XXXX-XXXX"  required/></td>
+		              </tr>
+		           <tr>
+			             <td ><h3>Nombre </h3></td>
 			            <td ><input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre"  required/></td>
 		              </tr>
 		              <tr>
@@ -146,12 +150,9 @@
 			            <td ><h3>Segundo Apellido </h3></td>
 			            <td ><input type="text" id="txApellido2" name="txApellido2" placeholder="Apellido2"  required/></td>
 		              </tr>
-			          <tr>
-			            <td ><h3 >Número de Identificacion</h3></td>
-			            <td ><input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="X-XXXX-XXXX"  required/></td>
-		              </tr>
+			          
 		                 <tr>
-			            <td ><h3 >Número de Carnet</h3></td>
+			            <td ><h3 >Numero de Carnet</h3></td>
 			            <td ><input type="text" id="txtCarnet" name="txtCarnet" placeholder="Carnet Estudiantil"  required/></td>
 		              </tr>
 			          <tr>
@@ -159,7 +160,7 @@
 			            <td><input type="text" id="txtNacimiento" name="txtNacimiento"  placeholder="Dia/Mes/Año"  required/></td>
 		              </tr>
 			          <tr>
-			            <td ><h3 >Correo Electrónico</h3></td>
+			            <td ><h3 >Correo Electronico</h3></td>
 			            <td ><input type="email" id="txtEmail" name="txtEmail"  placeholder="@"  required/></td>
 		              </tr>
 			       

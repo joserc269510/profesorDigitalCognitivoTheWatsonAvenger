@@ -32,7 +32,7 @@ public class ServletRegistroEstudiante extends HttpServlet {
 	   	 String email= request.getParameter("txtEmail");
 	   	 
 	   Estudiante estudiante= new Estudiante();
-	   estudiante.registrarEstudiante(numeroIdentificacion, numeroCarnet, fechaNacimiento, apellido1, apellido2, nombre, email);
+	   estudiante.registrarEstudiante(numeroIdentificacion,nombre,apellido1,apellido2,numeroCarnet,fechaNacimiento,email);
 	 
 	   response.setContentType("text/html");
 	   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarEstudiante.jsp");

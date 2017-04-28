@@ -11,8 +11,8 @@ public class Estudiante {
 	private String nombre;
 	private String email;	
 	
-	public void registrarEstudiante(String pNumeroIdentificacion, String pNumeroCarnet, String pFechaNacimiento, String pApellido1,
-			String pApellido2, String pNombre, String pEmail)
+	public void registrarEstudiante(String pNumeroIdentificacion, String pNombre, String pApellido1,
+			String pApellido2, String pNumeroCarnet,String pFechaNacimiento, String pEmail)
 	{
         
 		setNumeroIdentificacion(pNumeroIdentificacion);
@@ -24,7 +24,7 @@ public class Estudiante {
 		setEmail(pEmail);
 		
 		BaseDeDatos conexion = new BaseDeDatos();
-        conexion.insertDelete("insert into estudiante values (" +pNumeroIdentificacion  + "," +pNombre + "," +pApellido1 + "," + pApellido2+ "," + pNumeroCarnet + "," +pFechaNacimiento+ "," + pEmail + ")" ) ;
+        conexion.insertDelete("insert into estudiante (cedula, nombreEstudiante, primerApellido,segundoApellido, numeroCarne,fechaNacimiento,correoElectronico) values (" + " " + pNumeroIdentificacion  + "," +pNombre + "," +pApellido1 + "," + pApellido2+ "," + pNumeroCarnet + "," +pFechaNacimiento + "," + pEmail + ")" ) ;
 	}
 	
 	// Métodos get y set
