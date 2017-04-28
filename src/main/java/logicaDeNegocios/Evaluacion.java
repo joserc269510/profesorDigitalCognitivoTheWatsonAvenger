@@ -12,19 +12,9 @@ public abstract class Evaluacion
 	private String fechaEvaluacion;
 	private int tiempoMinutos;
 	private boolean status;
-<<<<<<< HEAD
 
-=======
 	private String tipoEvaluacion;
 	private String descripcionTipoEval;
-	
-	public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion)
-	{
-		setTipoEvaluacion(pTipoEvaluacion);
-		BaseDeDatos conexion=  new BaseDeDatos();
-		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
-	}
->>>>>>> origin/master
 	
 	public abstract void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	
