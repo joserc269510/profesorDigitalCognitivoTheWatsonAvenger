@@ -137,9 +137,9 @@
 			        <tr>
 			            <td ><h3 >Numero de Identificacion</h3></td>
 			            <td ><input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="X-XXXX-XXXX"  required/></td>
-		              </tr>
-		           <tr>
-			             <td ><h3>Nombre </h3></td>
+		            </tr>
+		           	<tr>
+			            <td ><h3>Nombre </h3></td>
 			            <td ><input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre"  required/></td>
 		              </tr>
 		              <tr>

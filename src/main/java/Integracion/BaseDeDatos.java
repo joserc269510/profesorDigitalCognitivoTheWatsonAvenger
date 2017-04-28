@@ -67,8 +67,8 @@ public class BaseDeDatos {
   	public static void main(String[] args) 
   	{
   		BaseDeDatos b= new BaseDeDatos();
-  	//	b.insertDelete("insert into estudiante values( '1-1235-345','Coraima','Fonseca', 'Alvarado','201210915','2/5/1994','cora2994@gmail.com')");
-  		b.select("Select * from estudiante");
+  		//b.insertDelete("insert into estudiante values( "1-1235-345","Coraima",'Fonseca', 'Alvarado','201210915','2/5/1994','cora2994@gmail.com')");
+  		//b.select("Select * from estudiante");
   	}
 
 	}
