@@ -28,9 +28,9 @@ public class BaseDeDatos {
 	            ResultSet rs = st.executeQuery(query);
 	            while (rs.next()) {
 	                System.out.print("Column 1 returned ");
-	                System.out.println(rs.getString(2));
+	                System.out.println(rs.getString(1));
 	                System.out.print("Column 2 returned ");
-	                System.out.println(rs.getString(3));	              
+	                System.out.println(rs.getString(2));	              
 	            }
 	            rs.close();
 	            st.close();
@@ -67,7 +67,8 @@ public class BaseDeDatos {
   	public static void main(String[] args) 
   	{
   		BaseDeDatos b= new BaseDeDatos();
-  		//b.insertDelete("insert into estudiante values( "1-1235-345","Coraima",'Fonseca', 'Alvarado','201210915','2/5/1994','cora2994@gmail.com')");
+  		//b.insertDelete("insert into estudiante values( '1-1235-345','Coraima','Fonseca', 'Alvarado','201210915','2/5/1994','cora2994@gmail.com')");
+  		//b.insertDelete("insert into curso values ('TI5502', 'Diseño')");
   		b.select("Select * from curso");
   	}
 
