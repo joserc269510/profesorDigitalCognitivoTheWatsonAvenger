@@ -13,7 +13,7 @@ public class Curso
 		setCodigo(pCodigo);
 		setDescripcionCurso(pDescripcion);
 		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into curso values (" + pCodigo  + "," +  "'" + pDescripcion+"'" + ")");
+		conexion.insertDelete("insert into Curso values (" + "'" +pCodigo + "'"  + "," +  "'" + pDescripcion+"'" + ")");
 	}
 	
 	public String getCodigo() 
