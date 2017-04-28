@@ -12,19 +12,9 @@ public abstract class Evaluacion
 	private String fechaEvaluacion;
 	private int tiempoMinutos;
 	private boolean status;
-	private String tipoEvaluacion;
-	private String descripcionTipoEval;
+
 	
-	public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion)
-	{
-		setTipoEvaluacion(pTipoEvaluacion);
-		BaseDeDatos conexion=  new BaseDeDatos();
-		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
-		
-		
-	}
-	
-	public abstract void NosequeMetodo();
+	public abstract void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	
 	public int getCodEvaluacion() 
 	{
@@ -90,21 +80,6 @@ public abstract class Evaluacion
 	{
 		status = pStatus;
 	}
-	public String getTipoEvaluacion() 
-	{
-		return tipoEvaluacion;
-	}
-	public void setTipoEvaluacion(String pTipoEvaluacion) 
-	{
-	    tipoEvaluacion = pTipoEvaluacion;
-	}
-	public String getDescripcionTipoEval() 
-	{
-		return descripcionTipoEval;
-	}
-	public void setDescripcionTipoEval(String pDescripcionTipoEval) 
-	{
-		descripcionTipoEval = pDescripcionTipoEval;
-	}
+
 	
 }

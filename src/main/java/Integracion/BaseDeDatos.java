@@ -9,6 +9,9 @@ import java.sql.SQLException;
 
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Estudiante;
+import logicaDeNegocios.Evaluacion;
+import logicaDeNegocios.Formativa;
+import logicaDeNegocios.Sumativa;
 public class BaseDeDatos {
 
   public static final String url ="jdbc:postgresql://echo.db.elephantsql.com:5432/syvmjttg";
@@ -102,7 +105,66 @@ public class BaseDeDatos {
         }
         return estudiante;
 }
-  
+ 
+  public Object[] selectEvaluacion(){
+	  Object [] evaluacion = new Object[getNumeroRegistros("tipoevaluacion", "codtipoevaluacion")];
+	    try {
+	            Class.forName("org.postgresql.Driver");
+	        }
+	        catch (java.lang.ClassNotFoundException e) {
+	            System.out.println(e.getMessage() + "hola");
+	        }
+	        try {
+	          System.out.println("daskdjkasjdsakl");
+	            Connection db = DriverManager.getConnection(url, username, password);
+	            Statement st = db.createStatement();
+	            ResultSet rs = st.executeQuery("select codevaluacion, codigocurso, evaluacion.codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal,fechaevaluacion,tiempominutos,status"
+	            		+ ",tipoevaluacion.codtipoevaluacion, tipoevaluacion, descripciontipoeval from evaluacion join tipoevaluacion" +
+	            		"on evaluacion.codtipoevaluacion = tipoevaluacion.codtipoevaluacion");
+	            
+	            int index = 0;
+	            while (rs.next()) {
+	            	
+	            	if(rs.getString(11).compareTo("Sumativa") == 0){
+		              Sumativa objetoCurso = new Sumativa();
+		              objetoCurso.setCodEvaluacion(Integer.parseInt(rs.getString(1)));
+		              objetoCurso.setCodigoCurso(rs.getString(2));
+		              objetoCurso.setNombreEvaluacion(rs.getString(3));
+		              objetoCurso.setPuntajeTotal(Integer.parseInt(rs.getString(4)));
+		              objetoCurso.setPorcentajeNotaFinal(Integer.parseInt(rs.getString(5)));
+		              objetoCurso.setFechaEvaluacion(rs.getString(6));//revisar es string
+		              objetoCurso.setTiempoMinutos(Integer.parseInt(rs.getString(7)));
+		              objetoCurso.setStatus(rs.getBoolean(8));
+		              objetoCurso.setCodTipoEvaluacion(Integer.parseInt(rs.getString(9)));
+		              objetoCurso.setTipoEvaluacion(rs.getString(10));
+		              objetoCurso.setDescripcionTipoEval(rs.getString(11));
+		              evaluacion[index] = objetoCurso;
+		              index++;  
+	            	}
+	            	else if (rs.getString(11).compareTo("Formativa") == 0){
+	            		Formativa objetoCurso = new Formativa();
+			              objetoCurso.setCodEvaluacion(Integer.parseInt(rs.getString(1)));
+			              objetoCurso.setCodigoCurso(rs.getString(2));
+			              objetoCurso.setNombreEvaluacion(rs.getString(3));
+			              objetoCurso.setPuntajeTotal(Integer.parseInt(rs.getString(4)));
+			              objetoCurso.setPorcentajeNotaFinal(Integer.parseInt(rs.getString(5)));
+			              objetoCurso.setFechaEvaluacion(rs.getString(6));//revisar es string
+			              objetoCurso.setTiempoMinutos(Integer.parseInt(rs.getString(7)));
+			              objetoCurso.setStatus(rs.getBoolean(8));
+			              objetoCurso.setCodTipoEvaluacion(Integer.parseInt(rs.getString(9)));
+			              objetoCurso.setTipoEvaluacion(rs.getString(10));
+			              objetoCurso.setDescripcionTipoEval(rs.getString(11));
+			              evaluacion[index] = objetoCurso;
+			              index++;  
+	            	}
+	            }
+	            rs.close();
+	            st.close();
+	        }catch (java.sql.SQLException e) {
+	            System.out.println(e.getMessage() + "adios");
+	        }
+	        return evaluacion;
+	}
   
   
   

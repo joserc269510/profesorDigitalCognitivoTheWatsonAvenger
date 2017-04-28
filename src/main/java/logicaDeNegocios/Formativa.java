@@ -2,13 +2,10 @@ package logicaDeNegocios;
 
 import Integracion.BaseDeDatos;
 
-public class Sumativa extends Evaluacion 
-{
+public class Formativa extends Evaluacion {
 	int codTipoEvaluacion;
 	String tipoEvaluacion;
 	String descripcionTipoEval;
-	
-
 	public int getCodTipoEvaluacion() {
 		return codTipoEvaluacion;
 	}
@@ -31,7 +28,9 @@ public class Sumativa extends Evaluacion
 	public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {
 		setTipoEvaluacion(pTipoEvaluacion);
 		BaseDeDatos conexion=  new BaseDeDatos();
-		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");	
+		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
+		
 	}
-
+	
+	
 }
