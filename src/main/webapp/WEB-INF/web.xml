@@ -28,24 +28,10 @@
 		<servlet-name>ServletRegistroEstudiante</servlet-name>
 		<servlet-class>Servlet.ServletRegistroEstudiante</servlet-class>
 	</servlet>
-
 	
 	<servlet-mapping>
 		<servlet-name>ServletRegistroEstudiante</servlet-name>
 		<url-pattern>/registrarEstudiante</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description>Registrar_Curso</description>
-		<display-name />
-		<servlet-name>ServletRegistrarCurso</servlet-name>
-		<servlet-class>Servlet.ServletRegistrarCurso</servlet-class>
-	</servlet>
-
-	
-	<servlet-mapping>
-		<servlet-name>ServletRegistrarCurso</servlet-name>
-		<url-pattern>/registrarCurso</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

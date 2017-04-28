@@ -4,8 +4,8 @@ import Integracion.BaseDeDatos;
 
 public class Curso 
 {
-	private String codigo; 
-	private String descripcionCurso;
+	String codigo; 
+	String descripcionCurso;
 	
 	
 	public void RegistrarCurso(String pCodigo, String pDescripcion)
@@ -13,7 +13,8 @@ public class Curso
 		setCodigo(pCodigo);
 		setDescripcionCurso(pDescripcion);
 		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into curso values (" + pCodigo  + "," +  "'" + pDescripcion+"'" + ")");
+		conexion.insertDelete("insert into curso values (" + "'"+ pCodigo + "'" + "," + "'" + pDescripcion +"'" + ")");
+		conexion.insertDelete("insert into curso values (" + "'" +pCodigo + "'"  + "," +  "'" + pDescripcion+"'" + ")");
 	}
 	
 	public String getCodigo() 
@@ -21,9 +22,9 @@ public class Curso
 		return codigo;
 	}
 	
-	public void setCodigo(String pCodigo) 
+	public void setCodigo(String codigo) 
 	{
-		codigo = pCodigo;
+		this.codigo = codigo;
 	}
 	
 	public String getDescripcionCurso() 
@@ -31,9 +32,9 @@ public class Curso
 		return descripcionCurso;
 	}
 	
-	public void setDescripcionCurso(String pDescripcionCurso) 
+	public void setDescripcionCurso(String descripcionCurso) 
 	{
-		descripcionCurso = pDescripcionCurso;
+		this.descripcionCurso = descripcionCurso;
 	} 
 	
 	
