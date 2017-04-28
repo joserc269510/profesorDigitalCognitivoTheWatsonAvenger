@@ -19,7 +19,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>ServletSpeech</servlet-name>
-		<url-pattern>/generarSpeech</url-pattern>
+		<url-pattern>/generarSpeech</url-pattern>		
 	</servlet-mapping>
 	
 	<servlet>

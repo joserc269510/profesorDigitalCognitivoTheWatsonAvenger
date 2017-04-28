@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE  html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>PROYECTO XE</title>
+		<title>Shinra</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -120,7 +119,8 @@
 							<li><a href="EliminarSubtema.html"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
+					<li><a href="">Generar PDF</a></li>
+                    <li class="current-menu-item"><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
@@ -128,38 +128,44 @@
 				
 				
 				
-				<div id="slider-block">
+				
+				
+				
+			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
 			<div id="main">
-			  <form name="PruebaSpeech" action="generarSpeech" method="post">
+			  <form name="entrenarProfesor" action="Contenido" method="post"  enctype="multipart/form-data"  align= "center">
 			    <div>
-			      <h2>Prueba SPEECH</h2>
+			      <h1> Entrenar profesor Digital <font size="3"></h1>
 			      <div>
-			        <table>
+			      <table>
 			          <tr>
-			            <td ><h3>Pulse el boton para empezar a grabar</h3></td>
+                      		<td><label for="inputFile">Seleccione un archivo</label></td>
+							<td><input type="file" name="inputFile" id="inputFile" value="" Style="font-size: 14px" /> </td>
+                     </tr>
+                     <tr>
+                     <td><h1>------------</h1></td>
+                     <td><h1>------------</h1></td>
+                     <td><h1>------------</h1></td>
+                     </tr>
+                     <tr>
+                            <td><label for="inputFile">Seleccione un archivo</label></td>
+            				<td> <input type="submit" value="Cargar"  style="font-size:14px; color: black;">  </td>
                       </tr>
-                      <tr>
-			            <td ><textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">${texto}</textarea></td>
-                        <td  ><button class="submit" type="submit">Grabar</button></td>
-		              </tr>
-		            </table>
-		          </div>
+            	 </table>
+			      </div>
 		        </div>
 		      </form>
 		  </div>
-			<div id="footer">
-				
-				
-			</div>
-			
+		<div id="footer">
 		
 		</div>
-		
+      </div>
+</body>
 	
-	</body>
-	
+</html>
+</body>
 </html>
