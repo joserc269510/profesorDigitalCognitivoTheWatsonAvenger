@@ -30,6 +30,7 @@ public class Estudiante {
 	// Métodos get y set
 	public String getNumeroIdentificacion() 
 	{
+		
 		return numeroIdentificacion;
 	}
 	public void setNumeroIdentificacion(String pNumeroIdentificacion) 
