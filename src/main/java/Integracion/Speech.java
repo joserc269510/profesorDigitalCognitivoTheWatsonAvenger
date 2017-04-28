@@ -24,7 +24,8 @@ public class Speech {
 		
 		SpeechToText s2t = new SpeechToText();
 		/*s2t.setUsernameAndPassword("4a76e4e6-2f33-424f-a847-c06e5d3551f0", "tJwskp6qa47O");*/
-		s2t.setUsernameAndPassword("c0e1dc84-14d0-41e2-b673-ca20b419cb5a", "qqrtXDD5YO0f");
+//		s2t.setUsernameAndPassword("c0e1dc84-14d0-41e2-b673-ca20b419cb5a", "qqrtXDD5YO0f");
+		s2t.setUsernameAndPassword("07eda871-a7a2-422a-9014-1613df953a67", "Vs0dm0ll7mMp");
 
 		 AudioFormat format = new AudioFormat(sampleRate, 16, 1, true, false);
 		 DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
