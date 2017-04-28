@@ -93,7 +93,7 @@ public class BaseDeDatos {
               objetoCurso.setApellido1(rs.getString(3));
               objetoCurso.setApellido2(rs.getString(4));
               objetoCurso.setNumeroCarnet(rs.getString(5));
-              objetoCurso.setFechaNacimiento(rs.getString(6));
+             // objetoCurso.setFechaNacimiento(rs.getString(6));
               objetoCurso.setEmail(rs.getString(7));
               estudiante[index] = objetoCurso;
               index++;        

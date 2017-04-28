@@ -1,11 +1,14 @@
 package logicaDeNegocios;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import Integracion.BaseDeDatos;
 
 public class Estudiante {
 	private String numeroIdentificacion;
 	private String numeroCarnet; 
-	private String fechaNacimiento;
+	private Date fechaNacimiento;
 	private String apellido1;
 	private String apellido2;
 	private String nombre;
@@ -15,18 +18,35 @@ public class Estudiante {
 	public void registrarEstudiante(String pNumeroIdentificacion, String pNombre, String pApellido1,
 			String pApellido2, String pNumeroCarnet,String pFechaNacimiento, String pEmail)
 	{
-        
+     
+		Date fechaNacimiento; 
+		fechaNacimiento= ConvertirFecha(pFechaNacimiento);
 		setNumeroIdentificacion(pNumeroIdentificacion);
 		setNumeroCarnet(pNumeroCarnet);
 		setNombre(pNombre);
 		setApellido1(pApellido1);
 		setApellido2(pApellido2);
-		setFechaNacimiento(pFechaNacimiento);
+		setFechaNacimiento(fechaNacimiento);
 		setEmail(pEmail);
 		
 		BaseDeDatos conexion = new BaseDeDatos();
-        conexion.insertDelete("insert into estudiante values (" + pNumeroIdentificacion  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ pFechaNacimiento +  "'"+ "," + "'" + pEmail +"'" + ")" ) ;
+        conexion.insertDelete("insert into estudiante values (" + pNumeroIdentificacion  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ fechaNacimiento +  "'"+ "," + "'" + pEmail +"'" + ")" ) ;
 	}
+	
+	
+	 private static Date ConvertirFecha(String fecha)
+	 {
+	        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+	        Date fechaDate = null;
+	        try {
+	            fechaDate = formato.parse(fecha);
+	        } 
+	        catch (Exception ex) 
+	        {
+	            System.out.println(ex);
+	        }
+	        return fechaDate;
+	   }
 	
 	// Métodos get y set
 	public String getNumeroIdentificacion() 
@@ -47,11 +67,11 @@ public class Estudiante {
 		numeroCarnet = pNumeroCarnet;
 	}
 	
-	public String getFechaNacimiento() 
+	public Date getFechaNacimiento() 
 	{
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(String pFechaNacimiento) 
+	public void setFechaNacimiento(Date pFechaNacimiento) 
 	{
 		fechaNacimiento = pFechaNacimiento;
 	}
