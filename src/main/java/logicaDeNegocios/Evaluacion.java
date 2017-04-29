@@ -20,11 +20,24 @@ public abstract class Evaluacion
 		setTipoEvaluacion(pTipoEvaluacion);
 		BaseDeDatos conexion=  new BaseDeDatos();
 		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
-		
-		
 	}
 	
 	public abstract void NosequeMetodo();
+	
+	public void VerificarTipoEvaluacion(String pTipoEvaluacion)
+	{
+		String tipoEvalucion;
+		tipoEvalucion= pTipoEvaluacion.toLowerCase(); 
+		
+		if (tipoEvaluacion.equals("sumativa"))
+		{
+			Evaluacion tipoEvaluacion= new Sumativa(); 
+		}
+		if (tipoEvaluacion.equals("sumativa"))
+		{
+			
+		}
+	}
 	
 	public int getCodEvaluacion() 
 	{
