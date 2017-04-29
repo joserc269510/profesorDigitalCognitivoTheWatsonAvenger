@@ -15,10 +15,13 @@ public abstract class Evaluacion
 	private String tipoEvaluacion;
 	private String descripcionTipoEval;
 	
-	public void RegistrarTipoEvaluacion(String pTipoEvaluacion)
+	public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion)
 	{
 		setTipoEvaluacion(pTipoEvaluacion);
 		BaseDeDatos conexion=  new BaseDeDatos();
+		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
+		
+		
 	}
 	
 	public abstract void NosequeMetodo();
