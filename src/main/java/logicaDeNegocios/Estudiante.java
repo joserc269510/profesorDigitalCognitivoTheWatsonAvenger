@@ -12,9 +12,7 @@ public class Estudiante {
 	private String email;	
 	
 
-	public void registrarEstudiante(String pNumeroIdentificacion, String pNombre, String pApellido1,
-			String pApellido2, String pNumeroCarnet,String pFechaNacimiento, String pEmail)
-	{
+	
 	public void registrarEstudiante(String pNumeroIdentificacion, String pNombre, String pApellido1, String pApellido2, String pNumeroCarnet,String pFechaNacimiento, String pEmail){
 
 		setNumeroIdentificacion(pNumeroIdentificacion);

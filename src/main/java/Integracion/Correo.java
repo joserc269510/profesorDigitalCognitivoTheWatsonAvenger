@@ -11,7 +11,11 @@ import javax.mail.internet.MimeMessage;
 
 
 public class Correo {
+<<<<<<< HEAD
 	 public static String Username = "thewatsonavergers@gmail.com";
+=======
+	 public static String Username = "thewatsonavengers@gmail.com";
+>>>>>>> origin/master
 	    public static String PassWord = "proyecto1";
 	    String Mensage = "Usted tiene una evaluación pendiente en la aplicación del profesor digital cognitivo";
 	    String To = "suramirez92@gmail.com";
