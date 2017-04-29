@@ -28,7 +28,7 @@ public class InicioSesionAdministrador extends HttpServlet {
 	   	
 	   	 
 	   Estudiante estudiante= new Estudiante();
-	   estudiante.registrarEstudiante(correo,contrasena);
+//	   estudiante.registrarEstudiante(correo,contrasena);
 	   
 	   RequestDispatcher dispatcher = request.getRequestDispatcher("/InicioSesionAdminstrador.html");
 	   dispatcher.forward(request, response);

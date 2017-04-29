@@ -12,9 +12,10 @@ public class Estudiante {
 	private String email;	
 	
 
-	
-	public void registrarEstudiante(String pNumeroIdentificacion, String pNombre, String pApellido1, String pApellido2, String pNumeroCarnet,String pFechaNacimiento, String pEmail){
-
+	public void registrarEstudiante(String pNumeroIdentificacion, String pNombre, String pApellido1,
+			String pApellido2, String pNumeroCarnet,String pFechaNacimiento, String pEmail)
+	{
+        
 		setNumeroIdentificacion(pNumeroIdentificacion);
 		setNumeroCarnet(pNumeroCarnet);
 		setNombre(pNombre);
@@ -30,12 +31,7 @@ public class Estudiante {
 	// Métodos get y set
 	public String getNumeroIdentificacion() 
 	{
-        conexion.insertDelete("insert into estudiante values (pNumeroIdentificacion,pNombre,pApellido1,pApellido2,pNumeroCarnet,pFechaNacimiento,pEmail)" );
-        conexion.insertDelete("insert into estudiante values (" + pNumeroIdentificacion  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ pFechaNacimiento +  "'"+ "," + "'" + pEmail +"'" + ")" ) ;
-	}
-	// Métodos get y set
-	public String getNumeroIdentificacion() 
-	{
+		
 		return numeroIdentificacion;
 	}
 	public void setNumeroIdentificacion(String pNumeroIdentificacion) 
