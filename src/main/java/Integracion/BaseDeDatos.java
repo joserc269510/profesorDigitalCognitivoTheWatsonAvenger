@@ -7,11 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import logicaDeNegocios.Curso;
-import logicaDeNegocios.Estudiante;
-import logicaDeNegocios.Evaluacion;
-import logicaDeNegocios.Formativa;
-import logicaDeNegocios.Sumativa;
+import logicaDeNegocios.*;
+
 public class BaseDeDatos {
 
   public static final String url ="jdbc:postgresql://echo.db.elephantsql.com:5432/syvmjttg";
@@ -105,7 +102,35 @@ public class BaseDeDatos {
         }
         return estudiante;
 }
- 
+  public Profesor[] selectProfesor (){
+      Profesor profesor [] = new Profesor[getNumeroRegistros("profesor", "codprofesor")];
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select * from profesor");
+              
+              int index = 0;
+              while (rs.next()) {
+                Profesor objetoProfesor = new Profesor();
+                objetoProfesor.setCorreo(rs.getString(1));
+                objetoProfesor.setContrasena(rs.getString(2));
+                profesor[index] = objetoProfesor;
+                index++;        
+              }
+              rs.close();
+              st.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return profesor;
+    }
   public Object[] selectEvaluacion(){
 	  Object [] evaluacion = new Object[getNumeroRegistros("tipoevaluacion", "codtipoevaluacion")];
 	    try {
