@@ -93,6 +93,7 @@
 					</li>
                     <li><a href="">Pregunta</a>
 						<ul>
+						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
                                     <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
