@@ -20,8 +20,7 @@ public abstract class Evaluacion
 	
 	public Evaluacion(int codEvaluacion, String nombreEvaluacion,int puntajeTotal,int porcentajeNotaFinal,String fechaEvaluacion,int tiempoMinutos,boolean status){
 		estudiantes = new ArrayList<Estudiante>();
-		preguntas = new ArrayList<Pregunta>();
-		preguntas = new ArrayList<Pregunta>();
+		preguntas = new ArrayList<pregunta>();
 		curso = new Curso();
 		setCodEvaluacion(codEvaluacion);
 		setNombreEvaluacion(nombreEvaluacion);

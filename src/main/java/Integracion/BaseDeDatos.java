@@ -34,6 +34,7 @@ public class BaseDeDatos {
             }
             rs.close();
             st.close();
+            db.close();
             }
         catch (java.sql.SQLException e) {
         }
@@ -62,6 +63,7 @@ public class BaseDeDatos {
               }
               rs.close();
               st.close();
+              db.close();
           }catch (java.sql.SQLException e) {
               System.out.println(e.getMessage() + "adios");
           }
@@ -96,6 +98,7 @@ public class BaseDeDatos {
             }
             rs.close();
             st.close();
+            db.close();
         }catch (java.sql.SQLException e) {
             System.out.println(e.getMessage() + "adios");
         }
@@ -126,6 +129,7 @@ public class BaseDeDatos {
               }
               rs.close();
               st.close();
+              db.close();
           }catch (java.sql.SQLException e) {
               System.out.println(e.getMessage() + "adios");
           }
@@ -161,6 +165,7 @@ public class BaseDeDatos {
 	            }
 	            rs.close();
 	            st.close();
+	            db.close();
 	        }catch (java.sql.SQLException e) {
 	            System.out.println(e.getMessage() + "adioskk");
 	        }
@@ -188,13 +193,15 @@ public class BaseDeDatos {
 	            	
 	            	if(rs.getString(8).compareTo("marqueconx") == 0){//rs.getString(1)
 	            	  MarqueX objetoPregunta = new MarqueX(Integer.parseInt(rs.getString(1)),Integer.parseInt(rs.getString(3)), rs.getString(4), rs.getString(5), rs.getString(8), rs.getString(9));
+	            	  
 	            	  objetoPregunta.anadirSubTema(Integer.parseInt(rs.getString(2)), rs.getString(6));
 	            	  objetoPregunta.getSubtema().anadirTema(Integer.parseInt(rs.getString(10)), rs.getString(7));
 	            	  preguntas.add(objetoPregunta);
 	            	}
 	            	else if(rs.getString(8).compareTo("desarrollo") == 0){
 	            		MarqueX objetoPregunta = new MarqueX(Integer.parseInt(rs.getString(1)),Integer.parseInt(rs.getString(3)), rs.getString(4), rs.getString(5), rs.getString(8), rs.getString(9));
-		            	objetoPregunta.anadirSubTema(Integer.parseInt(rs.getString(2)), rs.getString(6));
+		            	
+	            		objetoPregunta.anadirSubTema(Integer.parseInt(rs.getString(2)), rs.getString(6));
 		                objetoPregunta.getSubtema().anadirTema(Integer.parseInt(rs.getString(10)), rs.getString(7));
 		                preguntas.add(objetoPregunta);
 	            	}
@@ -210,6 +217,7 @@ public class BaseDeDatos {
               }
               rs.close();
               st.close();
+              db.close();
           }catch (java.sql.SQLException e) {
               System.out.println(e.getMessage() + "adios");
           }
@@ -237,6 +245,7 @@ public class BaseDeDatos {
 	              }
 	              rs.close();
 	              st.close();
+	              db.close();
 	          }catch (java.sql.SQLException e) {
 	              System.out.println(e.getMessage() + "adios");
 	          }
@@ -268,6 +277,7 @@ public class BaseDeDatos {
 	              }
 	              rs.close();
 	              st.close();
+	              db.close();
 	          }catch (java.sql.SQLException e) {
 	              System.out.println(e.getMessage() + "adios");
 	          }
@@ -291,6 +301,7 @@ public class BaseDeDatos {
             Statement st = db.createStatement();
             st.executeUpdate(query);  
             st.close();
+            db.close();
         }
         catch(java.sql.SQLException e){
           System.out.println(e.getMessage() + "adios");

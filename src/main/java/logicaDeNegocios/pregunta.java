@@ -1,7 +1,7 @@
 package logicaDeNegocios;
 
 
-public abstract class Pregunta {
+public abstract class pregunta {
 
 	protected int codigoPregunta;
 	protected String descripcionPregunta;
@@ -9,7 +9,7 @@ public abstract class Pregunta {
 	private Subtema subtema; //bidireccional
 	
 	
-	public Pregunta (int codigoPregunta, String descripcionPregunta, String descripcionAyduda){
+	public pregunta (int codigoPregunta, String descripcionPregunta, String descripcionAyduda){
 		setCodigoPregunta(codigoPregunta);
 		setDescripcionPregunta(descripcionPregunta);
 		setDescripcionAyuda(descripcionAyduda);
