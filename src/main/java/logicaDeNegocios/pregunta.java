@@ -4,16 +4,8 @@ public abstract class Pregunta {
 	protected int codigoPregunta;
 	protected int codSubtema;
 	protected int codTipoPregunta;
-	public int getCodTipoPregunta() {
-		return codTipoPregunta;
-	}
-
-	public void setCodTipoPregunta(int codTipoPregunta) {
-		this.codTipoPregunta = codTipoPregunta;
-	}
 	protected String descripcionPregunta;
 	protected String descripcionAyuda;
-	
 	
 	public abstract void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion);
 	
@@ -71,4 +63,14 @@ public abstract class Pregunta {
 	public void setDescripcionAyuda(String descripcionAyuda) {
 		this.descripcionAyuda = descripcionAyuda;
 	}
+	
+	public int getCodTipoPregunta() {
+	
+		return codTipoPregunta;
+	}
+
+	public void setCodTipoPregunta(int codTipoPregunta) {
+		this.codTipoPregunta = codTipoPregunta;
+	}
+
 }

@@ -43,7 +43,6 @@ public class BaseDeDatos {
   
   public ArrayList<Curso> selectCurso (){
 	  ArrayList curso = new ArrayList<Curso>();
-      //Curso curso [] = new Curso[getNumeroRegistros("curso", "codigocurso")];
       try {
               Class.forName("org.postgresql.Driver");
           }
@@ -56,26 +55,13 @@ public class BaseDeDatos {
               Statement st = db.createStatement();
               ResultSet rs = st.executeQuery("Select * from curso");
               
-<<<<<<< Updated upstream
-              
-              int index = 0;
-=======
-              //int index = 0;
->>>>>>> Stashed changes
               while (rs.next()) {
             	  System.out.println("va por aqui");
                 Curso objetoCurso = new Curso();
                 objetoCurso.setCodigo(rs.getString(1));
                 objetoCurso.setDescripcionCurso(rs.getString(2));
-<<<<<<< Updated upstream
                 System.out.println(rs.getString(1));
-                curso[index] = objetoCurso;
-                index++;        
-=======
                 curso.add(objetoCurso);
-               //curso[index] = objetoCurso;
-               // index++;        
->>>>>>> Stashed changes
               }
               rs.close();
               st.close();
@@ -99,24 +85,7 @@ public class BaseDeDatos {
             Connection db = DriverManager.getConnection(url, username, password);
             Statement st = db.createStatement();
             ResultSet rs = st.executeQuery("Select * from estudiante");
-            
-<<<<<<< Updated upstream
-            int index = 0;
-            
-            while (rs.next()) {
-            	
-              Estudiante objetoCurso = new Estudiante();
-              objetoCurso.setNumeroIdentificacion(rs.getString(1));
-              objetoCurso.setNombre(rs.getString(2));
-              objetoCurso.setApellido1(rs.getString(3));
-              objetoCurso.setApellido2(rs.getString(4));
-              objetoCurso.setNumeroCarnet(rs.getString(5));
-             //objetoCurso.setFechaNacimiento(rs.getString(6));
-              objetoCurso.setEmail(rs.getString(7));
-              estudiante[index] = objetoCurso;
-              index++;        
-=======
-            //int index = 0;
+           
             while (rs.next()) {
               Estudiante objetoEstudiante = new Estudiante();
               objetoEstudiante.setNumeroIdentificacion(rs.getString(1));
@@ -127,8 +96,6 @@ public class BaseDeDatos {
              // objetoCurso.setFechaNacimiento(rs.getString(6));
               objetoEstudiante.setEmail(rs.getString(7));
               estudiante.add(objetoEstudiante);
-             // index++;        
->>>>>>> Stashed changes
             }
             rs.close();
             st.close();
@@ -138,7 +105,6 @@ public class BaseDeDatos {
         return estudiante;
 }
   public ArrayList<Profesor> selectProfesor (){
-      //Profesor profesor [] = new Profesor[getNumeroRegistros("profesor", "codprofesor")];
       ArrayList profesor = new ArrayList<Profesor>();
 	  
 	  try {
@@ -154,18 +120,10 @@ public class BaseDeDatos {
               ResultSet rs = st.executeQuery("Select * from profesor");
               while (rs.next()) {
                 Profesor objetoProfesor = new Profesor();
-<<<<<<< Updated upstream
-                //objetoProfesor.setCodProfesor(rs.getString(0));
-                objetoProfesor.setContrasena(rs.getString(1));
-                objetoProfesor.setCorreo(rs.getString(2));
-                profesor[index] = objetoProfesor;
-                index++;        
-=======
                 objetoProfesor.setCorreo(rs.getString(2));
                 objetoProfesor.setContrasena(rs.getString(3));
                 profesor.add(objetoProfesor);
                
->>>>>>> Stashed changes
               }
               rs.close();
               st.close();
@@ -293,14 +251,12 @@ public class BaseDeDatos {
         }
       */
      // System.out.println(nuevo.validarUsuario("njnjc", "123"));
-     
-=======
+     /*
       for (int i=0; i<curso.size();i++){
         System.out.println(((Curso) curso.get(i)).getDescripcionCurso());
         System.out.println(((Curso) curso.get(i)).getCodigo());
       }
       */
-      
       ArrayList evaluacion = b.selectEvaluacion();
       for (int i=0; i<evaluacion.size();i++){
     	  System.out.println(((Formativa)evaluacion.get(i)).getCodEvaluacion());
@@ -316,7 +272,6 @@ public class BaseDeDatos {
           System.out.println(((Formativa)evaluacion.get(i)).getDescripcionTipoEval());
           System.out.println("\n\n");
         }
->>>>>>> Stashed changes
     }
 
   }
