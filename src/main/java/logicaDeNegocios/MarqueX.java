@@ -4,10 +4,16 @@ import Integracion.BaseDeDatos;
 
 public class  MarqueX extends Pregunta
 {
+	private int codTipoPregunta;
 	protected String tipoPregunta;
-	protected String  descripcionTipoPreg;; 
-	
+	protected String  descripcionTipoPreg;
 
+	public MarqueX(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
+		super( codigoPregunta,  descripcionPregunta,  descripcionAyduda);
+		setTipoPregunta(tipoPregunta);
+		setDescripcionTipoPreg(descripcionTipoPreg);
+		setCodTipoPregunta(codigoTipoPregunta);
+	}
 	
 	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
@@ -16,6 +22,14 @@ public class  MarqueX extends Pregunta
 		BaseDeDatos conexion= new BaseDeDatos();
 		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
+	}
+	
+	public int getCodTipoPregunta() {
+		return codTipoPregunta;
+	}
+
+	public void setCodTipoPregunta(int codTipoPregunta) {
+		this.codTipoPregunta = codTipoPregunta;
 	}
 	
 	public String getTipoPregunta()

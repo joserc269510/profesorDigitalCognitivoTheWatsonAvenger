@@ -1,13 +1,33 @@
 package logicaDeNegocios;
 
+import java.util.ArrayList;
+
 import Integracion.BaseDeDatos;
 
 public class Curso 
 {
 	String codigo; 
 	String descripcionCurso;
+	ArrayList temas;
 	
+	public Curso(String codigo, String descripcionCurso){
+		 temas = new ArrayList<Tema>();
+		 setCodigo(codigo);
+		 setDescripcionCurso(descripcionCurso);
+	}
 	
+	public void registrarTema(Tema tema){
+		temas.add(tema);
+	}
+	
+	public ArrayList getTemas() {
+		return temas;
+	}
+
+	public void setTemas(ArrayList temas) {
+		this.temas = temas;
+	}
+
 	public void RegistrarCurso(String pCodigo, String pDescripcion)
 	{
 		setCodigo(pCodigo);
