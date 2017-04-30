@@ -231,8 +231,7 @@ public class BaseDeDatos {
       //insert into evaluacion values (2,'TI5502',1,'segundo parcial',80,40,'02-03-2017',160);
       /*
       ArrayList curso = b.selectCurso();
-      
-<<<<<<< Updated upstream
+     
       /*Estudiante[] curso = b.selectEstudiante();
       
       for (int i=0; i<curso.length;i++){
