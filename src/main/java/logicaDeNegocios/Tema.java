@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Tema {
 	int codTema;
-	//String codigoCurso;
 	String descripcionTema;
 	ArrayList subtemas;
 	ArrayList cursos;
@@ -31,14 +30,7 @@ public class Tema {
 	public void setCodTema(int codTema) {
 		this.codTema = codTema;
 	}
-	/*
-	public String getCodigoCurso() {
-		return codigoCurso;
-	}
-	public void setCodigoCurso(String codigoCurso) {
-		this.codigoCurso = codigoCurso;
-	}
-	*/
+
 	public String getDescripcionTema() {
 		return descripcionTema;
 	}

@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import com.itextpdf.text.log.SysoLogger;
 
 import logicaDeNegocios.*;
@@ -56,7 +55,7 @@ public class BaseDeDatos {
               ResultSet rs = st.executeQuery("Select * from curso");
               
               while (rs.next()) {
-            	  System.out.println("va por aqui");
+            	System.out.println("va por aqui");
                 Curso objetoCurso = new Curso(rs.getString(1),rs.getString(2));
                 System.out.println(rs.getString(1));
                 curso.add(objetoCurso);
@@ -91,7 +90,7 @@ public class BaseDeDatos {
               objetoEstudiante.setApellido1(rs.getString(3));
               objetoEstudiante.setApellido2(rs.getString(4));
               objetoEstudiante.setNumeroCarnet(rs.getString(5));
-             // objetoCurso.setFechaNacimiento(rs.getString(6));
+              objetoEstudiante.setFechaNacimiento(rs.getDate(6));//ojo
               objetoEstudiante.setEmail(rs.getString(7));
               estudiante.add(objetoEstudiante);
             }
@@ -144,39 +143,19 @@ public class BaseDeDatos {
 	          System.out.println("daskdjkasjdsakl");
 	            Connection db = DriverManager.getConnection(url, username, password);
 	            Statement st = db.createStatement();
-	            ResultSet rs = st.executeQuery("select codevaluacion, codigocurso, evaluacion.codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal,fechaevaluacion,tiempominutos,status, tipoevaluacion.tipoevaluacion, tipoevaluacion.descripciontipoeval from evaluacion join tipoevaluacion on evaluacion.codtipoevaluacion = tipoevaluacion.codtipoevaluacion");
+	            ResultSet rs = st.executeQuery("select codevaluacion, evaluacion.codigocurso, evaluacion.codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal,fechaevaluacion,tiempominutos,status, tipoevaluacion.tipoevaluacion, tipoevaluacion.descripciontipoeval, descripcioncurso from evaluacion join tipoevaluacion on evaluacion.codtipoevaluacion = tipoevaluacion.codtipoevaluacion join curso on curso.codigocurso = evaluacion.codigocurso");
 
 	            while (rs.next()) {
-	            	System.out.println(rs.getString(11));
-	            	
 	            	if(rs.getString(10).compareTo("Sumativa") == 0){
-	            	  Sumativa objetoEvaluacion = new Sumativa();
-	            		objetoEvaluacion.setCodEvaluacion(Integer.parseInt(rs.getString(1)));
-	            		objetoEvaluacion.setCodigoCurso(rs.getString(2));
-	            		objetoEvaluacion.setCodTipoEvaluacion(Integer.parseInt(rs.getString(3)));
-	            		objetoEvaluacion.setNombreEvaluacion(rs.getString(4));	  
-	            		objetoEvaluacion.setPuntajeTotal(Integer.parseInt(rs.getString(5)));
-	            		objetoEvaluacion.setPorcentajeNotaFinal(Integer.parseInt(rs.getString(6)));
-	            		objetoEvaluacion.setFechaEvaluacion(rs.getString(7));//revisar es string
-	            		objetoEvaluacion.setTiempoMinutos(Integer.parseInt(rs.getString(8)));
-	            		objetoEvaluacion.setStatus(rs.getBoolean(9));
-	            		objetoEvaluacion.setTipoEvaluacion(rs.getString(10));
-	            		objetoEvaluacion.setDescripcionTipoEval(rs.getString(11));
+	            	  Sumativa objetoEvaluacion = new Sumativa(Integer.parseInt(rs.getString(1)),rs.getString(4),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(6)),rs.getString(7),Integer.parseInt(rs.getString(8)),rs.getBoolean(9),Integer.parseInt(rs.getString(3)),rs.getString(10),rs.getString(11) );           	
+	            		Curso curso = new Curso(rs.getString(2),rs.getString(12));
+	            		objetoEvaluacion.asociarCurso(curso);
 	            		evaluacion.add(objetoEvaluacion);
 	            	}
 	            	else if (rs.getString(10).compareTo("Formativa") == 0){
-	            		Formativa objetoEvaluacion = new Formativa();	            		
-	            		objetoEvaluacion.setCodEvaluacion(Integer.parseInt(rs.getString(1)));
-	            		objetoEvaluacion.setCodigoCurso(rs.getString(2));
-	            		objetoEvaluacion.setCodTipoEvaluacion(Integer.parseInt(rs.getString(3)));
-	            		objetoEvaluacion.setNombreEvaluacion(rs.getString(4));	  
-	            		objetoEvaluacion.setPuntajeTotal(Integer.parseInt(rs.getString(5)));
-	            		objetoEvaluacion.setPorcentajeNotaFinal(Integer.parseInt(rs.getString(6)));
-	            		objetoEvaluacion.setFechaEvaluacion(rs.getString(7));//revisar es string
-	            		objetoEvaluacion.setTiempoMinutos(Integer.parseInt(rs.getString(8)));
-	            		objetoEvaluacion.setStatus(rs.getBoolean(9));
-	            		objetoEvaluacion.setTipoEvaluacion(rs.getString(10));
-	            		objetoEvaluacion.setDescripcionTipoEval(rs.getString(11));
+		            	Formativa objetoEvaluacion = new Formativa(Integer.parseInt(rs.getString(1)),rs.getString(4),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(6)),rs.getString(7),Integer.parseInt(rs.getString(8)),rs.getBoolean(9),Integer.parseInt(rs.getString(3)),rs.getString(10),rs.getString(11) );           	
+		           		Curso curso = new Curso(rs.getString(2),rs.getString(12));
+		            	objetoEvaluacion.asociarCurso(curso);
 			            evaluacion.add(objetoEvaluacion);
 	            	}
 	            }
@@ -235,10 +214,66 @@ public class BaseDeDatos {
               System.out.println(e.getMessage() + "adios");
           }
           return preguntas;
-    }
+  	  }
   
+	  public ArrayList<Tema>selectTema(){
+		  ArrayList tema = new ArrayList<Tema>();
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("Select * from tema");
+	              
+	              while (rs.next()) {
+	                Tema objetoTema = new Tema(Integer.parseInt(rs.getString(1)),rs.getString(3));
+	                System.out.println(rs.getString(1));
+	                tema.add(objetoTema);
+	              }
+	              rs.close();
+	              st.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return tema;
+		  
+	  }
+	  
   
-  
+
+	  public ArrayList<Subtema>selectSubTema(){
+		  ArrayList subtema = new ArrayList<Subtema>();
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("Select * from subtema");
+	              
+	              while (rs.next()) {
+	            	
+	                Subtema objetoSubtema = new Subtema(Integer.parseInt(rs.getString(1)),rs.getString(3));
+	                System.out.println(rs.getString(1));
+	                subtema.add(objetoSubtema);
+	              }
+	              rs.close();
+	              st.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return subtema;
+		  
+	  }
   
   
   
@@ -261,7 +296,6 @@ public class BaseDeDatos {
           System.out.println(e.getMessage() + "adios");
         }
   }
-  
   
   
   
@@ -304,11 +338,11 @@ public class BaseDeDatos {
         System.out.println(((Curso) curso.get(i)).getDescripcionCurso());
         System.out.println(((Curso) curso.get(i)).getCodigo());
       }
-  
+  */
       ArrayList evaluacion = b.selectEvaluacion();
       for (int i=0; i<evaluacion.size();i++){
     	  System.out.println(((Formativa)evaluacion.get(i)).getCodEvaluacion());
-    	  System.out.println(((Formativa)evaluacion.get(i)).getCodigoCurso());
+    	  System.out.println(((Formativa)evaluacion.get(i)).getCurso().getCodigo());
     	  System.out.println(((Formativa)evaluacion.get(i)).getCodTipoEvaluacion());
           System.out.println(((Formativa)evaluacion.get(i)).getNombreEvaluacion());
           System.out.println(((Formativa)evaluacion.get(i)).getPuntajeTotal());
@@ -321,7 +355,7 @@ public class BaseDeDatos {
           System.out.println("\n\n");
         }
         
-            */
+/*
       
       
       ArrayList pregunta = b.selectPregunta();
@@ -337,6 +371,8 @@ public class BaseDeDatos {
     	  System.out.println(((MarqueX)pregunta.get(i)).getDescripcionTipoPreg());
     	  System.out.println(((pregunta)pregunta.get(i)).getSubtema().getTema().getCodTema());
       }
+    */
     }
+    
 
   }

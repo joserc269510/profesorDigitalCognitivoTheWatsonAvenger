@@ -1,24 +1,52 @@
 package logicaDeNegocios;
 
+import java.util.ArrayList;
+
 import Integracion.BaseDeDatos;
 
 public abstract class Evaluacion 
 {
 	protected int codEvaluacion;
-	protected String codigoCurso;
-	protected int codTipoEvaluacion;
 	protected String nombreEvaluacion;
 	protected int puntajeTotal;
 	protected int porcentajeNotaFinal;
 	protected String fechaEvaluacion;
 	protected int tiempoMinutos;
 	protected boolean status;
+	Curso curso;
+	ArrayList estudiantes;
+	ArrayList preguntas;
 
+	
+	public Evaluacion(int codEvaluacion, String nombreEvaluacion,int puntajeTotal,int porcentajeNotaFinal,String fechaEvaluacion,int tiempoMinutos,boolean status){
+		estudiantes = new ArrayList<Estudiante>();
+		preguntas = new ArrayList<pregunta>();
+		curso = new Curso();
+		setCodEvaluacion(codEvaluacion);
+		setNombreEvaluacion(nombreEvaluacion);
+		setPuntajeTotal(puntajeTotal);
+		setPorcentajeNotaFinal(porcentajeNotaFinal);
+		setFechaEvaluacion(fechaEvaluacion);
+		setTiempoMinutos(tiempoMinutos);
+		setStatus(status);
+	}
+	public Evaluacion(){
+		
+	}
+	public void asociarEstudiante(Estudiante estudiante){
+		estudiantes.add(estudiante);
+	}
+	public void asociarPregunta(Estudiante pregunta){
+		preguntas.add(pregunta);
+	}
+	public void asociarCurso(Curso curso){
+		this.curso = curso;
+	}
+	
 	
 	public abstract void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	
-	public void VerificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion)
-	{
+	public void VerificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion){
 		String tipoEvaluacion;
 		
 		tipoEvaluacion= pTipoEvaluacion.toLowerCase(); 
@@ -43,18 +71,36 @@ public abstract class Evaluacion
 	{
 		codEvaluacion = pCodEvaluacion;
 	}
-	public String getCodigoCurso() 
-	{
-		return codigoCurso;
-	}
-	public void setCodigoCurso(String pCodigoCurso) 
-	{
-		codigoCurso = pCodigoCurso;
-	}
+	
+	
 	public String getNombreEvaluacion() 
 	{
 		return nombreEvaluacion;
 	}
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public ArrayList getEstudiantes() {
+		return estudiantes;
+	}
+
+	public void setEstudiantes(ArrayList estudiantes) {
+		this.estudiantes = estudiantes;
+	}
+
+	public ArrayList getPreguntas() {
+		return preguntas;
+	}
+
+	public void setPreguntas(ArrayList preguntas) {
+		this.preguntas = preguntas;
+	}
+
 	public void setNombreEvaluacion(String pNombreEvaluacion) 
 	{
 		nombreEvaluacion = pNombreEvaluacion;
@@ -95,16 +141,8 @@ public abstract class Evaluacion
 	{
 		return status;
 	}
-	public void setStatus(boolean pStatus) 
-	{
+	public void setStatus(boolean pStatus) {
 		status = pStatus;
-	}
-	public int getCodTipoEvaluacion() {
-		return codTipoEvaluacion;
-	}
-
-	public void setCodTipoEvaluacion(int codTipoEvaluacion) {
-		this.codTipoEvaluacion = codTipoEvaluacion;
 	}
 
 	

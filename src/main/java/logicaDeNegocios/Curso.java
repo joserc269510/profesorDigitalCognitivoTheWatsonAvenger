@@ -9,12 +9,21 @@ public class Curso
 	String codigo; 
 	String descripcionCurso;
 	ArrayList temas;
+	ArrayList evaluaciones;
 	
 	public Curso(String codigo, String descripcionCurso){
 		 temas = new ArrayList<Tema>();
+		 evaluaciones = new ArrayList<Evaluacion>();
 		 setCodigo(codigo);
 		 setDescripcionCurso(descripcionCurso);
 	}
+	public Curso(){
+		
+	}
+	public void anadirEvaluacion(Evaluacion evaluacion){
+		evaluaciones.add(evaluacion);
+	}
+	
 	
 	public void registrarTema(Tema tema){
 		temas.add(tema);

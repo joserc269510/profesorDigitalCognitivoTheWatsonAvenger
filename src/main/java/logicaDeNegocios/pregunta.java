@@ -4,8 +4,6 @@ package logicaDeNegocios;
 public abstract class pregunta {
 
 	protected int codigoPregunta;
-	//protected int codSubtema;
-	//protected int codTipoPregunta;
 	protected String descripcionPregunta;
 	protected String descripcionAyuda;
 	private Subtema subtema; //bidireccional
@@ -59,16 +57,7 @@ public abstract class pregunta {
 	{
 		this.codigoPregunta = codigoPregunta;
 	}
-	/*
-	public int getCodSubtema() 
-	{
-		return codSubtema;
-	}
-	public void setCodSubtema(int codSubtema) 
-	{
-		this.codSubtema = codSubtema;
-	}
-	*/
+
 	public String getDescripcionPregunta() 
 	{
 		return descripcionPregunta;
@@ -82,15 +71,6 @@ public abstract class pregunta {
 	public void setDescripcionAyuda(String descripcionAyuda) {
 		this.descripcionAyuda = descripcionAyuda;
 	}
-	/*
-	public int getCodTipoPregunta() {
-	
-		return codTipoPregunta;
-	}
 
-	public void setCodTipoPregunta(int codTipoPregunta) {
-		this.codTipoPregunta = codTipoPregunta;
-	}
-	*/
 
 }

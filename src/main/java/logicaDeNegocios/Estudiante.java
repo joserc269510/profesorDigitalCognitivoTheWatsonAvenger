@@ -1,8 +1,8 @@
 package logicaDeNegocios;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-
 import Integracion.BaseDeDatos;
 
 public class Estudiante {
@@ -13,8 +13,34 @@ public class Estudiante {
 	private String apellido2;
 	private String nombre;
 	private String email;	
+	ArrayList evaluaciones;
+	ArrayList cursos;
 	
+	public Estudiante(){
+		evaluaciones = new ArrayList<Evaluacion>();
+		cursos = new ArrayList<Curso>();
+	}
+	
+	public Estudiante(String numeroIdentificacion, String numeroCarnet,Date fechaNacimiento,String apellido1,String apellido2, String nombre, String email){
+		setNumeroIdentificacion(numeroIdentificacion);
+		setNumeroCarnet(numeroCarnet);
+		setFechaNacimiento(fechaNacimiento);
+		setApellido1(apellido1);
+		setApellido2(apellido2);
+		setNombre(nombre);
+		setEmail(email);
+		evaluaciones = new ArrayList<Evaluacion>();
+		cursos = new ArrayList<Curso>();
+	}
+	
+	public void anadirCurso(Curso curso){
+		cursos.add(curso);
+	}
 
+	public void anadirEvaluacion(Evaluacion evaluacion){
+		evaluaciones.add(evaluacion);
+	}
+	
 	public void registrarEstudiante(String pNumeroIdentificacion, String pNombre, String pApellido1,
 			String pApellido2, String pNumeroCarnet,String pFechaNacimiento, String pEmail)
 	{
@@ -67,6 +93,22 @@ public class Estudiante {
 		numeroCarnet = pNumeroCarnet;
 	}
 	
+	public ArrayList getEvaluaciones() {
+		return evaluaciones;
+	}
+
+	public void setEvaluaciones(ArrayList evaluaciones) {
+		this.evaluaciones = evaluaciones;
+	}
+
+	public ArrayList getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(ArrayList cursos) {
+		this.cursos = cursos;
+	}
+
 	public Date getFechaNacimiento() 
 	{
 		return fechaNacimiento;

@@ -9,7 +9,7 @@ public class Desarrollo extends pregunta
 	int codigoTipoPregunta;
 	
 	public Desarrollo(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
-		super( codigoPregunta,  descripcionPregunta,  descripcionAyduda);
+		super(codigoPregunta,descripcionPregunta,descripcionAyduda);
 		setTipoPregunta(tipoPregunta);
 		setDescripcion(descripcionTipoPreg);
 		setCodigoTipoPregunta(codigoTipoPregunta);
@@ -52,8 +52,7 @@ public class Desarrollo extends pregunta
 		return descripcionTipoPreg;
 	}
 
-	public void setDescripcion(String pDescripcion) 
-	{
+	public void setDescripcion(String pDescripcion) {
 		descripcionTipoPreg = pDescripcion;
 	}
 	

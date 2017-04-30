@@ -15,6 +15,7 @@ public class  MarqueX extends pregunta
 		setCodTipoPregunta(codigoTipoPregunta);
 	}
 	
+	
 	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
