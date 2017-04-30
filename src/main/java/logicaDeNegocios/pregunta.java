@@ -1,8 +1,6 @@
 package logicaDeNegocios;
 
 public abstract class Pregunta {
-	
-
 	protected int codigoPregunta;
 	//protected int codSubtema;
 	//protected int codTipoPregunta;
