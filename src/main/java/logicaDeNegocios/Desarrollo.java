@@ -2,7 +2,7 @@ package logicaDeNegocios;
 
 import Integracion.BaseDeDatos;
 
-public class Desarrollo extends pregunta 
+public class Desarrollo extends Pregunta 
 {
 	protected String tipoPregunta;
 	protected String descripcionTipoPreg;
