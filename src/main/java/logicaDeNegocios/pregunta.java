@@ -1,30 +1,17 @@
 package logicaDeNegocios;
 
-<<<<<<< HEAD
-public abstract class pregunta 
-{
-	private int codigoPregunta;
-	private int codSubtema;
-	private String descripcionPregunta;
-	private String descripcionAyuda;
-=======
-public abstract class Pregunta {
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
-	
 
->>>>>>> origin/master
+public abstract class pregunta {
+
 	protected int codigoPregunta;
 	//protected int codSubtema;
 	//protected int codTipoPregunta;
 	protected String descripcionPregunta;
 	protected String descripcionAyuda;
-	
 	private Subtema subtema; //bidireccional
 	
 	
-	public Pregunta (int codigoPregunta, String descripcionPregunta, String descripcionAyduda){
+	public pregunta (int codigoPregunta, String descripcionPregunta, String descripcionAyduda){
 		setCodigoPregunta(codigoPregunta);
 		setDescripcionPregunta(descripcionPregunta);
 		setDescripcionAyuda(descripcionAyduda);

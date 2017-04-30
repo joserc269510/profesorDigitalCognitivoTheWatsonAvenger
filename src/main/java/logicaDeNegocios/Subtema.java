@@ -20,15 +20,15 @@ public class Subtema {
 	}
 	
 	public void anadirPreguntasMarqueX(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
-		Pregunta pregunta = new MarqueX( codigoPregunta, codigoTipoPregunta, descripcionPregunta,  descripcionAyduda, tipoPregunta, descripcionTipoPreg);
+		pregunta pregunta = new MarqueX( codigoPregunta, codigoTipoPregunta, descripcionPregunta,  descripcionAyduda, tipoPregunta, descripcionTipoPreg);
 		preguntas.add(pregunta);
 	}
 	public void anadirPreguntasRespuestaCorta(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
-		Pregunta pregunta = new EspacioBlanco( codigoPregunta, codigoTipoPregunta, descripcionPregunta, descripcionAyduda, tipoPregunta, descripcionTipoPreg);
+		pregunta pregunta = new EspacioBlanco( codigoPregunta, codigoTipoPregunta, descripcionPregunta, descripcionAyduda, tipoPregunta, descripcionTipoPreg);
 		preguntas.add(pregunta);
 	}
 	public void anadirPreguntasDesarrollo(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
-		Pregunta pregunta = new Desarrollo( codigoPregunta,  codigoTipoPregunta, descripcionPregunta,  descripcionAyduda,  tipoPregunta,  descripcionTipoPreg);
+		pregunta pregunta = new Desarrollo( codigoPregunta,  codigoTipoPregunta, descripcionPregunta,  descripcionAyduda,  tipoPregunta,  descripcionTipoPreg);
 		preguntas.add(pregunta);
 	}
 	

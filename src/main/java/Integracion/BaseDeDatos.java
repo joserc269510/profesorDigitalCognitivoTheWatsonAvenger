@@ -326,16 +326,16 @@ public class BaseDeDatos {
       
       ArrayList pregunta = b.selectPregunta();
       for (int i=0; i<pregunta.size();i++){
-    	  System.out.println(((Pregunta) pregunta.get(i)).getCodigoPregunta());
-    	  System.out.println(((Pregunta) pregunta.get(i)).getSubtema().getCodSubTema());
+    	  System.out.println(((pregunta) pregunta.get(i)).getCodigoPregunta());
+    	  System.out.println(((pregunta) pregunta.get(i)).getSubtema().getCodSubTema());
     	  System.out.println(((MarqueX) pregunta.get(i)).getCodTipoPregunta() );
     	  System.out.println(((MarqueX) pregunta.get(i)).getDescripcionTipoPreg());
-    	  System.out.println(((Pregunta) pregunta.get(i)).getDescripcionAyuda());
-    	  System.out.println(((Pregunta)pregunta.get(i)).getSubtema().getDescripcion());
-    	  System.out.println(((Pregunta)pregunta.get(i)).getSubtema().getTema().getDescripcionTema());
+    	  System.out.println(((pregunta) pregunta.get(i)).getDescripcionAyuda());
+    	  System.out.println(((pregunta)pregunta.get(i)).getSubtema().getDescripcion());
+    	  System.out.println(((pregunta)pregunta.get(i)).getSubtema().getTema().getDescripcionTema());
     	  System.out.println(((MarqueX)pregunta.get(i)).getTipoPregunta());
     	  System.out.println(((MarqueX)pregunta.get(i)).getDescripcionTipoPreg());
-    	  System.out.println(((Pregunta)pregunta.get(i)).getSubtema().getTema().getCodTema());
+    	  System.out.println(((pregunta)pregunta.get(i)).getSubtema().getTema().getCodTema());
       }
     }
 
