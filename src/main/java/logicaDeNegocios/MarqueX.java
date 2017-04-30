@@ -2,7 +2,7 @@ package logicaDeNegocios;
 
 import Integracion.BaseDeDatos;
 
-public class  MarqueX extends pregunta
+public class  MarqueX extends Pregunta
 {
 	private int codTipoPregunta;
 	protected String tipoPregunta;
