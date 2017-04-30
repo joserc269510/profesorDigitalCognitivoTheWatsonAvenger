@@ -43,8 +43,20 @@
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>ServletRegistrarCurso</servlet-name>
+		<servlet-name>ServletRegistrarTIpoEvaluacion</servlet-name>
 		<url-pattern>/registrarCurso</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description>Registrar_TipoEvaluacion</description>
+		<display-name />
+		<servlet-name>ServletRegistrarTIpoEvaluacion</servlet-name>
+		<servlet-class>Servlet.ServletRegistrarTIpoEvaluacion</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletRegistrarCurso</servlet-name>
+		<url-pattern>/registrarTipoEvaluacion</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
