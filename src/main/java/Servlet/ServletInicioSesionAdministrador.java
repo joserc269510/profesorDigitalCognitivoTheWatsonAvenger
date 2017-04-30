@@ -31,17 +31,18 @@ public class ServletInicioSesionAdministrador extends HttpServlet {
 	   Boolean resp;
 	   resp=profesor.validarUsuario(correo, contrasena);
 	   
+	   
+	   if(resp.equals(true)){
+		   RequestDispatcher dispatcher = request.getRequestDispatcher("/ModuloAdministrativo.html");
+		   dispatcher.forward(request, response);
+       }else{
+    	   RequestDispatcher dispatcher = request.getRequestDispatcher("/InicioSesionAdministrador.jsp");
+    	   dispatcher.forward(request, response);
+       }
 	   RequestDispatcher dispatcher = request.getRequestDispatcher("/InicioSesionAdministrador.html");
 	   dispatcher.forward(request, response);
-	   if(resp.equals(true)){
-           response.sendRedirect("ServletModuloAdministrador");
-       }else{
-           response.sendRedirect("ServletInicioSeccionAdminstrador");
-       }
 	}
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		response.setContentType("InicioSessionAdminstrador.html");
-	}
+
 		
 
 }

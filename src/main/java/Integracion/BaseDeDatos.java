@@ -121,8 +121,8 @@ public class BaseDeDatos {
               int index = 0;
               while (rs.next()) {
                 Profesor objetoProfesor = new Profesor();
-                //objetoProfesor.setCodProfesor(rs.getString(0));
-                objetoProfesor.setContrasena(rs.getString(1));
+                objetoProfesor.setCodProfesor(rs.getString(1));
+                objetoProfesor.setContrasena(rs.getString(3));
                 objetoProfesor.setCorreo(rs.getString(2));
                 profesor[index] = objetoProfesor;
                 index++;        
@@ -333,24 +333,24 @@ public class BaseDeDatos {
         System.out.println(curso[i].getApellido1());
       }
       */
-     // Profesor nuevo=new Profesor();
-     // nuevo.registrarP("123", "proyecto1");
+     Profesor nuevo=new Profesor();
+     // nuevo.registrarP("thawatsonavengers@gmail.com", "proyecto1");
       
-      //Profesor[] profes=b.selectProfesor();
-     /* for (int i=0; i<profes.length;i++){
+     /*Profesor[] profes=b.selectProfesor();
+      for (int i=0; i<profes.length;i++){
     	  //System.out.println(profes[i].getCodProfesor());
           System.out.println(profes[i].getCorreo());
           System.out.println(profes[i].getContrasena());
         }
-      */
-     // System.out.println(nuevo.validarUsuario("njnjc", "123"));
+     */
+     //System.out.println(nuevo.validarUsuario("thewatsonavengers@gmail.com", "proyecto1"));
      /*
       for (int i=0; i<curso.size();i++){
         System.out.println(((Curso) curso.get(i)).getDescripcionCurso());
         System.out.println(((Curso) curso.get(i)).getCodigo());
       }
   */
-      ArrayList evaluacion = b.selectEvaluacion();
+      /*ArrayList evaluacion = b.selectEvaluacion();
       for (int i=0; i<evaluacion.size();i++){
     	  System.out.println(((Formativa)evaluacion.get(i)).getCodEvaluacion());
     	  System.out.println(((Formativa)evaluacion.get(i)).getCurso().getCodigo());

@@ -24,7 +24,7 @@ public class Profesor {
 		
 		
 		BaseDeDatos conexion = new BaseDeDatos();
-        conexion.insertDelete("insert into profesor values ("  +  "'"  + pContrasena + "'" +"," + "'" + pCorreo + "'" + ")" ) ;
+        conexion.insertDelete("insert into profesor values (" +1 +  "'"  + pContrasena + "'" +"," + "'" + pCorreo + "'" + ")" ) ;
 	}
 	
 	public String getCodProfesor() {
@@ -65,10 +65,11 @@ public class Profesor {
         lista=conexion.selectProfesor();
         
         for (int i=0;i<lista.length;i++){
-			System.out.println(lista[i].getCorreo());
+			
 			if ((lista[i].getCorreo().equals(pCorreo))&&(lista[i].getContrasena().equals(pContrasena))){
 				setCorreo(pCorreo);
 				setContrasena(pContrasena);
+				
 			return true;
 			}
 		}

@@ -1,4 +1,6 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -78,7 +80,7 @@
 			</div>
 		
 			<div id="main">
-			  <form name="ServletInicioSesionAdministrador" action="ServletInicioSesionAdministrador" method="post">
+			  <form name="ServletInicioSesionAdministrador" action="postIniciar" method="post">
 			    <div>
 			      <h2>Iniciar Sesión</h2>
 			      <div>
