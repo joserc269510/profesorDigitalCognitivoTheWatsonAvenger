@@ -1,25 +1,58 @@
 package logicaDeNegocios;
 
-public class pregunta {
-	int codigoPregunta;
-	int codSubtema;
-	String descripcionPregunta;
-	String descripcionAyuda;
+public abstract class Pregunta 
+{
+	private int codigoPregunta;
+	private int codSubtema;
+	private String descripcionPregunta;
+	private String descripcionAyuda;
 	
 	
-	public int getCodigoPregunta() {
+	public abstract void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion);
+	
+	public void VerificarTipoPregunta(String pTipoPregunta, String pDescripcion)
+	{
+		String tipoPregunta;
+		
+		tipoPregunta= pTipoPregunta.toLowerCase(); 
+		
+		if (tipoPregunta.equals("marque con x "))
+		{
+			Pregunta marqueX= new MarqueX(); 
+			marqueX.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+		}
+		if (tipoPregunta.equals("espacio en Blanco"))
+		{
+			Pregunta espacioBlanco= new EspacioBlanco();
+			espacioBlanco.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+		}
+		if (tipoPregunta.equals("desarrollo"))
+		{
+			Pregunta desarrollo= new Desarrollo();
+			desarrollo.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+		}
+		 
+	}
+	
+	public int getCodigoPregunta() 
+	{
 		return codigoPregunta;
 	}
-	public void setCodigoPregunta(int codigoPregunta) {
+	public void setCodigoPregunta(int codigoPregunta) 
+	{
 		this.codigoPregunta = codigoPregunta;
 	}
-	public int getCodSubtema() {
+	
+	public int getCodSubtema() 
+	{
 		return codSubtema;
 	}
-	public void setCodSubtema(int codSubtema) {
+	public void setCodSubtema(int codSubtema) 
+	{
 		this.codSubtema = codSubtema;
 	}
-	public String getDescripcionPregunta() {
+	public String getDescripcionPregunta() 
+	{
 		return descripcionPregunta;
 	}
 	public void setDescripcionPregunta(String descripcionPregunta) {
