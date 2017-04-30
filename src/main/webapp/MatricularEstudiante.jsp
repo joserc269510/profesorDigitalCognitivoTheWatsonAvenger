@@ -147,16 +147,25 @@
 			          <tr>
 			            <td ><h3>Identificacion del Estudiante</h3></td>
 			            <td ><!--input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="Identificacion Estudiante"  required/-->
-			            
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Estudiante, logicaDeNegocios.Curso" %>
+			            <%
+			            		ArrayList<Estudiante> estudiantes= (ArrayList<Estudiante>) request.getAttribute("ListEstudiantes");
+			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
+			            		
+						%>
 			            <select id="selIdentificacion" name="selIdentificacion">
-			            
+			            <%  for(Estudiante e:estudiantes){ %>
+				            <option value="<%=e.getNumeroIdentificacion() %>"><%= e.getNombre()%> <%=e.getApellido1() %></option>
+				        <% } %>
 			            </select></td>
 		              </tr>
                       <tr>
 			            <td ><h3>Codigo del Curso</h3></td>
 			            <td ><!--input type="text" id="txtNombreCurso" name="txtNombre" placeholder="Nombre Curso"  required/-->
 			            <select id="selCodigo" name="selCodigo">
-			            
+			            <%  for(Curso c:cursos){ %>
+			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
+				        <% } %>
 				        </select></td>
 		              </tr>
 		             

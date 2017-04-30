@@ -41,8 +41,9 @@ public class ServletMatricular extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getParameter("selIdentificacion");
-		request.getParameter("selCodigoCurso");
+		String idEstudiante=request.getParameter("selIdentificacion");
+		String codCurso=request.getParameter("selCodigoCurso");
+		
 	}
 
 }

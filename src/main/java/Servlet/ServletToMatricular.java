@@ -35,6 +35,8 @@ public class ServletToMatricular extends HttpServlet {
 		BaseDeDatos bd= new BaseDeDatos();
 		ArrayList<Estudiante> estudiantes = bd.selectEstudiante();
 		ArrayList<Curso> cursos = bd.selectCurso();
+		request.setAttribute("ListEstudiantes", estudiantes);
+		request.setAttribute("ListCursos", cursos);
 		request.getRequestDispatcher("MatricularEstudiante.jsp").forward(request, response);
 	}
 
