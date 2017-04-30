@@ -60,6 +60,18 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<description>Registrar_TipoPregunta</description>
+		<display-name />
+		<servlet-name>ServletRegistrarTipoPregunta</servlet-name>
+		<servlet-class>Servlet.ServletRegistrarTipoPregunta</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletRegistrarTipoPregunta</servlet-name>
+		<url-pattern>/registrarTipoPregunta</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<description>CREA PDF</description>
 		<display-name />
 		<servlet-name>ServletPDF</servlet-name>

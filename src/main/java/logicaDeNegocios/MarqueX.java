@@ -2,7 +2,7 @@ package logicaDeNegocios;
 
 import Integracion.BaseDeDatos;
 
-public class  MarqueX extends Pregunta
+public class  MarqueX extends pregunta
 {
 	protected String tipoPregunta;
 	protected String  descripcionTipoPreg;; 
@@ -14,7 +14,7 @@ public class  MarqueX extends Pregunta
 		setTipoPregunta(pTipoPregunta);
 		setDescripcionPregunta(pDescripcion);
 		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		conexion.insertDelete("insert into tipopregunta values (" + 1 + ","+ "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
 	

@@ -1,6 +1,6 @@
 package logicaDeNegocios;
 
-public abstract class Pregunta 
+public abstract class pregunta 
 {
 	private int codigoPregunta;
 	private int codSubtema;
@@ -18,17 +18,17 @@ public abstract class Pregunta
 		
 		if (tipoPregunta.equals("marque con x "))
 		{
-			Pregunta marqueX= new MarqueX(); 
+			pregunta marqueX= new MarqueX(); 
 			marqueX.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("espacio en Blanco"))
 		{
-			Pregunta espacioBlanco= new EspacioBlanco();
+			pregunta espacioBlanco= new EspacioBlanco();
 			espacioBlanco.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("desarrollo"))
 		{
-			Pregunta desarrollo= new Desarrollo();
+			pregunta desarrollo= new Desarrollo();
 			desarrollo.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		 

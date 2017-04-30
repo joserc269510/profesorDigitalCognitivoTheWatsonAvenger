@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import logicaDeNegocios.Evaluacion;
+import logicaDeNegocios.pregunta;
+
 /**
  * Servlet implementation class ServletRegistrarTipoPregunta
  */
@@ -19,14 +22,23 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
      */
     public ServletRegistrarTipoPregunta() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		String tipoPregunta = request.getParameter("txtPregunta");
+		String descripcionPregunta = request.getParameter("txtDescripcion");
+		
+	     pregunta pregunta = new pregunta() 
+	     {
+		
+			public void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion) {}}; 
+			pregunta.VerificarTipoPregunta(tipoPregunta, descripcionPregunta);		
+		 }
+	
 
 }
