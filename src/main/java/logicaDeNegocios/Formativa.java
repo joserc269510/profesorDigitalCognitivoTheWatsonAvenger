@@ -8,6 +8,17 @@ public class Formativa extends Evaluacion
 	protected String tipoEvaluacion;
 	protected String descripcionTipoEval;
 	
+	public Formativa(int codEvaluacion, String nombreEvaluacion,int puntajeTotal,int porcentajeNotaFinal,String fechaEvaluacion,int tiempoMinutos,boolean status,int codTipoEvaluacion,String tipoEvaluacion,String descripcionTipoEval){
+		super( codEvaluacion,  nombreEvaluacion, puntajeTotal, porcentajeNotaFinal, fechaEvaluacion, tiempoMinutos, status);
+		setCodTipoEvaluacion(codTipoEvaluacion);
+		setTipoEvaluacion(tipoEvaluacion);
+		setDescripcionTipoEval(descripcionTipoEval);
+	}
+	public Formativa(){
+		super();
+	}
+	
+	
 	public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) 
 	{
 		setTipoEvaluacion(pTipoEvaluacion);

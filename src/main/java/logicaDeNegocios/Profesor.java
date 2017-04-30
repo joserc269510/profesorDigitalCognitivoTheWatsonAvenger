@@ -10,7 +10,7 @@ public class Profesor {
 	private String codProfesor=null;
 	private String correo=null;
 	private String contrasena=null;
-	BaseDeDatos conexion = new BaseDeDatos();
+	
 
 	public Profesor(){	
 	}
@@ -60,7 +60,7 @@ public class Profesor {
 
 
 	public boolean validarUsuario(String pCorreo, String pContrasena){
-		
+		BaseDeDatos conexion = new BaseDeDatos();
         Profesor lista []=new Profesor[conexion.getNumeroRegistros("profesor", "codprofesor")];
         lista=conexion.selectProfesor();
         

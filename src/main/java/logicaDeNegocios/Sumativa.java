@@ -8,6 +8,15 @@ public class Sumativa extends Evaluacion
 	protected String tipoEvaluacion;
 	protected String descripcionTipoEval;
 	
+	public Sumativa(int codEvaluacion, String nombreEvaluacion,int puntajeTotal,int porcentajeNotaFinal,String fechaEvaluacion,int tiempoMinutos,boolean status,int codTipoEvaluacion,String tipoEvaluacion,String descripcionTipoEval){
+		super( codEvaluacion,  nombreEvaluacion, puntajeTotal, porcentajeNotaFinal, fechaEvaluacion, tiempoMinutos, status);
+		setCodTipoEvaluacion(codTipoEvaluacion);
+		setTipoEvaluacion(tipoEvaluacion);
+		setDescripcionTipoEval(descripcionTipoEval);
+	}
+	public Sumativa(){
+		super();
+	}
 
 	public int getCodTipoEvaluacion() {
 		return codTipoEvaluacion;

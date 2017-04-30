@@ -2,14 +2,14 @@ package logicaDeNegocios;
 
 import Integracion.BaseDeDatos;
 
-public class Desarrollo extends Pregunta 
+public class Desarrollo extends pregunta 
 {
 	protected String tipoPregunta;
 	protected String descripcionTipoPreg;
 	int codigoTipoPregunta;
 	
 	public Desarrollo(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
-		super( codigoPregunta,  descripcionPregunta,  descripcionAyduda);
+		super(codigoPregunta,descripcionPregunta,descripcionAyduda);
 		setTipoPregunta(tipoPregunta);
 		setDescripcion(descripcionTipoPreg);
 		setCodigoTipoPregunta(codigoTipoPregunta);
@@ -52,8 +52,7 @@ public class Desarrollo extends Pregunta
 		return descripcionTipoPreg;
 	}
 
-	public void setDescripcion(String pDescripcion) 
-	{
+	public void setDescripcion(String pDescripcion) {
 		descripcionTipoPreg = pDescripcion;
 	}
 	
