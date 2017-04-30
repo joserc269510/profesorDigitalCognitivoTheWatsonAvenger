@@ -34,11 +34,12 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
 		String descripcionPregunta = request.getParameter("txtDescripcion");
 		
 	     pregunta pregunta = new pregunta() 
-	     {
-		
-			public void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion) {}}; 
-			pregunta.VerificarTipoPregunta(tipoPregunta, descripcionPregunta);		
-		 }
+	     { 
+	    	 public void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion) {}
+	    }; 
+			
+		pregunta.VerificarTipoPregunta(tipoPregunta, descripcionPregunta);		
+	}
 	
 
 }

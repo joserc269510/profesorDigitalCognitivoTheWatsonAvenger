@@ -14,7 +14,7 @@ public class  MarqueX extends pregunta
 		setTipoPregunta(pTipoPregunta);
 		setDescripcionPregunta(pDescripcion);
 		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into tipopregunta values (" + 1 + ","+ "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		conexion.insertDelete("insert into tipopregunta values (" + 1 + "," + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
 	
