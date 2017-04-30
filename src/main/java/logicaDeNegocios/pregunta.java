@@ -1,12 +1,39 @@
 package logicaDeNegocios;
 
+<<<<<<< HEAD
 public abstract class pregunta 
 {
 	private int codigoPregunta;
 	private int codSubtema;
 	private String descripcionPregunta;
 	private String descripcionAyuda;
+=======
+public abstract class Pregunta {
+>>>>>>> origin/master
 	
+
+	protected int codigoPregunta;
+	//protected int codSubtema;
+	//protected int codTipoPregunta;
+	protected String descripcionPregunta;
+	protected String descripcionAyuda;
+	
+	private Subtema subtema; //bidireccional
+	
+	
+	public Pregunta (int codigoPregunta, String descripcionPregunta, String descripcionAyduda){
+		setCodigoPregunta(codigoPregunta);
+		setDescripcionPregunta(descripcionPregunta);
+		setDescripcionAyuda(descripcionAyduda);
+	}
+	
+	public Subtema getSubtema() {
+		return subtema;
+	}
+
+	public void anadirSubTema(int codsubtema, String descripcion){
+		subtema = new Subtema( codsubtema, descripcion);
+	}
 	
 	public abstract void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion);
 	
@@ -42,7 +69,7 @@ public abstract class pregunta
 	{
 		this.codigoPregunta = codigoPregunta;
 	}
-	
+	/*
 	public int getCodSubtema() 
 	{
 		return codSubtema;
@@ -51,6 +78,7 @@ public abstract class pregunta
 	{
 		this.codSubtema = codSubtema;
 	}
+	*/
 	public String getDescripcionPregunta() 
 	{
 		return descripcionPregunta;
@@ -64,6 +92,15 @@ public abstract class pregunta
 	public void setDescripcionAyuda(String descripcionAyuda) {
 		this.descripcionAyuda = descripcionAyuda;
 	}
+	/*
+	public int getCodTipoPregunta() {
 	
-	
+		return codTipoPregunta;
+	}
+
+	public void setCodTipoPregunta(int codTipoPregunta) {
+		this.codTipoPregunta = codTipoPregunta;
+	}
+	*/
+
 }
