@@ -68,7 +68,7 @@
                     <li><a href="">Estudiante</a>
 						<ul>
 							<li><a href="RegistrarEstudiante.html"><span>Registrar Estudiante</span></a></li>
-							<li><a href="<%=request.getContextPath()%>/MatricularEstudiante.jsp"><span>Matricular Estudiante</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToMatricular"><span>Matricular Estudiante</span></a></li>
 						</ul>
 					</li>
 					<li><a href="">Curso</a>

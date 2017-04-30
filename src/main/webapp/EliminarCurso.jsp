@@ -1,4 +1,5 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -67,7 +68,7 @@
                     <li><a href="">Estudiante</a>
 						<ul>
 							<li><a href="RegistrarEstudiante.html"><span>Registrar Estudiante</span></a></li>
-							<li><a href="MatricularEstudiante.html"><span>Matricular Estudiante</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/MatricularEstudiante.jsp"><span>Matricular Estudiante</span></a></li>
 						</ul>
 					</li>
 					<li class="current-menu-item"><a href="">Curso</a>

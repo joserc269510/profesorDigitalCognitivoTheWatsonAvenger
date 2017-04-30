@@ -147,29 +147,16 @@
 			          <tr>
 			            <td ><h3>Identificacion del Estudiante</h3></td>
 			            <td ><!--input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="Identificacion Estudiante"  required/-->
-			            <%@ page import="Integracion.BaseDeDatos, java.util.ArrayList, logicaDeNegocios.Estudiante, logicaDeNegocios.Curso" %>
-			            <%
-						    	BaseDeDatos bd=new BaseDeDatos();
-			            		ArrayList<Estudiante> estudiantes=bd.selectEstudiante();
-			            		
-						%>
+			            
 			            <select id="selIdentificacion" name="selIdentificacion">
-			            <%  for(Estudiante i:estudiantes){ %>
-				            <option value="<%=i.getNumeroIdentificacion() %>"><%= i.getNombre()%> <%=i.getApellido1() %></option>
-				        <% } %>
+			            
 			            </select></td>
 		              </tr>
                       <tr>
 			            <td ><h3>Codigo del Curso</h3></td>
 			            <td ><!--input type="text" id="txtNombreCurso" name="txtNombre" placeholder="Nombre Curso"  required/-->
-			            <%
-			            		ArrayList<Curso> cursos=bd.selectCurso();
-			            		
-						%>
 			            <select id="selCodigo" name="selCodigo">
-			            <%  for(Curso i:cursos){ %>
-			                <option value="<%=i.getCodigo() %>"><%= i.getDescripcionCurso()%></option>
-				        <% } %>
+			            
 				        </select></td>
 		              </tr>
 		             

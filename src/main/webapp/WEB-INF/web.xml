@@ -84,6 +84,18 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<description>TO_MATRICULAR</description>
+		<display-name />
+		<servlet-name>ServletToMatricular</servlet-name>
+		<servlet-class>Servlet.ServletToMatricular</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletToMatricular</servlet-name>
+		<url-pattern>/ToMatricular</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<description>MATRICULAR</description>
 		<display-name />
 		<servlet-name>ServletMatricular</servlet-name>
