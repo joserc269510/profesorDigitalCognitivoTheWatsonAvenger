@@ -102,10 +102,9 @@ public class BaseDeDatos {
         }
         return estudiante;
 }
-  public ArrayList<Profesor> selectProfesor (){
-      ArrayList profesor = new ArrayList<Profesor>();
-	  
-	  try {
+  public Profesor[] selectProfesor (){
+      Profesor profesor [] = new Profesor[getNumeroRegistros("profesor", "codprofesor")];
+      try {
               Class.forName("org.postgresql.Driver");
           }
           catch (java.lang.ClassNotFoundException e) {
@@ -116,12 +115,15 @@ public class BaseDeDatos {
               Connection db = DriverManager.getConnection(url, username, password);
               Statement st = db.createStatement();
               ResultSet rs = st.executeQuery("Select * from profesor");
+              
+              int index = 0;
               while (rs.next()) {
                 Profesor objetoProfesor = new Profesor();
+                //objetoProfesor.setCodProfesor(rs.getString(0));
+                objetoProfesor.setContrasena(rs.getString(1));
                 objetoProfesor.setCorreo(rs.getString(2));
-                objetoProfesor.setContrasena(rs.getString(3));
-                profesor.add(objetoProfesor);
-               
+                profesor[index] = objetoProfesor;
+                index++;        
               }
               rs.close();
               st.close();
