@@ -6,11 +6,20 @@ public class Formativa extends Evaluacion {
 	int codTipoEvaluacion;
 	String tipoEvaluacion;
 	String descripcionTipoEval;
+	
+	public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {
+		setTipoEvaluacion(pTipoEvaluacion);
+		BaseDeDatos conexion=  new BaseDeDatos();
+		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
+		
+	}
+	
 	public int getCodTipoEvaluacion() {
 		return codTipoEvaluacion;
 	}
-	public void setCodTipoEvaluacion(int codTipoEvaluacion) {
-		this.codTipoEvaluacion = codTipoEvaluacion;
+	public void setCodTipoEvaluacion(int pCodTipoEvaluacion) 
+	{
+	  codTipoEvaluacion = pCodTipoEvaluacion;
 	}
 	public String getTipoEvaluacion() {
 		return tipoEvaluacion;
@@ -24,13 +33,7 @@ public class Formativa extends Evaluacion {
 	public void setDescripcionTipoEval(String descripcionTipoEval) {
 		this.descripcionTipoEval = descripcionTipoEval;
 	}
-	@Override
-	public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {
-		setTipoEvaluacion(pTipoEvaluacion);
-		BaseDeDatos conexion=  new BaseDeDatos();
-		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
-		
-	}
+	
 	
 	
 }

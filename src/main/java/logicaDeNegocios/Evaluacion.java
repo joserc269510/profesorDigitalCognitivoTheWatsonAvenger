@@ -13,23 +13,26 @@ public abstract class Evaluacion
 	private int tiempoMinutos;
 	private boolean status;
 
-	private String tipoEvaluacion;
+
 	private String descripcionTipoEval;
 	
 	public abstract void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	
-	public void VerificarTipoEvaluacion(String pTipoEvaluacion)
+	public void VerificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion)
 	{
-		String tipoEvalucion;
-		tipoEvalucion= pTipoEvaluacion.toLowerCase(); 
+		String tipoEvaluacion;
+		
+		tipoEvaluacion= pTipoEvaluacion.toLowerCase(); 
 		
 		if (tipoEvaluacion.equals("sumativa"))
 		{
-			Evaluacion tipoEvaluacion= new Sumativa(); 
+			Evaluacion tipoEvaluacionS= new Sumativa(); 
+			tipoEvaluacionS.RegistrarTipoEvaluacion(pTipoEvaluacion, pDescripcion);
 		}
-		if (tipoEvaluacion.equals("sumativa"))
+		if (tipoEvaluacion.equals("formativa"))
 		{
-			
+			Evaluacion tipoEvaluacionF= new Formativa();
+			tipoEvaluacionF.RegistrarTipoEvaluacion(pTipoEvaluacion, pDescripcion);
 		}
 	}
 	

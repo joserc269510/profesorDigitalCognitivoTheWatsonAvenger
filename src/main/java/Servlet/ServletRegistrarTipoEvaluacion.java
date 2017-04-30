@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logicaDeNegocios.Evaluacion;
+import logicaDeNegocios.Sumativa;
 
 /**
  * Servlet implementation class ServletRegistrarTipoEvaluacion
@@ -25,11 +26,16 @@ public class ServletRegistrarTipoEvaluacion extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String TipoEvaluacion = request.getParameter("txtCodigo");
+		String tipoEvaluacion = request.getParameter("txtTipo");
+		String descripcionEvaluacion = request.getParameter("txtDescripcion");
 		
-	//	Evaluacion evaluacion= 
+	     Evaluacion evaluacion = new Evaluacion() {
+		
+		public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {}};
+	    evaluacion.VerificarTipoEvaluacion(tipoEvaluacion,descripcionEvaluacion );		
 	}
 
 }
