@@ -6,6 +6,7 @@ public abstract class Evaluacion
 {
 	protected int codEvaluacion;
 	protected String codigoCurso;
+	protected int codTipoEvaluacion;
 	protected String nombreEvaluacion;
 	protected int puntajeTotal;
 	protected int porcentajeNotaFinal;
@@ -13,8 +14,6 @@ public abstract class Evaluacion
 	protected int tiempoMinutos;
 	protected boolean status;
 
-
-	private String descripcionTipoEval;
 	
 	public abstract void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	
@@ -99,6 +98,13 @@ public abstract class Evaluacion
 	public void setStatus(boolean pStatus) 
 	{
 		status = pStatus;
+	}
+	public int getCodTipoEvaluacion() {
+		return codTipoEvaluacion;
+	}
+
+	public void setCodTipoEvaluacion(int codTipoEvaluacion) {
+		this.codTipoEvaluacion = codTipoEvaluacion;
 	}
 
 	

@@ -1,18 +1,40 @@
 package logicaDeNegocios;
 
+import java.util.Date;
+
 import com.itextpdf.text.log.SysoCounter;
 
 import Integracion.BaseDeDatos;
 
 public class Profesor {
+	private String codProfesor=null;
 	private String correo=null;
 	private String contrasena=null;
+	BaseDeDatos conexion = new BaseDeDatos();
 
 	public Profesor(){	
 	}
 	
+	public void registrarP(String pContrasena, String pCorreo)
+	{
+     
 	
+		setCorreo(pCorreo);
+		setContrasena(pContrasena);
+		
+		
+		BaseDeDatos conexion = new BaseDeDatos();
+        conexion.insertDelete("insert into profesor values ("  +  "'"  + pContrasena + "'" +"," + "'" + pCorreo + "'" + ")" ) ;
+	}
 	
+	public String getCodProfesor() {
+		return codProfesor;
+	}
+
+	public void setCodProfesor(String string) {
+		this.codProfesor = string;
+	}
+
 	public String getCorreo() {
 		return correo;
 	}
@@ -37,19 +59,20 @@ public class Profesor {
 
 
 
-	public String validarUsuario(String pCorreo, String pContrasena){
-		BaseDeDatos conexion = new BaseDeDatos();
+	public boolean validarUsuario(String pCorreo, String pContrasena){
+		
         Profesor lista []=new Profesor[conexion.getNumeroRegistros("profesor", "codprofesor")];
         lista=conexion.selectProfesor();
+        
         for (int i=0;i<lista.length;i++){
-			Profesor profe=(Profesor)lista[1];
-			if ((profe.correo.equals(pCorreo))&&(profe.contrasena.equals(pContrasena))){
+			System.out.println(lista[i].getCorreo());
+			if ((lista[i].getCorreo().equals(pCorreo))&&(lista[i].getContrasena().equals(pContrasena))){
 				setCorreo(pCorreo);
 				setContrasena(pContrasena);
-			return "Bien";
+			return true;
 			}
 		}
-        return "Malo";
+        return false;
 
 	}
 	

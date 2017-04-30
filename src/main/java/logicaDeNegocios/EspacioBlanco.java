@@ -6,7 +6,14 @@ public class EspacioBlanco extends pregunta
 {
 	protected String tipoPregunta;
 	protected String descripcionTipoPreg;
-
+	private int codigoTipoPregunta;
+	
+	public EspacioBlanco(int codigoPregunta,int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
+		super( codigoPregunta,  descripcionPregunta,  descripcionAyduda);
+		setTipoPregunta(tipoPregunta);
+		setDescripcion(descripcionTipoPreg);
+		setCodigoTipoPregunta(codigoTipoPregunta);
+	}
 
 	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
@@ -15,6 +22,26 @@ public class EspacioBlanco extends pregunta
 		conexion.insertDelete("insert into tipopregunta values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
+	
+	public String getDescripcionTipoPreg() {
+		return descripcionTipoPreg;
+	}
+
+	public void setDescripcionTipoPreg(String descripcionTipoPreg) {
+		this.descripcionTipoPreg = descripcionTipoPreg;
+	}
+
+
+	public int getCodigoTipoPregunta() {
+		return codigoTipoPregunta;
+	}
+
+
+	public void setCodigoTipoPregunta(int codigoTipoPregunta) {
+		this.codigoTipoPregunta = codigoTipoPregunta;
+	}
+
+
 	public String getTipoPregunta() {
 		return tipoPregunta;
 	}

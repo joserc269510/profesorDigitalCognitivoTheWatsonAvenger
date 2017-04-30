@@ -1,4 +1,5 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -64,13 +65,13 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 					
-                    <li><a href="">Estudiante</a>
+                    <li class="current-menu-item"><a href="">Estudiante</a>
 						<ul>
 							<li><a href="RegistrarEstudiante.html"><span>Registrar Estudiante</span></a></li>
 							<li><a href="MatricularEstudiante.html"><span>Matricular Estudiante</span></a></li>
 						</ul>
 					</li>
-					<li><a href="">Curso</a>
+					<li class=""><a href="">Curso</a>
 						<ul>
 							<li><a href="RegistrarCurso.html"><span>Registrar Curso</span></a></li>
 							<li><a href="ConsultarCurso.html"><span>Consultar Curso</span></a></li>
@@ -80,7 +81,7 @@
 					</li>
                     <li><a href="">Evaluación</a>
 						<ul>
-							<li><a href="RegistrarTipoEvaluacion.html"><span>Registrar Tipo de Evaluación</span></a></li>
+							<li><a href="RegistrarEvaluacion.html"><span>Registrar Tipo de Evaluación</span></a></li>
                             <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluación</span></a></li>
                             <li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluación</span></a></li>
                             <li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluación</span></a></li>
@@ -92,7 +93,6 @@
 					</li>
                     <li><a href="">Pregunta</a>
 						<ul>
-						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
                                     <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
@@ -130,7 +130,7 @@
 				
 				
 				
-		
+			
 				
 				<div id="slider-block">
 				</div>
@@ -139,54 +139,47 @@
 			</div>
 		
 			<div id="main">
-				
-				
-				<div id="content">
-					
-						
-						
-	
-	
-	
-				</div>
-				
-	
-	
-			</div>
-			<div id="main">
-			  <form name="ServletModuloAdministrador" action="ServletModuloAdministrador" method="post">
-			 
+			  <form name="matricularEstudiante" action="" method="">
+			    <div>
+			      <h2>Matricular Estudiante</h2>
+			      <div>
+			        <table>
+			          <tr>
+			            <td ><h3>Identificacion del Estudiante</h3></td>
+			            <td ><!--input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="Identificacion Estudiante"  required/-->
+			            <%@ page import="Integracion.BaseDeDatos, java.util.ArrayList, logicaDeNegocios.Estudiante" %>
+			            <%
+						    	BaseDeDatos bd=new BaseDeDatos();
+			            		ArrayList<Estudiante> estudiantes=bd.selectEstudiante();
+						%>
+			            <select id="selIdentificacion" name="selIdentificacion">
+			            <%  for(Estudiante i:estudiantes){ %>
+				            <option value="<%=i.getNumeroIdentificacion() %>"><%= i.getNombre()%> <%=i.getApellido1() %></option>
+				        <% } %>
+			            </select></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Codigo del Curso</h3></td>
+			            <td ><!--input type="text" id="txtNombreCurso" name="txtNombre" placeholder="Nombre Curso"  required/-->
+			            <select id="selCodigo" name="selCodigo"></select></td>
+		              </tr>
+		             
+                      
+		              
+			       
+			          <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Matricular Estudiante</button></td>
+		              </tr>
+		            </table>
+		          </div>
+		        </div>
 		      </form>
-			
-			<div id="footer">
-				
-				
-				<ul id="footer-cols">
-					<li class="col">
-						<h6>About the theme</h6>
-					</li>
-					
-					<li class="col">
-						<h6>Categories</h6>
-						<ul>
-							<li><a href="#">Webdesign</a></li>
-							<li><a href="#/">Wordpress</a></li>
-							<li><a href="#">Photo</a></li>
-							<li><a href="#">Code</a></li>
-							<li><a href="#">Web design</a></li>
-							<li><a href="#/">Marketplace</a></li>
-							<li><a href="#">Writting</a></li>
-							<li><a href="#">Drawings</a></li>
-						</ul>
-					</li>
-				</ul>
-				
-			</div>
-			
+		  </div>
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>
