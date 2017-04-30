@@ -11,7 +11,7 @@
 	</welcome-file-list>
 	
 	<servlet>
-		<description>Generar Speech</description>
+		<description>Generar_Speech</description>
 		<display-name />
 		<servlet-name>ServletSpeech</servlet-name>
 		<servlet-class>Servlet.ServletSpeech</servlet-class>
@@ -72,7 +72,7 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<description>CREA PDF</description>
+		<description>CREA_PDF</description>
 		<display-name />
 		<servlet-name>ServletPDF</servlet-name>
 		<servlet-class>Servlet.ServletPDF</servlet-class>
@@ -81,5 +81,17 @@
 	<servlet-mapping>
 		<servlet-name>ServletPDF</servlet-name>
 		<url-pattern>/crearPDF</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<description>MATRICULAR</description>
+		<display-name />
+		<servlet-name>ServletMatricular</servlet-name>
+		<servlet-class>Servlet.ServletMatricular</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletMatricular</servlet-name>
+		<url-pattern>/postMatricular</url-pattern>
 	</servlet-mapping>
 </web-app>

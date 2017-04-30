@@ -139,7 +139,7 @@
 			</div>
 		
 			<div id="main">
-			  <form name="matricularEstudiante" action="" method="">
+			  <form name="matricularEstudiante" action="postMatricular" method="post">
 			    <div>
 			      <h2>Matricular Estudiante</h2>
 			      <div>
@@ -147,10 +147,11 @@
 			          <tr>
 			            <td ><h3>Identificacion del Estudiante</h3></td>
 			            <td ><!--input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="Identificacion Estudiante"  required/-->
-			            <%@ page import="Integracion.BaseDeDatos, java.util.ArrayList, logicaDeNegocios.Estudiante" %>
+			            <%@ page import="Integracion.BaseDeDatos, java.util.ArrayList, logicaDeNegocios.Estudiante, logicaDeNegocios.Curso" %>
 			            <%
 						    	BaseDeDatos bd=new BaseDeDatos();
 			            		ArrayList<Estudiante> estudiantes=bd.selectEstudiante();
+			            		
 						%>
 			            <select id="selIdentificacion" name="selIdentificacion">
 			            <%  for(Estudiante i:estudiantes){ %>
@@ -161,7 +162,15 @@
                       <tr>
 			            <td ><h3>Codigo del Curso</h3></td>
 			            <td ><!--input type="text" id="txtNombreCurso" name="txtNombre" placeholder="Nombre Curso"  required/-->
-			            <select id="selCodigo" name="selCodigo"></select></td>
+			            <%
+			            		ArrayList<Curso> cursos=bd.selectCurso();
+			            		
+						%>
+			            <select id="selCodigo" name="selCodigo">
+			            <%  for(Curso i:cursos){ %>
+			                <option value="<%=i.getCodigo() %>"><%= i.getDescripcionCurso()%></option>
+				        <% } %>
+				        </select></td>
 		              </tr>
 		             
                       
