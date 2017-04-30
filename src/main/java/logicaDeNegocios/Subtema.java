@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Subtema {
 	int codSubTema;
-	//int codTema;
 	String descripcion;
 	ArrayList preguntas;
 	Tema tema;
@@ -12,7 +11,6 @@ public class Subtema {
 	public Subtema(int codsubtema, String descripcion){
 		preguntas = new ArrayList<Object>();//tener de las 3
 		setCodSubTema(codsubtema);
-		//setCodTema(codtema);
 		setDescripcion(descripcion);
 	}
 	public void anadirTema(int codTema, String descripcionTema){

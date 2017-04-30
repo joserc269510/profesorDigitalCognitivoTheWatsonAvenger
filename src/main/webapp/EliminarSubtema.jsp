@@ -1,4 +1,5 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -92,7 +93,7 @@
 					</li>
                     <li><a href="">Pregunta</a>
 						<ul>
-							<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
+						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
                                     <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
@@ -131,7 +132,6 @@
 				
 				
 				
-				
 				<div id="slider-block">
 				</div>
 			
@@ -139,16 +139,27 @@
 			</div>
 		
 			<div id="main">
-			  <form name="consultaSubtema" action="" method="">
+			  <form name="eliminarSubtema" action="" method="">
 			    <div>
-			      <h2>Consultar Subtema</h2>
+			      <h2>Eliminar Subtema</h2>
 			      <div>
 			        <table>
 			          <tr>
 			            
 			            <td ><h3>Codigo del Subtema</h3></td>
-			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/--><select id="selCodigo" name="selCodigo"></select></td>
-                     
+			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/-->
+			            			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Subtema" %>
+			            <%
+			            		ArrayList<Subtema> subtemas= (ArrayList<Subtema>) request.getAttribute("ListSubtemas"); 
+			            		
+						%>
+			            
+			            
+			            <select id="selCodigo" name="selCodigo">
+			            <%  for(Subtema s:subtemas){ %>
+			                <option value="<%=s.getCodSubTema() %>"><%= s.getDescripcion()%></option>
+				        <% } %>
+			            </select></td>
                         
 		              </tr>
 		              
@@ -156,7 +167,7 @@
 			       
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Consultar Subtema</button></td>
+			            <td  ><button class="submit" type="submit" >Eliminar Subtema</button></td>
 		              </tr>
 		            </table>
 		          </div>

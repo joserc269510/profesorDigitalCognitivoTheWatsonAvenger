@@ -1,4 +1,5 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -129,7 +130,7 @@
 				
 				
 				
-				
+	
 				
 				<div id="slider-block">
 				</div>
@@ -138,24 +139,51 @@
 			</div>
 		
 			<div id="main">
-			  <form name="eliminarSubtema" action="" method="">
+			  <form name="actualizarSubtema" action="" method="">
 			    <div>
-			      <h2>Eliminar Subtema</h2>
+			      <h2>Actualizar Subtema</h2>
 			      <div>
 			        <table>
-			          <tr>
-			            
+                    
+                    
+                    <tr>
+                    <form action="" method="">
 			            <td ><h3>Codigo del Subtema</h3></td>
-			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/--><select id="selCodigo" name="selCodigo"></select></td>
-                     
-                        
+			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/-->
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Subtema" %>
+			            <%
+			            		ArrayList<Subtema> subtemas= (ArrayList<Subtema>) request.getAttribute("ListSubtemas"); 
+			            		
+						%>
+			            
+			            
+			            <select id="selCodigo" name="selCodigo">
+			            <%  for(Subtema s:subtemas){ %>
+			                <option value="<%=s.getCodSubTema() %>"><%= s.getDescripcion()%></option>
+				        <% } %>
+			            </select></td>
+			            
+			            
+                        <td><button class="submit" type="submit" >Cargar Subtema</button></td>
+                        </form>
 		              </tr>
-		              
+                      
+                      
+                      
+                      <tr>
+			            <td ><h3>Codigo del Tema</h3></td>
+			            <td ><!--input type="text" id="txtCodigo2" name="txtCodigo" placeholder="Codigo Tema"  required/--><select id="selCodigoTema" name="selCodigoTema"></select></td>
+		              </tr>
+			          
+		              <tr>
+			            <td ><h3>Descripcion del Subtema </h3></td>
+			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
+		              </tr>
 		              
 			       
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Eliminar Subtema</button></td>
+			            <td  ><button class="submit" type="submit" >Actualizar Subtema</button></td>
 		              </tr>
 		            </table>
 		          </div>
