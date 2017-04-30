@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.itextpdf.text.log.SysoLogger;
+
 import logicaDeNegocios.*;
 
 public class BaseDeDatos {
@@ -52,11 +54,14 @@ public class BaseDeDatos {
               Statement st = db.createStatement();
               ResultSet rs = st.executeQuery("Select * from curso");
               
+              
               int index = 0;
               while (rs.next()) {
+            	  System.out.println("va por aqui");
                 Curso objetoCurso = new Curso();
                 objetoCurso.setCodigo(rs.getString(1));
                 objetoCurso.setDescripcionCurso(rs.getString(2));
+                System.out.println(rs.getString(1));
                 curso[index] = objetoCurso;
                 index++;        
               }
@@ -83,14 +88,16 @@ public class BaseDeDatos {
             ResultSet rs = st.executeQuery("Select * from estudiante");
             
             int index = 0;
+            
             while (rs.next()) {
+            	
               Estudiante objetoCurso = new Estudiante();
               objetoCurso.setNumeroIdentificacion(rs.getString(1));
               objetoCurso.setNombre(rs.getString(2));
               objetoCurso.setApellido1(rs.getString(3));
               objetoCurso.setApellido2(rs.getString(4));
               objetoCurso.setNumeroCarnet(rs.getString(5));
-             // objetoCurso.setFechaNacimiento(rs.getString(6));
+             //objetoCurso.setFechaNacimiento(rs.getString(6));
               objetoCurso.setEmail(rs.getString(7));
               estudiante[index] = objetoCurso;
               index++;        
@@ -119,8 +126,9 @@ public class BaseDeDatos {
               int index = 0;
               while (rs.next()) {
                 Profesor objetoProfesor = new Profesor();
-                objetoProfesor.setCorreo(rs.getString(1));
-                objetoProfesor.setContrasena(rs.getString(2));
+                //objetoProfesor.setCodProfesor(rs.getString(0));
+                objetoProfesor.setContrasena(rs.getString(1));
+                objetoProfesor.setCorreo(rs.getString(2));
                 profesor[index] = objetoProfesor;
                 index++;        
               }
@@ -223,17 +231,30 @@ public class BaseDeDatos {
       BaseDeDatos b= new BaseDeDatos();
       //select count (nombreestudiante) from estudiante
       //insert into estudiante values ('3485081','Jose', 'Ramirez', 'Calderon', '2014077444','2/5/1994','jose12.13@hotmail.com');
-      //b.insertDelete("insert into estudiante values( "1-1235-345","Coraima",'Fonseca', 'Alvarado','201210915','2/5/1994','cora2994@gmail.com')");
+    // b.insertDelete("insert into estudiante values( "1-1235-345","Coraima",'Fonseca', 'Alvarado','201210915','2/5/1994','cora2994@gmail.com')");
       //b.select("Select * from estudiante");
       //b.select("Select * from estudiante",1);
       //b.getNumeroRegistros("estudiante", "nombreestudiante");
       
-      Curso[] curso = b.selectCurso();
+      /*Estudiante[] curso = b.selectEstudiante();
       
       for (int i=0; i<curso.length;i++){
-        System.out.println(curso[i].getDescripcionCurso());
-        System.out.println(curso[i].getCodigo());
+        System.out.println(curso[i].getNombre());
+        System.out.println(curso[i].getApellido1());
       }
+      */
+     // Profesor nuevo=new Profesor();
+     // nuevo.registrarP("123", "proyecto1");
+      
+      //Profesor[] profes=b.selectProfesor();
+     /* for (int i=0; i<profes.length;i++){
+    	  //System.out.println(profes[i].getCodProfesor());
+          System.out.println(profes[i].getCorreo());
+          System.out.println(profes[i].getContrasena());
+        }
+      */
+     // System.out.println(nuevo.validarUsuario("njnjc", "123"));
+     
     }
 
   }
