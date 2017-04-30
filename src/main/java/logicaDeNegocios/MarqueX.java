@@ -12,7 +12,7 @@ public class  MarqueX extends Pregunta
 	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
-		setDescripcionPregunta(pDescripcion);
+		setDescripcionTipoPreg(pDescripcion);
 		BaseDeDatos conexion= new BaseDeDatos();
 		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		

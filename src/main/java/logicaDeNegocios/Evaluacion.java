@@ -6,6 +6,14 @@ public abstract class Evaluacion
 {
 	protected int codEvaluacion;
 	protected String codigoCurso;
+	protected int codTipoEvaluacion;
+	public int getCodTipoEvaluacion() {
+		return codTipoEvaluacion;
+	}
+
+	public void setCodTipoEvaluacion(int codTipoEvaluacion) {
+		this.codTipoEvaluacion = codTipoEvaluacion;
+	}
 	protected String nombreEvaluacion;
 	protected int puntajeTotal;
 	protected int porcentajeNotaFinal;
