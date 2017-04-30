@@ -2,7 +2,7 @@ package logicaDeNegocios;
 
 import Integracion.BaseDeDatos;
 
-public class EspacioBlanco extends Pregunta 
+public class EspacioBlanco extends pregunta 
 {
 	protected String tipoPregunta;
 	protected String descripcionTipoPreg;
@@ -13,6 +13,13 @@ public class EspacioBlanco extends Pregunta
 		setTipoPregunta(tipoPregunta);
 		setDescripcion(descripcionTipoPreg);
 		setCodigoTipoPregunta(codigoTipoPregunta);
+	}
+	public EspacioBlanco( String pTipoPregunta, String pDescripcion) 
+	{
+		super();
+		setTipoPregunta(pTipoPregunta);
+		setDescripcion(pDescripcion);
+		
 	}
 
 	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 

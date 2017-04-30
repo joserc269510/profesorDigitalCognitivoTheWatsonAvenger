@@ -14,6 +14,10 @@ public abstract class pregunta {
 		setDescripcionPregunta(descripcionPregunta);
 		setDescripcionAyuda(descripcionAyduda);
 	}
+	public pregunta()
+	{
+		
+	}
 	
 	public Subtema getSubtema() {
 		return subtema;
@@ -33,18 +37,19 @@ public abstract class pregunta {
 		
 		if (tipoPregunta.equals("marque con x "))
 		{
-			Pregunta marqueX= new MarqueX(); 
-			marqueX.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+			pregunta marqueX= new MarqueX(tipoPregunta, pDescripcion); 
+		    marqueX.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("espacio en Blanco"))
 		{
-			Pregunta espacioBlanco= new EspacioBlanco();
+			pregunta espacioBlanco= new EspacioBlanco(tipoPregunta,pDescripcion);
 			espacioBlanco.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("desarrollo"))
 		{
-			Pregunta desarrollo= new Desarrollo();
-			desarrollo.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+			
+		   pregunta desarrollo= new Desarrollo(tipoPregunta,pDescripcion);
+		  desarrollo.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		 
 	}

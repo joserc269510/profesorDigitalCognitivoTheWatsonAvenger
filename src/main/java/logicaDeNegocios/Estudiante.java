@@ -59,7 +59,24 @@ public class Estudiante {
         conexion.insertDelete("insert into estudiante values (" + pNumeroIdentificacion  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ fechaNacimiento +  "'"+ "," + "'" + pEmail +"'" + ")" ) ;
 	}
 	
+	public ArrayList<Estudiante> cargarEstudiante(){
+		ArrayList<Estudiante> estudiantes=new ArrayList<Estudiante>();
+		
+		  BaseDeDatos base= new BaseDeDatos();
+		  ArrayList<Estudiante> estudiante = base.selectEstudiante();
+		  
+		  Estudiante nombreEstudiante;
+	      
+	      for (int i=0; i<estudiante.size();i++)
+	      {
+	    	  nombreEstudiante= (estudiante.get(i));
+	    	  estudiantes.add(nombreEstudiante);  
+	      }
 	
+		
+		return estudiantes;
+		
+	}
 	 private static Date ConvertirFecha(String fecha)
 	 {
 	        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");

@@ -14,7 +14,13 @@ public class  MarqueX extends pregunta
 		setDescripcionTipoPreg(descripcionTipoPreg);
 		setCodTipoPregunta(codigoTipoPregunta);
 	}
-	
+	public  MarqueX ( String pTipoPregunta, String pDescripcion) 
+	{
+		super();
+		setTipoPregunta(pTipoPregunta);
+		setDescripcionTipoPreg(pDescripcion);
+		
+	}
 	
 	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
