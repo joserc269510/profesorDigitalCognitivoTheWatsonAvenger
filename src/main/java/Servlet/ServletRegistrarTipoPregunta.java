@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logicaDeNegocios.Evaluacion;
-import logicaDeNegocios.Pregunta;
+
 import logicaDeNegocios.pregunta;
 
 /**
@@ -34,7 +34,7 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
 		String tipoPregunta = request.getParameter("txtPregunta");
 		String descripcionPregunta = request.getParameter("txtDescripcion");
 		
-	     Pregunta pregunta = new Pregunta()
+	     pregunta pregunta = new pregunta()
 	     { 
 	    	 public void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion) {}
 	    }; 
