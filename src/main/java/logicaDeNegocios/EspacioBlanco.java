@@ -2,7 +2,7 @@ package logicaDeNegocios;
 
 import Integracion.BaseDeDatos;
 
-public class EspacioBlanco extends Pregunta 
+public class EspacioBlanco extends pregunta 
 {
 	protected String tipoPregunta;
 	protected String descripcionTipoPreg;

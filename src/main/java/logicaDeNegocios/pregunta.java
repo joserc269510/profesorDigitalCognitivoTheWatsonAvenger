@@ -1,7 +1,11 @@
 package logicaDeNegocios;
 
 
+<<<<<<< HEAD
 public abstract class Pregunta {
+=======
+public abstract class pregunta {
+>>>>>>> origin/master
 
 	protected int codigoPregunta;
 	protected String descripcionPregunta;
@@ -9,7 +13,7 @@ public abstract class Pregunta {
 	private Subtema subtema; //bidireccional
 	
 	
-	public Pregunta (int codigoPregunta, String descripcionPregunta, String descripcionAyduda){
+	public pregunta (int codigoPregunta, String descripcionPregunta, String descripcionAyduda){
 		setCodigoPregunta(codigoPregunta);
 		setDescripcionPregunta(descripcionPregunta);
 		setDescripcionAyuda(descripcionAyduda);
@@ -33,17 +37,17 @@ public abstract class Pregunta {
 		
 		if (tipoPregunta.equals("marque con x "))
 		{
-			Pregunta marqueX= new MarqueX(); 
+			pregunta marqueX= new MarqueX(); 
 			marqueX.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("espacio en Blanco"))
 		{
-			Pregunta espacioBlanco= new EspacioBlanco();
+			pregunta espacioBlanco= new EspacioBlanco();
 			espacioBlanco.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("desarrollo"))
 		{
-			Pregunta desarrollo= new Desarrollo();
+			pregunta desarrollo= new Desarrollo();
 			desarrollo.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		 
