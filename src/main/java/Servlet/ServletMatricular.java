@@ -3,6 +3,7 @@ package Servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +43,16 @@ public class ServletMatricular extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String idEstudiante=request.getParameter("selIdentificacion");
-		String codCurso=request.getParameter("selCodigoCurso");
+		String codCurso=request.getParameter("selCodigo");
+		Curso matricula= new Curso();
+		matricula.MatricularEstudiante(codCurso, idEstudiante);
+	//	request.getRequestDispatcher("MatricularEstudiante.jsp").forward(request, response);
+
+
+		
+		
+		
+		
 		
 	}
 

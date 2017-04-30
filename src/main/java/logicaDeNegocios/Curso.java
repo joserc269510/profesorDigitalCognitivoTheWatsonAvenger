@@ -10,6 +10,9 @@ public class Curso
 	String descripcionCurso;
 	ArrayList temas;
 	ArrayList evaluaciones;
+
+
+	Estudiante estudiante;
 	
 	public Curso(String codigo, String descripcionCurso){
 		 temas = new ArrayList<Tema>();
@@ -20,7 +23,33 @@ public class Curso
 	public Curso(){
 		
 	}
-	public void anadirEvaluacion(Evaluacion evaluacion){
+	
+	public void MatricularEstudiante(String pCodigoC, String pEstudiante)
+	{
+		BaseDeDatos conexion= new BaseDeDatos();
+		conexion.insertDelete("insert into estudiantecurso values ("+ "'"+ pCodigoC + "'" + "," + "'" + pEstudiante +"'" + ")");
+	}
+	
+	public void RegistrarCurso(String pCodigo, String pDescripcion)
+	{
+		setCodigo(pCodigo);
+		setDescripcionCurso(pDescripcion);
+		BaseDeDatos conexion= new BaseDeDatos();
+		conexion.insertDelete("insert into curso values (" + "'"+ pCodigo + "'" + "," + "'" + pDescripcion +"'" + ")");
+		
+	}
+	
+	public Estudiante getEstudiante() {
+		return estudiante;
+	}
+	
+	public void setEstudiante(Estudiante pEstudiante) 
+	{
+		estudiante = pEstudiante;
+	}
+	
+	public void anadirEvaluacion(Evaluacion evaluacion)
+	{
 		evaluaciones.add(evaluacion);
 	}
 	
@@ -37,14 +66,7 @@ public class Curso
 		this.temas = temas;
 	}
 
-	public void RegistrarCurso(String pCodigo, String pDescripcion)
-	{
-		setCodigo(pCodigo);
-		setDescripcionCurso(pDescripcion);
-		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into curso values (" + "'"+ pCodigo + "'" + "," + "'" + pDescripcion +"'" + ")");
-		conexion.insertDelete("insert into curso values (" + "'" +pCodigo + "'"  + "," +  "'" + pDescripcion+"'" + ")");
-	}
+
 	
 	public String getCodigo() 
 	{

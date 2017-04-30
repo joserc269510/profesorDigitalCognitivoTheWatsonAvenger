@@ -31,10 +31,12 @@ public class ServletToMatricular extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		BaseDeDatos bd= new BaseDeDatos();
 		ArrayList<Estudiante> estudiantes = bd.selectEstudiante();
 		ArrayList<Curso> cursos = bd.selectCurso();
+		
 		request.setAttribute("ListEstudiantes", estudiantes);
 		request.setAttribute("ListCursos", cursos);
 		request.getRequestDispatcher("MatricularEstudiante.jsp").forward(request, response);
