@@ -4,14 +4,14 @@ import Integracion.BaseDeDatos;
 
 public abstract class Evaluacion 
 {
-	private int codEvaluacion;
-	private String codigoCurso;
-	private String nombreEvaluacion;
-	private int puntajeTotal;
-	private int porcentajeNotaFinal;
-	private String fechaEvaluacion;
-	private int tiempoMinutos;
-	private boolean status;
+	protected int codEvaluacion;
+	protected String codigoCurso;
+	protected String nombreEvaluacion;
+	protected int puntajeTotal;
+	protected int porcentajeNotaFinal;
+	protected String fechaEvaluacion;
+	protected int tiempoMinutos;
+	protected boolean status;
 
 
 	private String descripcionTipoEval;
@@ -27,12 +27,12 @@ public abstract class Evaluacion
 		if (tipoEvaluacion.equals("sumativa"))
 		{
 			Evaluacion tipoEvaluacionS= new Sumativa(); 
-			tipoEvaluacionS.RegistrarTipoEvaluacion(pTipoEvaluacion, pDescripcion);
+			tipoEvaluacionS.RegistrarTipoEvaluacion(tipoEvaluacion, pDescripcion);
 		}
 		if (tipoEvaluacion.equals("formativa"))
 		{
 			Evaluacion tipoEvaluacionF= new Formativa();
-			tipoEvaluacionF.RegistrarTipoEvaluacion(pTipoEvaluacion, pDescripcion);
+			tipoEvaluacionF.RegistrarTipoEvaluacion(tipoEvaluacion, pDescripcion);
 		}
 	}
 	

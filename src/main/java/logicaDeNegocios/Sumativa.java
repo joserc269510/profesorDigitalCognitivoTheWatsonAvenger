@@ -4,9 +4,9 @@ import Integracion.BaseDeDatos;
 
 public class Sumativa extends Evaluacion 
 {
-	int codTipoEvaluacion;
-	String tipoEvaluacion;
-	String descripcionTipoEval;
+	protected int codTipoEvaluacion;
+	protected String tipoEvaluacion;
+	protected String descripcionTipoEval;
 	
 
 	public int getCodTipoEvaluacion() {
