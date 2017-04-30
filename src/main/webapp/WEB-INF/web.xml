@@ -1,109 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-	<display-name>JavaHelloWorldApp</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
-	</welcome-file-list>
-	
-	<servlet>
-		<description>Generar_Speech</description>
-		<display-name />
-		<servlet-name>ServletSpeech</servlet-name>
-		<servlet-class>Servlet.ServletSpeech</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ServletSpeech</servlet-name>
-		<url-pattern>/generarSpeech</url-pattern>		
-	</servlet-mapping>
-	
-	<servlet>
-		<description>Registrar_Estudiante</description>
-		<display-name />
-		<servlet-name>ServletRegistroEstudiante</servlet-name>
-		<servlet-class>Servlet.ServletRegistroEstudiante</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ServletRegistroEstudiante</servlet-name>
-		<url-pattern>/registrarEstudiante</url-pattern>
-	</servlet-mapping>
-	
-	
-	<servlet>
-		<description>Registrar_Curso</description>
-		<display-name />
-		<servlet-name>ServletRegistrarCurso</servlet-name>
-		<servlet-class>Servlet.ServletRegistrarCurso</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ServletRegistrarCurso</servlet-name>
-		<url-pattern>/registrarCurso</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description>Registrar_TipoEvaluacion</description>
-		<display-name />
-		<servlet-name>ServletRegistrarTipoEvaluacion</servlet-name>
-		<servlet-class>Servlet.ServletRegistrarTipoEvaluacion</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ServletRegistrarTipoEvaluacion</servlet-name>
-		<url-pattern>/registrarTipoEvaluacion</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description>Registrar_TipoPregunta</description>
-		<display-name />
-		<servlet-name>ServletRegistrarTipoPregunta</servlet-name>
-		<servlet-class>Servlet.ServletRegistrarTipoPregunta</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ServletRegistrarTipoPregunta</servlet-name>
-		<url-pattern>/registrarTipoPregunta</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description>CREA_PDF</description>
-		<display-name />
-		<servlet-name>ServletPDF</servlet-name>
-		<servlet-class>Servlet.ServletPDF</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ServletPDF</servlet-name>
-		<url-pattern>/crearPDF</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description>TO_MATRICULAR</description>
-		<display-name />
-		<servlet-name>ServletToMatricular</servlet-name>
-		<servlet-class>Servlet.ServletToMatricular</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ServletToMatricular</servlet-name>
-		<url-pattern>/ToMatricular</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<description>MATRICULAR</description>
-		<display-name />
-		<servlet-name>ServletMatricular</servlet-name>
-		<servlet-class>Servlet.ServletMatricular</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ServletMatricular</servlet-name>
-		<url-pattern>/postMatricular</url-pattern>
-	</servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>JavaHelloWorldApp</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>Generar_Speech</description>
+    <display-name></display-name>
+    <servlet-name>ServletSpeech</servlet-name>
+    <servlet-class>Servlet.ServletSpeech</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSpeech</servlet-name>
+    <url-pattern>/generarSpeech</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Registrar_Estudiante</description>
+    <display-name></display-name>
+    <servlet-name>ServletRegistroEstudiante</servlet-name>
+    <servlet-class>Servlet.ServletRegistroEstudiante</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistroEstudiante</servlet-name>
+    <url-pattern>/registrarEstudiante</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Registrar_Curso</description>
+    <display-name></display-name>
+    <servlet-name>ServletRegistrarCurso</servlet-name>
+    <servlet-class>Servlet.ServletRegistrarCurso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarCurso</servlet-name>
+    <url-pattern>/registrarCurso</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Registrar_TipoEvaluacion</description>
+    <display-name></display-name>
+    <servlet-name>ServletRegistrarTipoEvaluacion</servlet-name>
+    <servlet-class>Servlet.ServletRegistrarTipoEvaluacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarTipoEvaluacion</servlet-name>
+    <url-pattern>/registrarTipoEvaluacion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Registrar_TipoPregunta</description>
+    <display-name></display-name>
+    <servlet-name>ServletRegistrarTipoPregunta</servlet-name>
+    <servlet-class>Servlet.ServletRegistrarTipoPregunta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarTipoPregunta</servlet-name>
+    <url-pattern>/registrarTipoPregunta</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CREA_PDF</description>
+    <display-name></display-name>
+    <servlet-name>ServletPDF</servlet-name>
+    <servlet-class>Servlet.ServletPDF</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletPDF</servlet-name>
+    <url-pattern>/crearPDF</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>TO_MATRICULAR</description>
+    <display-name></display-name>
+    <servlet-name>ServletToMatricular</servlet-name>
+    <servlet-class>Servlet.ServletToMatricular</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletToMatricular</servlet-name>
+    <url-pattern>/ToMatricular</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>MATRICULAR</description>
+    <display-name></display-name>
+    <servlet-name>ServletMatricular</servlet-name>
+    <servlet-class>Servlet.ServletMatricular</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletMatricular</servlet-name>
+    <url-pattern>/postMatricular</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description>TO_CURSO</description>
+    <display-name></display-name>
+    <servlet-name>ServletToCurso</servlet-name>
+    <servlet-class>Servlet.ServletToCurso</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ServletToCurso</servlet-name>
+    <url-pattern>/ToCurso</url-pattern>
+  </servlet-mapping>
 </web-app>

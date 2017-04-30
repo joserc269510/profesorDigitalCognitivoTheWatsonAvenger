@@ -147,7 +147,17 @@
 			          <tr>
                         
 			            <td ><h3>Codigo del Curso</h3></td>
-                        <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/--><select id="selCodigo" name="selCodigo"></select></td>
+                        <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/-->
+                        <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso" %>
+			            <%
+			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
+			            		
+						%>
+                        <select id="selCodigo" name="selCodigo">
+						<%  for(Curso c:cursos){ %>
+			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
+				        <% } %>
+                        </select></td>
                         
 		              </tr>
 		              

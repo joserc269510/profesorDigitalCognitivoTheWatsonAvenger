@@ -74,9 +74,9 @@
 					<li><a href="">Curso</a>
 						<ul>
 							<li><a href="RegistrarCurso.html"><span>Registrar Curso</span></a></li>
-							<li><a href="ConsultarCurso.html"><span>Consultar Curso</span></a></li>
-							<li><a href="ActualizarCurso.html"><span>Actualizar Curso</span></a></li>
-							<li><a href="EliminarCurso.html"><span>Eliminar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=ConsultarCurso"><span>Consultar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=ActualizarCurso"><span>Actualizar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=EliminarCurso"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
                     <li><a href="">Evaluación</a>
