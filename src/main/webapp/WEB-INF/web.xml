@@ -106,4 +106,15 @@
 		<servlet-name>ServletMatricular</servlet-name>
 		<url-pattern>/postMatricular</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<description>InicioAdm</description>
+		<display-name />
+		<servlet-name>ServletInicioSesionAdministrador</servlet-name>
+		<servlet-class>Servlet.ServletInicioSesionAdministrador</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServletInicioSesionAdministrador</servlet-name>
+		<url-pattern>/postIniciar</url-pattern>
+	</servlet-mapping>
 </web-app>
