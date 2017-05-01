@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>PROYECTO XE</title>
+		<title>Registrar Subtema</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -133,7 +133,7 @@
 							<li><a href="<%=request.getContextPath()%>/ToTema?x=EliminarTema"><span>Eliminar Tema</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="">Subtema</a>
+                    <li class="current-menu-item"><a href="">Subtema</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/ToTema?x=RegistrarSubTema"><span>Registrar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
@@ -141,8 +141,7 @@
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-					<li><a href="<%=request.getContextPath()%>/ServletEntrenarProfesor"><span>Entrenar Profesor</span></a></li>
-					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
+                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
@@ -150,38 +149,64 @@
 				
 				
 				
-				<div id="slider-block">
+				
+				
+				
+			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
 			<div id="main">
-			  <form name="PruebaSpeech" action="generarSpeech" method="post">
+			  <form name="registroSubtema" action="" method="">
 			    <div>
-			      <h2>Prueba SPEECH</h2>
+			      <h2>Registrar Subtema</h2>
 			      <div>
 			        <table>
 			          <tr>
-			            <td ><h3>Pulse el boton para empezar a grabar</h3></td>
-                      </tr>
+			            <td ><h3>Codigo del Subtema</h3></td>
+			            <td ><input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Subtema"  required/></td>
+		              </tr>
+                      
+                      
+                      
+                      
+                      
+                      
                       <tr>
-			            <td ><textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">${texto}</textarea></td>
-                        <td  ><button class="submit" type="submit">Grabar</button></td>
+			            <td ><h3>Codigo del Tema</h3></td>
+			            <td ><!--input type="text" id="txtCodigo2" name="txtCodigo" placeholder="Codigo Tema"  required/-->
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Tema" %>
+			            <%
+			            		ArrayList<Tema> temas= (ArrayList<Tema>) request.getAttribute("ListTemas"); 
+			            		
+						%>
+			            <select id="selCodigoTema" name="selCodigoTema">
+			            <%  for(Tema t:temas){ %>
+			                <option value="<%=t.getCodTema() %>"><%= t.getDescripcionTema()%></option>
+				        <% } %>
+				        </select></td>
+		              </tr>
+                      
+		              <tr>
+			            <td ><h3>Descripcion del Subtema </h3></td>
+			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
+		              </tr>
+		              
+			       
+			          <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Registrar Subtema</button></td>
 		              </tr>
 		            </table>
 		          </div>
 		        </div>
 		      </form>
 		  </div>
-			<div id="footer">
-				
-				
-			</div>
-			
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>

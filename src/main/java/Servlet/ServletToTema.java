@@ -10,20 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
-import logicaDeNegocios.Curso;
-import logicaDeNegocios.Estudiante;
+import logicaDeNegocios.Subtema;
+import logicaDeNegocios.Tema;
 
 /**
- * Servlet implementation class ServletToCurso
+ * Servlet implementation class ServletToTema
  */
-@WebServlet("/ServletToCurso")
-public class ServletToCurso extends HttpServlet {
+@WebServlet("/ServletToTema")
+public class ServletToTema extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletToCurso() {
+    public ServletToTema() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +33,21 @@ public class ServletToCurso extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BaseDeDatos bd= new BaseDeDatos();
-		ArrayList<Curso> cursos = bd.selectCurso();
-		request.setAttribute("ListCursos", cursos);
+		ArrayList<Tema> temas = bd.selectTema();
+		request.setAttribute("ListTemas", temas);
 		String par=request.getParameter("x");
 		System.out.println(par);
-		if(par.equals("ConsultarCurso")){
-			request.getRequestDispatcher("ConsultarCurso.jsp").forward(request, response);
+		if(par.equals("ConsultarTema")){
+			request.getRequestDispatcher("ConsultarTema.jsp").forward(request, response);
 		}
-		if(par.equals("ActualizarCurso")){
-			request.getRequestDispatcher("ActualizarCurso.jsp").forward(request, response);
+		if(par.equals("ActualizarTema")){
+			request.getRequestDispatcher("ActualizarTema.jsp").forward(request, response);
 		}
-		if(par.equals("EliminarCurso")){
-			request.getRequestDispatcher("EliminarCurso.jsp").forward(request, response);
+		if(par.equals("EliminarTema")){
+			request.getRequestDispatcher("EliminarTema.jsp").forward(request, response);
 		}
-		if(par.equals("RegistrarTema")){
-			request.getRequestDispatcher("RegistrarTema.jsp").forward(request, response);
+		if(par.equals("RegistrarSubTema")){
+			request.getRequestDispatcher("RegistrarSubtema.jsp").forward(request, response);
 		}
 	}
 
@@ -55,7 +55,8 @@ public class ServletToCurso extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

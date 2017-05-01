@@ -143,6 +143,16 @@
     <servlet-name>ServletToSubtema</servlet-name>
     <url-pattern>/ToSubtema</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description>TO_TEMA</description>
+    <display-name></display-name>
+    <servlet-name>ServletToTema</servlet-name>
+    <servlet-class>Servlet.ServletToTema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletToTema</servlet-name>
+    <url-pattern>/ToTema</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description>TO_CONFEVAL</description>
     <display-name></display-name>
@@ -152,7 +162,7 @@
   <servlet-mapping>
     <servlet-name>ServletToConfEvaluacion</servlet-name>
     <url-pattern>/ToConfEvaluacion</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet>
     <description>InicioSesionAd</description>
     <display-name></display-name>
@@ -163,7 +173,7 @@
     <servlet-name>ServletInicioSesionAdministrador</servlet-name>
     <url-pattern>/postIniciar</url-pattern>
   </servlet-mapping>
-<servlet>
+  <servlet>
     <description>TO_TIPOPREGUNTA</description>
     <display-name></display-name>
     <servlet-name>ServletToTipoPregunta</servlet-name>

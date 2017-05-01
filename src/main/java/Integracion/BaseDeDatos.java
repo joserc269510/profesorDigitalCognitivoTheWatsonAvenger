@@ -202,6 +202,35 @@ public class BaseDeDatos {
 	  
   }
   
+  public ArrayList<String> selectTipoPregunta(){
+	  ArrayList tipopregunta = new ArrayList<String>();
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select * from tipopregunta");
+              
+              while (rs.next()) {
+                String objetoTipoPregunta = new String (rs.getString(2));
+                tipopregunta.add(objetoTipoPregunta);
+                System.out.println(objetoTipoPregunta);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return tipopregunta;
+	  
+  }
+  
   public ArrayList<Object> selectPregunta (){
       ArrayList preguntas = new ArrayList<Object>();
 	  
@@ -361,7 +390,7 @@ public class BaseDeDatos {
         System.out.println(curso[i].getApellido1());
       }
       */
-     Profesor nuevo=new Profesor();
+     b.selectTipoPregunta();
      // nuevo.registrarP("thawatsonavengers@gmail.com", "proyecto1");
       
      /*Profesor[] profes=b.selectProfesor();

@@ -22,8 +22,8 @@ public class ServletToTipoPregunta extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BaseDeDatos bd= new BaseDeDatos();
-		ArrayList<Object> pregunta = bd.selectPregunta();
-		request.setAttribute("ListPreguntas", pregunta);
+		ArrayList<String> pregunta = bd.selectTipoPregunta();
+		request.setAttribute("ListTipoPreguntas", pregunta);
 		String par=request.getParameter("x");
 		System.out.println(par);
 		

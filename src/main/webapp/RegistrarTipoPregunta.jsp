@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>PROYECTO XE</title>
+		<title>Registrar Tipo Pregunta</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -102,7 +102,7 @@
 						</ul>
 					</li>
 					
-					<li><a href="">Pregunta</a>
+					<li class="current-menu-item"><a href="">Pregunta</a>
 						<ul>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
@@ -141,11 +141,13 @@
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-					<li><a href="<%=request.getContextPath()%>/ServletEntrenarProfesor"><span>Entrenar Profesor</span></a></li>
-					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
+                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
+				
+				
+				
 				
 				
 				
@@ -156,32 +158,36 @@
 				
 			</div>
 			<div id="main">
-			  <form name="PruebaSpeech" action="generarSpeech" method="post">
+			  <form name="registrarTipo" action="registrarTipoPregunta" method="POST">
 			    <div>
-			      <h2>Prueba SPEECH</h2>
+			      <h2>Registrar Tipo de Pregunta</h2>
 			      <div>
 			        <table>
+                    <tr>
+			            <td ><h3> Tipo de Pregunta</h3></td>
+			            <td ><input type="text" id="txtPregunta" name="txtPregunta" placeholder="Codigo Pregunta"  required/></td>
+		              </tr>
+                      
+		              <tr>
+			            <td ><h3>Descripcion del tipo de Pregunta </h3></td>
+			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Tipo"  required/></td>
+		              </tr>
+                      
+		              
+			       
 			          <tr>
-			            <td ><h3>Pulse el boton para empezar a grabar</h3></td>
-                      </tr>
-                      <tr>
-			            <td ><textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">${texto}</textarea></td>
-                        <td  ><button class="submit" type="submit">Grabar</button></td>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Registrar Tipo de Pregunta</button></td>
 		              </tr>
 		            </table>
 		          </div>
 		        </div>
 		      </form>
 		  </div>
-			<div id="footer">
-				
-				
-			</div>
-			
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>

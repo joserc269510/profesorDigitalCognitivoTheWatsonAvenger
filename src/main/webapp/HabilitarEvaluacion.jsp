@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>PROYECTO XE</title>
+		<title>Habilitar Evaluacion</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -79,7 +79,7 @@
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=EliminarCurso"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="">Evaluacion</a>
+                    <li class="current-menu-item"><a href="">Evaluacion</a>
 						<ul>
 			
 							<li><a href=""><span>Evaluacion</span></a>
@@ -141,11 +141,11 @@
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-					<li><a href="<%=request.getContextPath()%>/ServletEntrenarProfesor"><span>Entrenar Profesor</span></a></li>
-					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
+                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
+				
 				
 				
 				
@@ -155,33 +155,43 @@
 			
 				
 			</div>
+		
 			<div id="main">
-			  <form name="PruebaSpeech" action="generarSpeech" method="post">
+			  <form name="habilitarEvaluacion" action="" method="">
 			    <div>
-			      <h2>Prueba SPEECH</h2>
+			      <h2>Habilitar Evaluacion</h2>
 			      <div>
 			        <table>
-			          <tr>
-			            <td ><h3>Pulse el boton para empezar a grabar</h3></td>
-                      </tr>
                       <tr>
-			            <td ><textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">${texto}</textarea></td>
-                        <td  ><button class="submit" type="submit">Grabar</button></td>
+			            
+			            <td ><h3>Codigo de la Evaluacion</h3></td>
+			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/--><select id="selCodigo" name="selCodigo"></select></td>
+                        
+		              </tr>
+                      <!--tr>
+			            <td ><h3>Nombre de la Evaluacion</h3></td>
+			            <td ><input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre Evaluacion"  required/></td>
+		              </tr-->
+		              
+                      <!--tr>
+			            <td ><h3>Descripcion de la Evaluacion </h3></td>
+			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
+		              </tr-->
+		              
+			       
+			          <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Habilitar Evaluacion</button></td>
 		              </tr>
 		            </table>
 		          </div>
 		        </div>
 		      </form>
 		  </div>
-			<div id="footer">
-				
-				
-			</div>
-			
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>
