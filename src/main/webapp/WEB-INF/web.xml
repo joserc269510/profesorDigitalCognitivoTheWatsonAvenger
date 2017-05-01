@@ -49,6 +49,7 @@
     <servlet-name>ServletRegistrarTipoEvaluacion</servlet-name>
     <url-pattern>/registrarTipoEvaluacion</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description>Registrar_TipoPregunta</description>
     <display-name></display-name>
@@ -59,6 +60,19 @@
     <servlet-name>ServletRegistrarTipoPregunta</servlet-name>
     <url-pattern>/registrarTipoPregunta</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description>EntrenarProfesor</description>
+    <display-name></display-name>
+    <servlet-name>ServletEntrenarProfesor</servlet-name>
+    <servlet-class>Servlet.ServletEntrenarProfesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEntrenarProfesor</servlet-name>
+    <url-pattern>/entrenando</url-pattern>
+  </servlet-mapping>
+  
+  
   <servlet>
     <description>CREA_PDF</description>
     <display-name></display-name>

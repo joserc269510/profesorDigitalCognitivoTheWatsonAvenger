@@ -1,4 +1,6 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -78,16 +80,16 @@
 							<li><a href="EliminarCurso.html"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="">Evaluaci贸n</a>
+                    <li><a href="">Evaluaci髇</a>
 						<ul>
-							<li><a href="RegistrarTipoEvaluacion.html"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
-                            <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluaci贸n</span></a></li>
-                            <li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluaci贸n</span></a></li>
-                            <li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluaci贸n</span></a></li>
+							<li><a href="RegistrarTipoEvaluacion.html"><span>Registrar Tipo de Evaluaci髇</span></a></li>
+                            <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluaci髇</span></a></li>
+                            <li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluaci髇</span></a></li>
+                            <li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluaci髇</span></a></li>
                             <li><a href="ConfigurarEvaluacion.html"><span>Configurar Evaluacion</span></a></li>
-							<li><a href="ConsultarEvaluacion.html"><span>Consultar Evaluaci贸n</span></a></li>
-							<li><a href="ActualizarEvaluacion.html"><span>Actualizar Evaluaci贸n</span></a></li>
-							<li><a href="EliminarEvaluacion.html"><span>Eliminar Evaluaci贸n</span></a></li>
+							<li><a href="ConsultarEvaluacion.html"><span>Consultar Evaluaci髇</span></a></li>
+							<li><a href="ActualizarEvaluacion.html"><span>Actualizar Evaluaci髇</span></a></li>
+							<li><a href="EliminarEvaluacion.html"><span>Eliminar Evaluaci髇</span></a></li>
 						</ul>
 					</li>
                     <li><a href="">Pregunta</a>
@@ -121,24 +123,18 @@
 							<li><a href="EliminarSubtema.html"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-                    <li class="current-menu-item"><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
+                    <li><a href="<%=request.getContextPath()%>/ServletEntrenarProfesor"><span>Entrenar Profesor</span></a></li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
-				
-				
-				
-				
-				
-				
-				
+		
 			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
 			<div id="main">
-			  <form name="entrenarProfesor" action="Contenido" method="post"  enctype="multipart/form-data"  align= "center">
+			  <form name="entrenarProfesor" action="entrenarProfesor" method="post"  enctype="multipart/form-data"  align= "center">
 			    <div>
 			      <h1> Entrenar profesor Digital <font size="3"></h1>
 			      <div>
@@ -180,7 +176,7 @@
 					
 						<tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >EntrenarProfesor</button></td>
+			            <td  ><button class="submit" type="submit" >Entrenar</button></td>
 		              </tr>					
 					  
             	 </table>
@@ -194,6 +190,4 @@
       </div>
 </body>
 	
-</html>
-</body>
 </html>
