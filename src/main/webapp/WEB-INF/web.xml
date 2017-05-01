@@ -89,16 +89,84 @@
     <servlet-name>ServletMatricular</servlet-name>
     <url-pattern>/postMatricular</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description>TO_CURSO</description>
     <display-name></display-name>
     <servlet-name>ServletToCurso</servlet-name>
     <servlet-class>Servlet.ServletToCurso</servlet-class>
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>ServletToCurso</servlet-name>
     <url-pattern>/ToCurso</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>TO_TIPOEVALUACION</description>
+    <display-name></display-name>
+    <servlet-name>ServletToTipoEvaluacion</servlet-name>
+    <servlet-class>Servlet.ServletToTipoEvaluacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletToTipoEvaluacion</servlet-name>
+    <url-pattern>/ToTipoEvaluacion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>TO_PREGUNTA</description>
+    <display-name></display-name>
+    <servlet-name>ServletToPregunta</servlet-name>
+    <servlet-class>Servlet.ServletToPregunta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletToPregunta</servlet-name>
+    <url-pattern>/ToPregunta</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>TO_SUBTEMA</description>
+    <display-name></display-name>
+    <servlet-name>ServletToSubtema</servlet-name>
+    <servlet-class>Servlet.ServletToSubtema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletToSubtema</servlet-name>
+    <url-pattern>/ToSubtema</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>TO_CONFEVAL</description>
+    <display-name></display-name>
+    <servlet-name>ServletToConfEvaluacion</servlet-name>
+    <servlet-class>Servlet.ServletToConfEvaluacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletToConfEvaluacion</servlet-name>
+    <url-pattern>/ToConfEvaluacion</url-pattern>
+  </servlet-mapping> 
+  <servlet>
+    <description>InicioSesionAd</description>
+    <display-name></display-name>
+    <servlet-name>ServletInicioSesionAdministrador</servlet-name>
+    <servlet-class>Servlet.ServletInicioSesionAdministrador</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletInicioSesionAdministrador</servlet-name>
+    <url-pattern>/postIniciar</url-pattern>
+  </servlet-mapping>
+<servlet>
+    <description>TO_TIPOPREGUNTA</description>
+    <display-name></display-name>
+    <servlet-name>ServletToTipoPregunta</servlet-name>
+    <servlet-class>Servlet.ServletToTipoPregunta</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletToTipoPregunta</servlet-name>
+    <url-pattern>/ToTipoPregunta</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>RegPregMarqueX</description>
+    <display-name></display-name>
+    <servlet-name>ServletRegistrarPreguntaM</servlet-name>
+    <servlet-class>Servlet.ServletRegistrarPreguntaM</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarPreguntaM</servlet-name>
+    <url-pattern>/postRegistrar</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -79,33 +79,52 @@
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=EliminarCurso"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="">Evaluación</a>
+                    <li><a href="">Evaluacion</a>
 						<ul>
-									
-							<li><a href="RegistrarTipoEvaluacion.html"><span>Registrar Tipo de Evaluación</span></a></li>
-                            <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluación</span></a></li>
-                            <li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluación</span></a></li>
-                            <li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluación</span></a></li>
-							<li><a href="ConsultarEvaluacion.html"><span>Consultar Evaluación</span></a></li>
-							<li><a href="ActualizarEvaluacion.html"><span>Actualizar Evaluación</span></a></li>
-							<li><a href="EliminarEvaluacion.html"><span>Eliminar Evaluación</span></a></li>
+			
+							<li><a href=""><span>Evaluacion</span></a>
+                            	<ul>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluación</span></a></li>
+                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluación</span></a></li>
+                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluación</span></a></li>
+                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluación</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href=""><span>Tipo de Evaluacion</span></a>
+                            	<ul>
+                            		<li><a href="RegistrarTipoEvaluacion.html"><span>Registrar Tipo de Evaluación</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluación</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluación</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluación</span></a></li>
+                                </ul>
+                            </li>
+							
 						</ul>
 					</li>
-                    <li><a href="">Pregunta</a>
+					
+					<li><a href="">Pregunta</a>
 						<ul>
-						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
-                                    <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaMarqueX.jsp"><span>Marcar con X</span></a></li>
                                     <li><a href="RegistrarPreguntaComplete.html"><span>Completar Espacio en Blanco</span></a></li>
                                     <li><a href="RegistrarPreguntaDesarrollo.html"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
-							<li><a href="ConsultarPregunta.html"><span>Consultar Pregunta</span></a></li>
-							<li><a href="ActualizarPregunta.html"><span>Actualizar Pregunta</span></a></li>
-							<li><a href="EliminarPregunta.html"><span>Eliminar Pregunta</span></a></li>
+                            <li><a href=""><span>Tipo de Pregunta</span></a>
+                            	<ul>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoPregunta.jsp"><span>Registrar Tipo Pregunta</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsultarTipoPregunta"><span>Consultar Tipo Pregunta</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ActualizarTipoPregunta"><span>Actualizar Tipo  Pregunta</span></a></li>
+									<li><<a href="<%=request.getContextPath()%>/ToTipoPregunta?x=EliminarTipoPregunta"><span>Eliminar Tipo Pregunta</span></a></li>
+                                </ul>
+                            </li>
 						</ul>
 					</li>
+					
+					
+					
+					
                     <li><a href="">Tema</a>
 						<ul>
 							<li><a href="RegistrarTema.html"><span>Registrar Tema</span></a></li>
@@ -117,9 +136,9 @@
                     <li><a href="">Subtema</a>
 						<ul>
 							<li><a href="RegistrarSubtema.html"><span>Registrar Subtema</span></a></li>
-							<li><a href="ConsultarSubtema.html"><span>Consultar Subtema</span></a></li>
-							<li><a href="ActualizarSubtema.html"><span>Actualizar Subtema</span></a></li>
-							<li><a href="EliminarSubtema.html"><span>Eliminar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ActualizarSubtema"><span>Actualizar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
 					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>

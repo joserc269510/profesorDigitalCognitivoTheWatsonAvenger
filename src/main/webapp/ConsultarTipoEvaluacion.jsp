@@ -1,4 +1,5 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -92,10 +93,9 @@
 					</li>
                     <li><a href="">Pregunta</a>
 						<ul>
-							<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
+						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
-                            	
                                     <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
                                     <li><a href="RegistrarPreguntaComplete.html"><span>Completar Espacio en Blanco</span></a></li>
                                     <li><a href="RegistrarPreguntaDesarrollo.html"><span>Desarrollo</span></a></li>
@@ -131,7 +131,7 @@
 				
 				
 				
-			
+				
 				
 				<div id="slider-block">
 				</div>
@@ -140,29 +140,35 @@
 			</div>
 		
 			<div id="main">
-			  <form name="actualizarEvaluacion" action="" method="">
+			  <form name="consultarEvaluacion" action="" method="">
 			    <div>
-			      <h2>Actualizar Tipo Evaluacion</h2>
+			      <h2>Consultar Tipo Evaluacion</h2>
 			      <div>
 			        <table>
 			          <tr>
-                      <form action="" method="">
-			            <td ><h3>Codigo del Tipo Evaluacion</h3></td>
-			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/--><select id="selCodigo" name="selCodigo"></select></td>
-                        <td><button class="submit" type="submit" >Cargar Tipo Evaluacion</button></td>
-                        </form>
-		              </tr>
                       
-		              <tr>
-			            <td ><h3>Tipo de la Evaluacion </h3></td>
-			            <td ><input type="text" id="txtTipo" name="txtTipo" placeholder="Tipo"  required/></td>
+			            <td ><h3>Codigo Tipo de la Evaluacion</h3></td>
+			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/-->
+			            <%@ page import="java.util.ArrayList" %>
+			            <%
+			            		ArrayList<String> tipoEval= (ArrayList<String>) request.getAttribute("ListTipoEval"); 
+			            		
+						%>
+			            <select id="selCodigo" name="selCodigo">
+			            <%Integer i=1; %>
+			            <%for(String t:tipoEval){ %> 
+			                <option value="<%=i.toString()%>"><%= t %></option>
+			            <%i++; %>
+				        <% } %>
+			            </select></td>
+                        
 		              </tr>
-                      
+		              
 		              
 			       
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Actualizar Tipo Evaluacion</button></td>
+			            <td  ><button class="submit" type="submit" >Consultar Tipo Evaluacion</button></td>
 		              </tr>
 		            </table>
 		          </div>
@@ -174,5 +180,4 @@
 		</div>
       </div>
 </body>
-	
 </html>

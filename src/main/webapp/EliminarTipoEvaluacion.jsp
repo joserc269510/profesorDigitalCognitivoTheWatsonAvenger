@@ -1,4 +1,5 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -147,7 +148,19 @@
 			          <tr>
 			            
 			            <td ><h3>Codigo Tipo de la Evaluacion</h3></td>
-			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/--><select id="selCodigo" name="selCodigo"></select></td>
+			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/-->
+			            <%@ page import="java.util.ArrayList" %>
+			            <%
+			            		ArrayList<String> tipoEval= (ArrayList<String>) request.getAttribute("ListTipoEval"); 
+			            		
+						%>
+			            <select id="selCodigo" name="selCodigo">
+			            <%Integer i=1; %>
+			            <%for(String t:tipoEval){ %> 
+			                <option value="<%=i.toString()%>"><%= t %></option>
+			            <% i++; %>
+				        <% } %>
+				        </select></td>
                         
 		              </tr>
 		             

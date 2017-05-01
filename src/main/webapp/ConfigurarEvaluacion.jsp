@@ -92,7 +92,7 @@
 					</li>
                     <li><a href="">Pregunta</a>
 						<ul>
-						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
+							<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
                                     <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
@@ -121,7 +121,7 @@
 							<li><a href="EliminarSubtema.html"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
+					<li><a href="">Generar PDF</a></li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
@@ -132,30 +132,82 @@
 				
 				
 				
-				<div id="slider-block">
+			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
-		
 			<div id="main">
-			  <form name="consultarEvaluacion" action="" method="">
+			  <form name="configurarEvaluacion" action="" method="">
 			    <div>
-			      <h2>Consultar Tipo Evaluacion</h2>
+			      <h2>Configurar Evaluacion</h2>
 			      <div>
 			        <table>
-			          <tr>
-                      
-			            <td ><h3>Codigo Tipo de la Evaluacion</h3></td>
-			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/--><select id="selCodigo" name="selCodigo"></select></td>
-                        
+                    <tr>
+			            
+			            <td ><h3>Codigo de la Evaluacion</h3></td>
+			            <td ><input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/></td>
+                       
 		              </tr>
-		              
+			          <tr>
+			            <td ><h3>Codigo del Curso</h3></td>
+			            <td ><!--input type="text" id="txtCodigo1" name="txtCodigo" placeholder="Codigo Curso"  required/-->
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso" %>
+			            <%
+			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
+			            		
+						%>
+			            <select id="selCodigoCurso" name="selCodigoCurso">
+			            <%  for(Curso c:cursos){ %>
+			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
+				        <% } %>
+			            </select></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Nombre de la Evaluacion</h3></td>
+			            <td ><input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre Evaluacion"  required/></td>
+		              </tr>
+		              <tr>
+			            <td ><h3>Tipo de la Evaluacion </h3></td>
+			            <td ><!---input type="text" id="txtTipo" name="txtTipo" placeholder="Tipo"  required/-->
+			            <%
+			            		ArrayList<String> tipoEval= (ArrayList<String>) request.getAttribute("ListTipoEval"); 
+			            		
+						%>
+			            <select id="selCodigoEval" name="selCodigoEval">
+			            <%Integer i=1; %>
+			            <%for(String t:tipoEval){ %> 
+			                <option value="<%=i.toString()%>"><%= t %></option>
+			            <%i++; %>
+				        <% } %>
+			            </select></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Puntaje total de la evaluacion</h3></td>
+			            <td ><input type="text" id="txtPts" name="txtPts" placeholder="Valor de la Evaluacion"  required/></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Porcentaje sobre la nota final del curso</h3></td>
+			            <td ><input type="text" id="txtNota" name="txtNota" placeholder="Porcentaje sobre la nota"  required/></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Tiempo Maximo de realizacion</h3></td>
+			            <td ><input type="text" id="txtTiempo" name="txtTiempo" placeholder="Tiempo"  required/></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Descripcion de la Evaluacion</h3></td>
+			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/></td>
+		              </tr>
+                      
+                      <tr>
+			            <td ><h3>Tipos de preguntas en la evaluacion</h3></td>
+			            <td ><!---input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/---></td>
+		              </tr>
 		              
 			       
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Consultar Tipo Evaluacion</button></td>
+			            <td  ><button class="submit" type="submit" >Registrar Evaluacion</button></td>
 		              </tr>
 		            </table>
 		          </div>
@@ -167,4 +219,5 @@
 		</div>
       </div>
 </body>
+	
 </html>

@@ -173,6 +173,34 @@ public class BaseDeDatos {
 	}
   
   
+  public ArrayList<String> selectTipoEvaluacion(){
+	  ArrayList tipoevaluacion = new ArrayList<String>();
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select * from tipoevaluacion");
+              
+              while (rs.next()) {
+                String objetoTipoEvaluacion = new String (rs.getString(2));
+                tipoevaluacion.add(objetoTipoEvaluacion);
+                System.out.println(objetoTipoEvaluacion);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return tipoevaluacion;
+	  
+  }
   
   public ArrayList<Object> selectPregunta (){
       ArrayList preguntas = new ArrayList<Object>();
