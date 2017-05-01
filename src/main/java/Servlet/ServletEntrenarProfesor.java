@@ -18,7 +18,13 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.*;
 
+
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Paths;
 import Integracion.Visual;
+import logicaDeNegocios.Archivo;
 
 import java.io.*;
 
@@ -38,70 +44,32 @@ public class ServletEntrenarProfesor extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{	
+		
+		Archivo archivo= new Archivo();
 		try {
-			String ruta= CargarArchivo(request);
-			System.out.println(ruta);
+			String ruta= archivo.CargarArchivo(request, response);
 			
 		} catch (Exception e) {
-		
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String clasificador= request.getParameter("txtClasificador");
-	   	String clase = request.getParameter("txtClass"); 
-	   	
-	   	request.getRequestDispatcher("EntrenarProfesor.jsp").forward(request, response);
+		
+	   request.getRequestDispatcher("EntrenarProfesor.html").forward(request, response);
+//	   RequestDispatcher dispatcher = request.getRequestDispatcher("/EntrenarProfesor.jsp");
+	//   dispatcher.forward(request, response);
 	 //  	Visual service= new Visual();
 	  // 	service.EntrenarProfesorCognitivo(ruta, pRutaArhivoN, clasificador, clase);
 		
 	}
 			
 
-
-
-	private String CargarArchivo(HttpServletRequest request) throws Exception 
-	{
-		File destino = new File("C:\\Users\\Cora\\Desktop\\profesorDigitalCognitivoTheWatsonAvenger");
-		 File fichero = null;
-		FileItemFactory factory = new DiskFileItemFactory();
-		ServletFileUpload upload = new ServletFileUpload(factory);
-		
-		List items = null;
-		try {
-			items = upload.parseRequest(request);
-		} catch (FileUploadException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for (Object item : items) {
-			   FileItem uploaded = (FileItem) item;
-
-			   // Hay que comprobar si es un campo de formulario. Si no lo es, se guarda el fichero
-			   // subido donde nos interese
-			   if (!uploaded.isFormField()) {
-			      // No es campo de formulario, guardamos el fichero en algún sitio
-			      fichero = new File(destino, uploaded.getName());
-			      uploaded.write(fichero);
-			   } else {
-			      // es un campo de formulario, podemos obtener clave y valor
-			      String key = uploaded.getFieldName();
-			      String valor = uploaded.getString();
-			   }
-		
-}	
-		return fichero.getPath();
-		}
 	
-	}
+
+
+
 	
+}

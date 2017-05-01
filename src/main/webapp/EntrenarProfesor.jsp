@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -123,7 +122,11 @@
 							<li><a href="EliminarSubtema.html"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="<%=request.getContextPath()%>/ServletEntrenarProfesor"><span>Entrenar Profesor</span></a></li>
+                    <li><a href="">Entrenamiento</a>
+						<ul>
+						<li><a href="<%=request.getContextPath()%>/entrenarProfesor"><span>Entrenar Profesor</span></a></li>
+						</ul>
+					</li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
@@ -134,49 +137,25 @@
 				
 			</div>
 			<div id="main">
-			  <form name="entrenarProfesor" action="entrenarProfesor" method="post"  enctype="multipart/form-data"  align= "center">
+			  <form name="entrenarProfesor" action="entrenarProfesor" method=get  enctype="multipart/form-data"  align= "center">
 			    <div>
 			      <h1> Entrenar profesor Digital <font size="3"></h1>
 			      <div>
 			      <table>
-					
-					  <tr>
-			            <td ><h3 >Nombre del Clasificador</h3></td>
-			            <td ><input type="text" id="txtClasificador" name="txtClasificador" placeholder="Clasificador"  required/></td>
-		            </tr>
-		           	<tr>
-			            <td ><h3>Nombre de la clase </h3></td>
-			            <td ><input type="text" id="txtClass" name="txtClass" placeholder="Nombre"  required/></td>
-		              </tr>	
-					
-					 <tr>
-                     <td><h1>------------</h1></td>
-                     <td><h1>------------</h1></td>
-                     <td><h1>------------</h1></td>
-                     </tr>
-                     <tr>
+				
 						
 			          <tr>
                       		<td><label for="inputFile">Seleccione un archivo</label></td>
 							<td><input type="file" name="inputFile" id="inputFile" value="" Style="font-size: 14px" /> 	</td>
 							<td> <input type="submit" value="Subir Archivo"/> </td>
                      </tr>
-                     <tr>
-                     <td><h1>------------</h1></td>
-                     <td><h1>------------</h1></td>
-                     <td><h1>------------</h1></td>
-                     </tr>
-                     <tr>
-                            <td><label for="inputFile">Seleccione un archivo</label></td>
-							<td><input type="file" name="inputFile" id="inputFile" value="" Style="font-size: 14px" /> 	</td>
-            				<td> <input type="submit" value="Cargar"  style="font-size:14px; color: black;">  </td>
-                      </tr>
+            
 					
 					<td><h1>   </h1></td>
 					
 						<tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Entrenar</button></td>
+			            
 		              </tr>					
 					  
             	 </table>
