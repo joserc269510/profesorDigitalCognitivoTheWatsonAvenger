@@ -159,13 +159,12 @@
 			</div>
 		
 			<div id="main">
-			  <form name="actualizarCurso" action="" method="">
 			    <div>
 			      <h2>Actualizar Curso</h2>
 			      <div>
 			        <table>
                     	<tr>
-                        <form action="" method="">
+                        <form action="cargarDatosCurso" method="post">
 			            <td ><h3>Codigo del Curso</h3></td>
                         <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/-->
                         <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso" %>
@@ -182,10 +181,10 @@
                         </form>
 		              </tr>
 			         
-		              
+		           <form name="actualizarCurso" action="" method="">
                       <tr>
 			            <td ><h3>Descripcion del Curso </h3></td>
-			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
+			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion" required/></td>
 		              </tr>
 		              
 			       

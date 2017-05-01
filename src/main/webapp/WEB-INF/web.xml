@@ -49,7 +49,6 @@
     <servlet-name>ServletRegistrarTipoEvaluacion</servlet-name>
     <url-pattern>/registrarTipoEvaluacion</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description>Registrar_TipoPregunta</description>
     <display-name></display-name>
@@ -60,7 +59,6 @@
     <servlet-name>ServletRegistrarTipoPregunta</servlet-name>
     <url-pattern>/registrarTipoPregunta</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description>EntrenarProfesor</description>
     <display-name></display-name>
@@ -71,8 +69,6 @@
     <servlet-name>ServletEntrenarProfesor</servlet-name>
     <url-pattern>/entrenando</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <description>CREA_PDF</description>
     <display-name></display-name>
@@ -143,7 +139,7 @@
     <servlet-name>ServletToSubtema</servlet-name>
     <url-pattern>/ToSubtema</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description>TO_TEMA</description>
     <display-name></display-name>
     <servlet-name>ServletToTema</servlet-name>
@@ -192,5 +188,15 @@
   <servlet-mapping>
     <servlet-name>ServletRegistrarPreguntaM</servlet-name>
     <url-pattern>/postRegistrar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CARG_DAT_CURSO</description>
+    <display-name></display-name>
+    <servlet-name>ServletCargarDatsCurso</servlet-name>
+    <servlet-class>Servlet.ServletCargarDatsCurso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCargarDatsCurso</servlet-name>
+    <url-pattern>/cargarDatosCurso</url-pattern>
   </servlet-mapping>
 </web-app>

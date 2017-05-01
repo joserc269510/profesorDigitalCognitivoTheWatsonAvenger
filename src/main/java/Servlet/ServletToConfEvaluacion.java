@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
+import logicaDeNegocios.Subtema;
+import logicaDeNegocios.Tema;
 
 /**
  * Servlet implementation class ServletToConfEvaluacion
@@ -36,6 +38,12 @@ public class ServletToConfEvaluacion extends HttpServlet {
 		request.setAttribute("ListCursos", cursos);
 		ArrayList<String> tipoEvaluacion = bd.selectTipoEvaluacion();
 		request.setAttribute("ListTipoEval", tipoEvaluacion);
+		ArrayList<Tema> temas = bd.selectTema();
+		request.setAttribute("ListTemas", temas);
+		ArrayList<Subtema> subtemas = bd.selectSubTema();
+		request.setAttribute("ListSubtemas", subtemas);
+		ArrayList<String> pregunta = bd.selectTipoPregunta();
+		request.setAttribute("ListTipoPreguntas", pregunta);
 		request.getRequestDispatcher("ConfigurarEvaluacion.jsp").forward(request, response);
 	}
 
