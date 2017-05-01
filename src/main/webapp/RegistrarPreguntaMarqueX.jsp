@@ -176,7 +176,7 @@
 			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
 			            		
 						%>
-                        <select id="selCodigo" name="selCodigo">
+                        <select id="selCodigo" name="selCodigo" >
 						<%  for(Curso c:cursos){ %>
 			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
 				        <% } %>
@@ -185,7 +185,10 @@
                       <tr>
 			            <td ><h3>Codigo del Tema</h3></td>
 			            <td ><!--input type="text" id="txtCodigo2" name="txtCodigo" placeholder="Codigo Tema"  required/--><select id="selCodigoTema" name="selCodigoTema"></select></td>
+		              	
+                        </select></td>
 		              </tr>
+		              
                       <tr>
 			            <td ><h3>Codigo del Subtema</h3></td>
 			            <td ><!--input type="text" id="txtCodigo3" name="txtCodigo" placeholder="Codigo Subtema"  required/--><select id="selCodigoSub" name="selCodigoSub"></select></td>

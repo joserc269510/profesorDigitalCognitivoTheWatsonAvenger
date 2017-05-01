@@ -1,11 +1,16 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Integracion.*;
+import logicaDeNegocios.*;
 
 /**
  * Servlet implementation class ServletRegistrarPreguntaM
@@ -26,8 +31,14 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<Curso> cursos = bd.selectCurso();
+		
+		request.setAttribute("ListCursos", cursos);
+		String cursoSeleccionado= request.getParameter("ListCursos");
+		System.out.println("selCodigo");
+			request.getRequestDispatcher("RegistrarPreguntaMarqueX.jsp").forward(request, response);
+		
 	}
 
 	/**
