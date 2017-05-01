@@ -1,4 +1,5 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -90,9 +91,8 @@
 							<li><a href="EliminarEvaluacion.html"><span>Eliminar Evaluación</span></a></li>
 						</ul>
 					</li>
-                    <li class="current-menu-item"><a href="">Pregunta</a>
+                   <li><a href="">Pregunta</a>
 						<ul>
-							<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
                                     <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
@@ -100,9 +100,14 @@
                                     <li><a href="RegistrarPreguntaDesarrollo.html"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
-							<li><a href="ConsultarPregunta.html"><span>Consultar Pregunta</span></a></li>
-							<li><a href="ActualizarPregunta.html"><span>Actualizar Pregunta</span></a></li>
-							<li><a href="EliminarPregunta.html"><span>Eliminar Pregunta</span></a></li>
+                            <li><a href=""><span>Tipo de Pregunta</span></a>
+                            	<ul>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarPregunta?x=RegistrarPregunta"><span>Registrar Tipo Pregunta</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsutarPregunta"><span>Consultar Tipo Pregunta</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ActualizarPregunta"><span>Actualizar Tipo  Pregunta</span></a></li>
+									<li><<a href="<%=request.getContextPath()%>/ToTipoPregunta?x=EliminarPregunta"><span>Eliminar Tipo Pregunta</span></a></li>
+                                </ul>
+                            </li>
 						</ul>
 					</li>
                     <li><a href="">Tema</a>
@@ -130,33 +135,65 @@
 				
 				
 				
-			
+				
 				
 				<div id="slider-block">
 				</div>
 			
 				
 			</div>
-		
 			<div id="main">
-			  <form name="consultarPregunta" action="" method="">
+			  <form name="registroPreguntaX" action="postRegistrar" method="post">
 			    <div>
-			      <h2>Consultar Pregunta</h2>
+			      <h2>Registrar Pregunta Marque con X</h2>
 			      <div>
 			        <table>
-			          <tr>
-			            
+                    <tr>
 			            <td ><h3>Codigo de la Pregunta</h3></td>
-			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Pregunta"  required/--><select id="selCodigo" name="selCodigo"></select></td>
-                        
-                       
+			            <td ><input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Pregunta"  required/></td>
+		              	
 		              </tr>
-		              
+                      <tr>
+			            <td ><h3>Codigo del Curso</h3></td>
+			           <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/-->
+                        <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso" %>
+			            <%
+			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
+			            		
+						%>
+                        <select id="selCodigo" name="selCodigo">
+						<%  for(Curso c:cursos){ %>
+			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
+				        <% } %>
+                        </select></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Codigo del Tema</h3></td>
+			            <td ><!--input type="text" id="txtCodigo2" name="txtCodigo" placeholder="Codigo Tema"  required/--><select id="selCodigoTema" name="selCodigoTema"></select></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Codigo del Subtema</h3></td>
+			            <td ><!--input type="text" id="txtCodigo3" name="txtCodigo" placeholder="Codigo Subtema"  required/--><select id="selCodigoSub" name="selCodigoSub"></select></td>
+		              </tr>
+			       
+                      <tr>
+			            <td ><h3>Descripcion de la Pregunta </h3></td>
+			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
+		              </tr>
+		               <tr>
+			            <td ><h3>Respuesta </h3></td>
+			            <td ><input type="text" id="txtRespuesta" name="txtRespuesta" placeholder="Respuesta"  required/></td>
+						<td  ><button class="submit" type="submit" >Registrar nueva respuesta</button></td>		              
+		              </tr>
+		               <tr>
+			            <td ><h3>Descripcion de ayuda </h3></td>
+			            <td ><input type="text" id="txtDescripcionAyuda" name="txtDescripcionAyuda" placeholder="DescripcionAyuda"  required/></td>
+		              </tr>
 		              
 			       
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Consultar Pregunta</button></td>
+			            <td  ><button class="submit" type="submit" >Registrar Pregunta Marque con X</button></td>
 		              </tr>
 		            </table>
 		          </div>

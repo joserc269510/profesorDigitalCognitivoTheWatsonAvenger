@@ -90,9 +90,8 @@
 							<li><a href="EliminarEvaluacion.html"><span>Eliminar Evaluación</span></a></li>
 						</ul>
 					</li>
-                    <li class="current-menu-item"><a href="">Pregunta</a>
+                   <li><a href="">Pregunta</a>
 						<ul>
-						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
                                     <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
@@ -100,9 +99,14 @@
                                     <li><a href="RegistrarPreguntaDesarrollo.html"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
-							<li><a href="ConsultarPregunta.html"><span>Consultar Pregunta</span></a></li>
-							<li><a href="ActualizarPregunta.html"><span>Actualizar Pregunta</span></a></li>
-							<li><a href="EliminarPregunta.html"><span>Eliminar Pregunta</span></a></li>
+                            <li><a href=""><span>Tipo de Pregunta</span></a>
+                            	<ul>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarPregunta?x=RegistrarPregunta"><span>Registrar Tipo Pregunta</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsutarPregunta"><span>Consultar Tipo Pregunta</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ActualizarPregunta"><span>Actualizar Tipo  Pregunta</span></a></li>
+									<li><<a href="<%=request.getContextPath()%>/ToTipoPregunta?x=EliminarPregunta"><span>Eliminar Tipo Pregunta</span></a></li>
+                                </ul>
+                            </li>
 						</ul>
 					</li>
                     <li><a href="">Tema</a>

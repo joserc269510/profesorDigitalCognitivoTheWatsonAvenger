@@ -90,9 +90,8 @@
 							<li><a href="EliminarEvaluacion.html"><span>Eliminar Evaluación</span></a></li>
 						</ul>
 					</li>
-                    <li class="current-menu-item"><a href="">Pregunta</a>
+                  <li><a href="">Pregunta</a>
 						<ul>
-						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
                                     <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
@@ -100,9 +99,14 @@
                                     <li><a href="RegistrarPreguntaDesarrollo.html"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
-							<li><a href="ConsultarPregunta.html"><span>Consultar Pregunta</span></a></li>
-							<li><a href="ActualizarPregunta.html"><span>Actualizar Pregunta</span></a></li>
-							<li><a href="EliminarPregunta.html"><span>Eliminar Pregunta</span></a></li>
+                            <li><a href=""><span>Tipo de Pregunta</span></a>
+                            	<ul>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarPregunta?x=RegistrarPregunta"><span>Registrar Tipo Pregunta</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsutarPregunta"><span>Consultar Tipo Pregunta</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ActualizarPregunta"><span>Actualizar Tipo  Pregunta</span></a></li>
+									<li><<a href="<%=request.getContextPath()%>/ToTipoPregunta?x=EliminarPregunta"><span>Eliminar Tipo Pregunta</span></a></li>
+                                </ul>
+                            </li>
 						</ul>
 					</li>
                     <li><a href="">Tema</a>
@@ -131,57 +135,41 @@
 				
 				
 				
+				
 				<div id="slider-block">
 				</div>
 			
 				
 			</div>
+		
 			<div id="main">
-			  <form name="registroPreguntaC" action="" method="">
+			  <form name="actualizarPregunta" action="" method="">
 			    <div>
-			      <h2>Registrar Pregunt</h2>
+			      <h2>Actualizar Tipo de Pregunta</h2>
 			      <div>
 			        <table>
                     <tr>
-			            <td ><h3>Codigo de la Pregunta</h3></td>
-			            <td ><input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Pregunta"  required/></td>
-		              </tr>
-                      <tr>
-                      	<form action="" method="">
-			            <td ><h3>Codigo del Curso</h3></td>
-			            <td ><!--input type="text" id="txtCodigo1" name="txtCodigo" placeholder="Codigo Curso"  required/--><select id="selCodigoCurso" name="selCodigoCurso"></select>
-                        </td>
-                        <td><button class="submit" type="submit" >Cargar Curso</button></td>
+                    <form action="" method="">
+			            <td ><h3>Codigo del Tipo Pregunta</h3></td>
+			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Pregunta"  required/--><select id="selCodigo" name="selCodigo"></select></td>
+                        <td><button class="submit" type="submit" >Cargar Tipo de Pregunta</button></td>
                         </form>
 		              </tr>
-                      <tr>
-                      <form action="" method="">
-			            <td ><h3>Codigo del Tema</h3></td>
-			            <td ><!--input type="text" id="txtCodigo2" name="txtCodigo" placeholder="Codigo Tema"  required/--><select id="selCodigoTema" name="selCodigoTema"></select></td>
-                        <td><button class="submit" type="submit" >Cargar Tema</button></td>
-                        </form>
-		              </tr>
-                      <tr>
-			            <td ><h3>Codigo del Subtema</h3></td>
-			            <td ><!--input type="text" id="txtCodigo3" name="txtCodigo" placeholder="Codigo Subtema"  required/--><select id="selCodigoSub" name="selCodigoSub"></select></td>
-		              </tr>
-			          
+                      
+			         
 		              <tr>
 			            <td ><h3>Tipo de la Pregunta </h3></td>
-			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Pregunta"  required/--><select id="selTipo" name="selTipo"></select></td>
+			            <td ><input type="text" id="txtTipo" name="txtTipo" placeholder="Tipo"  required/></td>
 		              </tr>
-                      <tr>
-			            <td ><h3>Descripcion de la Pregunta </h3></td>
-			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
-		              </tr>
+                     
 		              
 			       
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Registrar Pregunta Complete</button></td>
+			            <td  ><button class="submit" type="submit" >Actualizar Tipo Pregunta</button></td>
 		              </tr>
 		            </table>
-		          </div>
+          </div>
 		        </div>
 		      </form>
 		  </div>
@@ -190,5 +178,6 @@
 		</div>
       </div>
 </body>
+	
 	
 </html>

@@ -1,4 +1,5 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -73,9 +74,9 @@
 					<li><a href="">Curso</a>
 						<ul>
 							<li><a href="RegistrarCurso.html"><span>Registrar Curso</span></a></li>
-							<li><a href="ConsultarCurso.html"><span>Consultar Curso</span></a></li>
-							<li><a href="ActualizarCurso.html"><span>Actualizar Curso</span></a></li>
-							<li><a href="EliminarCurso.html"><span>Eliminar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=ConsultarCurso"><span>Consultar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=ActualizarCurso"><span>Actualizar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=EliminarCurso"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
                     <li><a href="">Evaluación</a>
@@ -90,9 +91,8 @@
 							<li><a href="EliminarEvaluacion.html"><span>Eliminar Evaluación</span></a></li>
 						</ul>
 					</li>
-                    <li class="current-menu-item"><a href="">Pregunta</a>
+                   <li><a href="">Pregunta</a>
 						<ul>
-						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
                                     <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
@@ -100,9 +100,14 @@
                                     <li><a href="RegistrarPreguntaDesarrollo.html"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
-							<li><a href="ConsultarPregunta.html"><span>Consultar Pregunta</span></a></li>
-							<li><a href="ActualizarPregunta.html"><span>Actualizar Pregunta</span></a></li>
-							<li><a href="EliminarPregunta.html"><span>Eliminar Pregunta</span></a></li>
+                            <li><a href=""><span>Tipo de Pregunta</span></a>
+                            	<ul>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarPregunta?x=RegistrarPregunta"><span>Registrar Tipo Pregunta</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsutarPregunta"><span>Consultar Tipo Pregunta</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ActualizarPregunta"><span>Actualizar Tipo  Pregunta</span></a></li>
+									<li><<a href="<%=request.getContextPath()%>/ToTipoPregunta?x=EliminarPregunta"><span>Eliminar Tipo Pregunta</span></a></li>
+                                </ul>
+                            </li>
 						</ul>
 					</li>
                     <li><a href="">Tema</a>
@@ -137,15 +142,19 @@
 			
 				
 			</div>
+		
 			<div id="main">
-			  <form name="registroPreguntaX" action="" method="">
+			  <form name="actualizarPregunta" action="" method="">
 			    <div>
-			      <h2>Registrar Pregunta Marque con X</h2>
+			      <h2>Actualizar Pregunta</h2>
 			      <div>
 			        <table>
                     <tr>
+                    <form action="" method="">
 			            <td ><h3>Codigo de la Pregunta</h3></td>
-			            <td ><input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Pregunta"  required/></td>
+			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Pregunta"  required/--><select id="selCodigo" name="selCodigo"></select></td>
+                        <td><button class="submit" type="submit" >Cargar Pregunta</button></td>
+                        </form>
 		              </tr>
                       <tr>
 			            <td ><h3>Codigo del Curso</h3></td>
@@ -161,7 +170,7 @@
 		              </tr>
 			          <tr>
 			            <td ><h3>Nombre de la Pregunta</h3></td>
-			            <td ><input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre Pregunta"  required/></td>
+			            <td ><input type="text" id="txtNombre2" name="txtNombre" placeholder="Nombre Pregunta"  required/></td>
 		              </tr>
 		              <tr>
 			            <td ><h3>Tipo de la Pregunta </h3></td>
@@ -175,10 +184,10 @@
 			       
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Registrar Pregunta Marque con X</button></td>
+			            <td  ><button class="submit" type="submit" >Actualizar Pregunta</button></td>
 		              </tr>
 		            </table>
-		          </div>
+          </div>
 		        </div>
 		      </form>
 		  </div>
@@ -187,5 +196,6 @@
 		</div>
       </div>
 </body>
+	
 	
 </html>
