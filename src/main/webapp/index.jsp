@@ -135,7 +135,7 @@
 					</li>
                     <li><a href="">Subtema</a>
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/ToTema?x=RegistrarSubTema"><span>Registrar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarSubtema"><span>Registrar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ActualizarSubtema"><span>Actualizar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
@@ -148,6 +148,7 @@
 					
 						</ul>
 					</li>
+					<li><a href="<%=request.getContextPath()%>/AsignandoProfesor" > Asignar Profesor Curso</a></li>
 					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>

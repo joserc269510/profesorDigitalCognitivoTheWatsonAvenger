@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Registrar Tema</title>
+		<title>Matricular Estudiante</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -65,7 +66,7 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 					
-                    <li><a href="">Estudiante</a>
+                    <li class="current-menu-item"><a href="">Estudiante</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/RegistrarEstudiante.jsp"><span>Registrar Estudiante</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToMatricular"><span>Matricular Estudiante</span></a></li>
@@ -125,7 +126,7 @@
 					
 					
 					
-                    <li class="current-menu-item"><a href="">Tema</a>
+                    <li><a href="">Tema</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarTema"><span>Registrar Tema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToTema?x=ConsultarTema"><span>Consultar Tema</span></a></li>
@@ -150,46 +151,48 @@
 				
 				
 				
+			
 				
-				
-			  <div id="slider-block">
+				<div id="slider-block">
 				</div>
 			
 				
 			</div>
+		
 			<div id="main">
-			  <form name="registroTema" action="RegistrarTema" method="post">
+			  <form name="AsignarProfesor" action="AsignandoProfesor" method="post">
 			    <div>
-			      <h2>Registrar Tema</h2>
+			      <h2>Asignar Profesor a un Curso</h2>
 			      <div>
 			        <table>
-                    	<table>
-			        
-                      
-                     <tr>
-			            <td ><h3>Codigo del Curso</h3></td>
-			            <td ><!--input type="text" id="txtCodigo1" name="txtCodigo" placeholder="Codigo Curso"  required/-->
-			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso" %>
+			          <tr>
+			            <td ><h3>Correo del Profesor</h3></td>
+			            <td ><!--input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="Identificacion Estudiante"  required/-->
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Profesor, logicaDeNegocios.Curso" %>
 			            <%
+			            		ArrayList<Profesor> profesores= (ArrayList<Profesor>) request.getAttribute("ListProfesores");
 			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
 			            		
 						%>
-			            <select id="selCodigoCurso" name="selCodigoCurso">
-			            <%  for(Curso c:cursos){ %>
-			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
+			            <select id="selIdentificacion" name="selIdentificacion">
+			            <%  for(Profesor p:profesores){ %>
+				            <option value="<%=p.getCodProfesor() %>"><%=p.getCorreo()%></option>
 				        <% } %>
 			            </select></td>
 		              </tr>
-                      
-		              <tr>
-			            <td ><h3>Descripcion del Tema </h3></td>
-			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
+                      <tr>
+			            <td ><h3>Codigo del Curso</h3></td>
+			            <td ><!--input type="text" id="txtNombreCurso" name="txtNombre" placeholder="Nombre Curso"  required/-->
+			            <select id="selCodigo" name="selCodigo">
+			            <%  for(Curso c:cursos){ %>
+			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
+				        <% } %>
+				        </select></td>
 		              </tr>
-		              
-			       
+		             
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Registrar Tema</button></td>
+			            <td  ><button class="submit" type="submit" >AsignarProfesor</button></td>
 		              </tr>
 		            </table>
 		          </div>
