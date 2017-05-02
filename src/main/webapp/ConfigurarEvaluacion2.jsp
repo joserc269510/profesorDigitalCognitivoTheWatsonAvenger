@@ -218,7 +218,7 @@
 		              </tr>
 		          </form>
 		             
-			       <form name="configurarEvaluacion" action="?cEv=<%=codEval%>&cur=<%=curso%>&nom=<%=nombre%>&tEv=<%=tipEval%>&pts=<%=pts%>&not=<%=nota%>&tie=<%=tiempo%>&des=<%=descripcion%>" method="post">
+			       <form name="configurarEvaluacion" action="ConfEvaluacion?cEv=<%=codEval%>&cur=<%=curso%>&nom=<%=nombre%>&tEv=<%=tipEval%>&pts=<%=pts%>&not=<%=nota%>&tie=<%=tiempo%>&des=<%=descripcion%>" method="post">
 			       	<tr>
 			            <td ><h3>Preguntas en la evaluacion</h3></td>
 			            <td ><!---input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/--->
@@ -226,7 +226,7 @@
 			            		ArrayList<String> preguntas= (ArrayList<String>) request.getAttribute("ListPreguntas"); 
 			            		
 						%>
-			            <select id="selPre" name="selPre" multiple>
+			            <select id="selPre" name="selPre">
 			            <%Integer o=1; %>
 			            <%if(preguntas!=null){ %>
 			            <%for(String p:preguntas){ %> 
@@ -236,9 +236,19 @@
 				        <% } %>
 			            </select></td>
 		              </tr>
+		              <tr>
+			            <td ><h3>Puntaje Correspondiente a la pregunta</h3></td>
+			            <td ><input type="text" id="txtPts" name="txtPts" placeholder="Puntaje Correspondiente"  required/></td>
+		              </tr>
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Registrar Evaluacion</button></td>
+			            <td  ><button class="submit" type="submit" >Agregar Pregunta</button></td>
+		              </tr>
+		              </form>
+		              <form action="ConfigurarEvaluacion.jsp">
+		              <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Terminar</button></td>
 		              </tr>
 		              </form>
 		            </table>

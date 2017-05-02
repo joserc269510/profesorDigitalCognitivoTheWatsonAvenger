@@ -1,11 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,16 +12,16 @@ import logicaDeNegocios.Formativa;
 import logicaDeNegocios.Sumativa;
 
 /**
- * Servlet implementation class ServletToSiguiente
+ * Servlet implementation class ServletConfEvaluacion
  */
-@WebServlet("/ServletToSiguiente")
-public class ServletToSiguiente extends HttpServlet {
+@WebServlet("/ServletConfEvaluacion")
+public class ServletConfEvaluacion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletToSiguiente() {
+    public ServletConfEvaluacion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,14 +38,16 @@ public class ServletToSiguiente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String codEval=request.getParameter("txtCodigo");
-		String curso= request.getParameter("selCodigoCurso");
-		String nombre= request.getParameter("txtNombre");
-		String tipoEval= request.getParameter("selCodigoEval");
-		String pts= request.getParameter("txtPts");
-		String nota= request.getParameter("txtNota");
-		String tiempo= request.getParameter("txtTiempo");
-		String descripcion= request.getParameter("txtDescripcion");
+		String codEval=request.getParameter("cEv");
+		String curso= request.getParameter("cur");
+		String nombre= request.getParameter("nom");
+		String tipoEval= request.getParameter("tEv");
+		String pts= request.getParameter("pts");
+		String nota= request.getParameter("not");
+		String tiempo= request.getParameter("tie");
+		String descripcion= request.getParameter("des");
+		String codPregunta= request.getParameter("selPre");
+		String puntaje= request.getParameter("txtPts");
 		
 		request.setAttribute("CodEval", codEval);
 		request.setAttribute("Curso", curso);
@@ -61,17 +58,14 @@ public class ServletToSiguiente extends HttpServlet {
 		request.setAttribute("Tiempo", tiempo);
 		request.setAttribute("Descripcion", descripcion);
 		
-		SimpleDateFormat mascara=new SimpleDateFormat("dd/MM/yy");
-		String fecha= mascara.format(Calendar.getInstance().getTime());
-		
 		Evaluacion evaluacion;
 		if(tipoEval.equals("1")){
 			evaluacion=new Formativa();
-			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo));
+			evaluacion.registrarPregunta(codPregunta, codEval, puntaje);
 		}
 		if(tipoEval.equals("2")){
 			evaluacion=new Sumativa();
-			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo));
+			evaluacion.registrarPregunta(codPregunta, codEval, puntaje);
 
 		}
 		request.getRequestDispatcher("ConfigurarEvaluacion2.jsp");

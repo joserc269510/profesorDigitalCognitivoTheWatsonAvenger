@@ -106,9 +106,9 @@
 						<ul>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
-                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaMarqueX.jsp"><span>Marcar con X</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaComplete.jsp"><span>Completar Espacio en Blanco</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaDesarrollo.jsp"><span>Desarrollo</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/postRegistrar"><span>Marcar con X</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/postRegistrarPC"><span>Completar Espacio en Blanco</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/postRegistrarD"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
                             <li><a href=""><span>Tipo de Pregunta</span></a>
@@ -135,7 +135,7 @@
 					</li>
                     <li><a href="">Subtema</a>
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/ToTema?x=RegistrarSubTema"><span>Registrar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarSubtema"><span>Registrar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ActualizarSubtema"><span>Actualizar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
@@ -143,8 +143,7 @@
 					</li>
 					<li><a href="">Entrenamiento</a>
 						<ul>
-							<li><a href="EntrenarProfesor.html"><span>Subir Archivos Positivos</span></a></li>
-						   <li><a href="EntrenarProfesor.html"><span>Subir Archivos Negativos</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/SubirArchivos.jsp"><span>Subir Archivos Positivos</span></a></li>
 						</ul>
 					</li>
 					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
