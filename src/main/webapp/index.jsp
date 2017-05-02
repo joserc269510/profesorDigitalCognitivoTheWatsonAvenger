@@ -143,8 +143,9 @@
 					</li>
 					<li><a href="">Entrenamiento</a>
 						<ul>
-							<li><a href="EntrenarProfesor.html"><span>Subir Archivos Positivos</span></a></li>
-						   <li><a href="EntrenarProfesor.html"><span>Subir Archivos Negativos</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/SubirArchivos.jsp">Subir Archivos positivos</a></li>
+						<li><a href="EntrenarProfesor.html"><span>Entrenar</span></a></li>
+					
 						</ul>
 					</li>
 					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
