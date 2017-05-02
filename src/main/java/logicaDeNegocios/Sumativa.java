@@ -4,17 +4,17 @@ import Integracion.BaseDeDatos;
 
 public class Sumativa extends Evaluacion 
 {
-	protected int codTipoEvaluacion;
-	protected String tipoEvaluacion;
-	protected String descripcionTipoEval;
+	private int codTipoEvaluacion;
+	private String tipoEvaluacion;
+	private String descripcionTipoEval;
 	BaseDeDatos conexion;
 	
-	public Sumativa(int codEvaluacion, String nombreEvaluacion,int puntajeTotal,int porcentajeNotaFinal,String fechaEvaluacion,int tiempoMinutos,boolean status,int codTipoEvaluacion,String tipoEvaluacion,String descripcionTipoEval){
-		super( codEvaluacion,  nombreEvaluacion, puntajeTotal, porcentajeNotaFinal, fechaEvaluacion, tiempoMinutos, status);
+	public Sumativa(int pCodEvaluacion, String pNombreEvaluacion,int pPuntajeTotal,int pPorcentajeNotaFinal,String pFechaEvaluacion,int pTiempoMinutos,boolean pStatus,int pCodTipoEvaluacion,String pTipoEvaluacion,String pDescripcionTipoEval){
+		super( pCodEvaluacion,  pNombreEvaluacion, pPuntajeTotal, pPorcentajeNotaFinal, pFechaEvaluacion, pTiempoMinutos, pStatus);
 		conexion = new BaseDeDatos();
-		setCodTipoEvaluacion(codTipoEvaluacion);
-		setTipoEvaluacion(tipoEvaluacion);
-		setDescripcionTipoEval(descripcionTipoEval);
+		setCodTipoEvaluacion(pCodTipoEvaluacion);
+		setTipoEvaluacion(pTipoEvaluacion);
+		setDescripcionTipoEval(pDescripcionTipoEval);
 	}
 	public Sumativa(){
 		super();
@@ -49,7 +49,7 @@ public class Sumativa extends Evaluacion
 		this.descripcionTipoEval = descripcionTipoEval;
 	}
 	@Override
-	public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {
+	public void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {
 		setTipoEvaluacion(pTipoEvaluacion);
 		getConexion().insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");	
 	}

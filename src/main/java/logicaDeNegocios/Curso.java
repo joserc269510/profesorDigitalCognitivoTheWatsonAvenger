@@ -6,19 +6,19 @@ import Integracion.BaseDeDatos;
 
 public class Curso 
 {
-	String codigo; 
-	String descripcionCurso;
-	ArrayList temas;
-	ArrayList evaluaciones;
+	private String codigo; 
+	private String descripcionCurso;
+	private ArrayList<Tema> temas;
+	private ArrayList<Evaluacion> evaluaciones; //revisar
+	private ArrayList<Estudiante> estudiantes;
+	private Profesor profesor;
 	BaseDeDatos conexion;
-
-	Estudiante estudiante;
 	
-	public Curso(String codigo, String descripcionCurso){
+	public Curso(String pCodigo, String pDescripcionCurso){
 		 temas = new ArrayList<Tema>();
 		 evaluaciones = new ArrayList<Evaluacion>();
-		 setCodigo(codigo);
-		 setDescripcionCurso(descripcionCurso);
+		 setCodigo(pCodigo);
+		 setDescripcionCurso(pDescripcionCurso);
 		 conexion = new BaseDeDatos();
 	}
 	public Curso(){
@@ -27,17 +27,15 @@ public class Curso
 		evaluaciones = new ArrayList<Evaluacion>();
 	}
 	
-	public void MatricularEstudiante(String pCodigoC, String pEstudiante)
+	public void matricularEstudiante(String pCodigoC, String pEstudiante)
 	{
-		//BaseDeDatos conexion= new BaseDeDatos();
 		getConexion().insertDelete("insert into estudiantecurso values ("+ "'"+ pCodigoC + "'" + "," + "'" + pEstudiante +"'" + ")");
 	}
 	
-	public void RegistrarCurso(String pCodigo, String pDescripcion)
+	public void registrarCurso(String pCodigo, String pDescripcion)
 	{
 		setCodigo(pCodigo);
 		setDescripcionCurso(pDescripcion);
-		//BaseDeDatos conexion= new BaseDeDatos();
 		getConexion().insertDelete("insert into curso values (" + "'"+ pCodigo + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
@@ -57,23 +55,23 @@ public class Curso
 	}
 
 	
-	public Estudiante getEstudiante() {
-		return estudiante;
+	public ArrayList<Estudiante> getEstudiante() {
+		return estudiantes;
 	}
 	
-	public void setEstudiante(Estudiante pEstudiante) 
+	public void setEstudiante(ArrayList<Estudiante> pEstudiante) 
 	{
-		estudiante = pEstudiante;
+		estudiantes = pEstudiante;
 	}
 	
-	public void anadirEvaluacion(Evaluacion evaluacion)
+	public void anadirEvaluacion(Evaluacion pEvaluacion)
 	{
-		evaluaciones.add(evaluacion);
+		evaluaciones.add(pEvaluacion);
 	}
 	
 	
-	public void registrarTema(Tema tema){
-		temas.add(tema);
+	public void registrarTema(Tema pTema){
+		temas.add(pTema);
 	}
 	
 	public ArrayList getTemas() {
@@ -84,7 +82,10 @@ public class Curso
 		this.temas = temas;
 	}
 
-
+	public void AsinarProfesorCurso(String pCodCurso,String pCodProfe)//no ha sido agregada
+	{
+		getConexion().insertDelete("insert into profesorcurso(codigocurso,codprofesor )values("+ "'"+ pCodCurso+ "'"+ "," + "'" + pCodProfe + "'"  +")");
+	}
 	
 	public String getCodigo() 
 	{

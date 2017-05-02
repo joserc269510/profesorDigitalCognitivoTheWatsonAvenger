@@ -11,10 +11,10 @@ public abstract class pregunta {
 	BaseDeDatos conexion;
 	FactoryTipoPregunta factory;
 	
-	public pregunta (int codigoPregunta, String descripcionPregunta, String descripcionAyduda){
-		setCodigoPregunta(codigoPregunta);
-		setDescripcionPregunta(descripcionPregunta);
-		setDescripcionAyuda(descripcionAyduda);
+	public pregunta (int pCodigoPregunta, String pDescripcionPregunta, String pDescripcionAyuda){
+		setCodigoPregunta(pCodigoPregunta);
+		setDescripcionPregunta(pDescripcionPregunta);
+		setDescripcionAyuda(pDescripcionAyuda);
 		conexion = new BaseDeDatos();
 	}
 	public pregunta()
@@ -26,13 +26,14 @@ public abstract class pregunta {
 		return subtema;
 	}
 
-	public void anadirSubTema(int codsubtema, String descripcion){
-		subtema = new Subtema( codsubtema, descripcion);
+	public void anadirSubTema(int pCodSubtema, String pDescripcion){
+		subtema = new Subtema( pCodSubtema, pDescripcion);
 	}
 	
-	public abstract void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion);
+	public abstract void registrarPregunta(String CodP,String sub, String descp, String descpAy); //no esta en diseno
+	public abstract void registrarTipoPregunta(String pTipoEvaluacion, String pDescripcion);
 	
-	public void VerificarTipoPregunta(String pTipoPregunta, String pDescripcion)
+	public void verificarTipoPregunta(String pTipoPregunta, String pDescripcion)
 	{
 		String tipoPregunta;
 		
@@ -42,18 +43,18 @@ public abstract class pregunta {
 		MetodoFactoryPregunta factory = new FactoryTipoPregunta();
 		pregunta pregunta = factory.crearPregunta(tipoPregunta, pDescripcion);
 	
-		if (tipoPregunta.equals("marqueconx "))
+		if (tipoPregunta.equals("marqueconx"))
 		{	
-		    pregunta.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+		    pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
-		if (tipoPregunta.equals("espacio en Blanco"))
+		if (tipoPregunta.equals("espacioenblanco"))
 		{
 			
-			pregunta.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+			pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("desarrollo"))
 		{
-			pregunta.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+			pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		 
 	}

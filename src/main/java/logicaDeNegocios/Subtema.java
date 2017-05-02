@@ -1,12 +1,14 @@
 package logicaDeNegocios;
-
+/*
+ * ver si lo que esta documentado realmente sirve
+ */
 import java.util.ArrayList;
 
 import Integracion.BaseDeDatos;
 
 public class Subtema {
-	int codSubTema;
-	String descripcion;
+	private int codSubTema;
+	private String descripcion;
 	ArrayList preguntas;
 	Tema tema;
 	BaseDeDatos conexion;
@@ -15,17 +17,21 @@ public class Subtema {
 	public Subtema(){
 		conexion = new BaseDeDatos();
 	}
-	public Subtema(int codsubtema, String descripcion){
+	public Subtema(int pCodsubtema, String pDescripcion){
 		preguntas = new ArrayList<Object>();//tener de las 3
-		setCodSubTema(codsubtema);
-		setDescripcion(descripcion);
+		setCodSubTema(pCodsubtema);
+		setDescripcion(pDescripcion);
 		conexion = new BaseDeDatos();
 	}
-	public void anadirTema(int codTema, String descripcionTema){
-		 tema = new Tema(codTema,  descripcionTema);
+	public void anadirTema(int pCodTema, String pDescripcionTema){
+		 tema = new Tema(pCodTema,  pDescripcionTema);
 		 
 	}
-	
+	public  void registrarSubTema(String pDescripcionSubtema)//no ha sido anadiad a la base
+	{
+	 	getConexion().insertDelete("insert into subtema(descripcion) values (" +  "'" + pDescripcionSubtema +"'" + ")");
+	}
+	/*
 	public void anadirPreguntasMarqueX(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
 		pregunta pregunta = new MarqueX( codigoPregunta, codigoTipoPregunta, descripcionPregunta,  descripcionAyduda, tipoPregunta, descripcionTipoPreg);
 		preguntas.add(pregunta);
@@ -38,7 +44,7 @@ public class Subtema {
 		pregunta pregunta = new Desarrollo( codigoPregunta,  codigoTipoPregunta, descripcionPregunta,  descripcionAyduda,  tipoPregunta,  descripcionTipoPreg);
 		preguntas.add(pregunta);
 	}
-	
+	*/ 
 	public BaseDeDatos getConexion() {
 		if (conexion == null){
 			conexion = new BaseDeDatos();

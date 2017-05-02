@@ -3,9 +3,10 @@ package logicaDeNegocios;
 import java.util.ArrayList;
 
 import Integracion.BaseDeDatos;
-
-public abstract class Evaluacion 
-{
+/*
+ * Hay relacion de estudiantes a evaluacion?
+ * */
+public abstract class Evaluacion {
 	protected int codEvaluacion;
 	protected String nombreEvaluacion;
 	protected int puntajeTotal;
@@ -19,18 +20,18 @@ public abstract class Evaluacion
 	BaseDeDatos conexion;
 
 	
-	public Evaluacion(int codEvaluacion, String nombreEvaluacion,int puntajeTotal,int porcentajeNotaFinal,String fechaEvaluacion,int tiempoMinutos,boolean status){
+	public Evaluacion(int pCodEvaluacion, String pNombreEvaluacion,int pPuntajeTotal,int pPorcentajeNotaFinal,String pFechaEvaluacion,int pTiempoMinutos,boolean pStatus){
 		estudiantes = new ArrayList<Estudiante>();
 		preguntas = new ArrayList<pregunta>();
 		curso = new Curso();
 		conexion = new BaseDeDatos();
-		setCodEvaluacion(codEvaluacion);
-		setNombreEvaluacion(nombreEvaluacion);
-		setPuntajeTotal(puntajeTotal);
-		setPorcentajeNotaFinal(porcentajeNotaFinal);
-		setFechaEvaluacion(fechaEvaluacion);
-		setTiempoMinutos(tiempoMinutos);
-		setStatus(status);
+		setCodEvaluacion(pCodEvaluacion);
+		setNombreEvaluacion(pNombreEvaluacion);
+		setPuntajeTotal(pPuntajeTotal);
+		setPorcentajeNotaFinal(pPorcentajeNotaFinal);
+		setFechaEvaluacion(pFechaEvaluacion);
+		setTiempoMinutos(pTiempoMinutos);
+		setStatus(pStatus);
 		
 	}
 	public Evaluacion(){
@@ -39,33 +40,36 @@ public abstract class Evaluacion
 		curso = new Curso();
 		conexion = new BaseDeDatos();
 	}
-	public void asociarEstudiante(Estudiante estudiante){
-		estudiantes.add(estudiante);
+	public void asociarEstudiante(Estudiante pEstudiante){
+		estudiantes.add(pEstudiante);
 	}
-	public void asociarPregunta(Estudiante pregunta){
-		preguntas.add(pregunta);
+	public void asociarPregunta(pregunta pPregunta){
+		preguntas.add(pPregunta);
 	}
-	public void asociarCurso(Curso curso){
-		this.curso = curso;
+	public void asociarCurso(Curso pCurso){
+		this.curso = pCurso;
 	}
 	
 	
-	public abstract void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
+	public abstract void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	
-	public void VerificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion){
+	public void verificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion){
 		String tipoEvaluacion;
 		
 		tipoEvaluacion= pTipoEvaluacion.toLowerCase(); 
+		tipoEvaluacion=pTipoEvaluacion.replace(" ","");
+		
+		
+		MetodoFactoryEvaluacion factory = new FactoryTipoEvaluacion();
+		Evaluacion evaluacion = factory.crearEvaluacion(pTipoEvaluacion, pDescripcion);
 		
 		if (tipoEvaluacion.equals("sumativa"))
 		{
-			Evaluacion tipoEvaluacionS= new Sumativa(); 
-			tipoEvaluacionS.RegistrarTipoEvaluacion(tipoEvaluacion, pDescripcion);
+			evaluacion.registrarTipoEvaluacion(tipoEvaluacion, pDescripcion);
 		}
 		if (tipoEvaluacion.equals("formativa"))
 		{
-			Evaluacion tipoEvaluacionF= new Formativa();
-			tipoEvaluacionF.RegistrarTipoEvaluacion(tipoEvaluacion, pDescripcion);
+			evaluacion.registrarTipoEvaluacion(tipoEvaluacion, pDescripcion);
 		}
 	}
 

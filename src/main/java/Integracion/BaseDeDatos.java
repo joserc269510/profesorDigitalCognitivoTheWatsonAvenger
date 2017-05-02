@@ -506,12 +506,74 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
 	  }
   
   
-  
+	public ArrayList<Profesor> selectProfe (){
+	    ArrayList<Profesor> profesor = new ArrayList<Profesor>();
+		 // Estudiante estudiante [] = new Estudiante[getNumeroRegistros("estudiante", "cedula")];
+	    try {
+	            Class.forName("org.postgresql.Driver");
+	        }
+	        catch (java.lang.ClassNotFoundException e) {
+	            System.out.println(e.getMessage() + "hola");
+	        }
+	        try {
+	          System.out.println("daskdjkasjdsakl");
+	            Connection db = DriverManager.getConnection(url, username, password);
+	            Statement st = db.createStatement();
+	            ResultSet rs = st.executeQuery("Select * from profesor");
+	           
+	            while (rs.next()) {
+	              Profesor objetoProfesor = new Profesor();
+	              objetoProfesor.setCodProfesor(rs.getString(1));
+	              objetoProfesor.setCorreo(rs.getString(3));
+	              
+	              profesor.add(objetoProfesor);
+	            }
+	            rs.close();
+	            st.close();
+	            db.close();
+	        }catch (java.sql.SQLException e) {
+	            System.out.println(e.getMessage() + "adios");
+	        }
+	        return profesor;
+	}
+	
   
   
   public void update(String query){
     
   }
+  
+  public ArrayList<Subtema>selectSubTema(int pCodTema){
+	  ArrayList subtema = new ArrayList<Subtema>();
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select * from subtema where codtema="+ pCodTema );
+              
+              while (rs.next()) {
+            	
+                Subtema objetoSubtema = new Subtema(Integer.parseInt(rs.getString(1)),rs.getString(3));
+                System.out.println(rs.getString(1));
+                subtema.add(objetoSubtema);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return subtema;
+	  
+  }
+  
+  
 
   public static void main(String[] args) {
      BaseDeDatos b= new BaseDeDatos();

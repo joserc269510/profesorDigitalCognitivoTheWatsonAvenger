@@ -4,16 +4,16 @@ import Integracion.BaseDeDatos;
 
 public class Desarrollo extends pregunta 
 {
-	protected String tipoPregunta;
-	protected String descripcionTipoPreg;
-	int codigoTipoPregunta;
+	private String tipoPregunta;
+	private String descripcionTipoPreg;
+	private int codigoTipoPregunta;
 	BaseDeDatos conexion;
 	
-	public Desarrollo(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
-		super(codigoPregunta,descripcionPregunta,descripcionAyduda);
-		setTipoPregunta(tipoPregunta);
-		setDescripcion(descripcionTipoPreg);
-		setCodigoTipoPregunta(codigoTipoPregunta);
+	public Desarrollo(int pCodigoPregunta, int pCodigoTipoPregunta, String pDescripcionPregunta, String pDescripcionAyduda, String pTipoPregunta, String pDescripcionTipoPreg){
+		super(pCodigoPregunta,pDescripcionPregunta,pDescripcionAyduda);
+		setTipoPregunta(pTipoPregunta);
+		setDescripcion(pDescripcionTipoPreg);
+		setCodigoTipoPregunta(pCodigoTipoPregunta);
 		conexion = new BaseDeDatos();
 	}
 	public Desarrollo( String pTipoPregunta, String pDescripcion) {
@@ -24,11 +24,25 @@ public class Desarrollo extends pregunta
 		
 	}
 
-	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
+	public void registrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
 		getConexion().insertDelete("insert into tipopregunta values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
+	}
+	
+	public void registrarPregunta(String CodP,String sub, String descp, String descpAy){//no esta en dise;o
+     
+		int codP= Integer.parseInt(CodP);
+		int Subt=Integer.parseInt(sub);
+		setCodigoPregunta(codP);
+		
+		
+		//setStatus(stt);
+		
+		BaseDeDatos conexion = new BaseDeDatos();
+		conexion.insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
+				+ " values (" + codP  + ","+ Subt  + "," + 4  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
 	}
 
 	public BaseDeDatos getConexion() {

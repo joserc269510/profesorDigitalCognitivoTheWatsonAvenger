@@ -11,11 +11,11 @@ public class Tema {
 	ArrayList cursos;//falta modificador
 	BaseDeDatos conexion;
 	
-	public Tema(int codTema, String descripcionTema){
+	public Tema(int pCodTema, String pDescripcionTema){
 		subtemas = new ArrayList<Subtema>();
 		cursos = new ArrayList<Curso>();
-		setCodTema(codTema);
-		setDescripcionTema(descripcionTema);
+		setCodTema(pCodTema);
+		setDescripcionTema(pDescripcionTema);
 		conexion = new BaseDeDatos();
 	}
 	public Tema(){
@@ -23,13 +23,18 @@ public class Tema {
 	}
 	
 	
-	public void anadirCurso(Curso curso){
-		cursos.add(curso);
+	public void anadirCurso(Curso pCurso){
+		cursos.add(pCurso);
 	}
 	
-	public void anadirSubTema(int codsubtema, String descripcion){
-		Subtema subtema = new Subtema(codsubtema, descripcion);
+	public void anadirSubTema(int pCodsubtema, String pDescripcion){
+		Subtema subtema = new Subtema(pCodsubtema, pDescripcion);
 		subtemas.add(subtema);
+	}
+	
+	public  void registrarTema(String pCodigoCurso,String pDescripcion)//no ha sido agregado al diseno
+	{
+	 	getConexion().insertDelete("insert into tema(codigocurso,descripciontema) values (" + "'"+ pCodigoCurso + "'" + "," + "'" + pDescripcion +"'" + ")");
 	}
 	
 	public int getCodTema() {

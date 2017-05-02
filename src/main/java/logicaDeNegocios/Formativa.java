@@ -4,16 +4,16 @@ import Integracion.BaseDeDatos;
 
 public class Formativa extends Evaluacion 
 {
-	protected int codTipoEvaluacion;
-	protected String tipoEvaluacion;
-	protected String descripcionTipoEval;
+	private int codTipoEvaluacion;
+	private String tipoEvaluacion;
+	private String descripcionTipoEval;
 	BaseDeDatos conexion;
 	
-	public Formativa(int codEvaluacion, String nombreEvaluacion,int puntajeTotal,int porcentajeNotaFinal,String fechaEvaluacion,int tiempoMinutos,boolean status,int codTipoEvaluacion,String tipoEvaluacion,String descripcionTipoEval){
-		super( codEvaluacion,  nombreEvaluacion, puntajeTotal, porcentajeNotaFinal, fechaEvaluacion, tiempoMinutos, status);
-		setCodTipoEvaluacion(codTipoEvaluacion);
-		setTipoEvaluacion(tipoEvaluacion);
-		setDescripcionTipoEval(descripcionTipoEval);
+	public Formativa(int pCodEvaluacion, String pNombreEvaluacion,int pPuntajeTotal,int pPorcentajeNotaFinal,String pFechaEvaluacion,int pTiempoMinutos,boolean pStatus,int pCodTipoEvaluacion,String pTipoEvaluacion,String pDescripcionTipoEval){
+		super( pCodEvaluacion,  pNombreEvaluacion, pPuntajeTotal, pPorcentajeNotaFinal, pFechaEvaluacion, pTiempoMinutos, pStatus);
+		setCodTipoEvaluacion(pCodTipoEvaluacion);
+		setTipoEvaluacion(pTipoEvaluacion);
+		setDescripcionTipoEval(pDescripcionTipoEval);
 		conexion = new BaseDeDatos();
 	}
 	public Formativa(){
@@ -22,7 +22,7 @@ public class Formativa extends Evaluacion
 	}
 	
 	
-	public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) 
+	public void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) 
 	{
 		setTipoEvaluacion(pTipoEvaluacion);
 		setDescripcionTipoEval(pDescripcion);

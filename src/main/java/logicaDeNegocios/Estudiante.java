@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import Integracion.BaseDeDatos;
-
+/*
+ * Revisar si dejar o no anadirCurso (si hacerla bidireccional o no ) y el atributo cursos
+ */
 public class Estudiante {
 	private String numeroIdentificacion;
 	private String numeroCarnet; 
@@ -13,35 +15,35 @@ public class Estudiante {
 	private String apellido2;
 	private String nombre;
 	private String email;	
-	ArrayList evaluaciones;
-	ArrayList cursos;
+	private ArrayList evaluaciones;
+	//ArrayList cursos;
 	BaseDeDatos conexion;
 	
 	public Estudiante(){
 		evaluaciones = new ArrayList<Evaluacion>();
-		cursos = new ArrayList<Curso>();
+		//cursos = new ArrayList<Curso>();
 		conexion = new BaseDeDatos();
 	}
 	
-	public Estudiante(String numeroIdentificacion, String numeroCarnet,Date fechaNacimiento,String apellido1,String apellido2, String nombre, String email){
-		setNumeroIdentificacion(numeroIdentificacion);
-		setNumeroCarnet(numeroCarnet);
-		setFechaNacimiento(fechaNacimiento);
-		setApellido1(apellido1);
-		setApellido2(apellido2);
-		setNombre(nombre);
-		setEmail(email);
+	public Estudiante(String pNumIdentificacion, String pCarne,Date pFechaNac,String pApellido1,String pApellido2, String pNombre, String pCorreo){
+		setNumeroIdentificacion(pNumIdentificacion);
+		setNumeroCarnet(pCarne);
+		setFechaNacimiento(pFechaNac);
+		setApellido1(pApellido1);
+		setApellido2(pApellido2);
+		setNombre(pNombre);
+		setEmail(pCorreo);
 		evaluaciones = new ArrayList<Evaluacion>();
-		cursos = new ArrayList<Curso>();
+		//cursos = new ArrayList<Curso>();
 		conexion = new BaseDeDatos();
 	}
-	
-	public void anadirCurso(Curso curso){
-		cursos.add(curso);
+	/*
+	public void anadirCurso(Curso pCurso){
+		cursos.add(pCurso);
 	}
-
-	public void anadirEvaluacion(Evaluacion evaluacion){
-		evaluaciones.add(evaluacion);
+	 */
+	public void anadirEvaluacion(Evaluacion pEvaluacion){
+		evaluaciones.add(pEvaluacion);
 	}
 	
 	public void registrarEstudiante(String pNumeroIdentificacion, String pNombre, String pApellido1,
@@ -78,12 +80,12 @@ public class Estudiante {
 		return estudiantes;
 		
 	}
-	 private static Date ConvertirFecha(String fecha)
+	 private static Date ConvertirFecha(String pFecha)
 	 {
 	        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 	        Date fechaDate = null;
 	        try {
-	            fechaDate = formato.parse(fecha);
+	            fechaDate = formato.parse(pFecha);
 	        } 
 	        catch (Exception ex) 
 	        {
@@ -118,7 +120,7 @@ public class Estudiante {
 	public void setEvaluaciones(ArrayList evaluaciones) {
 		this.evaluaciones = evaluaciones;
 	}
-
+/*
 	public ArrayList getCursos() {
 		return cursos;
 	}
@@ -126,7 +128,7 @@ public class Estudiante {
 	public void setCursos(ArrayList cursos) {
 		this.cursos = cursos;
 	}
-
+*/
 	public Date getFechaNacimiento() 
 	{
 		return fechaNacimiento;

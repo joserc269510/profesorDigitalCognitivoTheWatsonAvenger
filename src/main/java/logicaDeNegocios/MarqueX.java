@@ -5,16 +5,16 @@ import Integracion.BaseDeDatos;
 public class  MarqueX extends pregunta
 {
 	private int codTipoPregunta;
-	protected String tipoPregunta;
-	protected String  descripcionTipoPreg;
+	private String tipoPregunta;
+	private String  descripcionTipoPreg;
 	BaseDeDatos conexion;
 	
 
-	public MarqueX(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
-		super( codigoPregunta,  descripcionPregunta,  descripcionAyduda);
+	public MarqueX(int pCodigoPregunta, int pCodigoTipoPregunta, String pDescripcionPregunta, String pDescripcionAyuda, String pTipoPregunta, String pDescripcionTipoPreg){
+		super( pCodigoPregunta,  pDescripcionPregunta,  pDescripcionAyuda);
 		setTipoPregunta(tipoPregunta);
 		setDescripcionTipoPreg(descripcionTipoPreg);
-		setCodTipoPregunta(codigoTipoPregunta);
+		setCodTipoPregunta(pCodigoTipoPregunta);
 		conexion = new BaseDeDatos();
 	}
 	public  MarqueX ( String pTipoPregunta, String pDescripcion) 
@@ -24,13 +24,32 @@ public class  MarqueX extends pregunta
 		setDescripcionTipoPreg(pDescripcion);
 		conexion = new BaseDeDatos();
 	}
+	public  MarqueX(){
+		super();
+		conexion = new BaseDeDatos();
+		
+	}
 	
-	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
+	public void registrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
 		setDescripcionTipoPreg(pDescripcion);
-		getConexion().insertDelete("insert into tipopregunta(nombretipopreg, decripcion) values ( '"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		getConexion().insertDelete("insert into tipopregunta(nombretipopreg, decripcion) values ("+ 6+",'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
+	}
+	public void registrarPregunta(String CodP,String sub, String descp, String descpAy)
+	{
+     
+		int codP= Integer.parseInt(CodP);
+		int Subt=Integer.parseInt(sub);
+		setCodigoPregunta(codP);
+		
+		
+		//setStatus(stt);
+		
+		BaseDeDatos conexion = new BaseDeDatos();
+		conexion.insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
+				+ " values (" + codP  + ","+ Subt  + "," + 1  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
 	}
 	public BaseDeDatos getConexion() {
 		if (conexion == null){

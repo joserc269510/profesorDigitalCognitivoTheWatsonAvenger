@@ -10,6 +10,18 @@ public class Respuesta {
 	BaseDeDatos conexion;
 	
 	
+	public void registrarRespuesta(String CodP, String descp, String stt)//no esta diseno
+	{
+     
+		int codP= Integer.parseInt(CodP);
+		setCodigoPregunta(codP);
+		setDescripcionRespuesta(descp);
+		//setStatus(stt);
+		
+		BaseDeDatos conexion = new BaseDeDatos();
+		conexion.insertDelete("insert into respuesta(codigopregunta,descripcionrespuesta,status) values (" + codP  + "," +  "'" + descp + "'" + "," + "'"+  "B" + stt + "'"  + ")" ) ;
+	}
+	
 	public BaseDeDatos getConexion() {
 		if (conexion == null){
 			conexion = new BaseDeDatos();
