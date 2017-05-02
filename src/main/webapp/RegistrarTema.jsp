@@ -158,7 +158,7 @@
 				
 			</div>
 			<div id="main">
-			  <form name="registroTema" action="" method="">
+			  <form name="registroTema" action="RegistrarTema" method="post">
 			    <div>
 			      <h2>Registrar Tema</h2>
 			      <div>

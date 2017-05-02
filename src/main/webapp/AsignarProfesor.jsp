@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>PROYECTO XE</title>
+		<title>Matricular Estudiante</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -65,7 +66,7 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 					
-                    <li><a href="">Estudiante</a>
+                    <li class="current-menu-item"><a href="">Estudiante</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/RegistrarEstudiante.jsp"><span>Registrar Estudiante</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToMatricular"><span>Matricular Estudiante</span></a></li>
@@ -106,9 +107,9 @@
 						<ul>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
-                                    <li><a href="<%=request.getContextPath()%>/postRegistrar"><span>Marcar con X</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/postRegistrarPC"><span>Completar Espacio en Blanco</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/postRegistrarD"><span>Desarrollo</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaMarqueX.jsp"><span>Marcar con X</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaComplete.jsp"><span>Completar Espacio en Blanco</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaDesarrollo.jsp"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
                             <li><a href=""><span>Tipo de Pregunta</span></a>
@@ -135,19 +136,13 @@
 					</li>
                     <li><a href="">Subtema</a>
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarSubtema"><span>Registrar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToTema?x=RegistrarSubTema"><span>Registrar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ActualizarSubtema"><span>Actualizar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-					<li><a href="">Entrenamiento</a>
-						<ul>
-							<li><a href="<%=request.getContextPath()%>/SubirArchivos.jsp"><span>Subir Archivos Positivos</span></a></li>
-						</ul>
-					</li>
-					<li><a href="<%=request.getContextPath()%>/AsignandoProfesor" > Asignar Profesor Curso</a></li>
-					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
+                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
@@ -155,43 +150,59 @@
 				
 				
 				
+				
+			
+				
 				<div id="slider-block">
 				</div>
 			
 				
 			</div>
+		
 			<div id="main">
-			  <form name="PruebaSpeech" action="generarSpeech" method="post">
+			  <form name="AsignarProfesor" action="AsignandoProfesor" method="post">
 			    <div>
-			      <h2>Prueba SPEECH</h2>
+			      <h2>Asignar Profesor a un Curso</h2>
 			      <div>
 			        <table>
 			          <tr>
-			          <td ><h3>Pulse el boton para empezar a grabar</h3></td>
-                      </tr>
-                      <tr>
-                      	<%
-			            		String texto= (String) request.getAttribute("texto");
+			            <td ><h3>Correo del Profesor</h3></td>
+			            <td ><!--input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="Identificacion Estudiante"  required/-->
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Profesor, logicaDeNegocios.Curso" %>
+			            <%
+			            		ArrayList<Profesor> profesores= (ArrayList<Profesor>) request.getAttribute("ListProfesores");
+			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
+			            		
 						%>
-			            <td ><textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">
-			            <%= texto %>
-			            </textarea></td>
-                        <td  ><button class="submit" type="submit">Grabar</button></td>
+			            <select id="selIdentificacion" name="selIdentificacion">
+			            <%  for(Profesor p:profesores){ %>
+				            <option value="<%=p.getCodProfesor() %>"><%=p.getCorreo()%></option>
+				        <% } %>
+			            </select></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Codigo del Curso</h3></td>
+			            <td ><!--input type="text" id="txtNombreCurso" name="txtNombre" placeholder="Nombre Curso"  required/-->
+			            <select id="selCodigo" name="selCodigo">
+			            <%  for(Curso c:cursos){ %>
+			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
+				        <% } %>
+				        </select></td>
+		              </tr>
+		             
+			          <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >AsignarProfesor</button></td>
 		              </tr>
 		            </table>
 		          </div>
 		        </div>
 		      </form>
 		  </div>
-			<div id="footer">
-				
-				
-			</div>
-			
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>
