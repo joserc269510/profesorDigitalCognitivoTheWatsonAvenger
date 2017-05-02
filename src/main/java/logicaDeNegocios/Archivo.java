@@ -52,71 +52,41 @@ public class Archivo
 		   }
 		}
 		System.out.println(fichero.getAbsolutePath());
-		return fichero.getAbsolutePath();
+		String direccionFinal=transformarDireccion(fichero.getAbsolutePath());
+		return ( direccionFinal);
 		
 	}
 	
-	public String CargarArchivo1(HttpServletRequest request, HttpServletResponse response) throws Exception
+	public String transformarDireccion(String Dir)
 	{
-		//Ruta donde se guardara el fichero
-		File destino=new File("C:\\Users\\Cora\\Desktop\\profesorDigitalCognitivoTheWatsonAvenger");
-		FileItemFactory factory = new DiskFileItemFactory();
-		ServletFileUpload upload = new ServletFileUpload(factory);
+		String direccion = Dir;
+		char ruta[]= direccion.toCharArray();
+		char ruta2[]=new char[ruta.length+1];
+		int k=0;
 
+		for(int i=0;i<ruta.length;i++){
+			if(ruta[i]==':')
+			{
+				ruta2[k]=ruta[i];
+				k++;
+				ruta2[k]='/';
+			}
+			else if(ruta[i]=='\\')
+			{
+				ruta2[k]='/';
+			} 
+			else {
+				ruta2[k]=ruta[i];
+			}
+			k++;
+	}//fin del for
 
-		// req es la HttpServletRequest que recibimos del formulario.
-		// Los items obtenidos serán cada uno de los campos del formulario,
-		// tanto campos normales como ficheros subidos.
-		List<?> items = upload.parseRequest(request);
-
-		File fichero = null;
-		// Se recorren todos los items, que son de tipo FileItem
-		for (Object item : items) {
-		   FileItem uploaded = (FileItem) item;
-
-		   // Hay que comprobar si es un campo de formulario. Si no lo es, se guarda el fichero
-		   // subido donde nos interese
-		   if (!uploaded.isFormField()) {
-		      // No es campo de formulario, guardamos el fichero en algún sitio
-		       fichero = new File(destino, uploaded.getName());
-		      uploaded.write(fichero);
-		   } else {
-		      // es un campo de formulario, podemos obtener clave y valor
-		      String key = uploaded.getFieldName();
-		      String valor = uploaded.getString();
-		   }
+		direccion="";
+		for(int i=0;i<ruta2.length;i++)
+		{
+			direccion+=ruta2[i];
+			}
+		return direccion; //regresa el valor del array convertido en string
 		}
-		System.out.println(fichero.getAbsolutePath());
-		return fichero.getAbsolutePath();
-		
-	}
-	
-	public void EscribirArchivoTXT(String rutaP)
-	{
-		FileWriter fichero = null;
-        PrintWriter pw = null;
-        try
-        {
-        	
-            fichero = new FileWriter("C:/Users/Cora/Desktop/profesorDigitalCognitivoTheWatsonAvenger/prueba.txt", false);
-            pw = new PrintWriter(fichero);
-
-            
-                pw.println(rutaP + ",");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-           try {
-           // Nuevamente aprovechamos el finally para 
-           // asegurarnos que se cierra el fichero.
-           if (null != fichero)
-              fichero.close();
-           } catch (Exception e2) {
-              e2.printStackTrace();
-           }
-        }
-	}
-
 
 }

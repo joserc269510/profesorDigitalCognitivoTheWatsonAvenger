@@ -1,5 +1,7 @@
 package logicaDeNegocios;
 
+import java.util.Date;
+
 import Integracion.BaseDeDatos;
 
 public class Respuesta {
@@ -7,19 +9,7 @@ public class Respuesta {
 	int codigoPregunta;
 	String descripcionRespuesta;
 	boolean status;
-	BaseDeDatos conexion;
 	
-	
-	public BaseDeDatos getConexion() {
-		if (conexion == null){
-			conexion = new BaseDeDatos();
-		}
-		return conexion;
-	}
-
-	public void setConexion(BaseDeDatos conexion) {
-		this.conexion = conexion;
-	}
 	public int getCodRespuesta() {
 		return codRespuesta;
 	}
@@ -44,5 +34,17 @@ public class Respuesta {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	public void registrarRespuesta(String CodP, String descp, String stt)
+	{
+     
+		int codP= Integer.parseInt(CodP);
+		setCodigoPregunta(codP);
+		setDescripcionRespuesta(descp);
+		//setStatus(stt);
+		
+		BaseDeDatos conexion = new BaseDeDatos();
+		conexion.insertDelete("insert into respuesta(codigopregunta,descripcionrespuesta,status) values (" + codP  + "," +  "'" + descp + "'" + "," + "'"+  "B" + stt + "'"  + ")" ) ;
+	}
+	
 	
 }

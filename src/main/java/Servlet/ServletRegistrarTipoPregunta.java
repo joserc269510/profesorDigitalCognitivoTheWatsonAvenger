@@ -33,6 +33,8 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
 	{
 		String tipoPregunta = request.getParameter("txtPregunta");
 		String descripcionPregunta = request.getParameter("txtDescripcion");
+		System.out.println(tipoPregunta);
+		System.out.println(descripcionPregunta);
 		
 	     pregunta pregunta = new pregunta()
 	     { 

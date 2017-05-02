@@ -7,29 +7,31 @@ public class EspacioBlanco extends pregunta
 	protected String tipoPregunta;
 	protected String descripcionTipoPreg;
 	private int codigoTipoPregunta;
-	BaseDeDatos conexion;
 	
 	public EspacioBlanco(int codigoPregunta,int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
 		super( codigoPregunta,  descripcionPregunta,  descripcionAyduda);
 		setTipoPregunta(tipoPregunta);
 		setDescripcion(descripcionTipoPreg);
 		setCodigoTipoPregunta(codigoTipoPregunta);
-		conexion = new BaseDeDatos();
 	}
 	public EspacioBlanco( String pTipoPregunta, String pDescripcion) 
 	{
 		super();
 		setTipoPregunta(pTipoPregunta);
 		setDescripcion(pDescripcion);
-		conexion = new BaseDeDatos();
+		
+	}
+	public EspacioBlanco() 
+	{
+		
 		
 	}
 
 	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
-		
-		getConexion().insertDelete("insert into tipopregunta values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		BaseDeDatos conexion= new BaseDeDatos();
+		conexion.insertDelete("insert into tipopregunta values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
 	
@@ -69,15 +71,19 @@ public class EspacioBlanco extends pregunta
 	{
 		descripcionTipoPreg = pDescripcion;
 	}
-
-	public BaseDeDatos getConexion() {
-		if (conexion == null){
-			conexion = new BaseDeDatos();
-		}
-		return conexion;
+	public void registrarPregunta(String CodP,String sub, String descp, String descpAy)
+	{
+     
+		int codP= Integer.parseInt(CodP);
+		int Subt=Integer.parseInt(sub);
+		setCodigoPregunta(codP);
+		
+		
+		//setStatus(stt);
+		
+		BaseDeDatos conexion = new BaseDeDatos();
+		conexion.insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
+				+ " values (" + codP  + ","+ Subt  + "," + 3  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
 	}
-
-	public void setConexion(BaseDeDatos conexion) {
-		this.conexion = conexion;
-	}
+	
 }

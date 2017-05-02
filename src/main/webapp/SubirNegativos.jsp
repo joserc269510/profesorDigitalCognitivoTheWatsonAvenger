@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE  html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Registrar Tema</title>
+		<title>Entrenar Profesor</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -84,18 +83,18 @@
 			
 							<li><a href=""><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci髇</span></a></li>
-                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluaci髇</span></a></li>
-                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluaci髇</span></a></li>
-                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
+                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluaci贸n</span></a></li>
+                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluaci贸n</span></a></li>
+                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluaci贸n</span></a></li>
                                 </ul>
                             </li>
                             <li><a href=""><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci髇</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci髇</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci髇</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
                                 </ul>
                             </li>
 							
@@ -125,7 +124,7 @@
 					
 					
 					
-                    <li class="current-menu-item"><a href="">Tema</a>
+                    <li><a href="">Tema</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarTema"><span>Registrar Tema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToTema?x=ConsultarTema"><span>Consultar Tema</span></a></li>
@@ -141,58 +140,49 @@
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
+					<li><a href="">Entrenamiento</a>
+						<ul>
+						<li><a href="SubirArchivos.html"><span>Subir Archivos Positivos</span></a></li>
+						<li><a href="EntrenarProfesor.html"><span>Entrenar</span></a></li>
+						</ul>
+					</li>
+                    
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
 				
-				
-				
-				
-				
-				
-				
+						
 			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
 			<div id="main">
-			  <form name="registroTema" action="" method="">
+			 <% String ruta = (String) request.getAttribute("rutaP"); 
+						System.out.println(ruta +"Hola2");%>
+			  <form name="entrenarProfesor" action="subiendoN?x=<%=ruta%>" method="post"  enctype="multipart/form-data"  align= "center">
 			    <div>
-			      <h2>Registrar Tema</h2>
+			      <h1> Entrenar profesor Digital <font size="3"></h1>
 			      <div>
-			        <table>
-                    	<table>
-			        
-                      
-                     <tr>
-			            <td ><h3>Codigo del Curso</h3></td>
-			            <td ><!--input type="text" id="txtCodigo1" name="txtCodigo" placeholder="Codigo Curso"  required/-->
-			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso" %>
-			            <%
-			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
-			            		
-						%>
-			            <select id="selCodigoCurso" name="selCodigoCurso">
-			            <%  for(Curso c:cursos){ %>
-			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
-				        <% } %>
-			            </select></td>
-		              </tr>
-                      
-		              <tr>
-			            <td ><h3>Descripcion del Tema </h3></td>
-			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
-		              </tr>
+			    	<table>
+			    
 		              
-			       
-			          <tr>
-			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Registrar Tema</button></td>
+			         <tr>
+                      		<td><label for="inputFile">Seleccione un archivo</label></td>
+							<td><input type="file" name="inputFile2" id="inputFile2" value="" Style="font-size: 14px" /> 	</td>							
+                     </tr>
+
+                     <td><h1></h1></td>
+                     <td><h1></h1></td>
+                     <td><h1></h1></td>
+                     
+                     <tr>   
+			            <td  ><button class="submit" type="submit" >Entrenar</button></td>
 		              </tr>
-		            </table>
-		          </div>
+            				
+					  
+            	 </table>
+			      </div>
 		        </div>
 		      </form>
 		  </div>

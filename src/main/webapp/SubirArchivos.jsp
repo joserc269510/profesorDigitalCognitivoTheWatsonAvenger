@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Registrar Pregunta Desarrollo</title>
+		<title>Entrenar Profesor</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -102,7 +103,7 @@
 						</ul>
 					</li>
 					
-					<li class="current-menu-item"><a href="">Pregunta</a>
+					<li><a href="">Pregunta</a>
 						<ul>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
@@ -141,127 +142,48 @@
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
+					<li><a href="">Entrenamiento</a>
+						<ul>
+						<li><a href="<%=request.getContextPath()%>/subiendo">Subir Archivos positivos</a></li>
+						<li><a href="EntrenarProfesor.html"><span>Entrenar</span></a></li>
+						</ul>
+					</li>
+                    
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
 				
-				
-				
-				
-				
-				
-				
-				<div id="slider-block">
+						
+			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
 			<div id="main">
+			  <form name="entrenarProfesor" action="subiendo" method="post"  enctype="multipart/form-data"  align= "center">
 			    <div>
-			      <h2>Registrar Pregunta de Desarrollo</h2>
+			      <h1> Entrenar profesor Digital <font size="3"></h1>
 			      <div>
-			        <table>
-                   <form action="selectCursoD" method="post">
-                      <tr>
-			            <td ><h3>Codigo del Curso</h3></td>
-			            
-			           <td >
-                        <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso, logicaDeNegocios.Tema, logicaDeNegocios.Subtema " %>
-			            <%
-			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
-			            		
-						%>
-                        <select id="selCodigo" name="selCodigo" >
-						<%  for(Curso c:cursos){ %>
-			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
-				        <% } %>
-                        </select></td>
-                         <td><button class="submit" type="submit" >Cargar Curso</button></td>
-                       
-                     
-		              </tr>
-                      </form>
-                      <% try{
-                      		String curso= (String) request.getAttribute("Curso");
-                      		%>
-                      <form action="selectTemaD?x=<%=curso%>" method="post">
-                      <tr>
-                      <%}catch(Exception e){%>
-                      <form action="selectTemaD" method="post">
-                      <tr>
-                      <%}%>
-			            <td ><h3>Codigo del Tema</h3></td>
-			            <td ><!--input type="text" id="txtCodigo2" name="txtCodigo" placeholder="Codigo Tema"  required/-->
-			            <%
-			            		ArrayList<Tema> temas= (ArrayList<Tema>) request.getAttribute("ListTemas");      		
-						%>
-			            <select id="selCodigoTema" name="selCodigoTema">
-		              	<%if(temas!=null){ %>
-		              	<%  for(Tema t:temas){ %>
-		              	<% System.out.println("ESTE ES EL TEMA"+t.getDescripcionTema());%>
-			              <option value="<%=t.getCodTema()%>"><%=t.getDescripcionTema()%></option>
-				        <% } %>
-                        <% } %>
-                        </select></td>
-                        <td><button class="submit" type="submit" >Cargar Tema</button></td>
-		              </tr>
-		              </form>
-		             
-		             
-		             <% try{
-                      		String curso= (String) request.getAttribute("Curso");
-                      		String tema= (String)request.getAttribute("Tema");
-                      %>
-                      <form action="postRegistrarD?x=<%=curso%>&y=<%=tema%>" method="post">
-                      <tr>
-                      <%}catch(Exception e){%>
-                      <form action="postRegistrarD" method="post">
-                      <tr>
-                      <%}%>
-			            <td ><h3>Codigo del Subtema</h3></td>
-			            <td ><!--input type="text" id="txtCodigo3" name="txtCodigo" placeholder="Codigo Subtema"  required/-->
-			            
-			             <%
-			            		ArrayList<Subtema> subtemas= (ArrayList<Subtema>) request.getAttribute("ListSubTemas");      		
-						%>
-			            <select id="selCodigoSubtema" name="selCodigoSubtema">
-		              	<%if(subtemas!=null){ %>
-		              	<%  for(Subtema t:subtemas){ %>
-		              	<% System.out.println("ESTE ES EL TEMA"+t.getDescripcion());%>
-			              <option value="<%=t.getCodSubTema()%>"><%=t.getDescripcion()%></option>
-				        <% } %>
-                        <% } %>
-                        </select></td>
-                       
-		              </tr>
-		           		<tr>
-			            <td ><h3>Codigo de la Pregunta</h3></td>
-			            <td ><input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Pregunta"  required/></td>
-		              	
-		              </tr>
-                      <tr>
-			            <td ><h3>Descripcion de la Pregunta </h3></td>
-			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
-		              </tr>
-		               <tr>
-		                 <tr>
-			            <td ><h3>Descripcion de la respuesta</h3></td>
-			            <td ><input type="text" id="txtRespuesta" name="txtRespuesta" placeholder="Nombre Pregunta"  required/></td>
-		              </tr>
-		             
-                      <tr>
-			            <td ><h3>Descripcion de Ayuda </h3></td>
-			            <td ><input type="text" id="txtDescripcionAyuda" name="txtDescripcionAyuda" placeholder="Descripcion"  required/></td>
-		              </tr>
-		              
-			       
+			      
+			   
+			    <table>
+			    								
 			          <tr>
-			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Registrar Pregunta Desarrollo</button></td>
+                      		<td><label for="inputFile">Seleccione un archivo</label></td>
+							<td><input type="file" name="inputFile2" id="inputFile2" value="" Style="font-size: 14px" /> 	</td>							
+                     </tr>
+
+                     <td><h1></h1></td>
+                     <td><h1></h1></td>
+                     <td><h1></h1></td>
+                     
+                     <tr>   
+			            <td  ><button class="submit" type="submit" >Subir archivos positivos</button></td>
 		              </tr>
-		            </table>
-		          </div>
+            				
+					  
+            	 </table>
+			      </div>
 		        </div>
 		      </form>
 		  </div>

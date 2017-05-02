@@ -17,7 +17,7 @@ public class Visual {
 	{
 		File imagesP= new File(pRutaArchivoP);
 		File imagesN= new File(pRutaArhivoN);
-		ClassifierOptions options = new ClassifierOptions.Builder().classifierName(pClasificador).addClass(pClase, imagesP).negativeExamples(imagesN).build();
+		ClassifierOptions options = new ClassifierOptions.Builder().classifierName(pClasificador.toString()).addClass(pClase.toString(), imagesP).negativeExamples(imagesN).build();
 		VisualRecognition visual= new VisualRecognition("2016-05-20", "afa9d235d5cdca90e7a8fb2c9046cdc84c986d5c");
 		VisualClassifier serviceResponse = visual.createClassifier(options).execute();
 		System.out.println(serviceResponse);

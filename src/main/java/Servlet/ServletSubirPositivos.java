@@ -55,6 +55,8 @@ public class ServletSubirPositivos extends HttpServlet {
 		String ruta = null;
 		try {
 			ruta=  archivo.CargarArchivo(request, response);
+			System.out.println(ruta +"Hola");
+			request.setAttribute("rutaP", ruta);
 			//archivo.EscribirArchivoTXT(ruta);
 		} 
 		catch (Exception e) 
@@ -65,8 +67,9 @@ public class ServletSubirPositivos extends HttpServlet {
 		//String clase= request.getParameter("txtClass");
 //		Visual service= new Visual();
 	  // 	service.EntrenarProfesorCognitivo(ruta, clasificador, clase);
-		request.setAttribute("rutaP", ruta);
-	   	request.getRequestDispatcher("EntrenarProfesor.html").forward(request, response);
+		
+		
+	   	request.getRequestDispatcher("SubirNegativos.jsp").forward(request, response);
 		
 	}
 			

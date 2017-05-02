@@ -31,6 +31,7 @@ public abstract class pregunta {
 	}
 	
 	public abstract void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion);
+	public abstract void registrarPregunta(String CodP,String sub, String descp, String descpAy);
 	
 	public void VerificarTipoPregunta(String pTipoPregunta, String pDescripcion)
 	{

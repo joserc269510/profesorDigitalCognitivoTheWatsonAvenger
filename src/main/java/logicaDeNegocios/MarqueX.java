@@ -24,7 +24,7 @@ public class  MarqueX extends pregunta
 		setDescripcionTipoPreg(pDescripcion);
 		conexion = new BaseDeDatos();
 	}
-	
+	public MarqueX(){}
 	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
@@ -70,6 +70,20 @@ public class  MarqueX extends pregunta
 		descripcionTipoPreg = pDescripcionTipoPreg;
 	}
 	
+	public void registrarPregunta(String CodP,String sub, String descp, String descpAy)
+	{
+     
+		int codP= Integer.parseInt(CodP);
+		int Subt=Integer.parseInt(sub);
+		setCodigoPregunta(codP);
+		
+		
+		//setStatus(stt);
+		
+		BaseDeDatos conexion = new BaseDeDatos();
+		conexion.insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
+				+ " values (" + codP  + ","+ Subt  + "," + 1  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
+	}
 	
 	
 	
