@@ -1,9 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
+<<<<<<< Updated upstream
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+=======
 	<head>
 		<meta charset="utf-8">
-		<title>Actualizar Curso</title>
+		<title>Entrenar Profesor</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -71,7 +78,7 @@
 							<li><a href="<%=request.getContextPath()%>/ToMatricular"><span>Matricular Estudiante</span></a></li>
 						</ul>
 					</li>
-					<li class="current-menu-item"><a href="">Curso</a>
+					<li><a href="">Curso</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/RegistrarCurso.jsp"><span>Registrar Curso</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=ConsultarCurso"><span>Consultar Curso</span></a></li>
@@ -84,18 +91,18 @@
 			
 							<li><a href=""><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluación</span></a></li>
-                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluación</span></a></li>
-                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluación</span></a></li>
-                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluación</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar EvaluaciÃ³n</span></a></li>
+                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar EvaluaciÃ³n</span></a></li>
+                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado EvaluaciÃ³n</span></a></li>
+                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle EvaluaciÃ³n</span></a></li>
                                 </ul>
                             </li>
                             <li><a href=""><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluación</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluación</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluación</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluación</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de EvaluaciÃ³n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo EvaluaciÃ³n</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo EvaluaciÃ³n</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo EvaluaciÃ³n</span></a></li>
                                 </ul>
                             </li>
 							
@@ -141,7 +148,12 @@
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
+					<li><a href="">Entrenamiento</a>
+						<ul>
+						<li><a href="EntrenarProfesor.html"><span>Entrenar Profesor</span></a></li>
+						</ul>
+					</li>
+                    
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
@@ -152,71 +164,35 @@
 				
 				
 				
-				<div id="slider-block">
+			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
-		
 			<div id="main">
+			  <form name="entrenarProfesor" action="entrenando" method="post"  enctype="multipart/form-data"  align= "center">
 			    <div>
-			      <h2>Actualizar Curso</h2>
+			      <h1> Entrenar profesor Digital <font size="3"></h1>
 			      <div>
-			        <table>
-                    	<tr>
-                        <form action="cargarDatosCurso" method="post">
-			            <td ><h3>Codigo del Curso</h3></td>
-                        <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/-->
-                        <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso" %>
-			            <%
-			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
-			            		
-						%>
-                        <select id="selCodigo" name="selCodigo">
-                        <%  for(Curso c:cursos){ %>
-			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
-				        <% } %>
-                        </select></td>
-                        <td><button class="submit" type="submit" >Cargar Curso</button></td>
-                        </form>
-		              </tr>
-			         
-		        
-                      	<% try{
-                      		String curso = (String) request.getAttribute("Curso");
-                      		request.setAttribute("Curso", curso);
-                      		System.out.println("YAAAAAAA"+curso); %>
-                      	<form name="actualizarCurso" action="ActualizarCurso?x=<%=curso%>" method="post">
-                       <tr>
-                      	<% }catch(Exception e){
-                      		System.out.println(e);%>
-                      		<form name="actualizarCurso" action="ActualizarCurso" method="post">
-                            <tr>
-                      	<%}%>
-			            <td ><h3>Descripcion del Curso </h3></td>
-			            <%
-			            		String texto= (String) request.getAttribute("texto");
-						%>
-			            <td ><textarea id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion" required>
-			            <%= texto %>
-			            </textarea>
-			            </td>
-		              </tr>
-		              
-			       
+			   <table>
+				
+						
 			          <tr>
-			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Actualizar Curso</button></td>
-		              </tr>
-		           </form>
-		            </table>
-		          </div>
+                      		<td><label for="inputFile">Seleccione un archivo</label></td>
+							<td><input type="file" name="inputFile" id="inputFile" value="" Style="font-size: 14px" /> 	</td>
+							<td> <input type="submit" value="Subir Archivo"/> </td>
+                     </tr>
+            				
+					  
+            	 </table>
+			      </div>
 		        </div>
+		      </form>
 		  </div>
 		<div id="footer">
 		
 		</div>
       </div>
+>>>>>>> Stashed changes
 </body>
-	
 </html>

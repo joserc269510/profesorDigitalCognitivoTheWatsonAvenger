@@ -1,28 +1,23 @@
 package Servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Integracion.BaseDeDatos;
-import logicaDeNegocios.Curso;
-
 /**
- * Servlet implementation class ServletCargarDatsCurso
+ * Servlet implementation class ServletToSiguiente
  */
-@WebServlet("/ServletCargarDatsCurso")
-public class ServletCargarDatsCurso extends HttpServlet {
+@WebServlet("/ServletToSiguiente")
+public class ServletToSiguiente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletCargarDatsCurso() {
+    public ServletToSiguiente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,14 +34,15 @@ public class ServletCargarDatsCurso extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String codigoCurso = request.getParameter("selCodigo"); 	
-		BaseDeDatos curso = new BaseDeDatos();
-		String nombreCurso = curso.SelectPorCodigo(codigoCurso, "descripcioncurso", "Curso");
-		request.setAttribute("texto", nombreCurso);	
-		ArrayList<Curso> cursos = curso.selectCurso();
-		request.setAttribute("ListCursos", cursos);
-		request.setAttribute("Curso", codigoCurso);
-		request.getRequestDispatcher("ActualizarCurso.jsp").forward(request, response);
+		request.setAttribute("CodEval", request.getParameter("txtCodigo"));
+		request.setAttribute("Curso", request.getParameter("selCodigoCurso"));
+		request.setAttribute("Nombre", request.getParameter("txtNombre"));
+		request.setAttribute("CodTipEval", request.getParameter("selCodigoEval"));
+		request.setAttribute("Pts", request.getParameter("txtPts"));
+		request.setAttribute("Nota", request.getParameter("txtNota"));
+		request.setAttribute("Tiempo", request.getParameter("txtTiempo"));
+		request.setAttribute("Descripcion", request.getParameter("txtDescripcion"));
+		request.getRequestDispatcher("ConfigurarEvaluacion2.jsp");
 	}
 
 }

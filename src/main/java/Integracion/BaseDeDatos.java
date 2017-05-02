@@ -368,38 +368,10 @@ public class BaseDeDatos {
 	          return subtema;
 		  
 	  }
-	  public ArrayList<Subtema>selectSubTema(int pCodTema){
-		  ArrayList subtema = new ArrayList<Subtema>();
-	      try {
-	              Class.forName("org.postgresql.Driver");
-	          }
-	          catch (java.lang.ClassNotFoundException e) {
-	              System.out.println(e.getMessage() + "hola");
-	          }
-	          try {
-	            System.out.println("daskdjkasjdsakl");
-	              Connection db = DriverManager.getConnection(url, username, password);
-	              Statement st = db.createStatement();
-	              ResultSet rs = st.executeQuery("Select * from subtema where codtema="+ pCodTema );
-	              
-	              while (rs.next()) {
-	            	
-	                Subtema objetoSubtema = new Subtema(Integer.parseInt(rs.getString(1)),rs.getString(3));
-	                System.out.println(rs.getString(1));
-	                subtema.add(objetoSubtema);
-	              }
-	              rs.close();
-	              st.close();
-	              db.close();
-	          }catch (java.sql.SQLException e) {
-	              System.out.println(e.getMessage() + "adios");
-	          }
-	          return subtema;
-		  
-	  }
-  
-  
-  
+
+
+	  
+	  
   public void insertDelete(String query){
         try {
             Class.forName("org.postgresql.Driver");
@@ -421,6 +393,7 @@ public class BaseDeDatos {
         }
   }
   
+
   public ArrayList<String>SelectTipoPreguntaEspecifica(String tipoPregunta){
 	  ArrayList pregunta = new ArrayList<String>();
       try {
@@ -471,9 +444,11 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
               System.out.println(e.getMessage() + "adios");
           }
           return pregunta;
-  }
+  	}
+	
+	
 
-public ArrayList<String>SelectTipoPreguntaPorTema(String tipoPregunta, String tema){
+	public ArrayList<String>SelectTipoPreguntaPorTema(String tipoPregunta, String tema){
 	  ArrayList pregunta = new ArrayList<String>();
       try {
               Class.forName("org.postgresql.Driver");
@@ -498,6 +473,37 @@ public ArrayList<String>SelectTipoPreguntaPorTema(String tipoPregunta, String te
           }
           return pregunta;
   }
+	
+	public String SelectPorCodigo(String codigo, String nombreColumna, String nombreTabla){
+		//descripcioncurso   para curso
+		//descripcion para subtema
+		//descripciontema para tema
+		//tipoevaluacion para tipo evaluacion
+		//nombretipopreg para tipo pregunta
+		String curso = "";
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("select "+nombreColumna+" from "+nombreTabla+" where codigocurso = '"+codigo+"'");
+	              
+	              while (rs.next()) {	
+	            	  curso=rs.getString(1);
+	              }
+	              rs.close();
+	              st.close();
+	              db.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return curso;
+	  }
   
   
   
@@ -506,11 +512,15 @@ public ArrayList<String>SelectTipoPreguntaPorTema(String tipoPregunta, String te
   public void update(String query){
     
   }
-  
-    public static void main(String[] args) 
-    {
-      BaseDeDatos b= new BaseDeDatos();
 
+  public static void main(String[] args) {
+     BaseDeDatos b= new BaseDeDatos();
+     ArrayList hola = b.SelectTipoPreguntaPorSubtema("marqueconx", "repeticion de codigo" );
+     
+     for (int i=0; i<hola.size(); i++){
+    	 System.out.println(hola.get(i));
+     }
+     //System.out.println(b.SelectCursoEspecifico("TI5501","descripcioncurso","curso"));
 
       /*
       ArrayList curso = b.selectCurso();
@@ -525,14 +535,7 @@ public ArrayList<String>SelectTipoPreguntaPorTema(String tipoPregunta, String te
      //b.selectTema();
      // nuevo.registrarP("thawatsonavengers@gmail.com", "proyecto1");
       
-     ArrayList<Subtema> profes=b.selectSubTema();
-     
-     profes=b.selectSubTema(2);
-      for (int i=0; i<profes.size();i++){
-    	  //System.out.println(profes[i].getCodProfesor());
-    	  System.out.println(profes.get(i).getCodSubTema());
-          
-          System.out.println(profes.get(i).getDescripcion());
+
          // System.out.println(profes[i].getContrasena());
         }
      
@@ -579,4 +582,4 @@ public ArrayList<String>SelectTipoPreguntaPorTema(String tipoPregunta, String te
     }
     
 
-  }
+  

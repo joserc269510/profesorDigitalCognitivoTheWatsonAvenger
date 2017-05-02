@@ -158,21 +158,21 @@
 				
 			</div>
 			<div id="main">
-			  <form name="configurarEvaluacion" action="" method="">
 			    <div>
 			      <h2>Configurar Evaluacion</h2>
 			      <div>
 			        <table>
+			        <form name="configurarEvaluacion" action="ToSiguiente" method="post">
                     <tr>
 			            
 			            <td ><h3>Codigo de la Evaluacion</h3></td>
-			            <td ><input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/></td>
+			            <td ><input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Evaluacion"  required/></td>
                        
 		              </tr>
 			          <tr>
 			            <td ><h3>Codigo del Curso</h3></td>
 			            <td ><!--input type="text" id="txtCodigo1" name="txtCodigo" placeholder="Codigo Curso"  required/-->
-			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso, logicaDeNegocios.Tema, logicaDeNegocios.Subtema" %>
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso" %>
 			            <%
 			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
 			            		
@@ -218,63 +218,14 @@
 			            <td ><h3>Descripcion de la Evaluacion</h3></td>
 			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/></td>
 		              </tr>
-		              
-		              <form action="" method="">
-		              <tr>
-		                <td ><h3>Codigo del Tema</h3></td>
-		                <%
-			            		ArrayList<Tema> temas= (ArrayList<Tema>) request.getAttribute("ListTemas"); 
-			            		
-						%>
-			            <td ><select id="selTema" name="selTema">
-			            <%  for(Tema t:temas){ %>
-			                <option value="<%=t.getCodTema() %>"><%= t.getDescripcionTema()%></option>
-				        <% } %>
-			            </select></td>
-			            <td><input type="checkbox" name="chk1"></td>
-			         </tr>
-			         <tr>
-			         	<td ><h3>Codigo del Subtema</h3></td>
-			         	<%
-			            		ArrayList<Subtema> subtemas= (ArrayList<Subtema>) request.getAttribute("ListSubtemas"); 
-			            		
-						%>
-			            <td ><select id="selSubtema" name="selSubtema">
-			            <%  for(Subtema s:subtemas){ %>
-			                <option value="<%=s.getCodSubTema() %>"><%= s.getDescripcion()%></option>
-				        <% } %>
-			            </select></td>
-			            <td><input type="checkbox" name="chk2"></td>
-		              </tr>
-                      
-                      <tr>
-                     	 
-			            <td ><h3>Tipos de preguntas en la evaluacion</h3></td>
-			            <td ><!---input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/--->
-			            <%
-			            		ArrayList<String> tipoPregunta= (ArrayList<String>) request.getAttribute("ListTipoPreguntas"); 
-			            		
-						%>
-			            <select id="selTipoPre" name="selTipoPre">
-			            <%Integer j=1; %>
-			            <%for(String t:tipoPregunta){ %> 
-			                <option value="<%=j.toString()%>"><%= t %></option>
-			            <%j++; %>
-				        <% } %>
-			            </select></td>
-			             <td  ><button class="submit" type="submit" >Filtar tipos de pregunta</button></td>
-		              </tr>
-		               </form>
-		              
-			       
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Registrar Evaluacion</button></td>
+			            <td  ><button class="submit" type="submit" >Siguiente</button></td>
 		              </tr>
+		              </form>
 		            </table>
 		          </div>
 		        </div>
-		      </form>
 		  </div>
 		<div id="footer">
 		

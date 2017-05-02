@@ -10,7 +10,7 @@ public class Curso
 	String descripcionCurso;
 	ArrayList temas;
 	ArrayList evaluaciones;
-
+	BaseDeDatos conexion;
 
 	Estudiante estudiante;
 	
@@ -19,25 +19,43 @@ public class Curso
 		 evaluaciones = new ArrayList<Evaluacion>();
 		 setCodigo(codigo);
 		 setDescripcionCurso(descripcionCurso);
+		 conexion = new BaseDeDatos();
 	}
 	public Curso(){
-		
+		conexion = new BaseDeDatos();
+		temas = new ArrayList<Tema>();
+		evaluaciones = new ArrayList<Evaluacion>();
 	}
 	
 	public void MatricularEstudiante(String pCodigoC, String pEstudiante)
 	{
-		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into estudiantecurso values ("+ "'"+ pCodigoC + "'" + "," + "'" + pEstudiante +"'" + ")");
+		//BaseDeDatos conexion= new BaseDeDatos();
+		getConexion().insertDelete("insert into estudiantecurso values ("+ "'"+ pCodigoC + "'" + "," + "'" + pEstudiante +"'" + ")");
 	}
 	
 	public void RegistrarCurso(String pCodigo, String pDescripcion)
 	{
 		setCodigo(pCodigo);
 		setDescripcionCurso(pDescripcion);
-		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into curso values (" + "'"+ pCodigo + "'" + "," + "'" + pDescripcion +"'" + ")");
+		//BaseDeDatos conexion= new BaseDeDatos();
+		getConexion().insertDelete("insert into curso values (" + "'"+ pCodigo + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
+	public void eliminarCurso(String pCodigo){
+		setCodigo(pCodigo); 
+		//BaseDeDatos conexion= new BaseDeDatos();
+		getConexion().insertDelete("delete from curso where codigocurso = '" + pCodigo+"'");
+		
+	}
+	public void actualizarCurso(String pCodigo, String pDescripcion)
+	{
+		setCodigo(pCodigo);
+		setDescripcionCurso(pDescripcion);
+		//BaseDeDatos conexion= new BaseDeDatos();
+		getConexion().insertDelete("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
+		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
+	}
+
 	
 	public Estudiante getEstudiante() {
 		return estudiante;
@@ -87,6 +105,16 @@ public class Curso
 	{
 		this.descripcionCurso = descripcionCurso;
 	} 
-	
+
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
+	}
 	
 }
