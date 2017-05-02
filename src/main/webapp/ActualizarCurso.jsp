@@ -181,10 +181,26 @@
                         </form>
 		              </tr>
 			         
-		           <form name="actualizarCurso" action="" method="">
-                      <tr>
+		        
+                      	<% try{
+                      		String curso = (String) request.getAttribute("Curso");
+                      		request.setAttribute("Curso", curso);
+                      		System.out.println("YAAAAAAA"+curso); %>
+                      	<form name="actualizarCurso" action="ActualizarCurso?x=<%=curso%>" method="post">
+                       <tr>
+                      	<% }catch(Exception e){
+                      		System.out.println(e);%>
+                      		<form name="actualizarCurso" action="ActualizarCurso" method="post">
+                            <tr>
+                      	<%}%>
 			            <td ><h3>Descripcion del Curso </h3></td>
-			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion" required/></td>
+			            <%
+			            		String texto= (String) request.getAttribute("texto");
+						%>
+			            <td ><textarea id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion" required>
+			            <%= texto %>
+			            </textarea>
+			            </td>
 		              </tr>
 		              
 			       
@@ -192,10 +208,10 @@
 			            <td ></td>
 			            <td  ><button class="submit" type="submit" >Actualizar Curso</button></td>
 		              </tr>
+		           </form>
 		            </table>
 		          </div>
 		        </div>
-		      </form>
 		  </div>
 		<div id="footer">
 		

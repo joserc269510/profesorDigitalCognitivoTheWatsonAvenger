@@ -2,18 +2,26 @@ package logicaDeNegocios;
 
 import java.util.ArrayList;
 
+import Integracion.BaseDeDatos;
+
 public class Tema {
 	int codTema;
 	String descripcionTema;
 	ArrayList subtemas;
-	ArrayList cursos;
+	ArrayList cursos;//falta modificador
+	BaseDeDatos conexion;
 	
 	public Tema(int codTema, String descripcionTema){
 		subtemas = new ArrayList<Subtema>();
 		cursos = new ArrayList<Curso>();
 		setCodTema(codTema);
 		setDescripcionTema(descripcionTema);
+		conexion = new BaseDeDatos();
 	}
+	public Tema(){
+		conexion = new BaseDeDatos();
+	}
+	
 	
 	public void anadirCurso(Curso curso){
 		cursos.add(curso);
@@ -47,6 +55,15 @@ public class Tema {
 	public void setDescripcionTema(String descripcionTema) {
 		this.descripcionTema = descripcionTema;
 	}
-	
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
+	}	
 	
 }

@@ -3,6 +3,7 @@ package Servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +14,16 @@ import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 
 /**
- * Servlet implementation class ServletCargarDatsCurso
+ * Servlet implementation class servletEliminarCurso
  */
-@WebServlet("/ServletCargarDatsCurso")
-public class ServletCargarDatsCurso extends HttpServlet {
+@WebServlet("/servletEliminarCurso")
+public class ServletActualizarCurso extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletCargarDatsCurso() {
+    public ServletActualizarCurso() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,13 +40,15 @@ public class ServletCargarDatsCurso extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String codigoCurso = request.getParameter("selCodigo"); 	
-		BaseDeDatos curso = new BaseDeDatos();
-		String nombreCurso = curso.SelectPorCodigo(codigoCurso, "descripcioncurso", "Curso");
-		request.setAttribute("texto", nombreCurso);	
-		ArrayList<Curso> cursos = curso.selectCurso();
+		// TODO Auto-generated method stub
+		BaseDeDatos cursoBase = new BaseDeDatos();
+		String codigoCurso = request.getParameter("x");
+		String nombreActualizar = request.getParameter("txtDescripcion");
+		Curso curso = new Curso();
+		System.out.println(codigoCurso + "adskkkkkkkkkkk");
+		curso.actualizarCurso(codigoCurso, nombreActualizar);
+		ArrayList<Curso> cursos = cursoBase.selectCurso();
 		request.setAttribute("ListCursos", cursos);
-		request.setAttribute("Curso", codigoCurso);
 		request.getRequestDispatcher("ActualizarCurso.jsp").forward(request, response);
 	}
 

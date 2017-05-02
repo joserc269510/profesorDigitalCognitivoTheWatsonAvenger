@@ -158,7 +158,7 @@
 			</div>
 		
 			<div id="main">
-			  <form name="eliminarCurso" action="" method="">
+			  <form name="eliminarCurso" action="eliminarCurso" method="post">
 			    <div>
 			      <h2>Eliminar Curso</h2>
 			      <div>

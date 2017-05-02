@@ -1,11 +1,25 @@
 package logicaDeNegocios;
 
+import Integracion.BaseDeDatos;
+
 public class Respuesta {
 	int codRespuesta;
 	int codigoPregunta;
 	String descripcionRespuesta;
 	boolean status;
+	BaseDeDatos conexion;
 	
+	
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
+	}
 	public int getCodRespuesta() {
 		return codRespuesta;
 	}

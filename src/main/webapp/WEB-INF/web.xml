@@ -221,6 +221,7 @@
     <servlet-name>ServletCargarDatsCurso</servlet-name>
     <url-pattern>/cargarDatosCurso</url-pattern>
   </servlet-mapping>
+<<<<<<< Updated upstream
   <servlet>
     <description>CARG_PREGUNTAS</description>
     <display-name></display-name>
@@ -251,4 +252,18 @@
     <servlet-name>ServletSeleccionarSubTema</servlet-name>
     <url-pattern>/selectSubtema</url-pattern>
   </servlet-mapping>
+=======
+  
+    <servlet>
+    <description>ActualizarCurso</description>
+    <display-name></display-name>
+    <servlet-name>ServletActualizarCurso</servlet-name>
+    <servlet-class>Servlet.ServletActualizarCurso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActualizarCurso</servlet-name>
+    <url-pattern>/ActualizarCurso</url-pattern>
+  </servlet-mapping>
+  
+>>>>>>> Stashed changes
 </web-app>

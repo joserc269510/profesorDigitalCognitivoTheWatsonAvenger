@@ -2,19 +2,28 @@ package logicaDeNegocios;
 
 import java.util.ArrayList;
 
+import Integracion.BaseDeDatos;
+
 public class Subtema {
 	int codSubTema;
 	String descripcion;
 	ArrayList preguntas;
 	Tema tema;
+	BaseDeDatos conexion;
 	
+	
+	public Subtema(){
+		conexion = new BaseDeDatos();
+	}
 	public Subtema(int codsubtema, String descripcion){
 		preguntas = new ArrayList<Object>();//tener de las 3
 		setCodSubTema(codsubtema);
 		setDescripcion(descripcion);
+		conexion = new BaseDeDatos();
 	}
 	public void anadirTema(int codTema, String descripcionTema){
-		 tema = new Tema(codTema,  descripcionTema);		
+		 tema = new Tema(codTema,  descripcionTema);
+		 
 	}
 	
 	public void anadirPreguntasMarqueX(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
@@ -30,7 +39,16 @@ public class Subtema {
 		preguntas.add(pregunta);
 	}
 	
-	
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
+	}
 	public ArrayList getPreguntas() {
 		return preguntas;
 	}

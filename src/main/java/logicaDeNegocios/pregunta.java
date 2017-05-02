@@ -1,5 +1,6 @@
 package logicaDeNegocios;
 
+import Integracion.BaseDeDatos;
 
 public abstract class pregunta {
 
@@ -7,16 +8,18 @@ public abstract class pregunta {
 	protected String descripcionPregunta;
 	protected String descripcionAyuda;
 	private Subtema subtema; //bidireccional
-	
+	BaseDeDatos conexion;
+	FactoryTipoPregunta factory;
 	
 	public pregunta (int codigoPregunta, String descripcionPregunta, String descripcionAyduda){
 		setCodigoPregunta(codigoPregunta);
 		setDescripcionPregunta(descripcionPregunta);
 		setDescripcionAyuda(descripcionAyduda);
+		conexion = new BaseDeDatos();
 	}
 	public pregunta()
 	{
-		
+		conexion = new BaseDeDatos();
 	}
 	
 	public Subtema getSubtema() {
@@ -34,26 +37,36 @@ public abstract class pregunta {
 		String tipoPregunta;
 		
 		tipoPregunta= pTipoPregunta.toLowerCase(); 
+		tipoPregunta=tipoPregunta.replace(" ","");
 		
-		if (tipoPregunta.equals("marque con x "))
-		{
-			pregunta marqueX= new MarqueX(tipoPregunta, pDescripcion); 
-		    marqueX.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+		MetodoFactoryPregunta factory = new FactoryTipoPregunta();
+		pregunta pregunta = factory.crearPregunta(tipoPregunta, pDescripcion);
+	
+		if (tipoPregunta.equals("marqueconx "))
+		{	
+		    pregunta.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("espacio en Blanco"))
 		{
-			pregunta espacioBlanco= new EspacioBlanco(tipoPregunta,pDescripcion);
-			espacioBlanco.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+			
+			pregunta.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("desarrollo"))
 		{
-			
-		   pregunta desarrollo= new Desarrollo(tipoPregunta,pDescripcion);
-		  desarrollo.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
+			pregunta.RegistrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		 
 	}
-	
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
+	}
 	public int getCodigoPregunta() 
 	{
 		return codigoPregunta;
