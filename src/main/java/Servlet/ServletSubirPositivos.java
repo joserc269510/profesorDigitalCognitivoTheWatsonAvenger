@@ -26,19 +26,21 @@ import java.nio.file.Paths;
 import Integracion.Visual;
 import logicaDeNegocios.Archivo;
 
+
+
 import java.io.*;
 
 /**
  * Servlet implementation class ServletEntrenarProfesor
  */
 @WebServlet("/ServletEntrenarProfesor")
-public class ServletEntrenarProfesor extends HttpServlet {
+public class ServletSubirPositivos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletEntrenarProfesor() {
+    public ServletSubirPositivos() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,19 +52,21 @@ public class ServletEntrenarProfesor extends HttpServlet {
 	{	
 		
 		Archivo archivo= new Archivo();
+		String ruta = null;
 		try {
-			String ruta= archivo.CargarArchivo(request, response);
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			ruta=  archivo.CargarArchivo(request, response);
+			//archivo.EscribirArchivoTXT(ruta);
+		} 
+		catch (Exception e) 
+		{
 			e.printStackTrace();
 		}
-		
-	   request.getRequestDispatcher("EntrenarProfesor.html").forward(request, response);
-//	   RequestDispatcher dispatcher = request.getRequestDispatcher("/EntrenarProfesor.jsp");
-	//   dispatcher.forward(request, response);
-	 //  	Visual service= new Visual();
-	  // 	service.EntrenarProfesorCognitivo(ruta, pRutaArhivoN, clasificador, clase);
+		//String clasificador= request.getParameter("txtClasificador");
+		//String clase= request.getParameter("txtClass");
+//		Visual service= new Visual();
+	  // 	service.EntrenarProfesorCognitivo(ruta, clasificador, clase);
+		request.setAttribute("rutaP", ruta);
+	   	request.getRequestDispatcher("EntrenarProfesor.html").forward(request, response);
 		
 	}
 			

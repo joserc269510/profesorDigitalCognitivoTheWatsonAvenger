@@ -60,14 +60,14 @@
     <url-pattern>/registrarTipoPregunta</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description>EntrenarProfesor</description>
+    <description>CargarArchivos</description>
     <display-name></display-name>
-    <servlet-name>ServletEntrenarProfesor</servlet-name>
-    <servlet-class>Servlet.ServletEntrenarProfesor</servlet-class>
+    <servlet-name>ServletServletSubirPositivos</servlet-name>
+    <servlet-class>Servlet.ServletSubirPositivos</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletEntrenarProfesor</servlet-name>
-    <url-pattern>/entrenando</url-pattern>
+    <servlet-name>ServletSubirPositivos</servlet-name>
+    <url-pattern>/subiendo</url-pattern>
   </servlet-mapping>
   <servlet>
     <description>CREA_PDF</description>
