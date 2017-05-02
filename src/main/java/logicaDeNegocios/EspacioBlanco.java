@@ -7,8 +7,8 @@ public class EspacioBlanco extends pregunta
 	private String tipoPregunta;
 	private String descripcionTipoPreg;
 	private int codigoTipoPregunta;
-	BaseDeDatos conexion;
 	
+
 	public EspacioBlanco(int pCodigoPregunta,int pCodigoTipoPregunta, String pDescripcionPregunta, String pDescripcionAyduda, String pTipoPregunta, String pDescripcionTipoPreg){
 		super( pCodigoPregunta,  pDescripcionPregunta,  pDescripcionAyduda);
 		setTipoPregunta(pTipoPregunta);
@@ -16,14 +16,15 @@ public class EspacioBlanco extends pregunta
 		setCodigoTipoPregunta(pCodigoTipoPregunta);
 		conexion = new BaseDeDatos();
 	}
+
 	public EspacioBlanco( String pTipoPregunta, String pDescripcion) 
 	{
 		super();
 		setTipoPregunta(pTipoPregunta);
 		setDescripcion(pDescripcion);
-		conexion = new BaseDeDatos();
 		
 	}
+	
 	public EspacioBlanco(){
 		super();
 		conexion = new BaseDeDatos();
@@ -32,8 +33,8 @@ public class EspacioBlanco extends pregunta
 	public void registrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
-		
-		getConexion().insertDelete("insert into tipopregunta values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		BaseDeDatos conexion= new BaseDeDatos();
+		conexion.insertDelete("insert into tipopregunta values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
 	
@@ -89,14 +90,5 @@ public class EspacioBlanco extends pregunta
 		descripcionTipoPreg = pDescripcion;
 	}
 
-	public BaseDeDatos getConexion() {
-		if (conexion == null){
-			conexion = new BaseDeDatos();
-		}
-		return conexion;
-	}
-
-	public void setConexion(BaseDeDatos conexion) {
-		this.conexion = conexion;
-	}
+	
 }

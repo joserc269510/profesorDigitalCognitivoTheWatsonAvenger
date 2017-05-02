@@ -24,13 +24,15 @@ public class  MarqueX extends pregunta
 		setDescripcionTipoPreg(pDescripcion);
 		conexion = new BaseDeDatos();
 	}
+
 	public  MarqueX(){
 		super();
 		conexion = new BaseDeDatos();
 		
 	}
 	
-	public void registrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
+
+	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
 		setDescripcionTipoPreg(pDescripcion);
@@ -88,7 +90,7 @@ public class  MarqueX extends pregunta
 	{
 		descripcionTipoPreg = pDescripcionTipoPreg;
 	}
-	
+
 	
 	
 	

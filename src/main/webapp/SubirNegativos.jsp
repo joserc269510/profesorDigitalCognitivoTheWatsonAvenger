@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE  html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>PROYECTO XE</title>
+		<title>Entrenar Profesor</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -84,18 +83,18 @@
 			
 							<li><a href=""><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci髇</span></a></li>
-                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluaci髇</span></a></li>
-                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluaci髇</span></a></li>
-                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
+                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluaci贸n</span></a></li>
+                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluaci贸n</span></a></li>
+                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluaci贸n</span></a></li>
                                 </ul>
                             </li>
                             <li><a href=""><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci髇</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci髇</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci髇</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
                                 </ul>
                             </li>
 							
@@ -106,9 +105,9 @@
 						<ul>
 							<li><a href=""><span>Registrar Pregunta</span></a>
                             	<ul>
-                                    <li><a href="<%=request.getContextPath()%>/postRegistrar"><span>Marcar con X</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/postRegistrarPC"><span>Completar Espacio en Blanco</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/postRegistrarD"><span>Desarrollo</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaMarqueX.jsp"><span>Marcar con X</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaComplete.jsp"><span>Completar Espacio en Blanco</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaDesarrollo.jsp"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
                             <li><a href=""><span>Tipo de Pregunta</span></a>
@@ -135,7 +134,7 @@
 					</li>
                     <li><a href="">Subtema</a>
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarSubtema"><span>Registrar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToTema?x=RegistrarSubTema"><span>Registrar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ActualizarSubtema"><span>Actualizar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
@@ -143,55 +142,54 @@
 					</li>
 					<li><a href="">Entrenamiento</a>
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/SubirArchivos.jsp"><span>Subir Archivos Positivos</span></a></li>
+						<li><a href="SubirArchivos.html"><span>Subir Archivos Positivos</span></a></li>
+						<li><a href="EntrenarProfesor.html"><span>Entrenar</span></a></li>
 						</ul>
 					</li>
-					<li><a href="<%=request.getContextPath()%>/AsignandoProfesor" > Asignar Profesor Curso</a></li>
-					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
+                    
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
 				
-				
-				
-				
-				<div id="slider-block">
+						
+			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
 			<div id="main">
-			  <form name="PruebaSpeech" action="generarSpeech" method="post">
+			 <% String ruta = (String) request.getAttribute("rutaP"); 
+						System.out.println(ruta +"Hola2");%>
+			  <form name="entrenarProfesor" action="subiendoN?x=<%=ruta%>" method="post"  enctype="multipart/form-data"  align= "center">
 			    <div>
-			      <h2>Prueba SPEECH</h2>
+			      <h1> Entrenar profesor Digital <font size="3"></h1>
 			      <div>
-			        <table>
-			          <tr>
-			          <td ><h3>Pulse el boton para empezar a grabar</h3></td>
-                      </tr>
-                      <tr>
-                      	<%
-			            		String texto= (String) request.getAttribute("texto");
-						%>
-			            <td ><textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">
-			            <%= texto %>
-			            </textarea></td>
-                        <td  ><button class="submit" type="submit">Grabar</button></td>
+			    	<table>
+			    
+		              
+			         <tr>
+                      		<td><label for="inputFile">Seleccione un archivo</label></td>
+							<td><input type="file" name="inputFile2" id="inputFile2" value="" Style="font-size: 14px" /> 	</td>							
+                     </tr>
+
+                     <td><h1></h1></td>
+                     <td><h1></h1></td>
+                     <td><h1></h1></td>
+                     
+                     <tr>   
+			            <td  ><button class="submit" type="submit" >Entrenar</button></td>
 		              </tr>
-		            </table>
-		          </div>
+            				
+					  
+            	 </table>
+			      </div>
 		        </div>
 		      </form>
 		  </div>
-			<div id="footer">
-				
-				
-			</div>
-			
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>

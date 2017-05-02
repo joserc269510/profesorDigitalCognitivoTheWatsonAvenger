@@ -8,7 +8,7 @@ public class Tema {
 	int codTema;
 	String descripcionTema;
 	ArrayList subtemas;
-	ArrayList cursos;//falta modificador
+	ArrayList cursos;
 	BaseDeDatos conexion;
 	
 	public Tema(int pCodTema, String pDescripcionTema){
@@ -18,11 +18,14 @@ public class Tema {
 		setDescripcionTema(pDescripcionTema);
 		conexion = new BaseDeDatos();
 	}
+	
 	public Tema(){
 		conexion = new BaseDeDatos();
+		setCodTema(codTema);
+		setDescripcionTema(descripcionTema);
+
 	}
-	
-	
+
 	public void anadirCurso(Curso pCurso){
 		cursos.add(pCurso);
 	}
@@ -36,7 +39,16 @@ public class Tema {
 	{
 	 	getConexion().insertDelete("insert into tema(codigocurso,descripciontema) values (" + "'"+ pCodigoCurso + "'" + "," + "'" + pDescripcion +"'" + ")");
 	}
-	
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
+	}
 	public int getCodTema() {
 		return codTema;
 	}
@@ -60,15 +72,6 @@ public class Tema {
 	public void setDescripcionTema(String descripcionTema) {
 		this.descripcionTema = descripcionTema;
 	}
-	public BaseDeDatos getConexion() {
-		if (conexion == null){
-			conexion = new BaseDeDatos();
-		}
-		return conexion;
-	}
-
-	public void setConexion(BaseDeDatos conexion) {
-		this.conexion = conexion;
-	}	
+	
 	
 }

@@ -69,7 +69,6 @@
     <servlet-name>ServletSubirPositivos</servlet-name>
     <url-pattern>/subiendo</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <description>CargarNegativos</description>
     <display-name></display-name>
@@ -80,8 +79,7 @@
     <servlet-name>ServletSubirNegativos</servlet-name>
     <url-pattern>/subiendoN</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <description>EntrenamientoProfesor</description>
     <display-name></display-name>
     <servlet-name>ServletEntrenar</servlet-name>
@@ -221,7 +219,6 @@
     <servlet-name>ServletCargarDatsCurso</servlet-name>
     <url-pattern>/cargarDatosCurso</url-pattern>
   </servlet-mapping>
-<<<<<<< Updated upstream
   <servlet>
     <description>CARG_PREGUNTAS</description>
     <display-name></display-name>
@@ -252,9 +249,7 @@
     <servlet-name>ServletSeleccionarSubTema</servlet-name>
     <url-pattern>/selectSubtema</url-pattern>
   </servlet-mapping>
-=======
-  
-    <servlet>
+  <servlet>
     <description>ActualizarCurso</description>
     <display-name></display-name>
     <servlet-name>ServletActualizarCurso</servlet-name>
@@ -264,6 +259,67 @@
     <servlet-name>ServletActualizarCurso</servlet-name>
     <url-pattern>/ActualizarCurso</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>CONFIGURAR_EVALUACION</description>
+    <display-name></display-name>
+    <servlet-name>ServletConfEvaluacion</servlet-name>
+    <servlet-class>Servlet.ServletConfEvaluacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletConfEvaluacion</servlet-name>
+    <url-pattern>/ConfEvaluacion</url-pattern>
+  </servlet-mapping>
   
->>>>>>> Stashed changes
+  <servlet>
+    <description>SeleccionarCurso_D</description>
+    <display-name></display-name>
+    <servlet-name>ServletSeleccionarCurso_D</servlet-name>
+    <servlet-class>Servlet.ServletSeleccionarCurso_D</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSeleccionarCurso_D</servlet-name>
+    <url-pattern>/selectCursoD</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <description>registrarPreguntaDesarrollo</description>
+    <display-name></display-name>
+    <servlet-name>ServletRegistrarPreguntaD</servlet-name>
+    <servlet-class>Servlet.ServletRegistrarPreguntaD</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarPreguntaD</servlet-name>
+    <url-pattern>/postRegistrarD</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description>RegistarTema</description>
+    <display-name></display-name>
+    <servlet-name>ServletRegistrarTema</servlet-name>
+    <servlet-class>Servlet.ServletRegistrarTema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarTema</servlet-name>
+    <url-pattern>/RegistrarTema</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CARGARCURSO</description>
+    <display-name></display-name>
+    <servlet-name>ServletCargarCurso</servlet-name>
+    <servlet-class>Servlet.ServletCargarCurso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCargarCurso</servlet-name>
+    <url-pattern>/CargarCurso</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>RegistrarSubtema</description>
+    <display-name></display-name>
+    <servlet-name>ServletRegistrarSubtema</servlet-name>
+    <servlet-class>Servlet.ServletRegistrarSubtema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarSubtema</servlet-name>
+    <url-pattern>/RegistrarSubtema</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,6 +1,8 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,9 +34,20 @@ public class ServletRegistrarTipoEvaluacion extends HttpServlet {
 		String tipoEvaluacion = request.getParameter("txtTipo");
 		String descripcionEvaluacion = request.getParameter("txtDescripcion");
 		
-	     Evaluacion evaluacion = new Evaluacion() {
+	    Evaluacion evaluacion = new Evaluacion() {
 		
-		public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {}};
+		public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {}
+
+		
+
+		public void registrarPregunta(String pCodPregunta, String pCodEvaluacion, String pPuntaje) {}
+
+
+		@Override
+		public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,
+				String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion,
+				int pTiempominutos) {}
+		};
 	    evaluacion.VerificarTipoEvaluacion(tipoEvaluacion,descripcionEvaluacion );		
 	}
 

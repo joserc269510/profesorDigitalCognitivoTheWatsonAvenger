@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
-import logicaDeNegocios.Subtema;
-import logicaDeNegocios.Tema;
+import logicaDeNegocios.*;
 
 /**
- * Servlet implementation class ServletToTema
+ * Servlet implementation class ServletSeleccionarCurso
  */
-@WebServlet("/ServletToTema")
-public class ServletToTema extends HttpServlet {
+@WebServlet("/ServletSeleccionarCurso")
+public class ServletSeleccionarCurso_C extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletToTema() {
+    public ServletSeleccionarCurso_C() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,29 +30,28 @@ public class ServletToTema extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BaseDeDatos bd= new BaseDeDatos();
-		ArrayList<Tema> temas = bd.selectTema();
-		request.setAttribute("ListTemas", temas);
-		String par=request.getParameter("x");
-		System.out.println(par);
-		if(par.equals("ConsultarTema")){
-			request.getRequestDispatcher("ConsultarTema.jsp").forward(request, response);
-		}
-		if(par.equals("ActualizarTema")){
-			request.getRequestDispatcher("ActualizarTema.jsp").forward(request, response);
-		}
-		if(par.equals("EliminarTema")){
-			request.getRequestDispatcher("EliminarTema.jsp").forward(request, response);
-		}
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String curso= request.getParameter("selCodigo");
+		//System.out.println("vuelta a cargar");
+		//System.out.println(curso);
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<Curso> cursos = bd.selectCurso();
+		request.setAttribute("ListCursos", cursos);
+		ArrayList<Tema> temas = bd.selectTema(curso);
+		request.setAttribute("Curso", curso);
+		request.setAttribute("ListTemas", temas);
+		request.getRequestDispatcher("RegistrarPreguntaComplete.jsp").forward(request, response);
+		
+		
 	}
 
 }

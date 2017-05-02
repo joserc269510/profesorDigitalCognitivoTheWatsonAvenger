@@ -30,9 +30,10 @@ public abstract class pregunta {
 		subtema = new Subtema( pCodSubtema, pDescripcion);
 	}
 	
-	public abstract void registrarPregunta(String CodP,String sub, String descp, String descpAy); //no esta en diseno
+
 	public abstract void registrarTipoPregunta(String pTipoEvaluacion, String pDescripcion);
-	
+	public abstract void registrarPregunta(String CodP,String sub, String descp, String descpAy);
+
 	public void verificarTipoPregunta(String pTipoPregunta, String pDescripcion)
 	{
 		String tipoPregunta;
@@ -41,20 +42,20 @@ public abstract class pregunta {
 		tipoPregunta=tipoPregunta.replace(" ","");
 		
 		MetodoFactoryPregunta factory = new FactoryTipoPregunta();
-		pregunta pregunta = factory.crearPregunta(tipoPregunta, pDescripcion);
+		pregunta pregunta = factory.crearPregunta(pTipoPregunta, pDescripcion);
 	
 		if (tipoPregunta.equals("marqueconx"))
 		{	
-		    pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
+		    pregunta.registrarTipoPregunta(pTipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("espacioenblanco"))
 		{
 			
-			pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
+			pregunta.registrarTipoPregunta(pTipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("desarrollo"))
 		{
-			pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
+			pregunta.registrarTipoPregunta(pTipoPregunta, pDescripcion);
 		}
 		 
 	}

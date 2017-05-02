@@ -1,6 +1,7 @@
 package logicaDeNegocios;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import Integracion.BaseDeDatos;
 /*
@@ -50,8 +51,11 @@ public abstract class Evaluacion {
 		this.curso = pCurso;
 	}
 	
-	
+
+	public abstract void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos);
 	public abstract void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
+	public abstract void registrarPregunta(String pCodPregunta, String pCodEvaluacion, String pPuntaje);
+
 	
 	public void verificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion){
 		String tipoEvaluacion;
@@ -65,11 +69,11 @@ public abstract class Evaluacion {
 		
 		if (tipoEvaluacion.equals("sumativa"))
 		{
-			evaluacion.registrarTipoEvaluacion(tipoEvaluacion, pDescripcion);
+			evaluacion.registrarTipoEvaluacion(pTipoEvaluacion, pDescripcion);
 		}
 		if (tipoEvaluacion.equals("formativa"))
 		{
-			evaluacion.registrarTipoEvaluacion(tipoEvaluacion, pDescripcion);
+			evaluacion.registrarTipoEvaluacion(pTipoEvaluacion, pDescripcion);
 		}
 	}
 

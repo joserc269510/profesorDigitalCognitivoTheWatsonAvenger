@@ -49,6 +49,9 @@ public class ServletToCurso extends HttpServlet {
 		if(par.equals("RegistrarTema")){
 			request.getRequestDispatcher("RegistrarTema.jsp").forward(request, response);
 		}
+		if(par.equals("RegistrarSubtema")){
+			request.getRequestDispatcher("RegistrarSubtema.jsp").forward(request, response);
+		}
 	}
 
 	/**

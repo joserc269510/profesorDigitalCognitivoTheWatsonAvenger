@@ -158,22 +158,27 @@
 				
 			</div>
 			<div id="main">
-			  <form name="registroTema" action="" method="">
+			  <form name="registroTema" action="RegistrarTema" method="post">
 			    <div>
 			      <h2>Registrar Tema</h2>
 			      <div>
 			        <table>
                     	<table>
 			        
-			          <tr>
-			            <td ><h3>Codigo del Tema</h3></td>
-			            <td ><input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Tema"  required/></td>
-		              </tr>
                       
                      <tr>
 			            <td ><h3>Codigo del Curso</h3></td>
 			            <td ><!--input type="text" id="txtCodigo1" name="txtCodigo" placeholder="Codigo Curso"  required/-->
-			            <select id="selCodigoCurso" name="selCodigoCurso"></select></td>
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Curso" %>
+			            <%
+			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
+			            		
+						%>
+			            <select id="selCodigoCurso" name="selCodigoCurso">
+			            <%  for(Curso c:cursos){ %>
+			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
+				        <% } %>
+			            </select></td>
 		              </tr>
                       
 		              <tr>

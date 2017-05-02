@@ -1,5 +1,7 @@
 package logicaDeNegocios;
 
+import java.util.Date;
+
 import Integracion.BaseDeDatos;
 
 public class Sumativa extends Evaluacion 
@@ -53,5 +55,11 @@ public class Sumativa extends Evaluacion
 		setTipoEvaluacion(pTipoEvaluacion);
 		getConexion().insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");	
 	}
-
+	public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos){
+		getConexion().insertDelete("insert into evaluacion (codevaluacion, codigocurso, codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal, fechaevaluacion, tiempominutos,status) values ("+pCodigoEvaluacion+","+pCodigoCurso+","+ pCodTipoEvaluacion+","+ pNombreEvaluacion+","+  pPuntajetotal+","+  pPorcentajenotafinal+","+  pFechaevaluacion+","+  pTiempominutos +","+ "B'0'"+ ")" );
+	}
+	
+	public void registrarPregunta(String pCodPregunta, String pCodEvaluacion, String pPuntaje){
+		getConexion().insertDelete("insert into evaluacionpregunta (codigopregunta, codevaluacion, puntajeasignado) values ("+pCodPregunta+","+pCodEvaluacion+","+Integer.parseInt(pPuntaje)+")");
+	}
 }

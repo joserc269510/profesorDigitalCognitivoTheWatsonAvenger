@@ -37,14 +37,6 @@ public class ServletPDF extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//get the output stream for writing binary data in the response.
 		  ServletOutputStream os = response.getOutputStream();
 		  //set the response content type to PDF
@@ -62,16 +54,16 @@ public class ServletPDF extends HttpServlet {
 		   PdfWriter.getInstance(doc, os); 
 
 		   //document header properties
-		   doc.addAuthor("Jhonson");
+		   doc.addAuthor("Esteban Morales");
 		   doc.addCreationDate();
 		   doc.addProducer();
-		   doc.addCreator("Jhonson");
+		   doc.addCreator("Esteban");
 		   doc.addTitle("DemoPDF");
 		   doc.setPageSize(PageSize.LETTER);
 		   doc.open();
 
 		   //add a new paragraph
-		   doc.add( new Paragraph("Aqu� va el texto...", bfBold18));
+		   doc.add( new Paragraph("Aquí va el texto...", bfBold18));
 		   doc.close(); 
 
 		  }catch(DocumentException e){
@@ -80,6 +72,13 @@ public class ServletPDF extends HttpServlet {
 		  catch(Exception e){
 		   e.printStackTrace();
 		  }
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 
 	}
 
 }
