@@ -21,6 +21,11 @@ public class EspacioBlanco extends pregunta
 		setDescripcion(pDescripcion);
 		
 	}
+	public EspacioBlanco() 
+	{
+		
+		
+	}
 
 	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
@@ -65,6 +70,20 @@ public class EspacioBlanco extends pregunta
 	public void setDescripcion(String pDescripcion) 
 	{
 		descripcionTipoPreg = pDescripcion;
+	}
+	public void registrarPregunta(String CodP,String sub, String descp, String descpAy)
+	{
+     
+		int codP= Integer.parseInt(CodP);
+		int Subt=Integer.parseInt(sub);
+		setCodigoPregunta(codP);
+		
+		
+		//setStatus(stt);
+		
+		BaseDeDatos conexion = new BaseDeDatos();
+		conexion.insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
+				+ " values (" + codP  + ","+ Subt  + "," + 3  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
 	}
 	
 }
