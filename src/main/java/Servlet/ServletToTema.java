@@ -46,8 +46,8 @@ public class ServletToTema extends HttpServlet {
 		if(par.equals("EliminarTema")){
 			request.getRequestDispatcher("EliminarTema.jsp").forward(request, response);
 		}
-		if(par.equals("RegistrarSubTema")){
-			request.getRequestDispatcher("RegistrarSubtema.jsp").forward(request, response);
+		if(par.equals("RegistrarTema")){
+			request.getRequestDispatcher("RegistrarTema.jsp").forward(request, response);
 		}
 	}
 

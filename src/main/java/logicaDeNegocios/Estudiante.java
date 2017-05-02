@@ -15,10 +15,12 @@ public class Estudiante {
 	private String email;	
 	ArrayList evaluaciones;
 	ArrayList cursos;
+	BaseDeDatos conexion;
 	
 	public Estudiante(){
 		evaluaciones = new ArrayList<Evaluacion>();
 		cursos = new ArrayList<Curso>();
+		conexion = new BaseDeDatos();
 	}
 	
 	public Estudiante(String numeroIdentificacion, String numeroCarnet,Date fechaNacimiento,String apellido1,String apellido2, String nombre, String email){
@@ -31,6 +33,7 @@ public class Estudiante {
 		setEmail(email);
 		evaluaciones = new ArrayList<Evaluacion>();
 		cursos = new ArrayList<Curso>();
+		conexion = new BaseDeDatos();
 	}
 	
 	public void anadirCurso(Curso curso){
@@ -55,15 +58,13 @@ public class Estudiante {
 		setFechaNacimiento(fechaNacimiento);
 		setEmail(pEmail);
 		
-		BaseDeDatos conexion = new BaseDeDatos();
-        conexion.insertDelete("insert into estudiante values (" + pNumeroIdentificacion  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ fechaNacimiento +  "'"+ "," + "'" + pEmail +"'" + ")" ) ;
+		
+        getConexion().insertDelete("insert into estudiante values (" + pNumeroIdentificacion  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ fechaNacimiento +  "'"+ "," + "'" + pEmail +"'" + ")" ) ;
 	}
 	
 	public ArrayList<Estudiante> cargarEstudiante(){
 		ArrayList<Estudiante> estudiantes=new ArrayList<Estudiante>();
-		
-		  BaseDeDatos base= new BaseDeDatos();
-		  ArrayList<Estudiante> estudiante = base.selectEstudiante();
+		ArrayList<Estudiante> estudiante = getConexion().selectEstudiante();
 		  
 		  Estudiante nombreEstudiante;
 	      
@@ -171,4 +172,16 @@ public class Estudiante {
 	{
 		this.email = pEmail;
 	}
+
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
+	}
+	
 }

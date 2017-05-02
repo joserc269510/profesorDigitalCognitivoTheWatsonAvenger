@@ -141,7 +141,13 @@
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-					<li><a href="<%=request.getContextPath()%>/ServletEntrenarProfesor"><span>Entrenar Profesor</span></a></li>
+					<li><a href="">Entrenamiento</a>
+						<ul>
+						<li><a href="<%=request.getContextPath()%>/SubirArchivos.jsp">Subir Archivos positivos</a></li>
+						<li><a href="EntrenarProfesor.html"><span>Entrenar</span></a></li>
+					
+						</ul>
+					</li>
 					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>

@@ -7,15 +7,18 @@ public class Formativa extends Evaluacion
 	protected int codTipoEvaluacion;
 	protected String tipoEvaluacion;
 	protected String descripcionTipoEval;
+	BaseDeDatos conexion;
 	
 	public Formativa(int codEvaluacion, String nombreEvaluacion,int puntajeTotal,int porcentajeNotaFinal,String fechaEvaluacion,int tiempoMinutos,boolean status,int codTipoEvaluacion,String tipoEvaluacion,String descripcionTipoEval){
 		super( codEvaluacion,  nombreEvaluacion, puntajeTotal, porcentajeNotaFinal, fechaEvaluacion, tiempoMinutos, status);
 		setCodTipoEvaluacion(codTipoEvaluacion);
 		setTipoEvaluacion(tipoEvaluacion);
 		setDescripcionTipoEval(descripcionTipoEval);
+		conexion = new BaseDeDatos();
 	}
 	public Formativa(){
 		super();
+		conexion = new BaseDeDatos();
 	}
 	
 	
@@ -23,9 +26,19 @@ public class Formativa extends Evaluacion
 	{
 		setTipoEvaluacion(pTipoEvaluacion);
 		setDescripcionTipoEval(pDescripcion);
-		BaseDeDatos conexion=  new BaseDeDatos();
-		conexion.insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
+		getConexion().insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
+	}
+	
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
 	}
 	
 	public int getCodTipoEvaluacion() 

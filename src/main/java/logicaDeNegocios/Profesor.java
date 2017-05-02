@@ -10,23 +10,35 @@ public class Profesor {
 	private String codProfesor=null;
 	private String correo=null;
 	private String contrasena=null;
-	
+	BaseDeDatos conexion;
 
 	public Profesor(){	
+		conexion = new BaseDeDatos();
 	}
+	public Profesor(String codProfesor,String correo,String contrasena){
+		setCodProfesor(codProfesor);
+		setCorreo(correo);
+		setContrasena(contrasena);
+		conexion = new BaseDeDatos();
+	}
+	
 	
 	public void registrarP(String pContrasena, String pCorreo)
 	{
-     
-	
 		setCorreo(pCorreo);
 		setContrasena(pContrasena);
-		
-		
-		BaseDeDatos conexion = new BaseDeDatos();
-        conexion.insertDelete("insert into profesor values (" +1 +  "'"  + pContrasena + "'" +"," + "'" + pCorreo + "'" + ")" ) ;
+        getConexion().insertDelete("insert into profesor values (" +1 +  "'"  + pContrasena + "'" +"," + "'" + pCorreo + "'" + ")" ) ;
 	}
-	
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
+	}
 	public String getCodProfesor() {
 		return codProfesor;
 	}
@@ -57,11 +69,9 @@ public class Profesor {
 		this.contrasena = contrasena;
 	}
 
-
-
 	public boolean validarUsuario(String pCorreo, String pContrasena){
-		BaseDeDatos conexion = new BaseDeDatos();
-        Profesor lista []=new Profesor[conexion.getNumeroRegistros("profesor", "codprofesor")];
+		
+        Profesor lista []=new Profesor [getConexion().getNumeroRegistros("profesor", "codprofesor")];
         lista=conexion.selectProfesor();
         
         for (int i=0;i<lista.length;i++){

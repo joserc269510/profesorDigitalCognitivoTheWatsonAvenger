@@ -16,12 +16,14 @@ public abstract class Evaluacion
 	Curso curso;
 	ArrayList estudiantes;
 	ArrayList preguntas;
+	BaseDeDatos conexion;
 
 	
 	public Evaluacion(int codEvaluacion, String nombreEvaluacion,int puntajeTotal,int porcentajeNotaFinal,String fechaEvaluacion,int tiempoMinutos,boolean status){
 		estudiantes = new ArrayList<Estudiante>();
 		preguntas = new ArrayList<pregunta>();
 		curso = new Curso();
+		conexion = new BaseDeDatos();
 		setCodEvaluacion(codEvaluacion);
 		setNombreEvaluacion(nombreEvaluacion);
 		setPuntajeTotal(puntajeTotal);
@@ -29,9 +31,13 @@ public abstract class Evaluacion
 		setFechaEvaluacion(fechaEvaluacion);
 		setTiempoMinutos(tiempoMinutos);
 		setStatus(status);
+		
 	}
 	public Evaluacion(){
-		
+		estudiantes = new ArrayList<Estudiante>();
+		preguntas = new ArrayList<pregunta>();
+		curso = new Curso();
+		conexion = new BaseDeDatos();
 	}
 	public void asociarEstudiante(Estudiante estudiante){
 		estudiantes.add(estudiante);
@@ -62,7 +68,17 @@ public abstract class Evaluacion
 			tipoEvaluacionF.RegistrarTipoEvaluacion(tipoEvaluacion, pDescripcion);
 		}
 	}
-	
+
+	public BaseDeDatos getConexion() {
+		if (conexion == null){
+			conexion = new BaseDeDatos();
+		}
+		return conexion;
+	}
+
+	public void setConexion(BaseDeDatos conexion) {
+		this.conexion = conexion;
+	}
 	public int getCodEvaluacion() 
 	{
 		return codEvaluacion;

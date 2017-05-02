@@ -60,13 +60,35 @@
     <url-pattern>/registrarTipoPregunta</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description>EntrenarProfesor</description>
+    <description>CargarArchivos</description>
     <display-name></display-name>
-    <servlet-name>ServletEntrenarProfesor</servlet-name>
-    <servlet-class>Servlet.ServletEntrenarProfesor</servlet-class>
+    <servlet-name>ServletSubirPositivos</servlet-name>
+    <servlet-class>Servlet.ServletSubirPositivos</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletEntrenarProfesor</servlet-name>
+    <servlet-name>ServletSubirPositivos</servlet-name>
+    <url-pattern>/subiendo</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <description>CargarNegativos</description>
+    <display-name></display-name>
+    <servlet-name>ServletSubirNegativos</servlet-name>
+    <servlet-class>Servlet.ServletSubirNegativos</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSubirNegativos</servlet-name>
+    <url-pattern>/subiendoN</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <description>EntrenamientoProfesor</description>
+    <display-name></display-name>
+    <servlet-name>ServletEntrenar</servlet-name>
+    <servlet-class>Servlet.ServletEntrenar</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEntrenar</servlet-name>
     <url-pattern>/entrenando</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -199,4 +221,49 @@
     <servlet-name>ServletCargarDatsCurso</servlet-name>
     <url-pattern>/cargarDatosCurso</url-pattern>
   </servlet-mapping>
+<<<<<<< Updated upstream
+  <servlet>
+    <description>CARG_PREGUNTAS</description>
+    <display-name></display-name>
+    <servlet-name>ServletCargarPreguntas</servlet-name>
+    <servlet-class>Servlet.ServletCargarPreguntas</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCargarPreguntas</servlet-name>
+    <url-pattern>/cargarPreguntas</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>SIGUIENTE</description>
+    <display-name></display-name>
+    <servlet-name>ServletToSiguiente</servlet-name>
+    <servlet-class>Servlet.ServletToSiguiente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletToSiguiente</servlet-name>
+    <url-pattern>/ToSiguiente</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>SeleccionarSubTema</description>
+    <display-name></display-name>
+    <servlet-name>SrevletSeleccionarSubTema</servlet-name>
+    <servlet-class>Servlet.ServletSeleccionarSubTema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSeleccionarSubTema</servlet-name>
+    <url-pattern>/selectSubtema</url-pattern>
+  </servlet-mapping>
+=======
+  
+    <servlet>
+    <description>ActualizarCurso</description>
+    <display-name></display-name>
+    <servlet-name>ServletActualizarCurso</servlet-name>
+    <servlet-class>Servlet.ServletActualizarCurso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActualizarCurso</servlet-name>
+    <url-pattern>/ActualizarCurso</url-pattern>
+  </servlet-mapping>
+  
+>>>>>>> Stashed changes
 </web-app>

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE  html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Shinra</title>
+		<title>Entrenar Profesor</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -68,116 +68,127 @@
 					
                     <li><a href="">Estudiante</a>
 						<ul>
-							<li><a href="RegistrarEstudiante.html"><span>Registrar Estudiante</span></a></li>
-							<li><a href="MatricularEstudiante.html"><span>Matricular Estudiante</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/RegistrarEstudiante.jsp"><span>Registrar Estudiante</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToMatricular"><span>Matricular Estudiante</span></a></li>
 						</ul>
 					</li>
 					<li><a href="">Curso</a>
 						<ul>
-							<li><a href="RegistrarCurso.html"><span>Registrar Curso</span></a></li>
-							<li><a href="ConsultarCurso.html"><span>Consultar Curso</span></a></li>
-							<li><a href="ActualizarCurso.html"><span>Actualizar Curso</span></a></li>
-							<li><a href="EliminarCurso.html"><span>Eliminar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/RegistrarCurso.jsp"><span>Registrar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=ConsultarCurso"><span>Consultar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=ActualizarCurso"><span>Actualizar Curso</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=EliminarCurso"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="">Evaluaci髇</a>
+                    <li><a href="">Evaluacion</a>
 						<ul>
-							<li><a href="RegistrarTipoEvaluacion.html"><span>Registrar Tipo de Evaluaci髇</span></a></li>
-                            <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluaci髇</span></a></li>
-                            <li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluaci髇</span></a></li>
-                            <li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluaci髇</span></a></li>
-                            <li><a href="ConfigurarEvaluacion.html"><span>Configurar Evaluacion</span></a></li>
-							<li><a href="ConsultarEvaluacion.html"><span>Consultar Evaluaci髇</span></a></li>
-							<li><a href="ActualizarEvaluacion.html"><span>Actualizar Evaluaci髇</span></a></li>
-							<li><a href="EliminarEvaluacion.html"><span>Eliminar Evaluaci髇</span></a></li>
-						</ul>
-					</li>
-                    <li><a href="">Pregunta</a>
-						<ul>
-						<li><a href="RegistrarTipoPregunta.html"><span>Registrar Tipo Pregunta</span></a></li>
-							<li><a href=""><span>Registrar Pregunta</span></a>
+			
+							<li><a href=""><span>Evaluacion</span></a>
                             	<ul>
-                                    <li><a href="RegistrarPreguntaMarqueX.html"><span>Marcar con X</span></a></li>
-                                    <li><a href="RegistrarPreguntaComplete.html"><span>Completar Espacio en Blanco</span></a></li>
-                                    <li><a href="RegistrarPreguntaDesarrollo.html"><span>Desarrollo</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
+                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluaci贸n</span></a></li>
+                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluaci贸n</span></a></li>
+                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluaci贸n</span></a></li>
                                 </ul>
                             </li>
-							<li><a href="ConsultarPregunta.html"><span>Consultar Pregunta</span></a></li>
-							<li><a href="ActualizarPregunta.html"><span>Actualizar Pregunta</span></a></li>
-							<li><a href="EliminarPregunta.html"><span>Eliminar Pregunta</span></a></li>
+                            <li><a href=""><span>Tipo de Evaluacion</span></a>
+                            	<ul>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
+                                </ul>
+                            </li>
+							
 						</ul>
 					</li>
+					
+					<li><a href="">Pregunta</a>
+						<ul>
+							<li><a href=""><span>Registrar Pregunta</span></a>
+                            	<ul>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaMarqueX.jsp"><span>Marcar con X</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaComplete.jsp"><span>Completar Espacio en Blanco</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaDesarrollo.jsp"><span>Desarrollo</span></a></li>
+                                </ul>
+                            </li>
+                            <li><a href=""><span>Tipo de Pregunta</span></a>
+                            	<ul>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoPregunta.jsp"><span>Registrar Tipo Pregunta</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsultarTipoPregunta"><span>Consultar Tipo Pregunta</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ActualizarTipoPregunta"><span>Actualizar Tipo  Pregunta</span></a></li>
+									<li><<a href="<%=request.getContextPath()%>/ToTipoPregunta?x=EliminarTipoPregunta"><span>Eliminar Tipo Pregunta</span></a></li>
+                                </ul>
+                            </li>
+						</ul>
+					</li>
+					
+					
+					
+					
                     <li><a href="">Tema</a>
 						<ul>
-							<li><a href="RegistrarTema.html"><span>Registrar Tema</span></a></li>
-							<li><a href="ConsultarTema.html"><span>Consultar Tema</span></a></li>
-							<li><a href="ActualizarTema.html"><span>Actualizar Tema</span></a></li>
-							<li><a href="EliminarTema.html"><span>Eliminar Tema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarTema"><span>Registrar Tema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToTema?x=ConsultarTema"><span>Consultar Tema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToTema?x=ActualizarTema"><span>Actualizar Tema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToTema?x=EliminarTema"><span>Eliminar Tema</span></a></li>
 						</ul>
 					</li>
                     <li><a href="">Subtema</a>
 						<ul>
-							<li><a href="RegistrarSubtema.html"><span>Registrar Subtema</span></a></li>
-							<li><a href="ConsultarSubtema.html"><span>Consultar Subtema</span></a></li>
-							<li><a href="ActualizarSubtema.html"><span>Actualizar Subtema</span></a></li>
-							<li><a href="EliminarSubtema.html"><span>Eliminar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToTema?x=RegistrarSubTema"><span>Registrar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ActualizarSubtema"><span>Actualizar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="<%=request.getContextPath()%>/ServletEntrenarProfesor"><span>Entrenar Profesor</span></a></li>
+					<li><a href="">Entrenamiento</a>
+						<ul>
+						<li><a href="SubirArchivos.html"><span>Subir Archivos Positivos</span></a></li>
+						<li><a href="EntrenarProfesor.html"><span>Entrenar</span></a></li>
+						</ul>
+					</li>
+                    
 					<li><a href="">CERRAR SESION</a></li>
 				</ul>
 				<!-- Navigation -->	
-		
+				
+						
 			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
 			<div id="main">
-			  <form name="entrenarProfesor" action="entrenarProfesor" method="post"  enctype="multipart/form-data"  align= "center">
+			 <% String ruta = (String) request.getAttribute("rutaP"); 
+						System.out.println(ruta +"Hola2");
+				String rutaN = (String) request.getAttribute("rutaN"); 
+			    System.out.println(ruta +"Hola2");		
+						
+						%>
+			  <form name="entrenarProfesor" action="entrenando?x=<%=ruta%>&y=<%=rutaN%>" method="post">
 			    <div>
 			      <h1> Entrenar profesor Digital <font size="3"></h1>
 			      <div>
-			      <table>
-					
-					  <tr>
-			            <td ><h3 >Nombre del Clasificador</h3></td>
-			            <td ><input type="text" id="txtClasificador" name="txtClasificador" placeholder="Clasificador"  required/></td>
+			    	<table>
+			    	<tr>
+			            <td ><h3>Nombre del Clasificador</h3></td>
+			            <td ><textarea id="txtClasificador" name="txtClasificador" placeholder="Clasificador"  required></textarea></td>
 		            </tr>
+		            
 		           	<tr>
-			            <td ><h3>Nombre de la clase </h3></td>
-			            <td ><input type="text" id="txtClass" name="txtClass" placeholder="Nombre"  required/></td>
-		              </tr>	
-					
-					 <tr>
-                     <td><h1>------------</h1></td>
-                     <td><h1>------------</h1></td>
-                     <td><h1>------------</h1></td>
-                     </tr>
-                     <tr>
-						
-			          <tr>
-                      		<td><label for="inputFile">Seleccione un archivo</label></td>
-							<td><input type="file" name="inputFile" id="inputFile" value="" Style="font-size: 14px" /> 	</td>
-							<td> <input type="submit" value="Subir Archivo"/> </td>
-                     </tr>
-                     <tr>
-                     <td><h1>------------</h1></td>
-                     <td><h1>------------</h1></td>
-                     <td><h1>------------</h1></td>
-                     </tr>
-                     <tr>
-                            <td><label for="inputFile">Seleccione un archivo</label></td>
-							<td><input type="file" name="inputFile" id="inputFile" value="" Style="font-size: 14px" /> 	</td>
-            				<td> <input type="submit" value="Cargar"  style="font-size:14px; color: black;">  </td>
-                      </tr>
-					
-					<td><h1>   </h1></td>
-					
-						<tr>
-			            <td ></td>
+			            <td ><h3>Nombre de la Clase </h3></td>
+			            <td ><textarea type="text" id="txtClass" name="txtClass" placeholder="Nombre Clase"  required></textarea></td>
+		              </tr>
+		              
+		              <td><h1></h1></td>
+                     <td><h1></h1></td>
+                     
+                     <tr
+                    >   
 			            <td  ><button class="submit" type="submit" >Entrenar</button></td>
-		              </tr>					
+		              </tr>
+            				
 					  
             	 </table>
 			      </div>
