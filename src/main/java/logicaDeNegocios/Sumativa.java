@@ -22,6 +22,16 @@ public class Sumativa extends Evaluacion
 		super();
 		conexion = new BaseDeDatos();
 	}
+	
+	
+	public Sumativa (String pTipoEvaluacion, String pDescripcion)
+	{
+		super();
+		conexion = new BaseDeDatos();
+		setDescripcionTipoEval(pDescripcion);
+		setTipoEvaluacion(pTipoEvaluacion);
+	}
+	
 	public BaseDeDatos getConexion() {
 		if (conexion == null){
 			conexion = new BaseDeDatos();
@@ -47,19 +57,25 @@ public class Sumativa extends Evaluacion
 	public String getDescripcionTipoEval() {
 		return descripcionTipoEval;
 	}
-	public void setDescripcionTipoEval(String descripcionTipoEval) {
+	public void setDescripcionTipoEval(String descripcionTipoEval) 
+	{
 		this.descripcionTipoEval = descripcionTipoEval;
 	}
-	@Override
-	public void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {
+	
+	
+	public void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) 
+	{
 		setTipoEvaluacion(pTipoEvaluacion);
-		getConexion().insertDelete("insert into tipoevaluacion values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");	
-	}
-	public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos){
-		getConexion().insertDelete("insert into evaluacion (codevaluacion, codigocurso, codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal, fechaevaluacion, tiempominutos,status) values ("+pCodigoEvaluacion+","+pCodigoCurso+","+ pCodTipoEvaluacion+","+ pNombreEvaluacion+","+  pPuntajetotal+","+  pPorcentajenotafinal+","+  pFechaevaluacion+","+  pTiempominutos +","+ "B'0'"+ ")" );
+		getConexion().insertDelete("insert into tipoevaluacion(tipoevaluacion,descripciontipoeval) values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");	
 	}
 	
-	public void registrarPregunta(String pCodPregunta, String pCodEvaluacion, String pPuntaje){
-		getConexion().insertDelete("insert into evaluacionpregunta (codigopregunta, codevaluacion, puntajeasignado) values ("+pCodPregunta+","+pCodEvaluacion+","+Integer.parseInt(pPuntaje)+")");
+	public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos)
+	{
+		getConexion().insertDelete("insert into evaluacion (codevaluacion, codigocurso, codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal, fechaevaluacion, tiempominutos,status) values ("+pCodigoEvaluacion+","+"'"+ pCodigoCurso+ "'"+","+ pCodTipoEvaluacion+","+"'"+ pNombreEvaluacion+"'"+","+  pPuntajetotal+","+  pPorcentajenotafinal+","+  "'"+pFechaevaluacion+"'"+","+  pTiempominutos +","+ "B'0'"+ ")" );
+	}
+	
+	public void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje)
+	{
+		getConexion().insertDelete("insert into evaluacionpregunta (codigopregunta, codevaluacion, puntajeasignado) values ("+pCodPregunta+","+pCodEvaluacion+","+pPuntaje+")");
 	}
 }

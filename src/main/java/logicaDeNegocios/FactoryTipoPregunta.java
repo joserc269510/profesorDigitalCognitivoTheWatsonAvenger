@@ -4,6 +4,7 @@ public class FactoryTipoPregunta implements MetodoFactoryPregunta {
 	
 	public pregunta crearPregunta (String tipoPregunta, String pDescripcion){
 		pregunta pregunta = null;
+		
 		if (tipoPregunta.equals("marqueconx")) {
 			 pregunta = new MarqueX(tipoPregunta, pDescripcion);
 			}

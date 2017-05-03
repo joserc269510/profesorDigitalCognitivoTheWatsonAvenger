@@ -15,7 +15,7 @@ import logicaDeNegocios.*;
 /**
  * Servlet implementation class ServletSeleccionarCurso
  */
-@WebServlet("/ServletSeleccionarCurso")
+@WebServlet("/ServletSeleccionarCurso_C")
 public class ServletSeleccionarCurso_C extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

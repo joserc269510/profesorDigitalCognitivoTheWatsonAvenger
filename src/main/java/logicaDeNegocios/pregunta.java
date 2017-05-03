@@ -2,7 +2,7 @@ package logicaDeNegocios;
 
 import Integracion.BaseDeDatos;
 
-public abstract class pregunta {
+public abstract class pregunta implements IVerificable, IRegistrableTipoPregunta {
 
 	protected int codigoPregunta;
 	protected String descripcionPregunta;
@@ -42,20 +42,21 @@ public abstract class pregunta {
 		tipoPregunta=tipoPregunta.replace(" ","");
 		
 		MetodoFactoryPregunta factory = new FactoryTipoPregunta();
-		pregunta pregunta = factory.crearPregunta(pTipoPregunta, pDescripcion);
+		pregunta pregunta = factory.crearPregunta(tipoPregunta, pDescripcion);
 	
 		if (tipoPregunta.equals("marqueconx"))
 		{	
-		    pregunta.registrarTipoPregunta(pTipoPregunta, pDescripcion);
+			System.out.println("entro al x pregunta");
+		    pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("espacioenblanco"))
 		{
 			
-			pregunta.registrarTipoPregunta(pTipoPregunta, pDescripcion);
+			pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("desarrollo"))
 		{
-			pregunta.registrarTipoPregunta(pTipoPregunta, pDescripcion);
+			pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		 
 	}

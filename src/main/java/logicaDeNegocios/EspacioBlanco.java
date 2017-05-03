@@ -34,7 +34,7 @@ public class EspacioBlanco extends pregunta
 	{
 		setTipoPregunta(pTipoPregunta);
 		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into tipopregunta values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		conexion.insertDelete("insert into tipopregunta(nombretipopreg,decripcion values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
 	

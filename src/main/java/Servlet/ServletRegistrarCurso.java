@@ -34,7 +34,7 @@ public class ServletRegistrarCurso extends HttpServlet {
 		String codigo= request.getParameter("txtCodigo");
 		String descripcion= request.getParameter("txtDescripcion");
 		Curso curso= new Curso();
-		curso.RegistrarCurso(codigo,descripcion);
+		curso.registrarCurso(codigo,descripcion);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarCurso.html");
 		dispatcher.forward(request, response);

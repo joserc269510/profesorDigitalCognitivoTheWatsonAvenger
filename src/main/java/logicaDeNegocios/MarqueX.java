@@ -32,11 +32,12 @@ public class  MarqueX extends pregunta
 	}
 	
 
-	public void RegistrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
+	public void registrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
 		setDescripcionTipoPreg(pDescripcion);
-		getConexion().insertDelete("insert into tipopregunta(nombretipopreg, decripcion) values ("+ 6+",'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		System.out.println("insert into tipopregunta(codtipopregunta,nombretipopreg, decripcion) values ("+ 6+"," + "'"+pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		getConexion().insertDelete("insert into tipopregunta(nombretipopreg, decripcion) values (" + "'"+pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
 	public void registrarPregunta(String CodP,String sub, String descp, String descpAy)
@@ -90,6 +91,7 @@ public class  MarqueX extends pregunta
 	{
 		descripcionTipoPreg = pDescripcionTipoPreg;
 	}
+	
 
 	
 	

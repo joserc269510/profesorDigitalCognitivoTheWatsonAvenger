@@ -3,6 +3,7 @@ package Servlet;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,9 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Integracion.BaseDeDatos;
+import logicaDeNegocios.Curso;
 import logicaDeNegocios.Evaluacion;
 import logicaDeNegocios.Formativa;
+import logicaDeNegocios.Subtema;
 import logicaDeNegocios.Sumativa;
+import logicaDeNegocios.Tema;
 
 /**
  * Servlet implementation class ServletToSiguiente
@@ -43,6 +48,7 @@ public class ServletToSiguiente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String codEval=request.getParameter("txtCodigo");
 		String curso= request.getParameter("selCodigoCurso");
 		String nombre= request.getParameter("txtNombre");
@@ -72,9 +78,21 @@ public class ServletToSiguiente extends HttpServlet {
 		if(tipoEval.equals("2")){
 			evaluacion=new Sumativa();
 			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo));
-
 		}
-		request.getRequestDispatcher("ConfigurarEvaluacion2.jsp");
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<Curso> cursos = bd.selectCurso();
+		request.setAttribute("ListCursos", cursos);
+		ArrayList<String> tipoEvaluacion = bd.selectTipoEvaluacion();
+		request.setAttribute("ListTipoEval", tipoEvaluacion);
+		ArrayList<Tema> temas = bd.selectTema();
+		request.setAttribute("ListTemas", temas);
+		ArrayList<Subtema> subtemas = bd.selectSubTema();
+		request.setAttribute("ListSubtemas", subtemas);
+		ArrayList<String> pregunta = bd.selectTipoPregunta();
+		request.setAttribute("ListTipoPreguntas", pregunta);
+		request.getRequestDispatcher("ConfigurarEvaluacion2.jsp").forward(request, response);
+		
+
 	}
 
 }

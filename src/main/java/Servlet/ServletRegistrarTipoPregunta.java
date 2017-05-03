@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logicaDeNegocios.Evaluacion;
-
+import logicaDeNegocios.IVerificable;
 import logicaDeNegocios.pregunta;
 
 /**
@@ -36,12 +36,15 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
 		System.out.println(tipoPregunta);
 		System.out.println(descripcionPregunta);
 		
-	     pregunta pregunta = new pregunta()
+		 IVerificable pregunta = new pregunta()
 	     { 
-	    	 public void RegistrarTipoPregunta(String pTipoEvaluacion, String pDescripcion) {}
+	   
+			public void registrarTipoPregunta(String pTipoEvaluacion, String pDescripcion) {}
+	
+			public void registrarPregunta(String CodP, String sub, String descp, String descpAy){}
 	    }; 
 			
-		pregunta.VerificarTipoPregunta(tipoPregunta, descripcionPregunta);		
+		pregunta.verificarTipoPregunta(tipoPregunta, descripcionPregunta);		
 	}
 	
 

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import logicaDeNegocios.Evaluacion;
+import logicaDeNegocios.IVerificarEvaluacion;
 import logicaDeNegocios.Sumativa;
 
 /**
@@ -33,22 +34,21 @@ public class ServletRegistrarTipoEvaluacion extends HttpServlet {
 	{
 		String tipoEvaluacion = request.getParameter("txtTipo");
 		String descripcionEvaluacion = request.getParameter("txtDescripcion");
+		System.out.println(tipoEvaluacion);
 		
-	    Evaluacion evaluacion = new Evaluacion() {
+	    IVerificarEvaluacion evaluacion = new Evaluacion() {
 		
-		public void RegistrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {}
-
 		
-
-		public void registrarPregunta(String pCodPregunta, String pCodEvaluacion, String pPuntaje) {}
-
-
-		@Override
 		public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,
 				String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion,
 				int pTiempominutos) {}
+
+		public void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {}
+		
+		public void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje) {}
+		
 		};
-	    evaluacion.VerificarTipoEvaluacion(tipoEvaluacion,descripcionEvaluacion );		
+	    evaluacion.verificarTipoEvaluacion(tipoEvaluacion,descripcionEvaluacion );		
 	}
 
 }

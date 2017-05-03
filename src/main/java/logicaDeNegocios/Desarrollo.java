@@ -27,7 +27,7 @@ public class Desarrollo extends pregunta
 	public void registrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
-		getConexion().insertDelete("insert into tipopregunta values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		getConexion().insertDelete("insert into tipopregunta(nombretipopreg,decripcion) values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
 	
@@ -87,7 +87,7 @@ public class Desarrollo extends pregunta
 	public void setDescripcion(String pDescripcion) {
 		descripcionTipoPreg = pDescripcion;
 	}
-	public void registrarPregunta(String CodP,String sub, String descp, String descpAy)
+/*	public void registrarPregunta(String CodP,String sub, String descp, String descpAy)
 	{
      
 		int codP= Integer.parseInt(CodP);
@@ -100,6 +100,6 @@ public class Desarrollo extends pregunta
 		BaseDeDatos conexion = new BaseDeDatos();
 		conexion.insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
 				+ " values (" + codP  + ","+ Subt  + "," + 4  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
-	}
+	}*/
 
 }

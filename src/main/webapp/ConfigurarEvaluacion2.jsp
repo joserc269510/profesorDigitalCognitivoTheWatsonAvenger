@@ -163,14 +163,10 @@
 			      <div>
 			        <table> 
 			        <% String codEval=(String)request.getAttribute("CodEval"); %> 
-			        <% String curso=(String)request.getAttribute("Curso"); %> 
-			        <% String nombre=(String)request.getAttribute("Nombre"); %> 
+			         
 			        <% String tipEval=(String)request.getAttribute("CodTipEval"); %> 
-			        <% String pts=(String)request.getAttribute("Pts"); %> 
-			        <% String nota=(String)request.getAttribute("Nota"); %> 
-			        <% String tiempo=(String)request.getAttribute("Tiempo"); %> 
-			        <% String descripcion=(String)request.getAttribute("Descripcion"); %>  
-		           <form action="cargarPreguntas" method="post">
+			         
+		           <form action="cargarPreguntas?cEv=<%=codEval%>&tEv=<%=tipEval%>" method="post">
 		              <tr>
 		                <td ><h3>Codigo del Tema</h3></td>
 		                <%@ page import="java.util.ArrayList, logicaDeNegocios.Tema, logicaDeNegocios.Subtema" %>
@@ -218,7 +214,7 @@
 		              </tr>
 		          </form>
 		             
-			       <form name="configurarEvaluacion" action="ConfEvaluacion?cEv=<%=codEval%>&cur=<%=curso%>&nom=<%=nombre%>&tEv=<%=tipEval%>&pts=<%=pts%>&not=<%=nota%>&tie=<%=tiempo%>&des=<%=descripcion%>" method="post">
+			       <form name="configurarEvaluacion" action="ConfEvaluacion?cEv=<%=codEval%>&tEv=<%=tipEval%>" method="post">
 			       	<tr>
 			            <td ><h3>Preguntas en la evaluacion</h3></td>
 			            <td ><!---input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/--->
@@ -230,7 +226,7 @@
 			            <%Integer o=1; %>
 			            <%if(preguntas!=null){ %>
 			            <%for(String p:preguntas){ %> 
-			                <option value="<%=p%>"><%= p %></option>
+			                <option value="<%=o.toString()%>"><%= p %></option>
 			            <%o++; %>
 				        <% } %>
 				        <% } %>

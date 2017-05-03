@@ -73,6 +73,13 @@ public class ServletCargarPreguntas extends HttpServlet {
 		request.setAttribute("ListSubtemas", subtemas);
 		ArrayList<String> pregunta = bd.selectTipoPregunta();
 		request.setAttribute("ListTipoPreguntas", pregunta);
+		
+		String codEval=request.getParameter("cEv");
+		String tipoEval= request.getParameter("tEv");
+		
+		request.setAttribute("CodEval", codEval);
+		request.setAttribute("CodTipEval", tipoEval);
+
 		request.getRequestDispatcher("ConfigurarEvaluacion2.jsp").forward(request, response);
 	}
 

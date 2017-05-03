@@ -7,7 +7,9 @@ import Integracion.BaseDeDatos;
 /*
  * Hay relacion de estudiantes a evaluacion?
  * */
-public abstract class Evaluacion {
+
+public abstract class Evaluacion implements IVerificarEvaluacion,IRegistableTipoEvaluacion
+{
 	protected int codEvaluacion;
 	protected String nombreEvaluacion;
 	protected int puntajeTotal;
@@ -54,22 +56,22 @@ public abstract class Evaluacion {
 
 	public abstract void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos);
 	public abstract void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
-	public abstract void registrarPregunta(String pCodPregunta, String pCodEvaluacion, String pPuntaje);
+	public abstract void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje);
 
 	
-	public void verificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion){
+	public void verificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion)
+	{
 		String tipoEvaluacion;
 		
 		tipoEvaluacion= pTipoEvaluacion.toLowerCase(); 
-		tipoEvaluacion=pTipoEvaluacion.replace(" ","");
-		
-		
+
 		MetodoFactoryEvaluacion factory = new FactoryTipoEvaluacion();
-		Evaluacion evaluacion = factory.crearEvaluacion(pTipoEvaluacion, pDescripcion);
+		Evaluacion evaluacion = factory.crearEvaluacion(tipoEvaluacion, pDescripcion);
 		
 		if (tipoEvaluacion.equals("sumativa"))
 		{
 			evaluacion.registrarTipoEvaluacion(pTipoEvaluacion, pDescripcion);
+			System.out.println("Entro en SUMATIVA EVALUACION");
 		}
 		if (tipoEvaluacion.equals("formativa"))
 		{

@@ -239,16 +239,7 @@
     <servlet-name>ServletToSiguiente</servlet-name>
     <url-pattern>/ToSiguiente</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description>SeleccionarSubTema</description>
-    <display-name></display-name>
-    <servlet-name>SrevletSeleccionarSubTema</servlet-name>
-    <servlet-class>Servlet.ServletSeleccionarSubTema</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ServletSeleccionarSubTema</servlet-name>
-    <url-pattern>/selectSubtema</url-pattern>
-  </servlet-mapping>
+
   <servlet>
     <description>ActualizarCurso</description>
     <display-name></display-name>
@@ -279,6 +270,17 @@
   <servlet-mapping>
     <servlet-name>ServletSeleccionarCurso_D</servlet-name>
     <url-pattern>/selectCursoD</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description>SeleccionarCurso_C</description>
+    <display-name></display-name>
+    <servlet-name>ServletSeleccionarCurso_C</servlet-name>
+    <servlet-class>Servlet.ServletSeleccionarCurso_C</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSeleccionarCurso_C</servlet-name>
+    <url-pattern>/selectCursoC</url-pattern>
   </servlet-mapping>
 
 <servlet>
@@ -322,4 +324,88 @@
     <servlet-name>ServletRegistrarSubtema</servlet-name>
     <url-pattern>/RegistrarSubtema</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>AsignarProfesor</description>
+    <display-name></display-name>
+    <servlet-name>ServletAsignarProfesor</servlet-name>
+    <servlet-class>Servlet.ServletAsignarProfesor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAsignarProfesor</servlet-name>
+    <url-pattern>/AsignandoProfesor</url-pattern>
+  </servlet-mapping>
+<servlet>
+    <description>SeleccionarCuro</description>
+    <display-name></display-name>
+    <servlet-name>ServletSeleccionarCurso</servlet-name>
+    <servlet-class>Servlet.ServletSeleccionarCurso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSeleccionarCurso</servlet-name>
+    <url-pattern>/selectCurso</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>SeleccionarTema</description>
+    <display-name></display-name>
+    <servlet-name>ServletSeleccionarTema</servlet-name>
+    <servlet-class>Servlet.ServletSeleccionarTema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSeleccionarTema</servlet-name>
+    <url-pattern>/selectTema</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <servlet>
+    <description>RegistrarPreguntaC</description>
+    <display-name></display-name>
+    <servlet-name>ServletRegistrarPreguntaC</servlet-name>
+    <servlet-class>Servlet.ServletRegistrarPreguntaC</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletRegistrarPreguntaC</servlet-name>
+    <url-pattern>/postRegistrarPC</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <description>SeleccionarCurso_C</description>
+    <display-name></display-name>
+    <servlet-name>ServletSeleccionarTema_C</servlet-name>
+    <servlet-class>Servlet.ServletSeleccionarTema_C</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSeleccionarTema_C</servlet-name>
+    <url-pattern>/selectTema_C</url-pattern>
+  </servlet-mapping>
+  
+
+   <servlet>
+    <description>seleccionarPreguntaDesarrollo</description>
+    <display-name></display-name>
+    <servlet-name>ServletSeleccionarTema_D</servlet-name>
+    <servlet-class>Servlet.ServletSeleccionarTema_D</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletSeleccionarTema_D</servlet-name>
+    <url-pattern>/selectTemaD</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </web-app>

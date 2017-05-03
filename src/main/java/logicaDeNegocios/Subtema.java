@@ -31,6 +31,7 @@ public class Subtema {
 	{
 	 	getConexion().insertDelete("insert into subtema(descripcion) values (" +  "'" + pDescripcionSubtema +"'" + ")");
 	}
+	
 	/*
 	public void anadirPreguntasMarqueX(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
 		pregunta pregunta = new MarqueX( codigoPregunta, codigoTipoPregunta, descripcionPregunta,  descripcionAyduda, tipoPregunta, descripcionTipoPreg);
