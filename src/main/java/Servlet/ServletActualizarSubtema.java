@@ -44,9 +44,8 @@ public class ServletActualizarSubtema extends HttpServlet {
 		String codigoSubtema = request.getParameter("x");
 		String nombreActualizar = request.getParameter("txtDescripcion");
 		String numeroTema = request.getParameter("selCodigoTema");
-		Subtema subtema = new Subtema();
 		System.out.println(codigoSubtema + "adskkkkkkkkkkk");
-		subtema.actualizarSubtema(codigoSubtema, numeroTema, nombreActualizar);
+		bd.actualizarSubtema(codigoSubtema, numeroTema, nombreActualizar);
 		ArrayList<Subtema> subtemas = bd.selectSubTema();
 		request.setAttribute("ListSubtemas", subtemas);
 		request.getRequestDispatcher("ActualizarSubtema.jsp").forward(request, response);

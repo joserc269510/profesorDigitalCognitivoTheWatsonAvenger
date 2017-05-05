@@ -35,14 +35,6 @@ public class Tema {
 		subtemas.add(subtema);
 	}
 	
-	public void actualizarTema(String pCodigo, String pCodCurso, String pDescripcion)
-	{
-		setCodTema(Integer.parseInt(pCodigo));
-		setDescripcionTema(pDescripcion);
-		//BaseDeDatos conexion= new BaseDeDatos();
-		getConexion().insertDelete("UPDATE tema SET descripciontema = '"+pDescripcion+"' , codigocurso = '"+pCodCurso+"' WHERE codtema = '"+pCodigo+"'");
-		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' , codigocurso = '"+pCodCurso+"' WHERE codigocurso = '"+pCodigo+"'");
-	}
 	
 	public  void registrarTema(String pCodigoCurso,String pDescripcion)//no ha sido agregado al diseno
 	{
