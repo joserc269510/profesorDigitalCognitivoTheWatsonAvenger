@@ -6,37 +6,22 @@ package Integracion;
 	import com.google.api.services.translate.Translate;
 	import com.google.api.services.translate.model.TranslationsListResponse;
 	import com.google.api.services.translate.model.TranslationsResource;
+import com.ibm.watson.developer_cloud.language_translator.v2.LanguageTranslator;
+import com.ibm.watson.developer_cloud.language_translator.v2.model.Language;
+import com.ibm.watson.developer_cloud.language_translator.v2.model.TranslationResult;
 
 	public class Traductor {
 		
 		String linea=null;
 		
 		public String Traduccion(String pTraducir){
-			try {           
-	            // See comments on 
-	            //   https://developers.google.com/resources/api-libraries/documentation/translate/v2/java/latest/
-	            // on options to set
-	            Translate t = new Translate.Builder(
-	                    com.google.api.client.googleapis.javanet.GoogleNetHttpTransport.newTrustedTransport()
-	                    , com.google.api.client.json.gson.GsonFactory.getDefaultInstance(), null)                                   
-	                    //Need to update this to your App-Name
-	                    .setApplicationName("Prueba")                    
-	                    .build();           
-	            Translate.Translations.List list = t.new Translations().list(
-	                    Arrays.asList(pTraducir), 
-	                        //Target language   
-	                        "ES");  
-	            //Set your API-Key from https://console.developers.google.com/
-	            list.setKey("AIzaSyDon59wVZRBo86565MpD4cuMC0Hgt8WUPI");
-	            TranslationsListResponse response = list.execute();
-	            for(TranslationsResource tr : response.getTranslations()) {
-	                linea=tr.getTranslatedText();
-	                return linea;
-	            }
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-			return linea;
+			 LanguageTranslator service = new LanguageTranslator();
+			 service.setUsernameAndPassword("38613027-8a88-4131-b197-059ee080dd0b",  "7rFGp8PihAV7");
+			 /*service.setUsernameAndPassword("0e44aad4-6d93-4561-a6c5-e331b24c1e1e",  "BvNxGHkB0MUP");*/
+			 TranslationResult result = service.translate(pTraducir, Language.SPANISH,Language.ENGLISH ).execute();
+			 String lineaTraducida= result.getTranslations().get(0).getTranslation().toString();
+		     
+			 return lineaTraducida;
 	    }
 
 

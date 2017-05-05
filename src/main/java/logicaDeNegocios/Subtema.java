@@ -32,6 +32,15 @@ public class Subtema {
 	 	getConexion().insertDelete("insert into subtema(descripcion) values (" +  "'" + pDescripcionSubtema +"'" + ")");
 	}
 	
+	public void actualizarSubtema(String pCodigo, String pCodTema, String pDescripcion)
+	{
+		setCodSubTema(Integer.parseInt(pCodigo));
+		setDescripcion(pDescripcion);
+		//BaseDeDatos conexion= new BaseDeDatos();
+		getConexion().insertDelete("UPDATE subtema SET descripcion = '"+pDescripcion+"' , codtema = '"+pCodTema+"' WHERE codsubtema = '"+pCodigo+"'");
+		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
+	}
+	
 	/*
 	public void anadirPreguntasMarqueX(int codigoPregunta, int codigoTipoPregunta, String descripcionPregunta, String descripcionAyduda, String tipoPregunta, String descripcionTipoPreg){
 		pregunta pregunta = new MarqueX( codigoPregunta, codigoTipoPregunta, descripcionPregunta,  descripcionAyduda, tipoPregunta, descripcionTipoPreg);

@@ -42,7 +42,21 @@ public class ServletToTipoPregunta extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<String> pregunta = bd.selectTipoPregunta();
+		request.setAttribute("ListTipoPreguntas", pregunta);
+		String par=request.getParameter("x");
+		System.out.println(par);
 		
+		if(par.equals("ConsultarTipoPregunta")){
+			request.getRequestDispatcher("ConsultarTipoPregunta.jsp").forward(request, response);
+		}
+		if(par.equals("ActualizarTipoPregunta")){
+			request.getRequestDispatcher("ActualizarTipoPregunta.jsp").forward(request, response);
+		}
+		if(par.equals("EliminarTipoPregunta")){
+			request.getRequestDispatcher("EliminarTipoPregunta.jsp").forward(request, response);
+		}
 	}
 
 }

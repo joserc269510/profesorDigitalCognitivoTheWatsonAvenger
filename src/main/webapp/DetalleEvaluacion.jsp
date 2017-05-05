@@ -55,7 +55,7 @@
 			
 			<!-- HEADER -->
 			<div id="header">
-				<a href="ModuloAdministrativo.html"><img id="logo" src="img/ModuloAdministrativo.png" alt="Nova" /></a>
+				<a href="<%=request.getContextPath()%>/index.jsp"><img id="logo" src="img/ModuloAdministrativo.png" alt="Nova" /></a>
 				<!-- Social -->
 				<div id="social-holder">
 					
@@ -65,13 +65,13 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 					
-                    <li><a href="">Estudiante</a>
+                    <li><a>Estudiante</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/RegistrarEstudiante.jsp"><span>Registrar Estudiante</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToMatricular"><span>Matricular Estudiante</span></a></li>
 						</ul>
 					</li>
-					<li><a href="">Curso</a>
+					<li><a>Curso</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/RegistrarCurso.jsp"><span>Registrar Curso</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=ConsultarCurso"><span>Consultar Curso</span></a></li>
@@ -79,18 +79,18 @@
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=EliminarCurso"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
-                    <li class="current-menu-item"><a href="">Evaluacion</a>
+                    <li class="current-menu-item"><a>Evaluacion</a>
 						<ul>
 			
-							<li><a href=""><span>Evaluacion</span></a>
+							<li class="current-menu-item"><a><span>Evaluacion</span></a>
                             	<ul>
                             		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluación</span></a></li>
-                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluación</span></a></li>
-                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluación</span></a></li>
-                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluación</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluación</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluación</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluación</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href=""><span>Tipo de Evaluacion</span></a>
+                            <li><a><span>Tipo de Evaluacion</span></a>
                             	<ul>
                             		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluación</span></a></li>
                             		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluación</span></a></li>
@@ -102,16 +102,16 @@
 						</ul>
 					</li>
 					
-					<li><a href="">Pregunta</a>
+					<li><a>Pregunta</a>
 						<ul>
-							<li><a href=""><span>Registrar Pregunta</span></a>
+							<li><a><span>Registrar Pregunta</span></a>
                             	<ul>
-                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaMarqueX.jsp"><span>Marcar con X</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaComplete.jsp"><span>Completar Espacio en Blanco</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaDesarrollo.jsp"><span>Desarrollo</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/postRegistrar"><span>Marcar con X</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/postRegistrarPC"><span>Completar Espacio en Blanco</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/postRegistrarD"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href=""><span>Tipo de Pregunta</span></a>
+                            <li><a><span>Tipo de Pregunta</span></a>
                             	<ul>
                             		<li><a href="<%=request.getContextPath()%>/RegistrarTipoPregunta.jsp"><span>Registrar Tipo Pregunta</span></a></li>
                                     <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsultarTipoPregunta"><span>Consultar Tipo Pregunta</span></a></li>
@@ -125,7 +125,7 @@
 					
 					
 					
-                    <li><a href="">Tema</a>
+                    <li><a>Tema</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarTema"><span>Registrar Tema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToTema?x=ConsultarTema"><span>Consultar Tema</span></a></li>
@@ -133,18 +133,20 @@
 							<li><a href="<%=request.getContextPath()%>/ToTema?x=EliminarTema"><span>Eliminar Tema</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="">Subtema</a>
+                    <li><a>Subtema</a>
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/ToTema?x=RegistrarSubTema"><span>Registrar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarSubtema"><span>Registrar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ActualizarSubtema"><span>Actualizar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-					<li><a href="">Generar PDF</a></li>
-                    <li><a href="">Generar PDF en Ingles</a></li>
-                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
-					<li><a href="">CERRAR SESION</a></li>
+					<li><a>Entrenamiento</a>
+						<ul>
+							<li><a href="<%=request.getContextPath()%>/SubirArchivos.jsp"><span>Subir Archivos Positivos</span></a></li>
+						</ul>
+					</li>
+					<li><a href="<%=request.getContextPath()%>/AsignandoProfesor" > Asignar Profesor Curso</a></li>
 				</ul>
 				<!-- Navigation -->	
 				
@@ -161,15 +163,26 @@
 			</div>
 		
 			<div id="main">
-			  <form name="detalleEvaluacion" action="" method="">
 			    <div>
 			      <h2>Detalle Evaluacion</h2>
 			      <div>
+			       <form name="detalleEvaluacion" method="post">
 			        <table>
 			          <tr>
 			            
-			            <td ><h3>Codigo de la Evaluacion</h3></td>
-			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/--><select id="selCodigo" name="selCodigo"></select></td>
+			            <td ><h3>Nombre de la Evaluacion</h3></td>
+			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/-->
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.*" %>
+			            <%
+			            		ArrayList<Evaluacion> Eval= (ArrayList<Evaluacion>) request.getAttribute("ListEval"); 
+			            		
+						%>
+			            <select id="selCodigo" name="selCodigo">
+			            
+			            <%for(Evaluacion e:Eval){ %> 
+			                <option value="<%=e.getCodEvaluacion() %>"><%= e.getNombreEvaluacion() %></option>
+				        <% } %>
+			            </select></td>
                         
 		              </tr>
 		             
@@ -177,16 +190,26 @@
 			            <td ><h3>Descripcion de la Evaluacion </h3></td>
 			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  required/></td>
 		              </tr-->
-		              
-			       
+		            
+		             	
+		             <tr>
+			            <td ></td>
+			            <td  ><button class="submit" formaction="crearPDF" type="submit" >Generar PDF</button></td>
+		              </tr>
+		             
+		             <tr>
+			            <td ></td>
+			            <td  ><button class="submit" formaction="crearPDFingles" type="submit" >Generar PDF en ingles</button></td>
+		              </tr>
+		             
 			          <tr>
 			            <td ></td>
 			            <td  ><button class="submit" type="submit" >Detalle Evaluacion</button></td>
 		              </tr>
 		            </table>
+		            </form>
 		          </div>
 		        </div>
-		      </form>
 		  </div>
 		<div id="footer">
 		

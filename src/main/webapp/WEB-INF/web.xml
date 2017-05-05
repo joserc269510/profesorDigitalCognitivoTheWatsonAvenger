@@ -2,12 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>JavaHelloWorldApp</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description>Generar_Speech</description>
@@ -100,6 +95,16 @@
     <url-pattern>/crearPDF</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description>CREA_PDFingles</description>
+    <display-name></display-name>
+    <servlet-name>ServletPDFingles</servlet-name>
+    <servlet-class>Servlet.ServletPDFingles</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletPDFingles</servlet-name>
+    <url-pattern>/crearPDFingles</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description>TO_MATRICULAR</description>
     <display-name></display-name>
     <servlet-name>ServletToMatricular</servlet-name>
@@ -138,16 +143,6 @@
   <servlet-mapping>
     <servlet-name>ServletToTipoEvaluacion</servlet-name>
     <url-pattern>/ToTipoEvaluacion</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description>TO_PREGUNTA</description>
-    <display-name></display-name>
-    <servlet-name>ServletToPregunta</servlet-name>
-    <servlet-class>Servlet.ServletToPregunta</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ServletToPregunta</servlet-name>
-    <url-pattern>/ToPregunta</url-pattern>
   </servlet-mapping>
   <servlet>
     <description>TO_SUBTEMA</description>
@@ -220,6 +215,46 @@
     <url-pattern>/cargarDatosCurso</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description>CARG_DAT_SUBTEMA</description>
+    <display-name></display-name>
+    <servlet-name>ServletCargarDatsSubtema</servlet-name>
+    <servlet-class>Servlet.ServletCargarDatsSubtema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCargarDatsSubtema</servlet-name>
+    <url-pattern>/cargarDatosSubtema</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CARG_DAT_TEMA</description>
+    <display-name></display-name>
+    <servlet-name>ServletCargarDatsTema</servlet-name>
+    <servlet-class>Servlet.ServletCargarDatsTema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCargarDatsTema</servlet-name>
+    <url-pattern>/cargarDatosTema</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CARG_DAT_TIP_EVAL</description>
+    <display-name></display-name>
+    <servlet-name>ServletCargarDatsTipEval</servlet-name>
+    <servlet-class>Servlet.ServletCargarDatsTipEval</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCargarDatsTipEval</servlet-name>
+    <url-pattern>/cargarDatosTipEval</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CARG_DAT_TIP_PREG</description>
+    <display-name></display-name>
+    <servlet-name>ServletCargarDatsTipPreg</servlet-name>
+    <servlet-class>Servlet.ServletCargarDatsTipPreg</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCargarDatsTipPreg</servlet-name>
+    <url-pattern>/cargarDatosTipPreg</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description>CARG_PREGUNTAS</description>
     <display-name></display-name>
     <servlet-name>ServletCargarPreguntas</servlet-name>
@@ -239,7 +274,6 @@
     <servlet-name>ServletToSiguiente</servlet-name>
     <url-pattern>/ToSiguiente</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description>ActualizarCurso</description>
     <display-name></display-name>
@@ -251,6 +285,46 @@
     <url-pattern>/ActualizarCurso</url-pattern>
   </servlet-mapping>
   <servlet>
+    <description>ActualizarSubtema</description>
+    <display-name></display-name>
+    <servlet-name>ServletActualizarSubtema</servlet-name>
+    <servlet-class>Servlet.ServletActualizarSubtema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActualizarSubtema</servlet-name>
+    <url-pattern>/ActualizarSubtema</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>ActualizarTema</description>
+    <display-name></display-name>
+    <servlet-name>ServletActualizarTema</servlet-name>
+    <servlet-class>Servlet.ServletActualizarTema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActualizarTema</servlet-name>
+    <url-pattern>/ActualizarTema</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>ActualizarTipEval</description>
+    <display-name></display-name>
+    <servlet-name>ServletActualizarTipEval</servlet-name>
+    <servlet-class>Servlet.ServletActualizarTipEval</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActualizarTipEval</servlet-name>
+    <url-pattern>/ActualizarTipEval</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>ActualizarTipPreg</description>
+    <display-name></display-name>
+    <servlet-name>ServletActualizarTipPreg</servlet-name>
+    <servlet-class>Servlet.ServletActualizarTipPreg</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletActualizarTipPreg</servlet-name>
+    <url-pattern>/ActualizarTipPreg</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description>CONFIGURAR_EVALUACION</description>
     <display-name></display-name>
     <servlet-name>ServletConfEvaluacion</servlet-name>
@@ -260,7 +334,6 @@
     <servlet-name>ServletConfEvaluacion</servlet-name>
     <url-pattern>/ConfEvaluacion</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description>SeleccionarCurso_D</description>
     <display-name></display-name>
@@ -271,7 +344,6 @@
     <servlet-name>ServletSeleccionarCurso_D</servlet-name>
     <url-pattern>/selectCursoD</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description>SeleccionarCurso_C</description>
     <display-name></display-name>
@@ -282,8 +354,7 @@
     <servlet-name>ServletSeleccionarCurso_C</servlet-name>
     <url-pattern>/selectCursoC</url-pattern>
   </servlet-mapping>
-
-<servlet>
+  <servlet>
     <description>registrarPreguntaDesarrollo</description>
     <display-name></display-name>
     <servlet-name>ServletRegistrarPreguntaD</servlet-name>
@@ -293,7 +364,6 @@
     <servlet-name>ServletRegistrarPreguntaD</servlet-name>
     <url-pattern>/postRegistrarD</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description>RegistarTema</description>
     <display-name></display-name>
@@ -334,7 +404,7 @@
     <servlet-name>ServletAsignarProfesor</servlet-name>
     <url-pattern>/AsignandoProfesor</url-pattern>
   </servlet-mapping>
-<servlet>
+  <servlet>
     <description>SeleccionarCuro</description>
     <display-name></display-name>
     <servlet-name>ServletSeleccionarCurso</servlet-name>
@@ -354,15 +424,6 @@
     <servlet-name>ServletSeleccionarTema</servlet-name>
     <url-pattern>/selectTema</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
-  
-  
-  
-  
-  
   <servlet>
     <description>RegistrarPreguntaC</description>
     <display-name></display-name>
@@ -373,7 +434,6 @@
     <servlet-name>ServletRegistrarPreguntaC</servlet-name>
     <url-pattern>/postRegistrarPC</url-pattern>
   </servlet-mapping>
-
   <servlet>
     <description>SeleccionarCurso_C</description>
     <display-name></display-name>
@@ -384,9 +444,7 @@
     <servlet-name>ServletSeleccionarTema_C</servlet-name>
     <url-pattern>/selectTema_C</url-pattern>
   </servlet-mapping>
-  
-
-   <servlet>
+  <servlet>
     <description>seleccionarPreguntaDesarrollo</description>
     <display-name></display-name>
     <servlet-name>ServletSeleccionarTema_D</servlet-name>
@@ -396,16 +454,74 @@
     <servlet-name>ServletSeleccionarTema_D</servlet-name>
     <url-pattern>/selectTemaD</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <servlet>
+    <description>TO_EVALUACION</description>
+    <display-name></display-name>
+    <servlet-name>ServletToEvaluacion</servlet-name>
+    <servlet-class>Servlet.ServletToEvaluacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletToEvaluacion</servlet-name>
+    <url-pattern>/ToEvaluacion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>HABILITAR_EVALUACION</description>
+    <display-name></display-name>
+    <servlet-name>ServletHabilitarEvaluacion</servlet-name>
+    <servlet-class>Servlet.ServletHabilitarEvaluacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletHabilitarEvaluacion</servlet-name>
+    <url-pattern>/habilitarEvaluacion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CONSULTAR_TIP_PREG</description>
+    <display-name></display-name>
+    <servlet-name>ServletConsultarTipPreg</servlet-name>
+    <servlet-class>Servlet.ServletConsultarTipPreg</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletConsultarTipPreg</servlet-name>
+    <url-pattern>/consultarTipPreg</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CONSULTAR_TIP_EVAL</description>
+    <display-name></display-name>
+    <servlet-name>ServletConsultarTipEval</servlet-name>
+    <servlet-class>Servlet.ServletConsultarTipEval</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletConsultarTipEval</servlet-name>
+    <url-pattern>/consultarTipEval</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CONSULTAR_CURSO</description>
+    <display-name></display-name>
+    <servlet-name>ServletConsultarCurso</servlet-name>
+    <servlet-class>Servlet.ServletConsultarCurso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletConsultarCurso</servlet-name>
+    <url-pattern>/consultarCurso</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CONSULTAR_SUBTEMA</description>
+    <display-name></display-name>
+    <servlet-name>ServletConsultarSubtema</servlet-name>
+    <servlet-class>Servlet.ServletConsultarSubtema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletConsultarSubtema</servlet-name>
+    <url-pattern>/consultarSubtema</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>CONSULTAR_TEMA</description>
+    <display-name></display-name>
+    <servlet-name>ServletConsultarTema</servlet-name>
+    <servlet-class>Servlet.ServletConsultarTema</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletConsultarTema</servlet-name>
+    <url-pattern>/consultarTema</url-pattern>
+  </servlet-mapping>
 </web-app>

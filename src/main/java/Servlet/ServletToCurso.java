@@ -58,7 +58,26 @@ public class ServletToCurso extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<Curso> cursos = bd.selectCurso();
+		request.setAttribute("ListCursos", cursos);
+		String par=request.getParameter("x");
+		System.out.println(par);
+		if(par.equals("ConsultarCurso")){
+			request.getRequestDispatcher("ConsultarCurso.jsp").forward(request, response);
+		}
+		if(par.equals("ActualizarCurso")){
+			request.getRequestDispatcher("ActualizarCurso.jsp").forward(request, response);
+		}
+		if(par.equals("EliminarCurso")){
+			request.getRequestDispatcher("EliminarCurso.jsp").forward(request, response);
+		}
+		if(par.equals("RegistrarTema")){
+			request.getRequestDispatcher("RegistrarTema.jsp").forward(request, response);
+		}
+		if(par.equals("RegistrarSubtema")){
+			request.getRequestDispatcher("RegistrarSubtema.jsp").forward(request, response);
+		}
 	}
 
 }

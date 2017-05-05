@@ -14,27 +14,28 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import Integracion.BaseDeDatos;
+import Integracion.Traductor;
 import logicaDeNegocios.Estudiante;
 import logicaDeNegocios.Evaluacion;
 import logicaDeNegocios.pregunta;
 
 /**
- * Servlet implementation class ServletPDF
+ * Servlet implementation class ServletPDFingles
  */
-@WebServlet("/ServletPDF")
-public class ServletPDF extends HttpServlet {
+@WebServlet("/ServletPDFingles")
+public class ServletPDFingles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletPDF() {
+    public ServletPDFingles() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,28 +44,25 @@ public class ServletPDF extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		  //get the output stream for writing binary data in the response.
+		 //get the output stream for writing binary data in the response.
 		  ServletOutputStream os = response.getOutputStream();
 		  //set the response content type to PDF
 		  response.setContentType("application/pdf"); 
-		  response.setHeader("Content-Disposition","attachment;filename=Informacion Evaluacion.pdf");
+		  response.setHeader("Content-Disposition","attachment;filename=Informacion Evaluacion en Ingles.pdf");
 		  //create a new document
 		  Document doc = new Document();
 
 		  //create some special styles and font sizes
-		  Font bfBold18 = new Font(FontFamily.TIMES_ROMAN, 20, Font.BOLD, new BaseColor(0, 0, 0));
+		  Font bfBold18 = new Font(FontFamily.TIMES_ROMAN, 18, Font.BOLD, new BaseColor(0, 0, 0)); 
 		  Font bfBold19 = new Font(FontFamily.TIMES_ROMAN, 16, Font.BOLD, new BaseColor(0, 0, 0));
 		  Font bfBold17 = new Font(FontFamily.TIMES_ROMAN, 14, Font.BOLD, new BaseColor(0, 0, 0));
 
 		  
 		  String codEvaluacion = request.getParameter("selCodigo");
-		  
-		  System.out.println("CODIGOOO=  "+codEvaluacion);
-		  
+
 		  BaseDeDatos bd = new BaseDeDatos();
+		  Traductor traducir=new Traductor();
 		  Evaluacion evaluacion = bd.selectEvaluacion(codEvaluacion);
-		  System.out.println("NOMBREE=  "+evaluacion.getNombreEvaluacion());
-		  
 		  
 		  try{
 		   
@@ -76,42 +74,40 @@ public class ServletPDF extends HttpServlet {
 		   doc.addCreationDate();
 		   doc.addProducer();
 		   doc.addCreator("Esteban");
-		   doc.addTitle("Informacion de Evaluacion");
+		   doc.addTitle("Informacion de Evaluacion en ingles");
 		   doc.setPageSize(PageSize.LETTER);
 		   doc.open();
 		   
+		   
+		   
 
-		   //add a new paragraph
-		   doc.add( new Paragraph("Informacion de la Evaluacion", bfBold18));
-		   doc.add( new Paragraph("Codigo de Evaluacion= "+codEvaluacion, bfBold19));
-		   doc.add( new Paragraph("Nombre de Evaluacion= "+evaluacion.getNombreEvaluacion(), bfBold17));
-		   doc.add( new Paragraph("Fecha de Evaluacion= "+evaluacion.getFechaEvaluacion(), bfBold17));
-		   doc.add( new Paragraph("Codigo del curso= "+evaluacion.getCurso().getCodigo(), bfBold17));
-		   doc.add( new Paragraph("Puntaje Total= "+evaluacion.getPuntajeTotal(), bfBold17));
-		   doc.add( new Paragraph("Porcentaje sobre nota final= "+evaluacion.getPorcentajeNotaFinal(), bfBold17));
-		   doc.add( new Paragraph("Tiempo en minutos para realizar la prueba= "+evaluacion.getTiempoMinutos(), bfBold17));
-
+		 //add a new paragraph
+		   doc.add( new Paragraph(traducir.Traduccion("Informacion de la Evaluacion"), bfBold18));
+		   doc.add( new Paragraph(traducir.Traduccion("Codigo de Evaluacion= "+codEvaluacion), bfBold19));
+		   doc.add( new Paragraph(traducir.Traduccion("Nombre de Evaluacion= "+evaluacion.getNombreEvaluacion()), bfBold17));
+		   doc.add( new Paragraph(traducir.Traduccion("Fecha de Evaluacion= "+evaluacion.getFechaEvaluacion()), bfBold17));
+		   doc.add( new Paragraph(traducir.Traduccion("Codigo del curso= "+evaluacion.getCurso().getCodigo()), bfBold17));
+		   doc.add( new Paragraph(traducir.Traduccion("Puntaje Total= "+evaluacion.getPuntajeTotal()), bfBold17));
+		   doc.add( new Paragraph(traducir.Traduccion("Porcentaje sobre nota final= "+evaluacion.getPorcentajeNotaFinal()), bfBold17));
+		   doc.add( new Paragraph(traducir.Traduccion("Tiempo en minutos para realizar la prueba= "+evaluacion.getTiempoMinutos()), bfBold17));
 		   if(!evaluacion.isStatus()){
-			   doc.add( new Paragraph("Estado= Deshabilitada", bfBold17));
+			   doc.add( new Paragraph(traducir.Traduccion("Estado= Deshabilitada"), bfBold17));
 		   }
 		   else{
-			   doc.add( new Paragraph("Estado= Habilitada", bfBold17));
+			   doc.add( new Paragraph(traducir.Traduccion("Estado= Habilitada"), bfBold17));
 		   }
-		   
 		   ArrayList<Estudiante> estudiantes=new ArrayList<Estudiante>();
 		   ArrayList<pregunta> preguntas=new ArrayList<pregunta>();
-		   doc.add(new Paragraph("Preguntas", bfBold19));
+		   doc.add(new Paragraph(traducir.Traduccion("Preguntas"), bfBold19));
 		   for(pregunta p:preguntas){
-			   doc.add( new Paragraph("Codigo de Pregunta = "+p.getCodigoPregunta()+", Descripcion de Pregunta = "+p.getDescripcionPregunta(), bfBold17));
+			   doc.add( new Paragraph(traducir.Traduccion("Codigo de Pregunta = "+p.getCodigoPregunta()+", Descripcion de Pregunta = "+p.getDescripcionPregunta()), bfBold17));
 		   }
-		   
-		   doc.add(new Paragraph("Estudiantes", bfBold19));
+		   doc.add(new Paragraph(traducir.Traduccion("Estudiantes"), bfBold19));
 		   for(Estudiante e:estudiantes){
-			   doc.add( new Paragraph("Carnet Estudiante = "+e.getNumeroCarnet()+", Nombre del Estudiante = "+e.getNombre()+" "+e.getApellido1()+" "+e.getApellido2(), bfBold17));
+			   doc.add( new Paragraph(traducir.Traduccion("Carnet Estudiante = "+e.getNumeroCarnet()+", Nombre del Estudiante = ")+e.getNombre()+" "+e.getApellido1()+" "+e.getApellido2(), bfBold17));
 		   }
 		   
-		   
-		   doc.close(); 
+		   doc.close();
 
 		  }catch(DocumentException e){
 		   e.printStackTrace();

@@ -55,7 +55,7 @@
 			
 			<!-- HEADER -->
 			<div id="header">
-				<a href="ModuloAdministrativo.html"><img id="logo" src="img/ModuloAdministrativo.png" alt="Nova" /></a>
+				<a href="<%=request.getContextPath()%>/index.jsp"><img id="logo" src="img/ModuloAdministrativo.png" alt="Nova" /></a>
 				<!-- Social -->
 				<div id="social-holder">
 					
@@ -65,13 +65,13 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 					
-                    <li><a href="">Estudiante</a>
+                    <li><a>Estudiante</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/RegistrarEstudiante.jsp"><span>Registrar Estudiante</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToMatricular"><span>Matricular Estudiante</span></a></li>
 						</ul>
 					</li>
-					<li><a href="">Curso</a>
+					<li><a>Curso</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/RegistrarCurso.jsp"><span>Registrar Curso</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=ConsultarCurso"><span>Consultar Curso</span></a></li>
@@ -79,18 +79,18 @@
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=EliminarCurso"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="">Evaluacion</a>
+                    <li><a>Evaluacion</a>
 						<ul>
 			
-							<li><a href=""><span>Evaluacion</span></a>
+							<li><a><span>Evaluacion</span></a>
                             	<ul>
                             		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluación</span></a></li>
-                                    <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluación</span></a></li>
-                            		<li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluación</span></a></li>
-                            		<li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluación</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluación</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluación</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluación</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href=""><span>Tipo de Evaluacion</span></a>
+                            <li><a><span>Tipo de Evaluacion</span></a>
                             	<ul>
                             		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluación</span></a></li>
                             		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluación</span></a></li>
@@ -102,16 +102,16 @@
 						</ul>
 					</li>
 					
-					<li><a href="">Pregunta</a>
+					<li><a>Pregunta</a>
 						<ul>
-							<li><a href=""><span>Registrar Pregunta</span></a>
+							<li><a><span>Registrar Pregunta</span></a>
                             	<ul>
-                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaMarqueX.jsp"><span>Marcar con X</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaComplete.jsp"><span>Completar Espacio en Blanco</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/RegistrarPreguntaDesarrollo.jsp"><span>Desarrollo</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/postRegistrar"><span>Marcar con X</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/postRegistrarPC"><span>Completar Espacio en Blanco</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/postRegistrarD"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
-                            <li><a href=""><span>Tipo de Pregunta</span></a>
+                            <li><a><span>Tipo de Pregunta</span></a>
                             	<ul>
                             		<li><a href="<%=request.getContextPath()%>/RegistrarTipoPregunta.jsp"><span>Registrar Tipo Pregunta</span></a></li>
                                     <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsultarTipoPregunta"><span>Consultar Tipo Pregunta</span></a></li>
@@ -125,7 +125,7 @@
 					
 					
 					
-                    <li><a href="">Tema</a>
+                    <li><a>Tema</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarTema"><span>Registrar Tema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToTema?x=ConsultarTema"><span>Consultar Tema</span></a></li>
@@ -133,16 +133,20 @@
 							<li><a href="<%=request.getContextPath()%>/ToTema?x=EliminarTema"><span>Eliminar Tema</span></a></li>
 						</ul>
 					</li>
-                    <li class="current-menu-item"><a href="">Subtema</a>
+                    <li class="current-menu-item"><a>Subtema</a>
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/ToTema?x=RegistrarSubTema"><span>Registrar Subtema</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarSubtema"><span>Registrar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ActualizarSubtema"><span>Actualizar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="EntrenarProfesor.html">Entrenar Profesor</a></li>
-					<li><a href="">CERRAR SESION</a></li>
+					<li><a>Entrenamiento</a>
+						<ul>
+							<li><a href="<%=request.getContextPath()%>/SubirArchivos.jsp"><span>Subir Archivos Positivos</span></a></li>
+						</ul>
+					</li>
+					<li><a href="<%=request.getContextPath()%>/AsignandoProfesor" > Asignar Profesor Curso</a></li>
 				</ul>
 				<!-- Navigation -->	
 				
@@ -159,7 +163,7 @@
 			</div>
 		
 			<div id="main">
-			  <form name="consultaSubtema" action="" method="">
+			  <form name="consultaSubtema" method="post">
 			    <div>
 			      <h2>Consultar Subtema</h2>
 			      <div>
@@ -189,8 +193,33 @@
 			       
 			          <tr>
 			            <td ></td>
-			            <td  ><button class="submit" type="submit" >Consultar Subtema</button></td>
+			            <td  ><button class="submit" formaction="consultarSubtema" type="submit" >Consultar Subtema</button></td>
+			            
+			           
 		              </tr>
+		              <%
+		              		String subtema = (String) request.getAttribute("Subtema");  		
+		             		 String texto= (String) request.getAttribute("texto");
+		             		String texto2= (String) request.getAttribute("texto2");
+						%>
+		              <% if(subtema!=null&&texto!=null){ %>
+		              <tr>
+			            <td ><h3>Codigo Subtema:</h3></td>
+			            <td  ><h3><%= subtema %></h3></td>
+		              </tr>
+		              <tr>
+			            <td ><h3>Nombre del Subtema:</h3></td>
+			            <td  ><h3><%= texto %></h3></td>
+		              </tr>
+		              <tr>
+			            <td ><h3>Nombre del Tema:</h3></td>
+			            <td  ><h3><%= texto2 %></h3></td>
+		              </tr>	              
+		              <tr>
+			            <td ></td>
+			            <td  ><button class="submit" formaction="ToSubtema?x=ConsultarSubtema" type="submit" >Salir</button></td>
+		              </tr>
+		              <% } %>
 		            </table>
 		          </div>
 		        </div>

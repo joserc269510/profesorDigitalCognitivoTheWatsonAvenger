@@ -37,6 +37,7 @@ public abstract class Evaluacion implements IVerificarEvaluacion,IRegistableTipo
 		setStatus(pStatus);
 		
 	}
+	
 	public Evaluacion(){
 		estudiantes = new ArrayList<Estudiante>();
 		preguntas = new ArrayList<pregunta>();
@@ -57,6 +58,11 @@ public abstract class Evaluacion implements IVerificarEvaluacion,IRegistableTipo
 	public abstract void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos);
 	public abstract void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	public abstract void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje);
+	public void habilitarEvaluacion(String pCodigo)
+	{
+		getConexion().insertDelete("UPDATE evaluacion SET status = "+"B'1'"+" WHERE codevaluacion = '"+pCodigo+"'");
+		System.out.println("UPDATE evaluacion SET status = "+"B'1'"+" WHERE codevaluacion = '"+pCodigo+"'");
+	}
 
 	
 	public void verificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion)

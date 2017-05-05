@@ -52,8 +52,20 @@ public class ServletToSubtema extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<Subtema> subtemas = bd.selectSubTema();
+		request.setAttribute("ListSubtemas", subtemas);
+		String par=request.getParameter("x");
+		System.out.println(par);
+		if(par.equals("ConsultarSubtema")){
+			request.getRequestDispatcher("ConsultarSubtema.jsp").forward(request, response);
+		}
+		if(par.equals("ActualizarSubtema")){
+			request.getRequestDispatcher("ActualizarSubtema.jsp").forward(request, response);
+		}
+		if(par.equals("EliminarSubtema")){
+			request.getRequestDispatcher("EliminarSubtema.jsp").forward(request, response);
+		}
 	}
 
 }

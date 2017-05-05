@@ -53,7 +53,7 @@ public class BaseDeDatos {
             System.out.println("daskdjkasjdsakl");
               Connection db = DriverManager.getConnection(url, username, password);
               Statement st = db.createStatement();
-              ResultSet rs = st.executeQuery("Select * from curso");
+              ResultSet rs = st.executeQuery("Select * from curso order by codigocurso asc");
               
               while (rs.next()) {
             	System.out.println("va por aqui");
@@ -83,7 +83,7 @@ public class BaseDeDatos {
           System.out.println("daskdjkasjdsakl");
             Connection db = DriverManager.getConnection(url, username, password);
             Statement st = db.createStatement();
-            ResultSet rs = st.executeQuery("Select * from estudiante");
+            ResultSet rs = st.executeQuery("Select * from estudiante order by cedula asc");
            
             while (rs.next()) {
               Estudiante objetoEstudiante = new Estudiante();
@@ -116,7 +116,7 @@ public class BaseDeDatos {
             System.out.println("daskdjkasjdsakl");
               Connection db = DriverManager.getConnection(url, username, password);
               Statement st = db.createStatement();
-              ResultSet rs = st.executeQuery("Select * from profesor");
+              ResultSet rs = st.executeQuery("Select * from profesor order by codprofesor asc");
               
               int index = 0;
               while (rs.next()) {
@@ -135,8 +135,8 @@ public class BaseDeDatos {
           }
           return profesor;
     }
-  public ArrayList<Object> selectEvaluacion(){//revisar object
-	  ArrayList evaluacion = new ArrayList<Object>();
+  public ArrayList<Evaluacion> selectEvaluacion(){//revisar object
+	  ArrayList evaluacion = new ArrayList<Evaluacion>();
 	    try {
 	            Class.forName("org.postgresql.Driver");
 	        }
@@ -147,17 +147,20 @@ public class BaseDeDatos {
 	          System.out.println("daskdjkasjdsakl");
 	            Connection db = DriverManager.getConnection(url, username, password);
 	            Statement st = db.createStatement();
-	            ResultSet rs = st.executeQuery("select codevaluacion, evaluacion.codigocurso, evaluacion.codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal,fechaevaluacion,tiempominutos,status, tipoevaluacion.tipoevaluacion, tipoevaluacion.descripciontipoeval, descripcioncurso from evaluacion join tipoevaluacion on evaluacion.codtipoevaluacion = tipoevaluacion.codtipoevaluacion join curso on curso.codigocurso = evaluacion.codigocurso");
+	            ResultSet rs = st.executeQuery("select codevaluacion, evaluacion.codigocurso, evaluacion.codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal,fechaevaluacion,tiempominutos,status, tipoevaluacion.tipoevaluacion, tipoevaluacion.descripciontipoeval, descripcioncurso from evaluacion join tipoevaluacion on evaluacion.codtipoevaluacion = tipoevaluacion.codtipoevaluacion join curso on curso.codigocurso = evaluacion.codigocurso order by codevaluacion asc");
 
 	            while (rs.next()) {
-	            	if(rs.getString(10).compareTo("Sumativa") == 0){
-	            	  Sumativa objetoEvaluacion = new Sumativa(Integer.parseInt(rs.getString(1)),rs.getString(4),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(6)),rs.getString(7),Integer.parseInt(rs.getString(8)),rs.getBoolean(9),Integer.parseInt(rs.getString(3)),rs.getString(10),rs.getString(11) );           	
+	            	System.out.println(rs.getString(10));
+	            	if(rs.getString(10).equals("Sumativa")){
+	            		System.out.println(rs.getString(10));
+	            	    Evaluacion objetoEvaluacion = new Sumativa(Integer.parseInt(rs.getString(1)),rs.getString(4),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(6)),rs.getString(7),Integer.parseInt(rs.getString(8)),rs.getBoolean(9),Integer.parseInt(rs.getString(3)),rs.getString(10),rs.getString(11) );           	
 	            		Curso curso = new Curso(rs.getString(2),rs.getString(12));
 	            		objetoEvaluacion.asociarCurso(curso);
 	            		evaluacion.add(objetoEvaluacion);
 	            	}
-	            	else if (rs.getString(10).compareTo("Formativa") == 0){
-		            	Formativa objetoEvaluacion = new Formativa(Integer.parseInt(rs.getString(1)),rs.getString(4),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(6)),rs.getString(7),Integer.parseInt(rs.getString(8)),rs.getBoolean(9),Integer.parseInt(rs.getString(3)),rs.getString(10),rs.getString(11) );           	
+	            	else{
+	            		System.out.println(rs.getString(10));
+	            		Evaluacion objetoEvaluacion = new Formativa(Integer.parseInt(rs.getString(1)),rs.getString(4),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(6)),rs.getString(7),Integer.parseInt(rs.getString(8)),rs.getBoolean(9),Integer.parseInt(rs.getString(3)),rs.getString(10),rs.getString(11) );           	
 		           		Curso curso = new Curso(rs.getString(2),rs.getString(12));
 		            	objetoEvaluacion.asociarCurso(curso);
 			            evaluacion.add(objetoEvaluacion);
@@ -173,6 +176,47 @@ public class BaseDeDatos {
 	}
   
   
+  public Evaluacion selectEvaluacion(String codEvaluacion){//revisar object
+	  Evaluacion objetoEvaluacion=null;  
+	  try {
+	            Class.forName("org.postgresql.Driver");
+	        }
+	        catch (java.lang.ClassNotFoundException e) {
+	            System.out.println(e.getMessage() + "hola");
+	        }
+	        try {
+	          System.out.println("daskdjkasjdsakl");
+	            Connection db = DriverManager.getConnection(url, username, password);
+	            Statement st = db.createStatement();
+	            ResultSet rs = st.executeQuery("select codevaluacion, evaluacion.codigocurso, evaluacion.codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal,fechaevaluacion,tiempominutos,status, tipoevaluacion.tipoevaluacion, tipoevaluacion.descripciontipoeval, descripcioncurso from evaluacion join tipoevaluacion on evaluacion.codtipoevaluacion = tipoevaluacion.codtipoevaluacion join curso on curso.codigocurso = evaluacion.codigocurso where codevaluacion = '"+codEvaluacion+"' order by codevaluacion asc");
+	            
+	            while (rs.next()) {
+	            	if(rs.getString(10).compareTo("Sumativa") == 0){
+	            		System.out.println("SUMATIVAAAAA ");
+	            	    objetoEvaluacion = new Sumativa(Integer.parseInt(rs.getString(1)),rs.getString(4),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(6)),rs.getString(7),Integer.parseInt(rs.getString(8)),rs.getBoolean(9),Integer.parseInt(rs.getString(3)),rs.getString(10),rs.getString(11) );           	
+	            		Curso curso = new Curso(rs.getString(2),rs.getString(12));
+	            		objetoEvaluacion.asociarCurso(curso);
+	            		
+	            	}
+	            	else{
+	            		System.out.println("FORMATIVA ");
+		            	objetoEvaluacion = new Formativa(Integer.parseInt(rs.getString(1)),rs.getString(4),Integer.parseInt(rs.getString(5)),Integer.parseInt(rs.getString(6)),rs.getString(7),Integer.parseInt(rs.getString(8)),rs.getBoolean(9),Integer.parseInt(rs.getString(3)),rs.getString(10),rs.getString(11) );           	
+		           		Curso curso = new Curso(rs.getString(2),rs.getString(12));
+		            	objetoEvaluacion.asociarCurso(curso);
+			           
+	            	}
+	            	
+	            }
+	            rs.close();
+	            st.close();
+	            db.close();
+	        }catch (java.sql.SQLException e) {
+	            System.out.println(e.getMessage() + "adioskk");
+	        }
+	        return objetoEvaluacion;
+	}
+  
+  
   public ArrayList<String> selectTipoEvaluacion(){
 	  ArrayList tipoevaluacion = new ArrayList<String>();
       try {
@@ -185,7 +229,7 @@ public class BaseDeDatos {
             System.out.println("daskdjkasjdsakl");
               Connection db = DriverManager.getConnection(url, username, password);
               Statement st = db.createStatement();
-              ResultSet rs = st.executeQuery("Select * from tipoevaluacion");
+              ResultSet rs = st.executeQuery("Select * from tipoevaluacion order by codtipoevaluacion asc");
               
               while (rs.next()) {
                 String objetoTipoEvaluacion = new String (rs.getString(2));
@@ -214,7 +258,7 @@ public class BaseDeDatos {
             System.out.println("daskdjkasjdsakl");
               Connection db = DriverManager.getConnection(url, username, password);
               Statement st = db.createStatement();
-              ResultSet rs = st.executeQuery("Select * from tipopregunta");
+              ResultSet rs = st.executeQuery("Select * from tipopregunta order by codtipopregunta asc");
               
               while (rs.next()) {
                 String objetoTipoPregunta = new String (rs.getString(2));
@@ -244,7 +288,7 @@ public class BaseDeDatos {
             System.out.println("daskdjkasjdsakl");
               Connection db = DriverManager.getConnection(url, username, password);
               Statement st = db.createStatement();
-              ResultSet rs = st.executeQuery("SELECT codigopregunta, pregunta.codsubtema, pregunta.codtipopregunta, descripcionpregunta, descripcionayuda, subtema.descripcion, tema.descripciontema, tipopregunta.nombretipopreg, tipopregunta.decripcion, tema.codtema  from pregunta join subtema on pregunta.codsubtema = subtema.codsubtema join tema on tema.codtema = subtema.codtema join tipopregunta on tipopregunta.codtipopregunta = pregunta.codtipopregunta");
+              ResultSet rs = st.executeQuery("SELECT codigopregunta, pregunta.codsubtema, pregunta.codtipopregunta, descripcionpregunta, descripcionayuda, subtema.descripcion, tema.descripciontema, tipopregunta.nombretipopreg, tipopregunta.decripcion, tema.codtema  from pregunta join subtema on pregunta.codsubtema = subtema.codsubtema join tema on tema.codtema = subtema.codtema join tipopregunta on tipopregunta.codtipopregunta = pregunta.codtipopregunta order by codigopregunta asc");
               while (rs.next()) {
             	  System.out.println(rs.getString(7));
 	            	
@@ -293,7 +337,7 @@ public class BaseDeDatos {
 	            System.out.println("daskdjkasjdsakl");
 	              Connection db = DriverManager.getConnection(url, username, password);
 	              Statement st = db.createStatement();
-	              ResultSet rs = st.executeQuery("Select * from tema");
+	              ResultSet rs = st.executeQuery("Select * from tema order by codtema asc");
 	              
 	              while (rs.next()) {
 	                Tema objetoTema = new Tema(Integer.parseInt(rs.getString(1)),rs.getString(3));
@@ -322,7 +366,7 @@ public class BaseDeDatos {
 	            System.out.println("daskdjkasjdsakl");
 	              Connection db = DriverManager.getConnection(url, username, password);
 	              Statement st = db.createStatement();
-	              ResultSet rs = st.executeQuery("Select * from tema where codigoCurso="+"'" + pCurso + "'");
+	              ResultSet rs = st.executeQuery("Select * from tema where codigoCurso="+"'" + pCurso + "' order by codtema asc");
 	              
 	              while (rs.next()) {
 	                Tema objetoTema = new Tema(Integer.parseInt(rs.getString(1)),rs.getString(3));
@@ -351,7 +395,7 @@ public class BaseDeDatos {
 	            System.out.println("daskdjkasjdsakl");
 	              Connection db = DriverManager.getConnection(url, username, password);
 	              Statement st = db.createStatement();
-	              ResultSet rs = st.executeQuery("Select * from subtema");
+	              ResultSet rs = st.executeQuery("Select * from subtema order by codsubtema asc");
 	              
 	              while (rs.next()) {
 	            	
@@ -504,6 +548,182 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
 	          }
 	          return curso;
 	  }
+	
+	public String SelectPorCodigoSubtema(String codigo){
+		//descripciontema para tema
+		//tipoevaluacion para tipo evaluacion
+		//nombretipopreg para tipo pregunta
+		String curso = "";
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("select descripcion from subtema where codsubtema = '"+codigo+"'");
+	              
+	              while (rs.next()) {	
+	            	  curso=rs.getString(1);
+	              }
+	              rs.close();
+	              st.close();
+	              db.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return curso;
+	  }
+	
+	
+	public String SelectSubtema(String codigo){
+		//descripciontema para tema
+		//tipoevaluacion para tipo evaluacion
+		//nombretipopreg para tipo pregunta
+		String curso = "";
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("select descripciontema from subtema join tema on tema.codtema=subtema.codtema where codsubtema = '"+codigo+"'");
+	              
+	              while (rs.next()) {	
+	            	  curso=rs.getString(1);
+	              }
+	              rs.close();
+	              st.close();
+	              db.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return curso;
+	  }
+	
+	public String SelectPorCodigoTPreg(String codigo){
+		//descripciontema para tema
+		//tipoevaluacion para tipo evaluacion
+		//nombretipopreg para tipo pregunta
+		String curso = "";
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("select nombretipopreg from tipopregunta where codtipopregunta = '"+codigo+"'");
+	              
+	              while (rs.next()) {	
+	            	  curso=rs.getString(1);
+	              }
+	              rs.close();
+	              st.close();
+	              db.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return curso;
+	  }
+	
+	public String SelectPorCodigoTEval(String codigo){
+		//descripciontema para tema
+		//tipoevaluacion para tipo evaluacion
+		//nombretipopreg para tipo pregunta
+		String curso = "";
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("select tipoevaluacion from tipoevaluacion where codtipoevaluacion = '"+codigo+"'");
+	              
+	              while (rs.next()) {	
+	            	  curso=rs.getString(1);
+	              }
+	              rs.close();
+	              st.close();
+	              db.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return curso;
+	  }
+	
+	public String SelectPorCodigoTema(String codigo){
+		//descripciontema para tema
+		//tipoevaluacion para tipo evaluacion
+		//nombretipopreg para tipo pregunta
+		String curso = "";
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("select descripciontema from tema where codtema = '"+codigo+"'");
+	              
+	              while (rs.next()) {	
+	            	  curso=rs.getString(1);
+	              }
+	              rs.close();
+	              st.close();
+	              db.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return curso;
+	  }
+	
+	public Curso SelectPorTema(String pCodigo){
+		//descripciontema para tema
+		//tipoevaluacion para tipo evaluacion
+		//nombretipopreg para tipo pregunta
+		Curso curso = new Curso();
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("select curso.codigocurso, descripcioncurso from tema join curso on tema.codigocurso=curso.codigocurso where codtema = '"+pCodigo+"'");
+	              
+	              while (rs.next()) {
+	            	  curso.setCodigo(rs.getString(1));
+	            	  curso.setDescripcionCurso(rs.getString(2));
+	              }
+	              rs.close();
+	              st.close();
+	              db.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return curso;
+	  }
   
   
 	public ArrayList<Profesor> selectProfe (){
@@ -572,6 +792,20 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
           return subtema;
 	  
   }
+  
+  public void actualizarTipEval(String pCodigo, String pDescripcion)
+	{
+		//BaseDeDatos conexion= new BaseDeDatos();
+		insertDelete("UPDATE tipoevaluacion SET tipoevaluacion = '"+pDescripcion+"' WHERE codtipoevaluacion = '"+pCodigo+"'");
+		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
+	}
+  
+  public void actualizarTipPregunta(String pCodigo, String pDescripcion)
+	{
+		//BaseDeDatos conexion= new BaseDeDatos();
+		insertDelete("UPDATE tipopregunta SET nombretipopreg = '"+pDescripcion+"' WHERE codtipopregunta = '"+pCodigo+"'");
+		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
+	}
   
   
 

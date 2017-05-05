@@ -52,8 +52,20 @@ public class ServletToTipoEvaluacion extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<String> tipoEvaluacion = bd.selectTipoEvaluacion();
+		request.setAttribute("ListTipoEval", tipoEvaluacion);
+		String par=request.getParameter("x");
+		System.out.println(par);
+		if(par.equals("ConsultarTipoEvaluacion")){
+			request.getRequestDispatcher("ConsultarTipoEvaluacion.jsp").forward(request, response);
+		}
+		if(par.equals("ActualizarTipoEvaluacion")){
+			request.getRequestDispatcher("ActualizarTipoEvaluacion.jsp").forward(request, response);
+		}
+		if(par.equals("EliminarTipoEvaluacion")){
+			request.getRequestDispatcher("EliminarTipoEvaluacion.jsp").forward(request, response);
+		}
 	}
 
 }
