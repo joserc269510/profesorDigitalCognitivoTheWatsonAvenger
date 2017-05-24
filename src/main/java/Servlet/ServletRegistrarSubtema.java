@@ -1,11 +1,16 @@
 package Servlet;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Integracion.BaseDeDatos;
+import logicaDeNegocios.Curso;
 import logicaDeNegocios.Subtema;
 
 /**
@@ -32,9 +37,14 @@ public class ServletRegistrarSubtema extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<Curso> cursos = bd.selectCurso();
+		request.setAttribute("ListCursos", cursos);
 		String nombreSubtema= request.getParameter("txtDescripcionSutema");
 		Subtema subtema= new Subtema();
-		subtema.registrarSubTema(nombreSubtema);
+		String codTema=request.getParameter("selCodigoTema");
+		subtema.registrarSubTema(codTema,nombreSubtema);
+		request.getRequestDispatcher("RegistrarSubtema.jsp").forward(request, response);
 	}
 
 }

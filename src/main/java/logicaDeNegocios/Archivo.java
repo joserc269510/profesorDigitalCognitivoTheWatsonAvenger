@@ -24,7 +24,8 @@ public class Archivo
 	public String CargarArchivo(HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
 		//Ruta donde se guardara el fichero
-		File destino=new File("C:\\Users\\Cora\\Desktop\\profesorDigitalCognitivoTheWatsonAvenger");
+		//File destino=new File("C:\\Users\\Cora\\Desktop\\profesorDigitalCognitivoTheWatsonAvenger");
+		File destino=new File("D:\\Users\\Esteban Morales\\git\\profesorDigitalCognitivoTheWatsonAvenger");
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
 

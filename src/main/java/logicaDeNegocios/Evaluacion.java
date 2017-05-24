@@ -59,6 +59,12 @@ public abstract class Evaluacion implements IVerificarEvaluacion,IRegistableTipo
 	public abstract void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	public abstract void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje);
 	
+	
+	public void habilitarEvaluacion(String pCodigo)
+	{
+		getConexion().insertDelete("UPDATE evaluacion SET status = "+"B'1'"+" WHERE codevaluacion = '"+pCodigo+"'");
+		System.out.println("UPDATE evaluacion SET status = "+"B'1'"+" WHERE codevaluacion = '"+pCodigo+"'");
+	}
 
 	
 	public void verificarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion)

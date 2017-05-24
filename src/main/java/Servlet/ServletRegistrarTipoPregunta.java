@@ -1,6 +1,8 @@
 package Servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +46,9 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
 			public void registrarPregunta(String CodP, String sub, String descp, String descpAy){}
 	    }; 
 			
-		pregunta.verificarTipoPregunta(tipoPregunta, descripcionPregunta);		
+		pregunta.verificarTipoPregunta(tipoPregunta, descripcionPregunta);	
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarTipoPregunta.jsp");
+		dispatcher.forward(request, response);
 	}
 	
 

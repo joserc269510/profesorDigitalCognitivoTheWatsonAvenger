@@ -40,8 +40,32 @@ public class ServletHabilitarEvaluacion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String codEvaluacion=request.getParameter("selCodigo");
+		
+		Evaluacion evaluacion=new Evaluacion() {
+			
+			@Override
+			public void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,
+					String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion,
+					int pTiempominutos) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+		evaluacion.habilitarEvaluacion(codEvaluacion);
 		BaseDeDatos bd=new BaseDeDatos();
-		bd.habilitarEvaluacion(codEvaluacion);
+		
 		
 		ArrayList<Evaluacion> evaluaciones = bd.selectEvaluacion();
 		request.setAttribute("ListEval", evaluaciones);

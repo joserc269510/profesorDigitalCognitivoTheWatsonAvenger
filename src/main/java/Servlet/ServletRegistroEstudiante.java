@@ -35,7 +35,7 @@ public class ServletRegistroEstudiante extends HttpServlet {
 	   estudiante.registrarEstudiante(numeroIdentificacion,nombre,apellido1,apellido2,numeroCarnet,fechaNacimiento,email);
 	 
 	   
-	   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarEstudiante.html");
+	   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarEstudiante.jsp");
 	   dispatcher.forward(request, response);
 	}
 

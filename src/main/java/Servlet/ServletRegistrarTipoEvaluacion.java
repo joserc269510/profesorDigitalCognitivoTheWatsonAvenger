@@ -3,6 +3,7 @@ package Servlet;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +49,9 @@ public class ServletRegistrarTipoEvaluacion extends HttpServlet {
 		public void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje) {}
 		
 		};
-	    evaluacion.verificarTipoEvaluacion(tipoEvaluacion,descripcionEvaluacion );		
+	    evaluacion.verificarTipoEvaluacion(tipoEvaluacion,descripcionEvaluacion );
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarTipoEvaluacion.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

@@ -44,9 +44,9 @@ public class ServletActualizarTema extends HttpServlet {
 		String codigoTema = request.getParameter("x");
 		String nombreActualizar = request.getParameter("txtDescripcion");
 		String numeroCurso = request.getParameter("selCodigoCurso");
-	
+		Tema tema = new Tema();
 		System.out.println(codigoTema + "adskkkkkkkkkkk");
-		bd.actualizarTema(codigoTema, numeroCurso, nombreActualizar);
+		tema.actualizarTema(codigoTema, numeroCurso, nombreActualizar);
 		ArrayList<Tema> temas = bd.selectTema();
 		request.setAttribute("ListTemas", temas);
 		request.getRequestDispatcher("ActualizarTema.jsp").forward(request, response);

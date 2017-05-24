@@ -36,7 +36,7 @@ public class ServletRegistrarCurso extends HttpServlet {
 		Curso curso= new Curso();
 		curso.registrarCurso(codigo,descripcion);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarCurso.html");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarCurso.jsp");
 		dispatcher.forward(request, response);
 	}
 

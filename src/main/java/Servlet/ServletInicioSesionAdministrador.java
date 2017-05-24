@@ -36,11 +36,8 @@ public class ServletInicioSesionAdministrador extends HttpServlet {
 		   RequestDispatcher dispatcher = request.getRequestDispatcher("/ModuloAdministrativo.html");
 		   dispatcher.forward(request, response);
        }else{
-    	   RequestDispatcher dispatcher = request.getRequestDispatcher("/InicioSesionAdministrador.jsp");
-    	   dispatcher.forward(request, response);
+    	   request.getRequestDispatcher("/InicioSesionAdministrador.jsp").forward(request, response);
        }
-	   RequestDispatcher dispatcher = request.getRequestDispatcher("/InicioSesionAdministrador.html");
-	   dispatcher.forward(request, response);
 	}
 
 		

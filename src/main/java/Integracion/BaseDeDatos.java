@@ -807,27 +807,6 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
 		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
 	}
   
-  public void actualizarTema(String pCodigo, String pCodCurso, String pDescripcion)
-	{
-		//BaseDeDatos conexion= new BaseDeDatos();
-		insertDelete("UPDATE tema SET descripciontema = '"+pDescripcion+"' , codigocurso = '"+pCodCurso+"' WHERE codtema = '"+pCodigo+"'");
-		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' , codigocurso = '"+pCodCurso+"' WHERE codigocurso = '"+pCodigo+"'");
-	}
-  
-  public void actualizarSubtema(String pCodigo, String pCodTema, String pDescripcion)
-	{
-		//BaseDeDatos conexion= new BaseDeDatos();
-		insertDelete("UPDATE subtema SET descripcion = '"+pDescripcion+"' , codtema = '"+pCodTema+"' WHERE codsubtema = '"+pCodigo+"'");
-		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
-	}
-  
-  public void habilitarEvaluacion(String pCodigo)
-	{
-		insertDelete("UPDATE evaluacion SET status = "+"B'1'"+" WHERE codevaluacion = '"+pCodigo+"'");
-		System.out.println("UPDATE evaluacion SET status = "+"B'1'"+" WHERE codevaluacion = '"+pCodigo+"'");
-	}
-  
-  
 
   public static void main(String[] args) {
      BaseDeDatos b= new BaseDeDatos();
