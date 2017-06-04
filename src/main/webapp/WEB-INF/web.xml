@@ -524,4 +524,14 @@
     <servlet-name>ServletConsultarTema</servlet-name>
     <url-pattern>/consultarTema</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>EMPEZAR_EVALUACION</description>
+    <display-name></display-name>
+    <servlet-name>ServletEmpezarEvaluacion</servlet-name>
+    <servlet-class>Servlet.ServletEmpezarEvaluacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletEmpezarEvaluacion</servlet-name>
+    <url-pattern>/empezarEvaluacion</url-pattern>
+  </servlet-mapping>
 </web-app>

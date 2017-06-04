@@ -17,6 +17,7 @@ public abstract class Evaluacion implements IVerificarEvaluacion,IRegistableTipo
 	protected String fechaEvaluacion;
 	protected int tiempoMinutos;
 	protected boolean status;
+	protected boolean aleatorio;
 	Curso curso;
 	ArrayList estudiantes;
 	ArrayList preguntas;
@@ -55,7 +56,7 @@ public abstract class Evaluacion implements IVerificarEvaluacion,IRegistableTipo
 	}
 	
 
-	public abstract void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos);
+	public abstract void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos, String pAleatorio);
 	public abstract void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	public abstract void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje);
 	

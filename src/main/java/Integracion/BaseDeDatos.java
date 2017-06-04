@@ -275,56 +275,6 @@ public class BaseDeDatos {
 	  
   }
   
-  public ArrayList<Object> selectPregunta (){
-      ArrayList preguntas = new ArrayList<Object>();
-	  
-	  try {
-              Class.forName("org.postgresql.Driver");
-          }
-          catch (java.lang.ClassNotFoundException e) {
-              System.out.println(e.getMessage() + "hola");
-          }
-          try {
-            System.out.println("daskdjkasjdsakl");
-              Connection db = DriverManager.getConnection(url, username, password);
-              Statement st = db.createStatement();
-              ResultSet rs = st.executeQuery("SELECT codigopregunta, pregunta.codsubtema, pregunta.codtipopregunta, descripcionpregunta, descripcionayuda, subtema.descripcion, tema.descripciontema, tipopregunta.nombretipopreg, tipopregunta.decripcion, tema.codtema  from pregunta join subtema on pregunta.codsubtema = subtema.codsubtema join tema on tema.codtema = subtema.codtema join tipopregunta on tipopregunta.codtipopregunta = pregunta.codtipopregunta order by codigopregunta asc");
-              while (rs.next()) {
-            	  System.out.println(rs.getString(7));
-	            	
-	            	if(rs.getString(8).compareTo("marqueconx") == 0){//rs.getString(1)
-	            	  MarqueX objetoPregunta = new MarqueX(Integer.parseInt(rs.getString(1)),Integer.parseInt(rs.getString(3)), rs.getString(4), rs.getString(5), rs.getString(8), rs.getString(9));
-	            	  
-	            	  objetoPregunta.anadirSubTema(Integer.parseInt(rs.getString(2)), rs.getString(6));
-	            	  objetoPregunta.getSubtema().anadirTema(Integer.parseInt(rs.getString(10)), rs.getString(7));
-	            	  preguntas.add(objetoPregunta);
-	            	}
-	            	else if(rs.getString(8).compareTo("desarrollo") == 0){
-	            		MarqueX objetoPregunta = new MarqueX(Integer.parseInt(rs.getString(1)),Integer.parseInt(rs.getString(3)), rs.getString(4), rs.getString(5), rs.getString(8), rs.getString(9));
-		            	
-	            		objetoPregunta.anadirSubTema(Integer.parseInt(rs.getString(2)), rs.getString(6));
-		                objetoPregunta.getSubtema().anadirTema(Integer.parseInt(rs.getString(10)), rs.getString(7));
-		                preguntas.add(objetoPregunta);
-	            	}
-	            	else if(rs.getString(8).compareTo("respuesta corta") == 0){
-	            		MarqueX objetoPregunta = new MarqueX(Integer.parseInt(rs.getString(1)),Integer.parseInt(rs.getString(3)), rs.getString(4), rs.getString(5), rs.getString(8), rs.getString(9));
-		                objetoPregunta.anadirSubTema(Integer.parseInt(rs.getString(2)), rs.getString(6));
-		                objetoPregunta.getSubtema().anadirTema(Integer.parseInt(rs.getString(10)), rs.getString(7));
-		                preguntas.add(objetoPregunta);
-	            	}
-	            	else{
-	            		//tirar error aqui
-	            	}
-              }
-              rs.close();
-              st.close();
-              db.close();
-          }catch (java.sql.SQLException e) {
-              System.out.println(e.getMessage() + "adios");
-          }
-          return preguntas;
-  	  }
-  
 	  public ArrayList<Tema>selectTema(){
 		  ArrayList tema = new ArrayList<Tema>();
 	      try {
@@ -436,6 +386,115 @@ public class BaseDeDatos {
           System.out.println(e.getMessage() + "adios");
         }
   }
+  
+  
+  public ArrayList<String>ObtenerPreguntasEvaluacion(String evaluacion){
+	  ArrayList<String> pregunta = new ArrayList<String>();
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("select codigopregunta from evaluacionpregunta where codevaluacion ='"+evaluacion+"'");
+              
+              while (rs.next()) {	
+                pregunta.add(rs.getString(1));
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return pregunta;
+  }
+  
+  public ArrayList<Respuesta>ObtenerOpciones(String pregunta){
+	  ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select codrespuesta, descripcionrespuesta from respuesta where codigopregunta='"+pregunta+"'");
+              
+              while (rs.next()) {	
+            	  Respuesta nRespuesta = new Respuesta();
+            	  nRespuesta.setCodRespuesta(rs.getInt(1));
+            	  nRespuesta.setDescripcionRespuesta(rs.getString(2));
+                respuestas.add(nRespuesta);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return respuestas;
+  }
+  
+  public String ObtenerTipoPreguntas(String pregunta){
+	  String tipoPregunta="";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select tipopregunta.codtipopregunta from pregunta join tipopregunta on tipopregunta.codtipopregunta = pregunta.codtipopregunta where codigopregunta='"+pregunta+"'");
+              
+              while (rs.next()) {	
+                tipoPregunta=rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return tipoPregunta;
+  }
+  
+  public String ObtenerDescripcionPregunta(String pregunta){
+	  String descripcion="";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select descripcionpregunta from pregunta where codigopregunta='"+pregunta+"'");
+              
+              while (rs.next()) {	
+                 descripcion=rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return descripcion;
+  }
+  
   
 
   public ArrayList<String>SelectTipoPreguntaEspecifica(String tipoPregunta){
@@ -583,7 +642,7 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
 		//descripciontema para tema
 		//tipoevaluacion para tipo evaluacion
 		//nombretipopreg para tipo pregunta
-		String curso = "";
+		String tema = "";
 	      try {
 	              Class.forName("org.postgresql.Driver");
 	          }
@@ -597,7 +656,7 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
 	              ResultSet rs = st.executeQuery("select descripciontema from subtema join tema on tema.codtema=subtema.codtema where codsubtema = '"+codigo+"'");
 	              
 	              while (rs.next()) {	
-	            	  curso=rs.getString(1);
+	            	  tema=rs.getString(1);
 	              }
 	              rs.close();
 	              st.close();
@@ -605,10 +664,10 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
 	          }catch (java.sql.SQLException e) {
 	              System.out.println(e.getMessage() + "adios");
 	          }
-	          return curso;
+	          return tema;
 	  }
 	
-	public String SelectPorCodigoTPreg(String codigo){
+	public String SelectSubtema2(String codigo){
 		//descripciontema para tema
 		//tipoevaluacion para tipo evaluacion
 		//nombretipopreg para tipo pregunta
@@ -623,7 +682,7 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
 	            System.out.println("daskdjkasjdsakl");
 	              Connection db = DriverManager.getConnection(url, username, password);
 	              Statement st = db.createStatement();
-	              ResultSet rs = st.executeQuery("select nombretipopreg from tipopregunta where codtipopregunta = '"+codigo+"'");
+	              ResultSet rs = st.executeQuery("select descripcioncurso from subtema join tema on tema.codtema=subtema.codtema join curso on curso.codigocurso=tema.codigocurso where codsubtema = '"+codigo+"'");
 	              
 	              while (rs.next()) {	
 	            	  curso=rs.getString(1);
@@ -636,6 +695,40 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
 	          }
 	          return curso;
 	  }
+	
+	public ArrayList<String> SelectPorCodigoTPreg(String codigo){
+		//descripciontema para tema
+		//tipoevaluacion para tipo evaluacion
+		//nombretipopreg para tipo pregunta
+		ArrayList<String> curso = new ArrayList<String>();
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("select nombretipopreg, decripcion from tipopregunta where codtipopregunta = '"+codigo+"'");
+	              
+	              while (rs.next()) {	
+	            	  String curso2=rs.getString(1);
+	            	  String curso3=rs.getString(2);
+	            	  curso.add(curso2);
+	            	  curso.add(curso3);
+	              }
+	              rs.close();
+	              st.close();
+	              db.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return curso;
+	  }
+	
+	
 	
 	public String SelectPorCodigoTEval(String codigo){
 		//descripciontema para tema
@@ -809,12 +902,15 @@ public ArrayList<String>SelectTipoPreguntaPorSubtema(String tipoPregunta, String
   
 
   public static void main(String[] args) {
-     BaseDeDatos b= new BaseDeDatos();
+    
+     
+	  
+	  /*BaseDeDatos b= new BaseDeDatos();
      ArrayList hola = b.SelectTipoPreguntaPorSubtema("marqueconx", "repeticion de codigo" );
      
      for (int i=0; i<hola.size(); i++){
     	 System.out.println(hola.get(i));
-     }
+     }*/
      //System.out.println(b.SelectCursoEspecifico("TI5501","descripcioncurso","curso"));
 
       /*

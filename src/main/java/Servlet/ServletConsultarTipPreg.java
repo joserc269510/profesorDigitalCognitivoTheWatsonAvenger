@@ -40,8 +40,11 @@ public class ServletConsultarTipPreg extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String codigoTipPreg = request.getParameter("selCodigo"); 	
 		BaseDeDatos bd = new BaseDeDatos();
-		String nombreTipPreg = bd.SelectPorCodigoTPreg(codigoTipPreg);
-		request.setAttribute("texto", nombreTipPreg);	
+		ArrayList<String> list= bd.SelectPorCodigoTPreg(codigoTipPreg);
+		String nombreTipPreg = list.get(0);
+		String descripTipPreg = list.get(1);
+		request.setAttribute("texto", nombreTipPreg);
+		request.setAttribute("texto2", descripTipPreg);
 		ArrayList<String> tipoPregunta = bd.selectTipoPregunta();
 		request.setAttribute("ListTipoPreguntas", tipoPregunta);
 		request.setAttribute("TipPreg", codigoTipPreg);

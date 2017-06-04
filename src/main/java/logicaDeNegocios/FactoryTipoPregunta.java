@@ -8,7 +8,7 @@ public class FactoryTipoPregunta implements MetodoFactoryPregunta {
 		if (tipoPregunta.equals("marqueconx")) {
 			 pregunta = new MarqueX(tipoPregunta, pDescripcion);
 			}
-		else if(tipoPregunta.equals("respuesta corta")){
+		else if(tipoPregunta.equals("espacioenblanco")){
 			 pregunta = new EspacioBlanco(tipoPregunta, pDescripcion);
 		}
 		

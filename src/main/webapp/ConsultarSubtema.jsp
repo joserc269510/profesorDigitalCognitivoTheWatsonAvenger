@@ -201,6 +201,7 @@
 		              		String subtema = (String) request.getAttribute("Subtema");  		
 		             		 String texto= (String) request.getAttribute("texto");
 		             		String texto2= (String) request.getAttribute("texto2");
+		             		String texto3= (String) request.getAttribute("texto3");
 						%>
 		              <% if(subtema!=null&&texto!=null){ %>
 		              <tr>
@@ -211,6 +212,10 @@
 			            <td ><h3>Nombre del Subtema:</h3></td>
 			            <td  ><h3><%= texto %></h3></td>
 		              </tr>
+		              <tr>
+			            <td ><h3>Nombre del Curso:</h3></td>
+			            <td  ><h3><%= texto3 %></h3></td>
+		              </tr>	
 		              <tr>
 			            <td ><h3>Nombre del Tema:</h3></td>
 			            <td  ><h3><%= texto2 %></h3></td>

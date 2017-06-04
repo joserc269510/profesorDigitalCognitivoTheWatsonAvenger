@@ -41,7 +41,7 @@ public class ServletRegistrarTema extends HttpServlet
 		String pDescripcion= request.getParameter("txtDescripcion");
 		Tema tema= new Tema();
 		tema.registrarTema(pCodigoCurso, pDescripcion);
-		request.getRequestDispatcher("TemaSubtema.jsp").forward(request, response);
+		request.getRequestDispatcher("RegistrarTema.jsp").forward(request, response);
 		
 		
 	}

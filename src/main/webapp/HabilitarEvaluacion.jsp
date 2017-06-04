@@ -172,13 +172,25 @@
 			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/-->
 			            <%@ page import="java.util.ArrayList, logicaDeNegocios.*" %>
 			            <%
-			            		ArrayList<Evaluacion> Eval= (ArrayList<Evaluacion>) request.getAttribute("ListEval"); 
+			            		ArrayList<Evaluacion> Eval= (ArrayList<Evaluacion>) request.getAttribute("ListEval");
+			            		ArrayList<Estudiante> estudiantes= (ArrayList<Estudiante>) request.getAttribute("ListEstudiantes");
 			            		
 						%>
 			            <select id="selCodigo" name="selCodigo">
 			            
 			            <%for(Evaluacion e:Eval){ %> 
 			                <option value="<%=e.getCodEvaluacion() %>"><%= e.getNombreEvaluacion() %></option>
+				        <% } %>
+			            </select>
+			            </td>
+			         </tr>
+			         <tr>   
+			            <td ><h3>Lista Estudiantes</h3></td>
+			            <td >
+			            <select id="selEstudiante" name="selEstudiante" multiple>
+			            
+			            <%for(Estudiante est:estudiantes){ %> 
+			                <option value="<%=est.getNumeroIdentificacion() %>"><%= est.getNombre()+" "+est.getApellido1()+" "+est.getApellido2() %></option>
 				        <% } %>
 			            </select></td>
                         

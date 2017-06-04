@@ -193,6 +193,7 @@
 		              <%
 		              		String tipPreg = (String) request.getAttribute("TipPreg");  		
 		             		 String texto= (String) request.getAttribute("texto");
+		             		String texto2= (String) request.getAttribute("texto2");
 						%>
 		              <% if(tipPreg!=null&&texto!=null){ %>
 		              <tr>
@@ -202,6 +203,10 @@
 		              <tr>
 			            <td ><h3>Tipo de la Pregunta:</h3></td>
 			            <td  ><h3><%= texto %></h3></td>
+		              </tr>
+		              <tr>
+			            <td ><h3>Descripcion:</h3></td>
+			            <td  ><h3><%= texto2 %></h3></td>
 		              </tr>
 		              <tr>
 			            <td ></td>

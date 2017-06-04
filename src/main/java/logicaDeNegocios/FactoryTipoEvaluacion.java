@@ -12,7 +12,7 @@ public class FactoryTipoEvaluacion implements MetodoFactoryEvaluacion {
 			evaluacion= new Sumativa(pTipoEvaluacion, pDescripcion); 
 		}
 		if (pTipoEvaluacion.equals("formativa")){
-			evaluacion= new Formativa();
+			evaluacion= new Formativa(pTipoEvaluacion, pDescripcion);
 		}
 		return evaluacion;
 	}

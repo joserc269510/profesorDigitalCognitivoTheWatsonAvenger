@@ -46,7 +46,14 @@ public class ServletMatricular extends HttpServlet {
 		String codCurso=request.getParameter("selCodigo");
 		Curso matricula= new Curso();
 		matricula.matricularEstudiante(codCurso, idEstudiante);
-	//	request.getRequestDispatcher("MatricularEstudiante.jsp").forward(request, response);
+	
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<Estudiante> estudiantes = bd.selectEstudiante();
+		ArrayList<Curso> cursos = bd.selectCurso();
+		
+		request.setAttribute("ListEstudiantes", estudiantes);
+		request.setAttribute("ListCursos", cursos);
+		request.getRequestDispatcher("MatricularEstudiante.jsp").forward(request, response);
 
 
 		

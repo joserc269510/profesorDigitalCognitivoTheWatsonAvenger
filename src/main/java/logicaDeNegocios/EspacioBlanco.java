@@ -7,6 +7,7 @@ public class EspacioBlanco extends pregunta
 	private String tipoPregunta;
 	private String descripcionTipoPreg;
 	private int codigoTipoPregunta;
+	BaseDeDatos conexion;
 	
 
 	public EspacioBlanco(int pCodigoPregunta,int pCodigoTipoPregunta, String pDescripcionPregunta, String pDescripcionAyduda, String pTipoPregunta, String pDescripcionTipoPreg){
@@ -22,6 +23,7 @@ public class EspacioBlanco extends pregunta
 		super();
 		setTipoPregunta(pTipoPregunta);
 		setDescripcion(pDescripcion);
+		conexion = new BaseDeDatos();
 		
 	}
 	
@@ -33,9 +35,9 @@ public class EspacioBlanco extends pregunta
 	public void registrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
 		setTipoPregunta(pTipoPregunta);
-		BaseDeDatos conexion= new BaseDeDatos();
-		conexion.insertDelete("insert into tipopregunta(nombretipopreg,decripcion values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
-		
+		setDescripcionTipoPreg(pDescripcion);
+		//conexion.insertDelete("insert into tipopregunta(nombretipopreg,decripcion) values (" + "'"+ pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
+		getConexion().insertDelete("insert into tipopregunta(nombretipopreg, decripcion) values (" + "'"+pTipoPregunta + "'" + "," + "'" + pDescripcion +"'" + ")");
 	}
 	
 	public void registrarPregunta(String CodP,String sub, String descp, String descpAy)

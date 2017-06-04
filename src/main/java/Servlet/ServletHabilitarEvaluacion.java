@@ -58,7 +58,7 @@ public class ServletHabilitarEvaluacion extends HttpServlet {
 			@Override
 			public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,
 					String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion,
-					int pTiempominutos) {
+					int pTiempominutos, String pAleatorio) {
 				// TODO Auto-generated method stub
 				
 			}

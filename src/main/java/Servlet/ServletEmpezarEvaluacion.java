@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import Integracion.BaseDeDatos;
 
 /**
- * Servlet implementation class ServletCargarDatsTipPreg
+ * Servlet implementation class ServletEmpezarEvaluacion
  */
-@WebServlet("/ServletCargarDatsTipPreg")
-public class ServletCargarDatsTipPreg extends HttpServlet {
+@WebServlet("/ServletEmpezarEvaluacion")
+public class ServletEmpezarEvaluacion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletCargarDatsTipPreg() {
+    public ServletEmpezarEvaluacion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,15 +38,12 @@ public class ServletCargarDatsTipPreg extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String codigoTipPreg = request.getParameter("selCodigo"); 	
+		String evaluacion=request.getParameter("x");
 		BaseDeDatos bd = new BaseDeDatos();
-		ArrayList<String> list= bd.SelectPorCodigoTPreg(codigoTipPreg);
-		String nombreTipPreg = list.get(0);
-		request.setAttribute("texto", nombreTipPreg);	
-		ArrayList<String> tipoPregunta = bd.selectTipoPregunta();
-		request.setAttribute("ListTipoPreguntas", tipoPregunta);
-		request.setAttribute("TipPreg", codigoTipPreg);
-		request.getRequestDispatcher("ActualizarTipoPregunta.jsp").forward(request, response);
+		ArrayList<String> preguntas = bd.ObtenerPreguntasEvaluacion(evaluacion);
+		System.out.println(preguntas.size());
+		request.setAttribute("ListPreguntas", preguntas);
+		request.getRequestDispatcher("RealizarEvaluacion.jsp").forward(request, response);
 	}
 
 }

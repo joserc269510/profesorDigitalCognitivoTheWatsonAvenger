@@ -42,9 +42,9 @@ public class Formativa extends Evaluacion
 		getConexion().insertDelete("insert into tipoevaluacion (tipoevaluacion,descripciontipoeval) values (" + "'"+ pTipoEvaluacion + "'" + "," + "'" + pDescripcion +"'" + ")");
 		
 	}
-	public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos)
+	public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos, String pAleatorio)
 	{
-		getConexion().insertDelete("insert into evaluacion (codevaluacion, codigocurso, codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal, fechaevaluacion, tiempominutos,status) values ("+pCodigoEvaluacion+","+"'"+ pCodigoCurso+ "'"+","+ pCodTipoEvaluacion+","+"'"+ pNombreEvaluacion+"'"+","+  pPuntajetotal+","+  pPorcentajenotafinal+","+  "'"+pFechaevaluacion+"'"+","+  pTiempominutos +","+ "B'0'"+ ")" );
+		getConexion().insertDelete("insert into evaluacion (codevaluacion, codigocurso, codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal, fechaevaluacion, tiempominutos,status) values ("+pCodigoEvaluacion+","+"'"+ pCodigoCurso+ "'"+","+ pCodTipoEvaluacion+","+"'"+ pNombreEvaluacion+"'"+","+  pPuntajetotal+","+  pPorcentajenotafinal+","+  "'"+pFechaevaluacion+"'"+","+  pTiempominutos +","+ "B'0'"+","+"'"+pAleatorio+"'"+ ")" );
 	}
 	
 	public void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje){

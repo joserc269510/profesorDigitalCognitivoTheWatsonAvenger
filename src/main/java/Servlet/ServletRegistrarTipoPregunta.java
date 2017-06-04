@@ -38,7 +38,7 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
 		System.out.println(tipoPregunta);
 		System.out.println(descripcionPregunta);
 		
-		 IVerificable pregunta = new pregunta()
+		IVerificable pregunta = new pregunta()
 	     { 
 	   
 			public void registrarTipoPregunta(String pTipoEvaluacion, String pDescripcion) {}
@@ -47,7 +47,7 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
 	    }; 
 			
 		pregunta.verificarTipoPregunta(tipoPregunta, descripcionPregunta);	
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarTipoPregunta.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("RegistrarTipoPregunta.jsp");
 		dispatcher.forward(request, response);
 	}
 	

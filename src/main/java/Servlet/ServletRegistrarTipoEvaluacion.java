@@ -42,7 +42,7 @@ public class ServletRegistrarTipoEvaluacion extends HttpServlet {
 		
 		public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,
 				String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion,
-				int pTiempominutos) {}
+				int pTiempominutos, String pAleatorio) {}
 
 		public void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {}
 		
@@ -50,7 +50,7 @@ public class ServletRegistrarTipoEvaluacion extends HttpServlet {
 		
 		};
 	    evaluacion.verificarTipoEvaluacion(tipoEvaluacion,descripcionEvaluacion );
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarTipoEvaluacion.jsp");
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("RegistrarTipoEvaluacion.jsp");
 		dispatcher.forward(request, response);
 	}
 

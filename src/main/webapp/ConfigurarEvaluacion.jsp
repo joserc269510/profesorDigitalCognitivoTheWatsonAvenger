@@ -221,6 +221,18 @@
 			            <td ><h3>Descripcion de la Evaluacion</h3></td>
 			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/></td>
 		              </tr>
+			          
+			          <tr>
+			            <td ><h3>Aleatorio</h3></td>
+			            <td >
+					            <input type="radio" id="txtAleatorio" name="aleatorio" value="Si">Si
+					            
+					        
+					            <input type="radio" id="txtAleatorio" name="aleatorio" value="No">No
+					            
+					        
+			            </td>
+		              </tr>
 			          <tr>
 			            <td ></td>
 			            <td  ><button class="submit" type="submit" >Siguiente</button></td>

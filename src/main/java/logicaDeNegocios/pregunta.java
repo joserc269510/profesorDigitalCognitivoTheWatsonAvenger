@@ -51,11 +51,12 @@ public abstract class pregunta implements IVerificable, IRegistrableTipoPregunta
 		}
 		if (tipoPregunta.equals("espacioenblanco"))
 		{
-			
+			System.out.println("entro al espacio");
 			pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		if (tipoPregunta.equals("desarrollo"))
 		{
+			System.out.println("entro al desarrollo");
 			pregunta.registrarTipoPregunta(tipoPregunta, pDescripcion);
 		}
 		 

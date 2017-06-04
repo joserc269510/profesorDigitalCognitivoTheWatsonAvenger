@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
+import logicaDeNegocios.Estudiante;
 import logicaDeNegocios.Evaluacion;
 
 /**
@@ -33,7 +34,9 @@ public class ServletToEvaluacion extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BaseDeDatos bd= new BaseDeDatos();
 		ArrayList<Evaluacion> evaluaciones = bd.selectEvaluacion();
+		ArrayList<Estudiante> estudiantes= bd.selectEstudiante();
 		request.setAttribute("ListEval", evaluaciones);
+		request.setAttribute("ListEstudiantes", estudiantes);
 		String par=request.getParameter("x");
 		System.out.println(par);
 		if(par.equals("HabilitarEvaluacion")){

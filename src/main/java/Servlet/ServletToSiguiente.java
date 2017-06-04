@@ -57,6 +57,14 @@ public class ServletToSiguiente extends HttpServlet {
 		String nota= request.getParameter("txtNota");
 		String tiempo= request.getParameter("txtTiempo");
 		String descripcion= request.getParameter("txtDescripcion");
+		String aleatorio= request.getParameter("txtAleatorio");
+		System.out.println(aleatorio);
+		if(aleatorio=="Si"){
+			aleatorio="B'1'";
+		}else{
+			aleatorio="B'0'";
+		}
+		
 		
 		request.setAttribute("CodEval", codEval);
 		request.setAttribute("Curso", curso);
@@ -66,6 +74,7 @@ public class ServletToSiguiente extends HttpServlet {
 		request.setAttribute("Nota", nota);
 		request.setAttribute("Tiempo", tiempo);
 		request.setAttribute("Descripcion", descripcion);
+		request.setAttribute("Aleatorio", aleatorio);
 		
 		SimpleDateFormat mascara=new SimpleDateFormat("dd/MM/yy");
 		String fecha= mascara.format(Calendar.getInstance().getTime());
@@ -73,11 +82,11 @@ public class ServletToSiguiente extends HttpServlet {
 		Evaluacion evaluacion;
 		if(tipoEval.equals("1")){
 			evaluacion=new Formativa();
-			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo));
+			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo), aleatorio);
 		}
 		if(tipoEval.equals("2")){
 			evaluacion=new Sumativa();
-			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo));
+			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo), aleatorio);
 		}
 		BaseDeDatos bd= new BaseDeDatos();
 		ArrayList<Curso> cursos = bd.selectCurso();

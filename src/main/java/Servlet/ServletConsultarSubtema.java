@@ -45,8 +45,10 @@ public class ServletConsultarSubtema extends HttpServlet {
 		BaseDeDatos bd = new BaseDeDatos();
 		String nombreSubtema = bd.SelectPorCodigoSubtema(codigoSubtema);
 		String nombreTema = bd.SelectSubtema(codigoSubtema);
+		String nombreCurso = bd.SelectSubtema2(codigoSubtema);
 		request.setAttribute("texto", nombreSubtema);
 		request.setAttribute("texto2", nombreTema);
+		request.setAttribute("texto3", nombreCurso);
 		ArrayList<Subtema> subtemas = bd.selectSubTema();
 		request.setAttribute("ListSubtemas", subtemas);
 		request.setAttribute("Subtema", codigoSubtema);
