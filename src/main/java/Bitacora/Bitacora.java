@@ -1,8 +1,8 @@
 package Bitacora;
 
 import Integracion.BaseDeDatos;
-import Integracion.Encriptar;
-import Integracion.Desencriptar;
+import Seguridad.Encriptar;
+import Seguridad.Desencriptar;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,7 +11,6 @@ public class Bitacora {
 	public String user;
 	public String descripcion;
 	BaseDeDatos baseDeDatos;
-	
 	public Bitacora(Date pFecha, String pDescripcion, String pUser){
 		setFecha(pFecha);
 		setUser(pUser);
