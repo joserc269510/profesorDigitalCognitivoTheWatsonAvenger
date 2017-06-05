@@ -37,7 +37,7 @@ public class ServletRegistrarCurso extends HttpServlet {
 		Curso curso= new Curso();
 		curso.registrarCurso(codigo,descripcion);
 		Bitacora bitacora = new Bitacora();
-		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro un curso: " + descripcion.toLowerCase());
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro un curso " + descripcion.toLowerCase());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarCurso.jsp");
 		dispatcher.forward(request, response);
 	}
