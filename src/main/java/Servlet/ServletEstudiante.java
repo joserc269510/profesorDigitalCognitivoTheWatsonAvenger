@@ -42,9 +42,10 @@ public class ServletEstudiante extends HttpServlet {
 	   	 String apellido2= request.getParameter("txtApellido2");
 	   	 String nombre= request.getParameter("txtNombre");
 	   	 String email= request.getParameter("txtEmail");
+	   	 String telefono= request.getParameter("txtTelefono");
 	   	 
 	   Estudiante estudiante= new Estudiante();
-	   estudiante.registrarEstudiante(numeroIdentificacion, numeroCarnet, fechaNacimiento, apellido1, apellido2, nombre, email);
+	   estudiante.registrarEstudiante(numeroIdentificacion, numeroCarnet, fechaNacimiento, apellido1, apellido2, nombre, email, telefono);
 	 
 	   response.setContentType("text/html");
 	}

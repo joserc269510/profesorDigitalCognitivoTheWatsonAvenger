@@ -64,14 +64,20 @@ public class ServletHabilitarEvaluacion extends HttpServlet {
 				// TODO Auto-generated method stub
 				
 			}
+
+			@Override
+			public void registrarEstudiante(String pCedula, String pCodEvaluacion) {
+				// TODO Auto-generated method stub
+				
+			}
 		};
 		
-		//evaluacion.habilitarEvaluacion(codEvaluacion);
+		evaluacion.habilitarEvaluacion(codEvaluacion);
 		BaseDeDatos bd=new BaseDeDatos();
 		
 		for(int i=0;i<listEstudiantes.length;i++){
 			System.out.println(bd.ObtenerCorreoEstudiante(listEstudiantes[i]));
-			
+			evaluacion.registrarEstudiante(listEstudiantes[i], codEvaluacion);
 			Correo nCorreo=new Correo();
 			nCorreo.SendMail(bd.ObtenerCorreoEstudiante(listEstudiantes[i]), codEvaluacion);
 		}

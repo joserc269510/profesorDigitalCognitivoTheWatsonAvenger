@@ -1,4 +1,6 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 	<head>
@@ -79,13 +81,15 @@
 		
 			  <form name="autentificarEstudiante"  action=autentificando method="post" enctype="multipart/form-data">
 			    <div>
-			    
-		              
+			    	
 			    
 			      <h1> Autentificacion del Estudiante <font size="3"> </h1>
 			      <div>
 			      <table>
-			   		  			
+			   		  
+			   		<%@ page import="java.util.ArrayList, logicaDeNegocios.*, Integracion.*" %>
+		          <% String evaluacion = (String) request.getParameter("x"); %>
+		          <% System.out.println(evaluacion); %>
 			     
                       <tr>
 						<td><input type="file" name="inputFile2" id="inputFile2" value="" Style="font-size: 14px" /> 	</td>							

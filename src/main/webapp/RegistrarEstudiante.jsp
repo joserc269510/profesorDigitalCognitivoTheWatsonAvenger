@@ -187,6 +187,10 @@
 			            <td ><h3 >Correo Electronico</h3></td>
 			            <td ><input type="email" id="txtEmail" name="txtEmail"  placeholder="@"  required/></td>
 		              </tr>
+		              <tr>
+			            <td ><h3 >Telefono</h3></td>
+			            <td ><input type="txt" id="txtTelefono" name="txtTelefono"  placeholder="XXXXXXXX"  required/></td>
+		              </tr>
 			       
 			          <tr>
 			            

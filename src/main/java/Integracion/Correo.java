@@ -41,7 +41,7 @@ public class Correo {
 	            message.setRecipients(Message.RecipientType.TO,
 	                    InternetAddress.parse(pTo));
 	            message.setSubject(Subject);
-	            String Link="http://localhost:8080/JavaHelloWorldApp/AutentificarEstudiante.html?x="+pEvaluacion;
+	            String Link="http://localhost:8080/JavaHelloWorldApp/AutentificarEstudiante.jsp?x="+pEvaluacion;
 	            message.setText(Mensage+"\n"+"Ingresar al siguiente Link"+"\n"+Link);
 
 	            Transport.send(message);

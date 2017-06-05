@@ -60,9 +60,14 @@
 			        			String codEvaluacion = (String) request.getAttribute("CodEvaluacion"); 
 			        %>
 			        <%for(int i=0;i<Preguntas.size();){
-			        	int aleatorio= (int) Math.floor(Math.random()*Preguntas.size());
-			        	pregunta Tpregunta=Preguntas.get(aleatorio);
 			        	BaseDeDatos bd=new BaseDeDatos();
+			        	String isAleatorio=bd.ObtenerAleatorioEvaluacion(codEvaluacion);
+			        	int aleatorio=0;
+			        	if(isAleatorio.equals("1")){
+			        		aleatorio= (int) Math.floor(Math.random()*Preguntas.size());
+			        	}
+			        	pregunta Tpregunta=Preguntas.get(aleatorio);
+			        	
 			        	String tipoPreg=bd.ObtenerTipoPreguntas(Tpregunta.getCodigoPregunta());
 			        	System.out.println("TipoPregunta="+tipoPreg);
 			        	String descripcion=Tpregunta.getDescripcionPregunta();
@@ -84,10 +89,11 @@
 				           
 				   <%
 				  		 for(Respuesta r:respuestas){
-				   %>
+				   %>		<fieldset>
 					        <tr><td>
-					            <input type="radio" id="opcion" name="opcion" value=<%=r.getCodRespuesta() %>> <%=r.getDescripcionRespuesta() %>
+					            <input type="radio" id="opcion" name="<%=r.getCodRespuesta() %>" value=<%=r.getCodRespuesta() %>> <%=r.getDescripcionRespuesta() %>
 					        </td></tr>
+					        </fieldset>
 					        
 					    
 					   <%			
@@ -102,8 +108,9 @@
 					       			<tr>
 							            <td ><h3 ><%=descripcion %></h3></td>
 						            </tr>
+						            <% ArrayList<Respuesta> respuestas=bd.ObtenerOpciones(Tpregunta.getCodigoPregunta());%>
 						            <tr>
-							            <td ><input type="text" id="txtRespuesta" name="txtRespuesta" placeholder="Respuesta" /></td>
+							            <td ><input type="text" id="<%=respuestas.get(0).getCodRespuesta() %>" name="<%=respuestas.get(0).getCodRespuesta() %>" placeholder="Respuesta" /></td>
 						            </tr>
 					 <%
 					        		
@@ -153,7 +160,8 @@
 		<% } %>
 		<% String duration=(String)s.getAttribute("duration"); %>
 		<% BaseDeDatos bd =new BaseDeDatos(); %>
-		<% int a=Integer.parseInt(bd.ObtenerTiempoEvaluacion(codEvaluacion)); %>
+		<% //int a=Integer.parseInt(bd.ObtenerTiempoEvaluacion(codEvaluacion)); %>
+		<% int a=Integer.parseInt("1"); %>
 <script type="text/javascript">
 		var cmin=<%= a %>;
 		var total=cmin*60;

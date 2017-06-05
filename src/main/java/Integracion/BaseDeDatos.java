@@ -942,6 +942,35 @@ public String ObtenerTiempoEvaluacion(String pEvaluacion){
 	          }
 	          return tiempo;
 	  }
+
+public String ObtenerAleatorioEvaluacion(String pEvaluacion){
+
+
+	
+	String aleatorio = "";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select aleatorio from evaluacion where codevaluacion='"+pEvaluacion+"'");
+              
+              while (rs.next()) {	
+            	  aleatorio=rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return aleatorio;
+  }
 	
 	public Curso SelectPorTema(String pCodigo){
 		//descripciontema para tema

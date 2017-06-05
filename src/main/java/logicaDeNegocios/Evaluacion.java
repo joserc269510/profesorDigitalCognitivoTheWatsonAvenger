@@ -59,6 +59,7 @@ public abstract class Evaluacion implements IVerificarEvaluacion,IRegistableTipo
 	public abstract void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos, String pAleatorio);
 	public abstract void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	public abstract void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje);
+	public abstract void registrarEstudiante(String pCedula, String pCodEvaluacion);
 	
 	
 	public void habilitarEvaluacion(String pCodigo)

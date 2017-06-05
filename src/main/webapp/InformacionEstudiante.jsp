@@ -73,9 +73,13 @@
 		
 			</div>
 			<div id="main">
+				<% 
+                      	//String evaluacion = (String) request.getAttribute("Evaluacion");
+						String evaluacion="4001";
+                      	 %>
 		
-		
-			  <form name="autentificarEstudiante"  action=autentificando method="post" enctype="multipart/form-data">
+			  <form name="" action="empezarEvaluacion?x=<%=evaluacion%>" method="post">
+			  <table>
 			
 			       
 			      <h1> Autentificacion del Estudiante <font size="3"> </h1>
@@ -88,25 +92,29 @@
 			              
 			          %>
 			             <%  for(Estudiante t:dato){ %>
-			            <td ><h3>Informacion del estudiante:</h3></td>
-			            <td ><h3>Numero de identificacion:</h3></td>
-			            <td  ><h3><%= t.getNumeroIdentificacion() %></h3></td>
-			            <td> <td/>
-			            <td ><h3>Numero de Carnet:</h3></td>
-			            <td  ><h3><%= t.getNumeroCarnet() %></h3></td>
-			            <td ><h3>Nombre del estudiante:</h3></td>
-			            <td  ><h3><%= t.getNombre() %></h3></td>
-			            <td ><h3>Primer apellido del estudiante:</h3></td>
-			            <td  ><h3><%= t.getApellido1() %></h3></td>
-			            <td ><h3>Segundo apellido del estudiante:</h3></td>
-			            <td  ><h3><%= t.getApellido2() %></h3></td>		
-			            <td ><h3>Fecha Nacimiento:</h3></td>
-			            <td  ><h3><%= t.getFechaNacimiento() %></h3></td>		
-			            <td ><h3>Email:</h3></td>
-			            <td  ><h3><%= t.getEmail() %></h3></td>
+			            <tr><td ><h3>Informacion del estudiante:</h3></td></tr>
+			            <tr><td ><h3>Numero de identificacion:</h3></td>
+			            <td><h3><%= t.getNumeroIdentificacion() %></h3></td></tr>
+			            
+			            <tr><td ><h3>Numero de Carnet:</h3></td>
+			            <td  ><h3><%= t.getNumeroCarnet() %></h3></td></tr>
+			            <tr><td><h3>Nombre del estudiante:</h3></td>
+			            <td><h3><%= t.getNombre() %></h3></td></tr>
+			            <tr><td><h3>Primer apellido del estudiante:</h3></td>
+			            <td><h3><%= t.getApellido1() %></h3></td></tr>
+			            <tr><td><h3>Segundo apellido del estudiante:</h3></td>
+			            <td><h3><%= t.getApellido2() %></h3></td></tr>	
+			            <tr><td><h3>Fecha Nacimiento:</h3></td>
+			            <td><h3><%= t.getFechaNacimiento() %></h3></td></tr>	
+			            <tr><td><h3>Email:</h3></td>
+			            <td><h3><%= t.getEmail() %></h3></td></tr>
+			            <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Empezar Evaluacion</button></td>
+		              </tr>
 					    <% } %>
 			      
-			      
+			      </table>
 		      </form>      
 		 
 		  </div>

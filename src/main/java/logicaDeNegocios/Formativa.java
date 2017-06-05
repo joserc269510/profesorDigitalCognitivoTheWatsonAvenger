@@ -51,6 +51,10 @@ public class Formativa extends Evaluacion
 		getConexion().insertDelete("insert into evaluacionpregunta (codigopregunta, codevaluacion, puntajeasignado) values ("+pCodPregunta+","+pCodEvaluacion+","+pPuntaje+")");
 	}
 	
+	public void registrarEstudiante(String pCedula, String pCodEvaluacion){
+		getConexion().insertDelete("insert into estudianteevaluacion (codevaluacion, cedula) values ("+pCodEvaluacion+","+pCedula+")");
+	}
+	
 	public BaseDeDatos getConexion() {
 		if (conexion == null){
 			conexion = new BaseDeDatos();

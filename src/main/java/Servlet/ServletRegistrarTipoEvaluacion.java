@@ -47,6 +47,12 @@ public class ServletRegistrarTipoEvaluacion extends HttpServlet {
 		public void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion) {}
 		
 		public void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje) {}
+
+		@Override
+		public void registrarEstudiante(String pCedula, String pCodEvaluacion) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 		};
 	    evaluacion.verificarTipoEvaluacion(tipoEvaluacion,descripcionEvaluacion );

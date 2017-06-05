@@ -53,9 +53,12 @@ public class ServletAutentificarEstudiante extends HttpServlet {
 		Boolean resp;
 		resp= estudiante.AutentificarEstudiante(ruta);
 		
+		String evaluacion=request.getParameter("evaluacion");
+		
 		request.setAttribute("estudiante", estudiante);
 		request.setAttribute("ruta", ruta);
 		request.setAttribute("carnet", nombreImagen);
+		request.setAttribute("Evaluacion", evaluacion);
 		ArrayList<Estudiante> datos=  estudiante.ObtenerInformacionEstudiante(nombreImagen, ruta);
 	
 	    request.setAttribute("dato", datos);

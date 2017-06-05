@@ -30,9 +30,10 @@ public class ServletRegistroEstudiante extends HttpServlet {
 	   	 String apellido2= request.getParameter("txtApellido2");
 	   	 String nombre= request.getParameter("txtNombre");
 	   	 String email= request.getParameter("txtEmail");
+	   	String telefono= request.getParameter("txtTelefono");
 	   	 
 	   Estudiante estudiante= new Estudiante();
-	   estudiante.registrarEstudiante(numeroIdentificacion,nombre,apellido1,apellido2,numeroCarnet,fechaNacimiento,email);
+	   estudiante.registrarEstudiante(numeroIdentificacion,nombre,apellido1,apellido2,numeroCarnet,fechaNacimiento,email,telefono);
 	 
 	   
 	   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarEstudiante.jsp");

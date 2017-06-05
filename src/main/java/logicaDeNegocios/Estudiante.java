@@ -17,7 +17,19 @@ public class Estudiante {
 	private String apellido1;
 	private String apellido2;
 	private String nombre;
-	private String email;	
+	private String email;
+	private String telefono;
+	
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+
+	public void setTelefono(String pTelefono) {
+		this.telefono = pTelefono;
+	}
+
 	private ArrayList evaluaciones;
 	//ArrayList cursos;
 	BaseDeDatos conexion;
@@ -30,7 +42,7 @@ public class Estudiante {
 	
 	
 	
-	public Estudiante(String pNumIdentificacion, String pCarne,Date pFechaNac,String pApellido1,String pApellido2, String pNombre, String pCorreo)
+	public Estudiante(String pNumIdentificacion, String pCarne,Date pFechaNac,String pApellido1,String pApellido2, String pNombre, String pCorreo, String pTelefono)
 	{	
 		setNumeroIdentificacion(pNumIdentificacion);
 		setNumeroCarnet(pCarne);
@@ -39,6 +51,7 @@ public class Estudiante {
 		setApellido2(pApellido2);
 		setNombre(pNombre);
 		setEmail(pCorreo);
+		setTelefono(pTelefono);
 		evaluaciones = new ArrayList<Evaluacion>();
 		//cursos = new ArrayList<Curso>();
 		conexion = new BaseDeDatos();
@@ -53,7 +66,7 @@ public class Estudiante {
 	}
 	
 	public void registrarEstudiante(String pNumeroIdentificacion, String pNombre, String pApellido1,
-			String pApellido2, String pNumeroCarnet,String pFechaNacimiento, String pEmail)
+			String pApellido2, String pNumeroCarnet,String pFechaNacimiento, String pEmail, String pTelefono)
 	{
      
 		Date fechaNacimiento; 
@@ -65,9 +78,10 @@ public class Estudiante {
 		setApellido2(pApellido2);
 		setFechaNacimiento(fechaNacimiento);
 		setEmail(pEmail);
+		setTelefono(pTelefono);
 		
 		
-        getConexion().insertDelete("insert into estudiante values (" + "'"+ pNumeroIdentificacion+"'"  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ fechaNacimiento +  "'"+ "," + "'" + pEmail +"'" + ")" ) ;
+        getConexion().insertDelete("insert into estudiante (cedula, nombreestudiante, primerapellido, segundoapellido, numerocarne,	fechanacimiento, correoelectronico,	telefono) values (" + "'"+ pNumeroIdentificacion+"'"  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ fechaNacimiento +  "'"+ "," + "'" + pEmail +"'" +","+"'"+pTelefono+"'"+ ")" ) ;
 	}
 	
 	public ArrayList<Estudiante> cargarEstudiante()

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
+import Integracion.Encriptar;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Desarrollo;
 import logicaDeNegocios.MarqueX;
@@ -64,11 +65,15 @@ public class ServletRegistrarPreguntaD extends HttpServlet {
 				String descpAy=request.getParameter("txtDescripcionAyuda");
 	            
 				pregunta preg=new Desarrollo();
-				preg.registrarPregunta(codPreg, subtema, DescpPregunta, descpAy);
+				Encriptar nEncripcion=new Encriptar(DescpPregunta.toLowerCase(),26);
+				preg.registrarPregunta(codPreg, subtema, nEncripcion.getPIN(), descpAy);
+				
 				
 				
 				String resp1=request.getParameter("txtRespuesta");
-				resp.registrarRespuesta(codPreg, resp1, correcta);
+				Encriptar nEncripcion1=new Encriptar(resp1,26);
+				
+				resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();

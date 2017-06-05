@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
+import Integracion.Encriptar;
 import logicaDeNegocios.*;
 
 /**
@@ -61,8 +62,13 @@ Respuesta resp= new Respuesta();
 				String descpAy=request.getParameter("txtDescripcionAyuda");
 	            
 				pregunta preg=new EspacioBlanco();
-				preg.registrarPregunta(codPreg, subtema, DescpPregunta, descpAy);
-				resp.registrarRespuesta(codPreg, resp1, correcta);
+				Encriptar nEncripcion=new Encriptar(DescpPregunta.toLowerCase(),26);
+				preg.registrarPregunta(codPreg, subtema, nEncripcion.getPIN(), descpAy);
+				
+				Encriptar nEncripcion1=new Encriptar(resp1,26);
+				
+				resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
+				
 				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();

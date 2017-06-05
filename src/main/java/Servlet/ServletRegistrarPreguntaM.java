@@ -59,7 +59,8 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				String descpAy=request.getParameter("txtDescripcionAyuda");
 	            
 				pregunta preg=new MarqueX();
-				preg.registrarPregunta(codPreg, subtema, DescpPregunta, descpAy);
+				Encriptar nEncripcion=new Encriptar(DescpPregunta.toLowerCase(),26);
+				preg.registrarPregunta(codPreg, subtema, nEncripcion.getPIN(), descpAy);
 				
 				String chk1= request.getParameter("chk1");
 				String resp1=request.getParameter("txtRespuesta1");
@@ -68,11 +69,14 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp1!=null){
 					System.out.println(resp1);
 					System.out.println(chk1);
+					Encriptar nEncripcion1=new Encriptar(resp1,26);
 					if(chk1!=null){
-						resp.registrarRespuesta(codPreg, resp1, correcta);
+						
+						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 					}
 					else
-						resp.registrarRespuesta(codPreg, resp1, incorrect);
+						
+						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), incorrect);
 				}
 				//resp.registrarRespuesta(codP, descp, stt);
 				String resp2=request.getParameter("txtRespuesta2");
@@ -82,11 +86,12 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp2!=null){
 					System.out.println(resp2);
 					System.out.println(chk2);
+					Encriptar nEncripcion1=new Encriptar(resp2,26);
 					if(chk2!=null){
-						resp.registrarRespuesta(codPreg, resp2, correcta);
+						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 					}
 					else
-						resp.registrarRespuesta(codPreg, resp2, incorrect);
+						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), incorrect);
 				}
 				String resp3=request.getParameter("txtRespuesta3");
 				String chk3= request.getParameter("chk3");
@@ -95,11 +100,12 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp3!=null){
 					System.out.println(resp3);
 					System.out.println(chk3);
+					Encriptar nEncripcion1=new Encriptar(resp3,26);
 					if(chk3!=null){
-						resp.registrarRespuesta(codPreg, resp3, correcta);
+						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 					}
 					else
-						resp.registrarRespuesta(codPreg, resp3, incorrect);
+						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), incorrect);
 				}
 				String resp4=request.getParameter("txtRespuesta4");
 				String chk4= request.getParameter("chk4");
@@ -108,11 +114,12 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp4!=null){
 					System.out.println(resp4);
 					System.out.println(chk4);
+					Encriptar nEncripcion1=new Encriptar(resp4,26);
 					if(chk4!=null){
-						resp.registrarRespuesta(codPreg, resp4, correcta);
+						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 					}
 					else
-						resp.registrarRespuesta(codPreg, resp4, incorrect);
+						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), incorrect);
 				}
 				
 				BaseDeDatos bd= new BaseDeDatos();
