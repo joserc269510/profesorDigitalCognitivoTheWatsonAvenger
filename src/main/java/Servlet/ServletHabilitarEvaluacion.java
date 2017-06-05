@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
 import Integracion.BaseDeDatos;
 import Integracion.Correo;
 import logicaDeNegocios.Evaluacion;
@@ -65,7 +66,8 @@ public class ServletHabilitarEvaluacion extends HttpServlet {
 				
 			}
 		};
-		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se habilito una evaluacion");
 		//evaluacion.habilitarEvaluacion(codEvaluacion);
 		BaseDeDatos bd=new BaseDeDatos();
 		

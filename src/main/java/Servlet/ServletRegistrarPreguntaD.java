@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Desarrollo;
@@ -69,6 +70,9 @@ public class ServletRegistrarPreguntaD extends HttpServlet {
 				
 				String resp1=request.getParameter("txtRespuesta");
 				resp.registrarRespuesta(codPreg, resp1, correcta);
+				
+				Bitacora bitacora = new Bitacora();
+				bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una pregunta de desarrollo");
 				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();

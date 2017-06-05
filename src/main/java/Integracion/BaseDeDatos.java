@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import com.itextpdf.text.log.SysoLogger;
 
+import Bitacora.Bitacora;
 import logicaDeNegocios.*;
 
 public class BaseDeDatos {
@@ -367,6 +368,7 @@ public class BaseDeDatos {
 	  
 	  
   public void insertDelete(String query){
+	  
         try {
             Class.forName("org.postgresql.Driver");
         }
@@ -1048,85 +1050,60 @@ public String ObtenerTiempoEvaluacion(String pEvaluacion){
 		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
 	}
   
-  public void actualizarTipPregunta(String pCodigo, String pDescripcion)
-	{
+  public void actualizarTipPregunta(String pCodigo, String pDescripcion){
 		//BaseDeDatos conexion= new BaseDeDatos();
 		insertDelete("UPDATE tipopregunta SET nombretipopreg = '"+pDescripcion+"' WHERE codtipopregunta = '"+pCodigo+"'");
 		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
 	}
   
- 
+
+  public ArrayList<Bitacora>selectBitacora(String pFechaInicio, String pFechaFinal, String pUsuario){
+	  ArrayList bitacora = new ArrayList<Bitacora>();
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select * from Bitacora where fecha between '" + pFechaInicio + "' and '" + pFechaFinal + "' and usuario = '" + pUsuario + "'" );
+              //select * from bitacora where fecha between '2017-03-10 13:29:49' and '2017-07-07' and usuario = 'Jose'
+              while (rs.next()) {
+            	
+                Bitacora objetoBitacora = new Bitacora(rs.getTimestamp(2), rs.getString(3), rs.getString(4));
+                System.out.println(rs.getString(1));
+                bitacora.add(objetoBitacora);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return bitacora;
+	  
+  }
+
 
   public static void main(String[] args) {
-    
+	  BaseDeDatos b= new BaseDeDatos();
+	  ArrayList<Bitacora> lista = b.selectBitacora("2017-03-11 13:29:49","2017-07-07" , "Jose");
+	  for (int i=0;i<lista.size();i++){
+		  System.out.println(i + ". " +lista.get(i).getFecha());
+		  System.out.println(i + ". " +lista.get(i).getDescripcion());
+		  System.out.println(i + ". " +lista.get(i).getUser());
+		  
+	}
+	 
+	  //String query ="insert into bitacora values (" + 1 +"," +"'"+ sacarFecha() + "'"+","+ "'" +PIN.getPIN() +"'" +"," +"'" + pUser + "'"+")";
+	  //b.insertDelete("insert into bitacora values (" + 1 + "," + "'Sun Jun 04 12:08:22 CST 2017' ," + "'inserto en subtemas' ," + "'Jose')");
      
 	  
-	  /*BaseDeDatos b= new BaseDeDatos();
-     ArrayList hola = b.SelectTipoPreguntaPorSubtema("marqueconx", "repeticion de codigo" );
-     
-     for (int i=0; i<hola.size(); i++){
-    	 System.out.println(hola.get(i));
-     }*/
-     //System.out.println(b.SelectCursoEspecifico("TI5501","descripcioncurso","curso"));
-
-      /*
-      ArrayList curso = b.selectCurso();
-     
-      /*Estudiante[] curso = b.selectEstudiante();
-      
-      for (int i=0; i<curso.length;i++){
-        System.out.println(curso[i].getNombre());
-        System.out.println(curso[i].getApellido1());
-      }
-      */
-     //b.selectTema();
-     // nuevo.registrarP("thawatsonavengers@gmail.com", "proyecto1");
-      
-
-         // System.out.println(profes[i].getContrasena());
-        }
-     
-     //System.out.println(nuevo.validarUsuario("thewatsonavengers@gmail.com", "proyecto1"));
-     /*
-      for (int i=0; i<curso.size();i++){
-        System.out.println(((Curso) curso.get(i)).getDescripcionCurso());
-        System.out.println(((Curso) curso.get(i)).getCodigo());
-      }
-  */
-      /*ArrayList evaluacion = b.selectEvaluacion();
-      for (int i=0; i<evaluacion.size();i++){
-    	  System.out.println(((Formativa)evaluacion.get(i)).getCodEvaluacion());
-    	  System.out.println(((Formativa)evaluacion.get(i)).getCurso().getCodigo());
-    	  System.out.println(((Formativa)evaluacion.get(i)).getCodTipoEvaluacion());
-          System.out.println(((Formativa)evaluacion.get(i)).getNombreEvaluacion());
-          System.out.println(((Formativa)evaluacion.get(i)).getPuntajeTotal());
-          System.out.println(((Formativa)evaluacion.get(i)).getPorcentajeNotaFinal());
-          System.out.println(((Formativa)evaluacion.get(i)).getFechaEvaluacion());
-          System.out.println(((Formativa)evaluacion.get(i)).getTiempoMinutos());
-          System.out.println(((Formativa)evaluacion.get(i)).isStatus());
-          System.out.println(((Formativa)evaluacion.get(i)).getTipoEvaluacion());
-          System.out.println(((Formativa)evaluacion.get(i)).getDescripcionTipoEval());
-          System.out.println("\n\n");
-        }
-        
-/*
-      
-      
-      ArrayList pregunta = b.selectPregunta();
-      for (int i=0; i<pregunta.size();i++){
-    	  System.out.println(((pregunta) pregunta.get(i)).getCodigoPregunta());
-    	  System.out.println(((pregunta) pregunta.get(i)).getSubtema().getCodSubTema());
-    	  System.out.println(((MarqueX) pregunta.get(i)).getCodTipoPregunta() );
-    	  System.out.println(((MarqueX) pregunta.get(i)).getDescripcionTipoPreg());
-    	  System.out.println(((pregunta) pregunta.get(i)).getDescripcionAyuda());
-    	  System.out.println(((pregunta)pregunta.get(i)).getSubtema().getDescripcion());
-    	  System.out.println(((pregunta)pregunta.get(i)).getSubtema().getTema().getDescripcionTema());
-    	  System.out.println(((MarqueX)pregunta.get(i)).getTipoPregunta());
-    	  System.out.println(((MarqueX)pregunta.get(i)).getDescripcionTipoPreg());
-    	  System.out.println(((pregunta)pregunta.get(i)).getSubtema().getTema().getCodTema());
-      }
-    */
-    }
+  }
+ }
     
 
   

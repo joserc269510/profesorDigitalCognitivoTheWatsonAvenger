@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Subtema;
@@ -46,6 +47,8 @@ public class ServletConsultarSubtema extends HttpServlet {
 		String nombreSubtema = bd.SelectPorCodigoSubtema(codigoSubtema);
 		String nombreTema = bd.SelectSubtema(codigoSubtema);
 		String nombreCurso = bd.SelectSubtema2(codigoSubtema);
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una consulta sobre un subtema");
 		request.setAttribute("texto", nombreSubtema);
 		request.setAttribute("texto2", nombreTema);
 		request.setAttribute("texto3", nombreCurso);

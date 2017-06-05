@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
 import Integracion.BaseDeDatos;
 
 /**
@@ -42,6 +43,8 @@ public class ServletConsultarTipEval extends HttpServlet {
 		BaseDeDatos bd = new BaseDeDatos();
 		String nombreTipEval = bd.SelectPorCodigoTEval(codigoTipEval);
 		request.setAttribute("texto", nombreTipEval);	
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una consulta sobre tipo de evaluacion");
 		ArrayList<String> tipoEvaluacion = bd.selectTipoEvaluacion();
 		request.setAttribute("ListTipoEval", tipoEvaluacion);
 		request.setAttribute("TipEval", codigoTipEval);

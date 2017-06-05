@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.*;
 
@@ -63,6 +64,9 @@ Respuesta resp= new Respuesta();
 				pregunta preg=new EspacioBlanco();
 				preg.registrarPregunta(codPreg, subtema, DescpPregunta, descpAy);
 				resp.registrarRespuesta(codPreg, resp1, correcta);
+				
+				Bitacora bitacora = new Bitacora();
+				bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una pregunta corta");
 				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();
