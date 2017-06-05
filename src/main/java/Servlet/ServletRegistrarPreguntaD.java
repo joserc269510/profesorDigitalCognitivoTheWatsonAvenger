@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
 import Integracion.BaseDeDatos;
-import Integracion.Encriptar;
+import Seguridad.Encriptar;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Desarrollo;
 import logicaDeNegocios.MarqueX;
@@ -74,6 +75,9 @@ public class ServletRegistrarPreguntaD extends HttpServlet {
 				Encriptar nEncripcion1=new Encriptar(resp1,26);
 				
 				resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
+				
+				Bitacora bitacora = new Bitacora();
+				bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una pregunta de desarrollo");
 				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();

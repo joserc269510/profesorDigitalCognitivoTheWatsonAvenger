@@ -1,4 +1,4 @@
-package Integracion;
+package Seguridad;
 
 public class Desencriptar2 {
 String NuePIN="";
