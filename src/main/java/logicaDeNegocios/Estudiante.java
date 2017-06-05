@@ -1,9 +1,12 @@
 package logicaDeNegocios;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import Integracion.BaseDeDatos;
+import Integracion.Visual;
 /*
  * Revisar si dejar o no anadirCurso (si hacerla bidireccional o no ) y el atributo cursos
  */
@@ -25,7 +28,10 @@ public class Estudiante {
 		conexion = new BaseDeDatos();
 	}
 	
-	public Estudiante(String pNumIdentificacion, String pCarne,Date pFechaNac,String pApellido1,String pApellido2, String pNombre, String pCorreo){
+	
+	
+	public Estudiante(String pNumIdentificacion, String pCarne,Date pFechaNac,String pApellido1,String pApellido2, String pNombre, String pCorreo)
+	{	
 		setNumeroIdentificacion(pNumIdentificacion);
 		setNumeroCarnet(pCarne);
 		setFechaNacimiento(pFechaNac);
@@ -61,10 +67,11 @@ public class Estudiante {
 		setEmail(pEmail);
 		
 		
-        getConexion().insertDelete("insert into estudiante values (" + pNumeroIdentificacion  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ fechaNacimiento +  "'"+ "," + "'" + pEmail +"'" + ")" ) ;
+        getConexion().insertDelete("insert into estudiante values (" + "'"+ pNumeroIdentificacion+"'"  + "," +  "'" + pNombre + "'" + "," + "'"+ pApellido1 + "'" + "," + "'" + pApellido2 + "'"+ "," +  "'" +pNumeroCarnet + "'" + "," + "'"+ fechaNacimiento +  "'"+ "," + "'" + pEmail +"'" + ")" ) ;
 	}
 	
-	public ArrayList<Estudiante> cargarEstudiante(){
+	public ArrayList<Estudiante> cargarEstudiante()
+	{
 		ArrayList<Estudiante> estudiantes=new ArrayList<Estudiante>();
 		ArrayList<Estudiante> estudiante = getConexion().selectEstudiante();
 		  
@@ -73,13 +80,62 @@ public class Estudiante {
 	      for (int i=0; i<estudiante.size();i++)
 	      {
 	    	  nombreEstudiante= (estudiante.get(i));
-	    	  estudiantes.add(nombreEstudiante);  
+	    	  estudiantes.add(nombreEstudiante);
+	    	  System.out.println("estudiantes" + estudiantes.get(i).numeroCarnet);
 	      }
 	
 		
 		return estudiantes;
 		
 	}
+	
+	public boolean AutentificarEstudiante( String ruta) throws IOException
+	{
+	
+		Visual service= new Visual();
+	    Double score= service.CompararImagen(ruta);
+		Boolean b= false;
+		 
+	    	  if ((score > 0.50 ))
+	    	  {
+	    		  b= true;
+	    		  System.out.println(b);
+	    		  return b;  
+	    	  }  
+	       
+	    
+		System.out.println(b);
+		return b;
+	}
+	
+	public ArrayList<Estudiante> ObtenerInformacionEstudiante(String pCarnet, String ruta) throws IOException
+	{
+	
+		ArrayList<Estudiante> estudiantes=new ArrayList<Estudiante>();
+		estudiantes= cargarEstudiante();
+		ArrayList<Estudiante> estudiante= new ArrayList<Estudiante>();
+		
+		 for (int i=0; i<estudiantes.size();i++)
+	      {
+			  if (estudiantes.get(i).getNumeroCarnet().equals(pCarnet) && AutentificarEstudiante(ruta) == true)
+			  {
+				 
+				  estudiante.add(estudiantes.get(i));
+				 
+				 
+				//  System.out.println(""+ estudiante.get(i));
+				  
+			  }
+			 //estudiante.add(estudiantes.get(0).apellido1);
+					  
+	      }
+	//	 System.out.println(estudiante.get(0).numeroIdentificacion);
+		 
+		return estudiante;
+	}
+	
+	
+	
 	 private static Date ConvertirFecha(String pFecha)
 	 {
 	        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -184,6 +240,15 @@ public class Estudiante {
 
 	public void setConexion(BaseDeDatos conexion) {
 		this.conexion = conexion;
+	}
+	
+	public static void main(String[] args) throws IOException 
+	{
+		Estudiante e= new Estudiante();
+		//e.ObtenerInformacionEstudiante("201210915");
+		e.cargarEstudiante();
+		//e.AutentificarEstudiante("201210915");
+		
 	}
 	
 }

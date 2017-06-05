@@ -534,4 +534,15 @@
     <servlet-name>ServletEmpezarEvaluacion</servlet-name>
     <url-pattern>/empezarEvaluacion</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description>AutentificarEstudiante</description>
+    <display-name></display-name>
+    <servlet-name>ServletAutentificarEstudiante</servlet-name>
+    <servlet-class>Servlet.ServletAutentificarEstudiante</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAutentificarEstudiante</servlet-name>
+    <url-pattern>/autentificando</url-pattern>
+  </servlet-mapping>
+
 </web-app>

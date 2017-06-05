@@ -58,6 +58,56 @@ public class Archivo
 		
 	}
 	
+	
+	
+	public String CargarImagen(HttpServletRequest request, HttpServletResponse response) throws Exception
+	{
+		//Ruta donde se guardara el fichero
+		File destino=new File("C:\\Users\\Cora\\Documents\\GitHub\\profesorDigitalCognitivoTheWatsonAvenger");
+		//File destino=new File("D:\\Users\\Esteban Morales\\git\\profesorDigitalCognitivoTheWatsonAvenger");
+		FileItemFactory factory = new DiskFileItemFactory();
+		ServletFileUpload upload = new ServletFileUpload(factory);
+
+		// req es la HttpServletRequest que recibimos del formulario.
+		// Los items obtenidos serán cada uno de los campos del formulario,
+		// tanto campos normales como ficheros subidos.
+		List<?> items = upload.parseRequest(request);
+
+		File fichero = null;
+		// Se recorren todos los items, que son de tipo FileItem
+		for (Object item : items) {
+		   FileItem uploaded = (FileItem) item;
+
+		   // Hay que comprobar si es un campo de formulario. Si no lo es, se guarda el fichero
+		   // subido donde nos interese
+		   if (!uploaded.isFormField()) {
+		      // No es campo de formulario, guardamos el fichero en algún sitio
+		       fichero = new File(destino, uploaded.getName());
+		      uploaded.write(fichero);
+		   } else {
+		      // es un campo de formulario, podemos obtener clave y valor
+		      String key = uploaded.getFieldName();
+		      String valor = uploaded.getString();
+		   }
+		}
+		System.out.println(fichero.getAbsolutePath());
+		String direccionFinal=transformarDireccion(fichero.getAbsolutePath());
+		return ( direccionFinal);	
+	}
+	
+	
+	
+	public String obtenerNombreImagen(String imagen)
+	{
+		String path = imagen ;
+	     String file = path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf("."));
+	    String nombreImagen= file;
+	    
+	    return nombreImagen;
+	}
+	
+	
+	
 	public String transformarDireccion(String Dir)
 	{
 		String direccion = Dir;
