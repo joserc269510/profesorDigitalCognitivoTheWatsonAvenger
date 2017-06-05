@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
 import logicaDeNegocios.Evaluacion;
 import logicaDeNegocios.IVerificarEvaluacion;
 import logicaDeNegocios.Sumativa;
@@ -36,6 +37,9 @@ public class ServletRegistrarTipoEvaluacion extends HttpServlet {
 		String tipoEvaluacion = request.getParameter("txtTipo");
 		String descripcionEvaluacion = request.getParameter("txtDescripcion");
 		System.out.println(tipoEvaluacion);
+		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro un tipo de evaluacion");
 		
 	    IVerificarEvaluacion evaluacion = new Evaluacion() {
 		

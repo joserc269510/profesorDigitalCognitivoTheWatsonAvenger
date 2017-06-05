@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 
@@ -47,6 +48,10 @@ public class ServletActualizarCurso extends HttpServlet {
 		Curso curso = new Curso();
 		System.out.println(codigoCurso + "adskkkkkkkkkkk");
 		curso.actualizarCurso(codigoCurso, nombreActualizar);
+		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una actualizacion sobre el curso a " + nombreActualizar.toLowerCase());
+		
 		ArrayList<Curso> cursos = cursoBase.selectCurso();
 		request.setAttribute("ListCursos", cursos);
 		request.getRequestDispatcher("ActualizarCurso.jsp").forward(request, response);
