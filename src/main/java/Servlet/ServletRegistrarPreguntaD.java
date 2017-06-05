@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
+import logicaDeNegocios.Desarrollo;
 import logicaDeNegocios.MarqueX;
 import logicaDeNegocios.Respuesta;
 import logicaDeNegocios.pregunta;
@@ -58,13 +59,16 @@ public class ServletRegistrarPreguntaD extends HttpServlet {
 				String subtema=request.getParameter("selCodigoSubtema");
 				String codPreg=request.getParameter("txtCodigo");
 				String DescpPregunta=request.getParameter("txtDescripcion");
-				String resp1=request.getParameter("txtRespuesta");
-						resp.registrarRespuesta(codPreg, resp1, correcta);
+				
 				
 				String descpAy=request.getParameter("txtDescripcionAyuda");
 	            
-				pregunta preg=new MarqueX();
+				pregunta preg=new Desarrollo();
 				preg.registrarPregunta(codPreg, subtema, DescpPregunta, descpAy);
+				
+				
+				String resp1=request.getParameter("txtRespuesta");
+				resp.registrarRespuesta(codPreg, resp1, correcta);
 				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();

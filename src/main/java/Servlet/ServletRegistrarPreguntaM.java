@@ -55,10 +55,20 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				String subtema=request.getParameter("selCodigoSubtema");
 				String codPreg=request.getParameter("txtCodigo");
 				String DescpPregunta=request.getParameter("txtDescripcion");
-				String resp1=request.getParameter("txtRespuesta1");
+				
+				String descpAy=request.getParameter("txtDescripcionAyuda");
+	            
+				pregunta preg=new MarqueX();
+				preg.registrarPregunta(codPreg, subtema, DescpPregunta, descpAy);
+				
 				String chk1= request.getParameter("chk1");
+				String resp1=request.getParameter("txtRespuesta1");
+				System.out.println(resp1);
+				System.out.println(chk1);
 				if (resp1!=null){
-					if(chk1=="on"){
+					System.out.println(resp1);
+					System.out.println(chk1);
+					if(chk1!=null){
 						resp.registrarRespuesta(codPreg, resp1, correcta);
 					}
 					else
@@ -67,8 +77,12 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				//resp.registrarRespuesta(codP, descp, stt);
 				String resp2=request.getParameter("txtRespuesta2");
 				String chk2= request.getParameter("chk2");
+				System.out.println(resp2);
+				System.out.println(chk2);
 				if (resp2!=null){
-					if(chk2=="on"){
+					System.out.println(resp2);
+					System.out.println(chk2);
+					if(chk2!=null){
 						resp.registrarRespuesta(codPreg, resp2, correcta);
 					}
 					else
@@ -76,8 +90,12 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				}
 				String resp3=request.getParameter("txtRespuesta3");
 				String chk3= request.getParameter("chk3");
+				System.out.println(resp3);
+				System.out.println(chk3);
 				if (resp3!=null){
-					if(chk3=="on"){
+					System.out.println(resp3);
+					System.out.println(chk3);
+					if(chk3!=null){
 						resp.registrarRespuesta(codPreg, resp3, correcta);
 					}
 					else
@@ -85,17 +103,18 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				}
 				String resp4=request.getParameter("txtRespuesta4");
 				String chk4= request.getParameter("chk4");
+				System.out.println(resp4);
+				System.out.println(chk4);
 				if (resp4!=null){
-					if(chk4=="on"){
+					System.out.println(resp4);
+					System.out.println(chk4);
+					if(chk4!=null){
 						resp.registrarRespuesta(codPreg, resp4, correcta);
 					}
 					else
 						resp.registrarRespuesta(codPreg, resp4, incorrect);
 				}
-				String descpAy=request.getParameter("txtDescripcionAyuda");
-	            
-				pregunta preg=new MarqueX();
-				preg.registrarPregunta(codPreg, subtema, DescpPregunta, descpAy);
+				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();
 				

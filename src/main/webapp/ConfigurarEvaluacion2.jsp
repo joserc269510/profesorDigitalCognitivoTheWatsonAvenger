@@ -172,7 +172,7 @@
 		           <form action="cargarPreguntas?cEv=<%=codEval%>&tEv=<%=tipEval%>" method="post">
 		              <tr>
 		                <td ><h3>Codigo del Tema</h3></td>
-		                <%@ page import="java.util.ArrayList, logicaDeNegocios.Tema, logicaDeNegocios.Subtema" %>
+		                <%@ page import="java.util.ArrayList, logicaDeNegocios.*" %>
 		                <%
 			            		ArrayList<Tema> temas= (ArrayList<Tema>) request.getAttribute("ListTemas"); 
 			            		
@@ -222,15 +222,15 @@
 			            <td ><h3>Preguntas en la evaluacion</h3></td>
 			            <td ><!---input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/--->
 			            <%
-			            		ArrayList<String> preguntas= (ArrayList<String>) request.getAttribute("ListPreguntas"); 
+			            		ArrayList<pregunta> preguntas= (ArrayList<pregunta>) request.getAttribute("ListPreguntas"); 
 			            		
 						%>
 			            <select id="selPre" name="selPre">
-			            <%Integer o=1; %>
+			            
 			            <%if(preguntas!=null){ %>
-			            <%for(String p:preguntas){ %> 
-			                <option value="<%=o.toString()%>"><%= p %></option>
-			            <%o++; %>
+			            <%for(pregunta p:preguntas){ %> 
+			                <option value="<%=p.getCodigoPregunta()%>"><%= p.getDescripcionPregunta() %></option>
+			            
 				        <% } %>
 				        <% } %>
 			            </select></td>

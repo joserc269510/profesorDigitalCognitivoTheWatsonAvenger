@@ -50,7 +50,7 @@ public class ServletSpeech extends HttpServlet {
 		}
 		 
 		 request.setAttribute("texto", texto);
-		 request.getRequestDispatcher("/index.jsp").forward(request, response);
+		 request.getRequestDispatcher("/RealizarEvaluacion.jsp").forward(request, response);
 	}
 
 }

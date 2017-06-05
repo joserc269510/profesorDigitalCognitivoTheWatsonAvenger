@@ -57,11 +57,13 @@ public class ServletToSiguiente extends HttpServlet {
 		String nota= request.getParameter("txtNota");
 		String tiempo= request.getParameter("txtTiempo");
 		String descripcion= request.getParameter("txtDescripcion");
-		String aleatorio= request.getParameter("txtAleatorio");
-		System.out.println(aleatorio);
-		if(aleatorio=="Si"){
+		String aleatorio= request.getParameter("txtAleatorio1");
+		System.out.println("Aleatorio="+aleatorio);
+		if(aleatorio.equals("Si")){
+			System.out.println("SI");
 			aleatorio="B'1'";
 		}else{
+			System.out.println("NO");
 			aleatorio="B'0'";
 		}
 		
@@ -80,11 +82,11 @@ public class ServletToSiguiente extends HttpServlet {
 		String fecha= mascara.format(Calendar.getInstance().getTime());
 		
 		Evaluacion evaluacion;
-		if(tipoEval.equals("1")){
+		if(tipoEval.equals("2")){
 			evaluacion=new Formativa();
 			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo), aleatorio);
 		}
-		if(tipoEval.equals("2")){
+		if(tipoEval.equals("1")){
 			evaluacion=new Sumativa();
 			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo), aleatorio);
 		}

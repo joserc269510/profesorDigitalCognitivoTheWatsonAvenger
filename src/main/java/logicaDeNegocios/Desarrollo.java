@@ -23,6 +23,12 @@ public class Desarrollo extends pregunta
 		conexion = new BaseDeDatos();
 		
 	}
+	
+	public  Desarrollo(){
+		super();
+		conexion = new BaseDeDatos();
+		
+	}
 
 	public void registrarTipoPregunta(String pTipoPregunta, String pDescripcion) 
 	{
@@ -41,8 +47,10 @@ public class Desarrollo extends pregunta
 		//setStatus(stt);
 		
 		BaseDeDatos conexion = new BaseDeDatos();
+		//conexion.insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
+		//		+ " values (" + codP  + ","+ Subt  + "," + 3  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
 		conexion.insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
-				+ " values (" + codP  + ","+ Subt  + "," + 4  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
+				+ " values (" + codP  + ","+ Subt  + "," + 3  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
 	}
 
 	public BaseDeDatos getConexion() {

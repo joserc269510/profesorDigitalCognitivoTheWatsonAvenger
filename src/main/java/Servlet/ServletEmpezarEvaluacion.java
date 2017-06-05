@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
+import logicaDeNegocios.pregunta;
 
 /**
  * Servlet implementation class ServletEmpezarEvaluacion
@@ -40,9 +41,10 @@ public class ServletEmpezarEvaluacion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String evaluacion=request.getParameter("x");
 		BaseDeDatos bd = new BaseDeDatos();
-		ArrayList<String> preguntas = bd.ObtenerPreguntasEvaluacion(evaluacion);
+		ArrayList<pregunta> preguntas = bd.ObtenerPreguntasEvaluacion(evaluacion);
 		System.out.println(preguntas.size());
 		request.setAttribute("ListPreguntas", preguntas);
+		request.setAttribute("CodEvaluacion", evaluacion);
 		request.getRequestDispatcher("RealizarEvaluacion.jsp").forward(request, response);
 	}
 

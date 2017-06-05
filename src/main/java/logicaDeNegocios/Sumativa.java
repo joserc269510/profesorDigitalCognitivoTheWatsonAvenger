@@ -71,7 +71,7 @@ public class Sumativa extends Evaluacion
 	
 	public void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos, String pAleatorio)
 	{
-		getConexion().insertDelete("insert into evaluacion (codevaluacion, codigocurso, codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal, fechaevaluacion, tiempominutos,status) values ("+pCodigoEvaluacion+","+"'"+ pCodigoCurso+ "'"+","+ pCodTipoEvaluacion+","+"'"+ pNombreEvaluacion+"'"+","+  pPuntajetotal+","+  pPorcentajenotafinal+","+  "'"+pFechaevaluacion+"'"+","+  pTiempominutos +","+ "B'0'"+","+"'"+pAleatorio+"'"+ ")" );
+		getConexion().insertDelete("insert into evaluacion (codevaluacion, codigocurso, codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal, fechaevaluacion, tiempominutos,status,aleatorio) values ("+pCodigoEvaluacion+","+"'"+ pCodigoCurso+ "'"+","+ pCodTipoEvaluacion+","+"'"+ pNombreEvaluacion+"'"+","+  pPuntajetotal+","+  pPorcentajenotafinal+","+  "'"+pFechaevaluacion+"'"+","+  pTiempominutos +","+ "B'0'"+","+pAleatorio+ ")" );
 	}
 	
 	public void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje)

@@ -225,10 +225,10 @@
 			          <tr>
 			            <td ><h3>Aleatorio</h3></td>
 			            <td >
-					            <input type="radio" id="txtAleatorio" name="aleatorio" value="Si">Si
+					            <input type="radio" id="txtAleatorio1" name="txtAleatorio1" value="Si">Si
 					            
 					        
-					            <input type="radio" id="txtAleatorio" name="aleatorio" value="No">No
+					            <input type="radio" id="txtAleatorio2" name="txtAleatorio2" value="No">No
 					            
 					        
 			            </td>

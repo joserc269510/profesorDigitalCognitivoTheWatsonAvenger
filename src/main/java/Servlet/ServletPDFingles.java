@@ -96,8 +96,8 @@ public class ServletPDFingles extends HttpServlet {
 		   else{
 			   doc.add( new Paragraph(traducir.Traduccion("Estado= Habilitada"), bfBold17));
 		   }
-		   ArrayList<Estudiante> estudiantes=new ArrayList<Estudiante>();
-		   ArrayList<pregunta> preguntas=new ArrayList<pregunta>();
+		   ArrayList<Estudiante> estudiantes=bd.ObtenerEstudiantesEvaluacion(codEvaluacion);
+		   ArrayList<pregunta> preguntas=bd.ObtenerPreguntasEvaluacion(codEvaluacion);
 		   doc.add(new Paragraph(traducir.Traduccion("Preguntas"), bfBold19));
 		   for(pregunta p:preguntas){
 			   doc.add( new Paragraph(traducir.Traduccion("Codigo de Pregunta = "+p.getCodigoPregunta()+", Descripcion de Pregunta = "+p.getDescripcionPregunta()), bfBold17));

@@ -56,12 +56,13 @@ Respuesta resp= new Respuesta();
 				String DescpPregunta=request.getParameter("txtDescripcion");
 				String resp1=request.getParameter("txtRespuesta1");
 				
-						resp.registrarRespuesta(codPreg, resp1, correcta);
+						
 					
 				String descpAy=request.getParameter("txtDescripcionAyuda");
 	            
 				pregunta preg=new EspacioBlanco();
 				preg.registrarPregunta(codPreg, subtema, DescpPregunta, descpAy);
+				resp.registrarRespuesta(codPreg, resp1, correcta);
 				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();

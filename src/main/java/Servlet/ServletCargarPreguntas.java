@@ -48,7 +48,7 @@ public class ServletCargarPreguntas extends HttpServlet {
 		String tema= request.getParameter("selTema");
 		String subtema= request.getParameter("selSubtema");
 		BaseDeDatos bd = new BaseDeDatos();
-		ArrayList<String> preguntas=new ArrayList<String>();
+		ArrayList<pregunta> preguntas=new ArrayList<pregunta>();
 		if(chk2!=null){
 			System.out.println("------Subtemas------");
 			preguntas = bd.SelectTipoPreguntaPorSubtema(tipoPregunta, subtema);

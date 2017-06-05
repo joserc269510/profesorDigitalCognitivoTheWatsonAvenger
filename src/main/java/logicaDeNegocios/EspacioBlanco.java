@@ -50,9 +50,11 @@ public class EspacioBlanco extends pregunta
 		
 		//setStatus(stt);
 		
-		BaseDeDatos conexion = new BaseDeDatos();
+		
+		//getConexion().insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
+		//		+ " values (" + codP  + ","+ Subt  + "," + 2  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
 		conexion.insertDelete("insert into pregunta(codigopregunta,codsubtema,codtipopregunta,descripcionpregunta,descripcionayuda)"
-				+ " values (" + codP  + ","+ Subt  + "," + 3  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
+				+ " values (" + codP  + ","+ Subt  + "," + 2  + "," +  "'" + descp + "'" + "," + "'"+ descpAy+ "'"  + ")" ) ;
 	}
 	
 	public String getDescripcionTipoPreg() {

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
+import Integracion.Correo;
 import logicaDeNegocios.Evaluacion;
 
 /**
@@ -40,6 +41,7 @@ public class ServletHabilitarEvaluacion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String codEvaluacion=request.getParameter("selCodigo");
+		String[] listEstudiantes=request.getParameterValues("selEstudiante");
 		
 		Evaluacion evaluacion=new Evaluacion() {
 			
@@ -63,9 +65,16 @@ public class ServletHabilitarEvaluacion extends HttpServlet {
 				
 			}
 		};
-		evaluacion.habilitarEvaluacion(codEvaluacion);
+		
+		//evaluacion.habilitarEvaluacion(codEvaluacion);
 		BaseDeDatos bd=new BaseDeDatos();
 		
+		for(int i=0;i<listEstudiantes.length;i++){
+			System.out.println(bd.ObtenerCorreoEstudiante(listEstudiantes[i]));
+			
+			Correo nCorreo=new Correo();
+			nCorreo.SendMail(bd.ObtenerCorreoEstudiante(listEstudiantes[i]), codEvaluacion);
+		}
 		
 		ArrayList<Evaluacion> evaluaciones = bd.selectEvaluacion();
 		request.setAttribute("ListEval", evaluaciones);

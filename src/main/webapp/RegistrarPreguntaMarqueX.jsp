@@ -252,25 +252,25 @@
 		              </tr>
 		               <tr>
 			            <td ><h3>Respuesta1 </h3></td>
-			            <td ><input type="text" id="txtRespuesta1" name="txtRespuesta" placeholder="Respuesta"  required/></td>
+			            <td ><input type="text" id="txtRespuesta1" name="txtRespuesta1" placeholder="Respuesta"  required/></td>
 						<td><input type="checkbox" name="chk1"></td>
 					</tr>
 					</tr>
 		               <tr>
 			            <td ><h3>Respuesta2 </h3></td>
-			            <td ><input type="text" id="txtRespuesta2" name="txtRespuesta" placeholder="Respuesta"  required/></td>
+			            <td ><input type="text" id="txtRespuesta2" name="txtRespuesta2" placeholder="Respuesta"  required/></td>
 						<td><input type="checkbox" name="chk2"></td>
 					</tr>
 					</tr>
 		               <tr>
 			            <td ><h3>Respuesta3 </h3></td>
-			            <td ><input type="text" id="txtRespuesta3" name="txtRespuesta" placeholder="Respuesta"  required/></td>
+			            <td ><input type="text" id="txtRespuesta3" name="txtRespuesta3" placeholder="Respuesta"  required/></td>
 						<td><input type="checkbox" name="chk3"></td>
 					</tr>
 					</tr>
 		               <tr>
 			            <td ><h3>Respuesta4 </h3></td>
-			            <td ><input type="text" id="txtRespuesta4" name="txtRespuesta" placeholder="Respuesta"  required/></td>
+			            <td ><input type="text" id="txtRespuesta4" name="txtRespuesta4" placeholder="Respuesta"  required/></td>
 						<td><input type="checkbox" name="chk4"></td>
 					</tr>
 					</tr>
