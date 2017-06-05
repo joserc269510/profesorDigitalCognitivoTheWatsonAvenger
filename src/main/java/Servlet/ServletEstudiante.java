@@ -47,7 +47,7 @@ public class ServletEstudiante extends HttpServlet {
 	   Estudiante estudiante= new Estudiante();
 	   estudiante.registrarEstudiante(numeroIdentificacion, numeroCarnet, fechaNacimiento, apellido1, apellido2, nombre, email);
 		Bitacora bitacora = new Bitacora();
-		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo un registro de un estudiante:" + nombre.toLowerCase() + " " + apellido1.toLowerCase() + " " + apellido2.toLowerCase());
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo un registro de un estudiante " + nombre.toLowerCase() + " " + apellido1.toLowerCase() + " " + apellido2.toLowerCase());
 	   response.setContentType("text/html");
 	}
 
