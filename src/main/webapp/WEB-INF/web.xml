@@ -544,5 +544,16 @@
     <servlet-name>ServletAutentificarEstudiante</servlet-name>
     <url-pattern>/autentificando</url-pattern>
   </servlet-mapping>
+      <servlet>
+    <description>ServletAutentificarSMS</description>
+    <display-name></display-name>
+    <servlet-name>ServletAutentificarSMSest</servlet-name>
+    <servlet-class>Servlet.ServletAutentificarSMSest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletAutentificarSMSest</servlet-name>
+    <url-pattern>/autentificarSMS</url-pattern>
+  </servlet-mapping>
+  
 
 </web-app>

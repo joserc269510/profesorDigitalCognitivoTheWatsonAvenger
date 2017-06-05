@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import com.itextpdf.text.log.SysoLogger;
 
 import Bitacora.Bitacora;
+import Seguridad.GenerarCodigo;
 import logicaDeNegocios.*;
 
 public class BaseDeDatos {
@@ -1115,17 +1116,63 @@ public String ObtenerAleatorioEvaluacion(String pEvaluacion){
           return bitacora;
 	  
   }
+  
+  public String selectCodigoSMS(String carnet){
+	  String numero = "";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select codigoespecial from estudiante where numerocarne = '" + carnet  +"'" );
+              
+              while (rs.next()) {
+            	numero = rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return numero;
+	  
+  }
 
-
+  public String selectNumeroTelefonoEstudiante(String carnet){
+	  String numero = "";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select telefono from estudiante where numerocarne = '" + carnet  +"'" );
+              
+              while (rs.next()) {     	
+            	numero = rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return numero;
+	  
+  }
   public static void main(String[] args) {
 	  BaseDeDatos b= new BaseDeDatos();
-	  ArrayList<Bitacora> lista = b.selectBitacora("2017-03-11 13:29:49","2017-07-07" , "Jose");
-	  for (int i=0;i<lista.size();i++){
-		  System.out.println(i + ". " +lista.get(i).getFecha());
-		  System.out.println(i + ". " +lista.get(i).getDescripcion());
-		  System.out.println(i + ". " +lista.get(i).getUser());
-		  
-	}
+	  System.out.println (b.selectNumeroTelefonoEstudiante("2014077666"));
 	 
 	  //String query ="insert into bitacora values (" + 1 +"," +"'"+ sacarFecha() + "'"+","+ "'" +PIN.getPIN() +"'" +"," +"'" + pUser + "'"+")";
 	  //b.insertDelete("insert into bitacora values (" + 1 + "," + "'Sun Jun 04 12:08:22 CST 2017' ," + "'inserto en subtemas' ," + "'Jose')");

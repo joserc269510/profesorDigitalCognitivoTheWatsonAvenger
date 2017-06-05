@@ -1,4 +1,4 @@
-package Integracion;
+package Seguridad;
 
 import java.io.BufferedReader;
 import java.io.IOException;
