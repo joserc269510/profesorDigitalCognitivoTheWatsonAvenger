@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
 
+import Integracion.BaseDeDatos;
 import Integracion.Visual;
+import Seguridad.GenerarCodigo;
 import logicaDeNegocios.Archivo;
 import logicaDeNegocios.Estudiante;
 
@@ -64,14 +66,16 @@ public class ServletAutentificarEstudiante extends HttpServlet {
 	    request.setAttribute("dato", datos);
 		
 		if(resp.equals(true))
-		 {
-		       
-			   RequestDispatcher dispatcher = request.getRequestDispatcher("/InformacionEstudiante.jsp");
-			   dispatcher.forward(request, response);
+		 { 
+			   GenerarCodigo sms = new GenerarCodigo();
+			   BaseDeDatos baseDeDatos = new BaseDeDatos();
+			   sms.enviarSMS(baseDeDatos.selectNumeroTelefonoEstudiante(nombreImagen), nombreImagen);/////
+			   RequestDispatcher dispatcher = request.getRequestDispatcher("/AutentificarEstudianteSMS.jsp");
+			   dispatcher.forward(request, response); 
 	      }
 		 else
 		 {
-	    	   request.getRequestDispatcher("AutentificarEstudiante.html").forward(request, response);
+	    	   request.getRequestDispatcher("/AutentificarEstudiante.jsp").forward(request, response);
 	      }
 	}
 

@@ -63,7 +63,7 @@ public class Archivo
 	public String CargarImagen(HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
 		//Ruta donde se guardara el fichero
-		File destino=new File("C:\\Users\\Cora\\Documents\\GitHub\\profesorDigitalCognitivoTheWatsonAvenger");
+		File destino=new File("/Users/joseramirezcalderon/Desktop/profesorDigitalCognitivoTheWatsonAvenger");
 		//File destino=new File("D:\\Users\\Esteban Morales\\git\\profesorDigitalCognitivoTheWatsonAvenger");
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
