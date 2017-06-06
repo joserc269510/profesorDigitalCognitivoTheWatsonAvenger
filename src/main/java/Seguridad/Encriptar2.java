@@ -1,4 +1,4 @@
-package Integracion;
+package Seguridad;
 
 public class Encriptar2 {
 String NuePIN="";
