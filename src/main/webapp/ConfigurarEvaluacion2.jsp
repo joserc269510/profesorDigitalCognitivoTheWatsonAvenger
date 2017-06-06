@@ -172,7 +172,7 @@
 		           <form action="cargarPreguntas?cEv=<%=codEval%>&tEv=<%=tipEval%>" method="post">
 		              <tr>
 		                <td ><h3>Codigo del Tema</h3></td>
-		                <%@ page import="java.util.ArrayList, logicaDeNegocios.*, Seguridad.*" %>
+		                <%@ page import="java.util.ArrayList, logicaDeNegocios.*" %>
 		                <%
 			            		ArrayList<Tema> temas= (ArrayList<Tema>) request.getAttribute("ListTemas"); 
 			            		
@@ -229,8 +229,7 @@
 			            
 			            <%if(preguntas!=null){ %>
 			            <%for(pregunta p:preguntas){ %> 
-			            	<% Desencriptar nDescripcion=new Desencriptar(p.getDescripcionPregunta().toLowerCase(),26); %>
-			                <option value="<%=p.getCodigoPregunta()%>"><%= nDescripcion.getPIN() %></option>
+			                <option value="<%=p.getCodigoPregunta()%>"><%= p.getDescripcionPregunta() %></option>
 			            
 				        <% } %>
 				        <% } %>
