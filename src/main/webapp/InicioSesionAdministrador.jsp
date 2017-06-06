@@ -82,16 +82,16 @@
 			<div id="main">
 			  <form name="ServletInicioSesionAdministrador" action="postIniciar" method="post">
 			    <div>
-			      <h2>Iniciar Sesión</h2>
+			      <h2>Iniciar Sesion</h2>
 			      <div>
 			        <table>
 			          <tr>
-			            <td ><h3>Correo Electrónico</h3></td>
+			            <td ><h3>Correo Electronico</h3></td>
 			            <td ><input type="text" id="txtCorreo" name="txtCorreo"   required/></td>
 		              </tr>
 			          <tr>
-			            <td ><h3 >Contraseña</h3></td>
-			            <td ><input type="text" id="txtContrasena" name="txtContrasena"  required/></td>
+			            <td ><h3 >Password</h3></td>
+			            <td ><input  id="txtContrasena" name="txtContrasena" type="password" required/></td>
 		              </tr>
 			    	
 			            <td ></td>

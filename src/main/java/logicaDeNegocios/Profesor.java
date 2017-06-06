@@ -73,12 +73,12 @@ public class Profesor {
 		
         Profesor lista []=new Profesor [getConexion().getNumeroRegistros("profesor", "codprofesor")];
         lista=conexion.selectProfesor();
-        
+        //System.out.println(lista.length);
         for (int i=0;i<lista.length;i++){
-			
-			if ((lista[i].getCorreo().equals(pCorreo))&&(lista[i].getContrasena().equals(pContrasena))){
-				setCorreo(pCorreo);
-				setContrasena(pContrasena);
+        	
+			if ((lista[i].getCorreo().equals(pContrasena))&&(lista[i].getContrasena().equals(pCorreo))){
+				
+				
 				
 			return true;
 			}
@@ -86,6 +86,9 @@ public class Profesor {
         return false;
 
 	}
-	
+	public static void main(String[] args) {
+		Profesor j=new Profesor();
+		j.validarUsuario("thewatsonavengers@gmail.com", "proyecto1");
+	}
 
 }

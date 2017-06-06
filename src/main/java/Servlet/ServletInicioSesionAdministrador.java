@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,12 +31,17 @@ public class ServletInicioSesionAdministrador extends HttpServlet {
 	   Profesor profesor= new Profesor();
 	   Boolean resp;
 	   resp=profesor.validarUsuario(correo, contrasena);
-	   
+	   System.out.println(resp);
 	   
 	   if(resp.equals(true)){
 		   RequestDispatcher dispatcher = request.getRequestDispatcher("/ModuloAdministrativo.html");
 		   dispatcher.forward(request, response);
        }else{
+    	   String someMessage = "Credenciales invalidas vuelva a intentar";
+    	   PrintWriter out = response.getWriter();
+    	   out.print("<html><head>");
+    	   out.print("<script type=\"text/javascript\">alert(" + someMessage + ");</script>");
+    	   out.print("</head><body></body></html>");
     	   request.getRequestDispatcher("/InicioSesionAdministrador.jsp").forward(request, response);
        }
 	}
