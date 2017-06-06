@@ -18,6 +18,7 @@ import Integracion.Visual;
 import Seguridad.GenerarCodigo;
 import logicaDeNegocios.Archivo;
 import logicaDeNegocios.Estudiante;
+import logicaDeNegocios.pregunta;
 
 /**
  * Servlet implementation class ServletAutentificarEstudiante
@@ -64,11 +65,18 @@ public class ServletAutentificarEstudiante extends HttpServlet {
 		ArrayList<Estudiante> datos=  estudiante.ObtenerInformacionEstudiante(nombreImagen, ruta);
 	
 	    request.setAttribute("dato", datos);
+	    BaseDeDatos baseDeDatos = new BaseDeDatos();
+		   ArrayList<pregunta> preguntas = baseDeDatos.ObtenerPreguntasEvaluacion(evaluacion);
+			System.out.println(preguntas.size());
+			request.setAttribute("ListPreguntas", preguntas);
+			request.setAttribute("CodEvaluacion", evaluacion);
 		
 		if(resp.equals(true))
 		 { 
 			   GenerarCodigo sms = new GenerarCodigo();
-			   BaseDeDatos baseDeDatos = new BaseDeDatos();
+
+			   
+				request.getRequestDispatcher("AutentificarEstudianteSMS.jsp").forward(request, response);
 			   sms.enviarSMS(baseDeDatos.selectNumeroTelefonoEstudiante(nombreImagen), nombreImagen);/////
 			   RequestDispatcher dispatcher = request.getRequestDispatcher("/AutentificarEstudianteSMS.jsp");
 			   dispatcher.forward(request, response); 
