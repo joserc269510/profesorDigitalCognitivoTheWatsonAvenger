@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import com.itextpdf.text.log.SysoLogger;
 
 import logicaDeNegocios.*;
+import Bitacora.Bitacora;
+import Seguridad.GenerarCodigo;
 
 public class BaseDeDatos {
 
@@ -1084,6 +1086,89 @@ public String ObtenerAleatorioEvaluacion(String pEvaluacion){
 		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
 	}
   
+  public String selectCodigoSMS(String carnet){
+	  String numero = "";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select codigoespecial from estudiante where numerocarne = '" + carnet  +"'" );
+              
+              while (rs.next()) {
+            	numero = rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return numero;
+	  
+  }
+
+  public String selectNumeroTelefonoEstudiante(String carnet){
+	  String numero = "";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select telefono from estudiante where numerocarne = '" + carnet  +"'" );
+              
+              while (rs.next()) {     	
+            	numero = rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return numero;
+	  
+  }
+  
+  public ArrayList<Bitacora> selectBitacora(String pFechaInicio, String pFechaFinal, String pUsuario){
+	  ArrayList bitacora = new ArrayList<Bitacora>();
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select * from Bitacora where fecha between '" + pFechaInicio + "' and '" + pFechaFinal + "' and usuario = '" + pUsuario + "'" );
+              //select * from bitacora where fecha between '2017-03-10 13:29:49' and '2017-07-07' and usuario = 'Jose'
+              while (rs.next()) {
+            	
+                Bitacora objetoBitacora = new Bitacora(rs.getTimestamp(2), rs.getString(3), rs.getString(4));
+                System.out.println(rs.getString(1));
+                bitacora.add(objetoBitacora);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return bitacora;
+	  
+  }
  
 
   public static void main(String[] args) {
