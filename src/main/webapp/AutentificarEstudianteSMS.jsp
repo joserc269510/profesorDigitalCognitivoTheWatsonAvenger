@@ -67,7 +67,7 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 				
-				     <h1 >Bienvenido al Modulo Administrador </h1>
+				     <h1 >Bienvenido al Modulo Estudiante </h1>
 				</ul>
 				<!-- Navigation -->	
 				
@@ -90,7 +90,100 @@
 			   		  <tr>
 			            <td ><h3 >Codigo SMS</h3></td>
 			            <td ><input type="text" id="smsCodigo" name="smsCodigo" placeholder="Codigo"  required/></td>
+			            <td><button class="submit" type="submit">Verificar Codigo</button></td>
 		              </tr>
+		              
+		              
+		              
+		              
+		              
+		              
+		              
+		            <%@ page import="java.util.ArrayList, logicaDeNegocios.*, Integracion.*" %>
+			        <%
+			            		ArrayList<pregunta> Preguntas= (ArrayList<pregunta>) request.getAttribute("ListPreguntas");
+			                    System.out.println(Preguntas.size());
+			        			String codEvaluacion = (String) request.getAttribute("CodEvaluacion"); 
+			        			ArrayList<Integer> ListPreguntas=new ArrayList<Integer>();
+			        %>
+			        <%for(int i=0;i<Preguntas.size();){
+			        	BaseDeDatos bd=new BaseDeDatos();
+			        	String isAleatorio=bd.ObtenerAleatorioEvaluacion(codEvaluacion);
+			        	int aleatorio=0;
+			        	if(isAleatorio.equals("1")){
+			        		aleatorio= (int) Math.floor(Math.random()*Preguntas.size());
+			        	}
+			        	pregunta Tpregunta=Preguntas.get(aleatorio);
+			        	ListPreguntas.add(Tpregunta.getCodigoPregunta());
+			        	String tipoPreg=bd.ObtenerTipoPreguntas(Tpregunta.getCodigoPregunta());
+			        	System.out.println("TipoPregunta="+tipoPreg);
+			        	String descripcion=Tpregunta.getDescripcionPregunta();
+			        	System.out.println("Descripcion="+descripcion);
+			        	if(tipoPreg.equals("1")){
+			        		System.out.println("Marque con X");
+			        		ArrayList<Respuesta> respuestas=bd.ObtenerOpciones(Tpregunta.getCodigoPregunta());
+			        		
+			        			
+			        %>			
+			        
+			        
+			       
+			       	<tr>
+			       		
+				        <td>
+					            <h3><%=descripcion %></h3></td>
+					     </tr>
+				           
+				   <%
+				  		 for(Respuesta r:respuestas){
+				   %>		
+					        <tr><td>
+					            <input type="radio" id="<%=Tpregunta.getCodigoPregunta() %>" name="<%=Tpregunta.getCodigoPregunta() %>" value=<%=r.getCodRespuesta() %>> <%=r.getDescripcionRespuesta() %>
+					        </td></tr>
+					        
+					        
+					    
+					   <%			
+			        		
+			        	}
+			        
+			        		
+			        	}
+			        	if(tipoPreg.equals("2")){
+			        		System.out.println("Corta");
+					 %>
+					       			<tr>
+							            <td ><h3 ><%=descripcion %></h3></td>
+						            </tr>
+						            <% ArrayList<Respuesta> respuestas=bd.ObtenerOpciones(Tpregunta.getCodigoPregunta());%>
+						            <tr>
+							            <td ><input type="text" id="<%=Tpregunta.getCodigoPregunta() %>" name="<%=Tpregunta.getCodigoPregunta() %>" placeholder="Respuesta" /></td>
+						            </tr>
+					 <%
+					        		
+					    }
+			        	if(tipoPreg.equals("3")){
+			        		System.out.println("Desarrollo");
+					 %>
+					       			 <tr>
+							            <td ><h3 ><%=descripcion %></h3></td>
+						            </tr>
+						             <tr>
+				                      	<%
+							            		String texto= (String) request.getAttribute("texto");
+										%>
+							            <td ><textarea id="<%=Tpregunta.getCodigoPregunta() %>" name="<%=Tpregunta.getCodigoPregunta() %>" style="width:700px;height:200px">
+							            <%= texto %>
+							            </textarea></td>
+				                       
+						              </tr>
+					 <%
+					        		
+					     }
+			     
+			             Preguntas.remove(aleatorio);   
+				  }
+			        %>
             	 </table>
             	 
 			      </div>

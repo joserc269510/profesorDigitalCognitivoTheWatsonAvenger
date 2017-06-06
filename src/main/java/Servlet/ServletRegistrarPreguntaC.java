@@ -65,7 +65,7 @@ Respuesta resp= new Respuesta();
 				Encriptar nEncripcion=new Encriptar(DescpPregunta.toLowerCase(),26);
 				preg.registrarPregunta(codPreg, subtema, nEncripcion.getPIN(), descpAy);
 				
-				Encriptar nEncripcion1=new Encriptar(resp1,26);
+				Encriptar nEncripcion1=new Encriptar(resp1.toLowerCase(),26);
 				
 				resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 				

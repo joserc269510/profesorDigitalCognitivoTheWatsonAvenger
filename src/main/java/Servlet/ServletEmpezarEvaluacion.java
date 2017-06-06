@@ -45,7 +45,7 @@ public class ServletEmpezarEvaluacion extends HttpServlet {
 		System.out.println(preguntas.size());
 		request.setAttribute("ListPreguntas", preguntas);
 		request.setAttribute("CodEvaluacion", evaluacion);
-		request.getRequestDispatcher("RealizarEvaluacion.jsp").forward(request, response);
+		request.getRequestDispatcher("AutentificarEstudianteSMS.jsp").forward(request, response);
 	}
 
 }

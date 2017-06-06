@@ -53,10 +53,10 @@
 			        <td><h3>Tiempo restante:</h3></td>
 			        <td><input type="text" id="kulu"/></td>
 			        </tr>
-			        <%@ page import="java.util.ArrayList, logicaDeNegocios.*, Integracion.*" %>
+			        <%@ page import="java.util.ArrayList, logicaDeNegocios.*, Integracion.*, Seguridad.*" %>
 			        <%
 			            		ArrayList<pregunta> Preguntas= (ArrayList<pregunta>) request.getAttribute("ListPreguntas");
-			        System.out.println(Preguntas.size());
+			                    System.out.println(Preguntas.size());
 			        			String codEvaluacion = (String) request.getAttribute("CodEvaluacion"); 
 			        			ArrayList<Integer> ListPreguntas=new ArrayList<Integer>();
 			        %>
@@ -71,7 +71,11 @@
 			        	ListPreguntas.add(Tpregunta.getCodigoPregunta());
 			        	String tipoPreg=bd.ObtenerTipoPreguntas(Tpregunta.getCodigoPregunta());
 			        	System.out.println("TipoPregunta="+tipoPreg);
-			        	String descripcion=Tpregunta.getDescripcionPregunta();
+			        	String descrip=Tpregunta.getDescripcionPregunta();
+			        	
+			        	Desencriptar nDescripcion=new Desencriptar(descrip.toLowerCase(),26); 
+			        	String descripcion=nDescripcion.getPIN();
+			        	
 			        	System.out.println("Descripcion="+descripcion);
 			        	if(tipoPreg.equals("1")){
 			        		System.out.println("Marque con X");
@@ -90,11 +94,13 @@
 				           
 				   <%
 				  		 for(Respuesta r:respuestas){
-				   %>		<fieldset>
+				     		Desencriptar nDescripcion2=new Desencriptar(r.getDescripcionRespuesta(),26); 
+			        		
+			        %>
 					        <tr><td>
-					            <input type="radio" id="opcion" name="<%=Tpregunta.getCodigoPregunta() %>" value=<%=r.getCodRespuesta() %>> <%=r.getDescripcionRespuesta() %>
+					            <input type="radio" id="<%=Tpregunta.getCodigoPregunta() %>" name="<%=Tpregunta.getCodigoPregunta() %>" value=<%=r.getCodRespuesta() %>> <%=nDescripcion2.getPIN() %>
 					        </td></tr>
-					        </fieldset>
+					        
 					        
 					    
 					   <%			
@@ -126,10 +132,10 @@
 				                      	<%
 							            		String texto= (String) request.getAttribute("texto");
 										%>
-							            <td ><textarea id="Tpregunta.getCodigoPregunta()" name="Tpregunta.getCodigoPregunta()" style="width:700px;height:200px">
+							            <td ><textarea id="<%=Tpregunta.getCodigoPregunta() %>" name="<%=Tpregunta.getCodigoPregunta() %>" style="width:700px;height:200px">
 							            <%= texto %>
 							            </textarea></td>
-				                        <td  ><button class="submit" formaction="generarSpeech" type="submit">Grabar</button></td>
+				                        <td  ><button class="submit" formaction="generarSpeech?x=<%=codEvaluacion%>" type="submit">Grabar</button></td>
 						              </tr>
 					 <%
 					        		

@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sound.sampled.LineUnavailableException;
 
+import Integracion.BaseDeDatos;
 import Integracion.Speech;
+import logicaDeNegocios.pregunta;
 
 /**
  * Servlet implementation class ServletSpeech
@@ -49,8 +52,16 @@ public class ServletSpeech extends HttpServlet {
 			e.printStackTrace();
 		}
 		 
+		
+		String evaluacion=request.getParameter("x");
+		BaseDeDatos bd = new BaseDeDatos();
+		ArrayList<pregunta> preguntas = bd.ObtenerPreguntasEvaluacion(evaluacion);
+		System.out.println(preguntas.size());
+		request.setAttribute("ListPreguntas", preguntas);
+		request.setAttribute("CodEvaluacion", evaluacion);
+		
 		 request.setAttribute("texto", texto);
-		 request.getRequestDispatcher("/RealizarEvaluacion.jsp").forward(request, response);
+		 request.getRequestDispatcher("RealizarEvaluacion.jsp").forward(request, response);
 	}
 
 }

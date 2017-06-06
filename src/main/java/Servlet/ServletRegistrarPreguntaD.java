@@ -71,7 +71,7 @@ public class ServletRegistrarPreguntaD extends HttpServlet {
 				
 				
 				String resp1=request.getParameter("txtRespuesta");
-				Encriptar nEncripcion1=new Encriptar(resp1,26);
+				Encriptar nEncripcion1=new Encriptar(resp1.toLowerCase(),26);
 				
 				resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 				

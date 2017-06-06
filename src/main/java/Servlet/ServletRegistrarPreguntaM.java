@@ -70,7 +70,7 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp1!=null){
 					System.out.println(resp1);
 					System.out.println(chk1);
-					Encriptar nEncripcion1=new Encriptar(resp1,26);
+					Encriptar nEncripcion1=new Encriptar(resp1.toLowerCase(),26);
 					if(chk1!=null){
 						
 						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
@@ -87,7 +87,7 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp2!=null){
 					System.out.println(resp2);
 					System.out.println(chk2);
-					Encriptar nEncripcion1=new Encriptar(resp2,26);
+					Encriptar nEncripcion1=new Encriptar(resp2.toLowerCase(),26);
 					if(chk2!=null){
 						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 					}
@@ -101,7 +101,7 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp3!=null){
 					System.out.println(resp3);
 					System.out.println(chk3);
-					Encriptar nEncripcion1=new Encriptar(resp3,26);
+					Encriptar nEncripcion1=new Encriptar(resp3.toLowerCase(),26);
 					if(chk3!=null){
 						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 					}
@@ -115,7 +115,7 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp4!=null){
 					System.out.println(resp4);
 					System.out.println(chk4);
-					Encriptar nEncripcion1=new Encriptar(resp4,26);
+					Encriptar nEncripcion1=new Encriptar(resp4.toLowerCase(),26);
 					if(chk4!=null){
 						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 					}

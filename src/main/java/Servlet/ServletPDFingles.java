@@ -21,6 +21,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import Integracion.BaseDeDatos;
 import Integracion.Traductor;
+import Seguridad.Desencriptar;
 import logicaDeNegocios.Estudiante;
 import logicaDeNegocios.Evaluacion;
 import logicaDeNegocios.pregunta;
@@ -100,7 +101,8 @@ public class ServletPDFingles extends HttpServlet {
 		   ArrayList<pregunta> preguntas=bd.ObtenerPreguntasEvaluacion(codEvaluacion);
 		   doc.add(new Paragraph(traducir.Traduccion("Preguntas"), bfBold19));
 		   for(pregunta p:preguntas){
-			   doc.add( new Paragraph(traducir.Traduccion("Codigo de Pregunta = "+p.getCodigoPregunta()+", Descripcion de Pregunta = "+p.getDescripcionPregunta()), bfBold17));
+			   Desencriptar nDescripcion=new Desencriptar(p.getDescripcionPregunta().toLowerCase(),26);
+			   doc.add( new Paragraph(traducir.Traduccion("Codigo de Pregunta = "+p.getCodigoPregunta()+", Descripcion de Pregunta = "+nDescripcion.getPIN()), bfBold17));
 		   }
 		   doc.add(new Paragraph(traducir.Traduccion("Estudiantes"), bfBold19));
 		   for(Estudiante e:estudiantes){
