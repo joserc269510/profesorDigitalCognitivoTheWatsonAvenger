@@ -58,6 +58,7 @@
 			            		ArrayList<pregunta> Preguntas= (ArrayList<pregunta>) request.getAttribute("ListPreguntas");
 			        System.out.println(Preguntas.size());
 			        			String codEvaluacion = (String) request.getAttribute("CodEvaluacion"); 
+			        			ArrayList<Integer> ListPreguntas=new ArrayList<Integer>();
 			        %>
 			        <%for(int i=0;i<Preguntas.size();){
 			        	BaseDeDatos bd=new BaseDeDatos();
@@ -67,7 +68,7 @@
 			        		aleatorio= (int) Math.floor(Math.random()*Preguntas.size());
 			        	}
 			        	pregunta Tpregunta=Preguntas.get(aleatorio);
-			        	
+			        	ListPreguntas.add(Tpregunta.getCodigoPregunta());
 			        	String tipoPreg=bd.ObtenerTipoPreguntas(Tpregunta.getCodigoPregunta());
 			        	System.out.println("TipoPregunta="+tipoPreg);
 			        	String descripcion=Tpregunta.getDescripcionPregunta();
@@ -91,7 +92,7 @@
 				  		 for(Respuesta r:respuestas){
 				   %>		<fieldset>
 					        <tr><td>
-					            <input type="radio" id="opcion" name="<%=r.getCodRespuesta() %>" value=<%=r.getCodRespuesta() %>> <%=r.getDescripcionRespuesta() %>
+					            <input type="radio" id="opcion" name="<%=Tpregunta.getCodigoPregunta() %>" value=<%=r.getCodRespuesta() %>> <%=r.getDescripcionRespuesta() %>
 					        </td></tr>
 					        </fieldset>
 					        
@@ -110,7 +111,7 @@
 						            </tr>
 						            <% ArrayList<Respuesta> respuestas=bd.ObtenerOpciones(Tpregunta.getCodigoPregunta());%>
 						            <tr>
-							            <td ><input type="text" id="<%=respuestas.get(0).getCodRespuesta() %>" name="<%=respuestas.get(0).getCodRespuesta() %>" placeholder="Respuesta" /></td>
+							            <td ><input type="text" id="<%=Tpregunta.getCodigoPregunta() %>" name="<%=Tpregunta.getCodigoPregunta() %>" placeholder="Respuesta" /></td>
 						            </tr>
 					 <%
 					        		
@@ -125,7 +126,7 @@
 				                      	<%
 							            		String texto= (String) request.getAttribute("texto");
 										%>
-							            <td ><textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">
+							            <td ><textarea id="Tpregunta.getCodigoPregunta()" name="Tpregunta.getCodigoPregunta()" style="width:700px;height:200px">
 							            <%= texto %>
 							            </textarea></td>
 				                        <td  ><button class="submit" formaction="generarSpeech" type="submit">Grabar</button></td>

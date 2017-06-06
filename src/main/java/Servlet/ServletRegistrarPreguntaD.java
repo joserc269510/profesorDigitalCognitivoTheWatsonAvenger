@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
-import Integracion.Encriptar;
+import Seguridad.Encriptar;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Desarrollo;
 import logicaDeNegocios.MarqueX;
