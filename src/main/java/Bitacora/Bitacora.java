@@ -2,7 +2,11 @@ package Bitacora;
 
 import Integracion.BaseDeDatos;
 import Seguridad.Encriptar;
+import Seguridad.EncriptarLlave;
+import Seguridad.entradaEncriptarDesencriptar;
 import Seguridad.Desencriptar;
+import Seguridad.DesencriptarLlave;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -23,8 +27,10 @@ public abstract class Bitacora {
 	}
 	
 	public void insertarEnBitacora(String pUser, String pDescripcion){
-		Encriptar PIN = new Encriptar(pDescripcion,23);
-		baseDeDatos.insertDelete("insert into bitacora (fecha, descripcion, usuario) values (" +"'"+ sacarFecha() + "'"+","+ "'" +PIN.getPIN() +"'" +"," +"'" + pUser + "'"+")");
+		entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(pDescripcion,23);
+		Encriptar PIN = new EncriptarLlave();
+		PIN.encriptarCadena(objeto);
+		baseDeDatos.insertDelete("insert into bitacora (fecha, descripcion, usuario) values (" +"'"+ sacarFecha() + "'"+","+ "'" +objeto.getPin() +"'" +"," +"'" + pUser + "'"+")");
 	}
 	
 	//2017-03-10 13:29:49
@@ -32,8 +38,11 @@ public abstract class Bitacora {
 		ArrayList<Bitacora> listaBitacora = baseDeDatos.selectBitacora(pFechaInicio, pFechaFinal, pUsuario);
 		
 		for (int i=0; i<listaBitacora.size();i++){
-			Desencriptar PIN=new Desencriptar(listaBitacora.get(i).getDescripcion(),23);
-			listaBitacora.get(i).setDescripcion(PIN.getPIN());
+			entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(listaBitacora.get(i).getDescripcion(),23);
+			Desencriptar PIN= new DesencriptarLlave();
+			PIN.desencriptarCadena(objeto);
+			
+			listaBitacora.get(i).setDescripcion(objeto.getPin());//PIN.getPIN()
 		}
 		return listaBitacora;
 		
