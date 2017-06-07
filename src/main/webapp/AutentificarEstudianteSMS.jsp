@@ -57,7 +57,7 @@
 			
 			<!-- HEADER -->
 			<div id="header">
-				<a href="ModuloAdministrativo.html"><img id="logo" src="img/ModuloAdministrativo.png" alt="Nova" /></a>
+				<a href="<%=request.getContextPath()%>/AutentificarEstudiante.jsp"><img id="logo" src="img/ModuloEstudiante.png" alt="Nova" /></a>
 				<!-- Social -->
 				<div id="social-holder">
 					
@@ -92,7 +92,7 @@
 			    <div>
 			    	
 			    
-			      <h1> Autentificacion SMS del estudiante<font size="3"> </h1>
+			      <h1> Autentificacion SMS del Estudiante<font size="3"> </h1>
 			      <div>
 			      <table>
 			   		  <tr>

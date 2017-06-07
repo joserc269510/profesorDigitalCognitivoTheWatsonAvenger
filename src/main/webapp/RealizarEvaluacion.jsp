@@ -42,7 +42,30 @@
 		<script type="text/javascript" src="js/poshytip-1.0/src/jquery.poshytip.min.js"></script>
 		<!-- ENDS poshytip -->
 </head>
-<body onload="ram()">
+<body class="home" onload="ram()">
+		<div id="wrapper">
+			
+			<!-- HEADER -->
+			<div id="header">
+				<a href="<%=request.getContextPath()%>/AutentificarEstudiante.jsp"><img id="logo" src="img/ModuloEstudiante.png" alt="Nova" /></a>
+				<!-- Social -->
+				<div id="social-holder">
+					
+				</div>
+				<!-- ENDS Social -->
+				
+				<!-- Navigation -->
+				<ul id="nav" class="sf-menu">
+				
+				     <h1 >Bienvenido al Modulo Estudiante </h1>
+				</ul>
+				<!-- Navigation -->	
+				
+				
+				<div id="slider-block">
+				</div>
+		
+			</div>
 		<div id="main">
 			  <form name="RealizarEvaluacion" method="post">
 			    <div>

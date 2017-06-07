@@ -53,7 +53,7 @@
 			
 			<!-- HEADER -->
 			<div id="header">
-				<a href="ModuloAdministrativo.html"><img id="logo" src="img/ModuloAdministrativo.png" alt="Nova" /></a>
+				<a href="<%=request.getContextPath()%>/AutentificarEstudiante.jsp"><img id="logo" src="img/ModuloEstudiante.png" alt="Nova" /></a>
 				<!-- Social -->
 				<div id="social-holder">
 					
@@ -63,7 +63,7 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 				
-				     <h1 >Bienvenido al Modulo Administrador </h1>
+				     <h1 >Bienvenido al Modulo Estudiante </h1>
 				</ul>
 				<!-- Navigation -->	
 				
@@ -90,7 +90,7 @@
 			  <table>
 			
 			       
-			      <h1> Autentificacion del Estudiante <font size="3"> </h1>
+			      <h1> Informacion del Estudiante <font size="3"> </h1>
 
 			             <%  for(Estudiante t:dato){ 
 			             	System.out.println(t.getNumeroIdentificacion()+" "+t.getNombre()+" "+t.getApellido1()+" "+t.getApellido2());%>

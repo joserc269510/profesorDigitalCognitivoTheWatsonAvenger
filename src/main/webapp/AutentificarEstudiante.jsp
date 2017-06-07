@@ -56,8 +56,11 @@
 		<div id="wrapper">
 			
 			<!-- HEADER -->
+			<div id="wrapper">
+			
+			<!-- HEADER -->
 			<div id="header">
-				<a href="ModuloAdministrativo.html"><img id="logo" src="img/ModuloAdministrativo.png" alt="Nova" /></a>
+				<a href="<%=request.getContextPath()%>/AutentificarEstudiante.jsp"><img id="logo" src="img/ModuloEstudiante.png" alt="Nova" /></a>
 				<!-- Social -->
 				<div id="social-holder">
 					
@@ -67,7 +70,7 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 				
-				     <h1 >Bienvenido al Modulo Administrador </h1>
+				     <h1 >Bienvenido al Modulo Estudiante </h1>
 				</ul>
 				<!-- Navigation -->	
 				
