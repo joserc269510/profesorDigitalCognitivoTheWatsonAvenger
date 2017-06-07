@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bitacora.Bitacora;
+import Bitacora.XML;
 import logicaDeNegocios.*;
 
 /**
@@ -34,7 +35,7 @@ public class ServletInicioSesionAdministrador extends HttpServlet {
 	   resp=profesor.validarUsuario(correo, contrasena);
 	   System.out.println(resp);
 	   
-	   Bitacora bitacora = new Bitacora();
+	   Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se inicio sesion por parte del administrador");
 	   
 	   if(resp.equals(true)){

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 
 /**
@@ -44,7 +45,7 @@ public class ServletConsultarTipPreg extends HttpServlet {
 		ArrayList<String> list= bd.SelectPorCodigoTPreg(codigoTipPreg);
 		String nombreTipPreg = list.get(0);
 		String descripTipPreg = list.get(1);
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una consulta sobre un tipo de pregunta");
 		request.setAttribute("texto", nombreTipPreg);
 		request.setAttribute("texto2", descripTipPreg);

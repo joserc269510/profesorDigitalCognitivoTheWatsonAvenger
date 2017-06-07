@@ -21,6 +21,8 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import Integracion.BaseDeDatos;
 import Seguridad.Desencriptar;
+import Seguridad.DesencriptarLlave;
+import Seguridad.entradaEncriptarDesencriptar;
 import logicaDeNegocios.Estudiante;
 import logicaDeNegocios.Evaluacion;
 import logicaDeNegocios.pregunta;
@@ -102,8 +104,10 @@ public class ServletPDF extends HttpServlet {
 		   ArrayList<Estudiante> estudiantes=bd.ObtenerEstudiantesEvaluacion(codEvaluacion);
 		   ArrayList<pregunta> preguntas=bd.ObtenerPreguntasEvaluacion(codEvaluacion);
 		   doc.add(new Paragraph("Preguntas", bfBold19));
-		   for(pregunta p:preguntas){
-			   Desencriptar nDescripcion=new Desencriptar(p.getDescripcionPregunta().toLowerCase(),26);
+		   for(pregunta p:preguntas){			  			   
+				entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(p.getDescripcionPregunta().toLowerCase(),26);
+				Desencriptar nDescripcion = new DesencriptarLlave();
+				nDescripcion.desencriptarCadena(objeto);
 			   doc.add( new Paragraph("Codigo de Pregunta = "+p.getCodigoPregunta()+", Descripcion de Pregunta = "+nDescripcion.getPIN(), bfBold17));
 		   }
 		   

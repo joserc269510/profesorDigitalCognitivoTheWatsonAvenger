@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Subtema;
 import logicaDeNegocios.Tema;
@@ -48,7 +50,7 @@ public class ServletActualizarTema extends HttpServlet {
 		System.out.println(codigoTema + "adskkkkkkkkkkk");
 		tema.actualizarTema(codigoTema, numeroCurso, nombreActualizar);
 		
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una actualizacion sobre el tema a " + nombreActualizar.toLowerCase());
 		
 		ArrayList<Tema> temas = bd.selectTema();

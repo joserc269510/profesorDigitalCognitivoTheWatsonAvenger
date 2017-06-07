@@ -97,7 +97,10 @@
 			        	System.out.println("TipoPregunta="+tipoPreg);
 			        	String descrip=Tpregunta.getDescripcionPregunta();
 			        	
-			        	Desencriptar nDescripcion=new Desencriptar(descrip.toLowerCase(),26); 
+			        	entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(descrip.toLowerCase(),26);
+						Desencriptar nDescripcion = new DesencriptarLlave();
+						nDescripcion.desencriptarCadena(objeto);
+			        	
 			        	String descripcion=nDescripcion.getPIN();
 			        	
 			        	System.out.println("Descripcion="+descripcion);
@@ -118,7 +121,10 @@
 				           
 				   <%
 				  		 for(Respuesta r:respuestas){
-				     		Desencriptar nDescripcion2=new Desencriptar(r.getDescripcionRespuesta(),26); 
+
+							entradaEncriptarDesencriptar objeto2 = new entradaEncriptarDesencriptar(r.getDescripcionRespuesta(),26);
+							Desencriptar nDescripcion2 = new DesencriptarLlave();
+							nDescripcion2.desencriptarCadena(objeto2);
 			        		
 			        %>
 					        <tr><td>

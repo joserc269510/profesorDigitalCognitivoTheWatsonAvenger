@@ -9,8 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
+import Seguridad.Desencriptar;
+import Seguridad.DesencriptarLlave;
 import Seguridad.Encriptar;
+import Seguridad.EncriptarLlave;
+import Seguridad.entradaEncriptarDesencriptar;
 import logicaDeNegocios.*;
 
 /**
@@ -62,14 +68,21 @@ Respuesta resp= new Respuesta();
 				String descpAy=request.getParameter("txtDescripcionAyuda");
 	            
 				pregunta preg=new EspacioBlanco();
-				Encriptar nEncripcion=new Encriptar(DescpPregunta.toLowerCase(),26);
+				
+				entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(DescpPregunta.toLowerCase(),26);
+				Encriptar  nEncripcion = new EncriptarLlave();
+				nEncripcion.encriptarCadena(objeto);
+
 				preg.registrarPregunta(codPreg, subtema, nEncripcion.getPIN(), descpAy);
 				
-				Encriptar nEncripcion1=new Encriptar(resp1.toLowerCase(),26);
+				entradaEncriptarDesencriptar objeto1 = new entradaEncriptarDesencriptar(resp1.toLowerCase(),26);
+				Encriptar  nEncripcion1 = new EncriptarLlave();
+				nEncripcion1.encriptarCadena(objeto1);
+				
 				
 				resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 				
-				Bitacora bitacora = new Bitacora();
+				Bitacora bitacora = new XML();
 				bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una pregunta corta");
 				
 				

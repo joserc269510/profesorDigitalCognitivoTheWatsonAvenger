@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
 import Seguridad.Desencriptar;
+import Seguridad.DesencriptarLlave;
+import Seguridad.entradaEncriptarDesencriptar;
 import logicaDeNegocios.Respuesta;
 import logicaDeNegocios.pregunta;
 
@@ -48,7 +50,9 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 		ArrayList<String> resp=new ArrayList<String>();
 		for(int i=0;i<preguntas.size();i++){
 			//System.out.print("pregunta: ");
-			Desencriptar nDescripcion2=new Desencriptar(preguntas.get(i).getDescripcionPregunta(),26); 
+			entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(preguntas.get(i).getDescripcionPregunta(), 26);
+			Desencriptar nDescripcion2 = new DesencriptarLlave();
+			nDescripcion2.desencriptarCadena(objeto);
 			//System.out.println(nDescripcion2.getPIN());
 			resp.add( (String) request.getParameter(Integer.toString(preguntas.get(i).getCodigoPregunta())));
 		  //System.out.print("respuesta: ");
@@ -62,7 +66,11 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 			System.out.println("pregunta"+z);
 			System.out.println();
 			System.out.print("pregunta: ");
-			Desencriptar nDescripcion2=new Desencriptar(preguntas.get(z).getDescripcionPregunta(),26); 
+			
+			entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(preguntas.get(z).getDescripcionPregunta(),26);
+			Desencriptar nDescripcion2 = new DesencriptarLlave();
+			nDescripcion2.desencriptarCadena(objeto);
+
 			System.out.println(nDescripcion2.getPIN());
 			System.out.println("////");
 			System.out.print("respuesta estudiante : ");
@@ -86,7 +94,12 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 	    	if(type.equals("2")){
 	    		String correcta=bd.ObtenerDescripcionRespuesta(Integer.toString(preguntas.get(z).getCodigoPregunta()));
 	    		//System.out.println(correcta);
-	    		Desencriptar nDescripcion3=new Desencriptar(correcta,26);
+	    		
+	    		
+				entradaEncriptarDesencriptar objeto2 = new entradaEncriptarDesencriptar(correcta,26);
+				Desencriptar nDescripcion3 = new DesencriptarLlave();
+				nDescripcion3.desencriptarCadena(objeto2);
+	    		
 	    		System.out.println("respuesta correcta-----------------------");
 	    		System.out.println(nDescripcion3.getPIN());
 	    		Respuesta j=new Respuesta();
@@ -101,11 +114,15 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 	    		  	}
 	    	if(type.equals("3")){
 	    		String correcta=bd.ObtenerDescripcionRespuesta(Integer.toString(preguntas.get(z).getCodigoPregunta()));
-	    		Desencriptar nDescripcion3=new Desencriptar(correcta,26);
+	    		
+				entradaEncriptarDesencriptar objeto3 = new entradaEncriptarDesencriptar(correcta,26);
+				Desencriptar nDescripcion4 = new DesencriptarLlave();
+				nDescripcion4.desencriptarCadena(objeto3);
+	    		
 	    		System.out.println("respuesta correcta-----------------------");
-	    		System.out.println(nDescripcion3.getPIN());
+	    		System.out.println(nDescripcion4.getPIN());
 	    		Respuesta j=new Respuesta();
-	    		boolean result=j.revisar(resp.get(z).toLowerCase(),nDescripcion3.getPIN());
+	    		boolean result=j.revisar(resp.get(z).toLowerCase(),nDescripcion4.getPIN());
 	    		int pts=0;
 	    		if(result==true){
 	    			pts=bd.ObtenerPuntajeEvaluacion(evaluacion, Integer.toString(preguntas.get(z).getCodigoPregunta()));

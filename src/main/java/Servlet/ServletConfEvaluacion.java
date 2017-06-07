@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Evaluacion;
@@ -86,7 +87,7 @@ public class ServletConfEvaluacion extends HttpServlet {
 		request.setAttribute("CodEval", codEval);
 
 		request.setAttribute("CodTipEval", tipoEval);
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		Evaluacion evaluacion;
 		if(tipoEval.equals("2")){
 			evaluacion=new Formativa();

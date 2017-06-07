@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Evaluacion;
@@ -91,7 +93,7 @@ public class ServletToSiguiente extends HttpServlet {
 			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo), aleatorio);
 		}
 		
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una evaluacion");
 		
 		BaseDeDatos bd= new BaseDeDatos();

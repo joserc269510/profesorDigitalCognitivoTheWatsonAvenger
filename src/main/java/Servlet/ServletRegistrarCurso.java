@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bitacora.Bitacora;
+import Bitacora.XML;
 import logicaDeNegocios.Curso;
 
 /**
@@ -36,7 +37,7 @@ public class ServletRegistrarCurso extends HttpServlet {
 		String descripcion= request.getParameter("txtDescripcion");
 		Curso curso= new Curso();
 		curso.registrarCurso(codigo,descripcion);
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro un curso " + descripcion.toLowerCase());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarCurso.jsp");
 		dispatcher.forward(request, response);

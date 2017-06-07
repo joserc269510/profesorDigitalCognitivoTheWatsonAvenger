@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Estudiante;
@@ -51,7 +53,7 @@ public class ServletMatricular extends HttpServlet {
 		ArrayList<Estudiante> estudiantes = bd.selectEstudiante();
 		ArrayList<Curso> cursos = bd.selectCurso();
 		
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se matriculo un estudiante a un curso");
 		
 		request.setAttribute("ListEstudiantes", estudiantes);

@@ -3,6 +3,7 @@ package Seguridad;
 public class entradaEncriptarDesencriptar {
 	String Pin;
 	int Clave;
+	
 	public entradaEncriptarDesencriptar(String pin, int clave){
 		setPin(pin);
 		setClave(clave);

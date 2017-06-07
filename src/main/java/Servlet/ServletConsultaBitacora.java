@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Profesor;
@@ -42,7 +43,7 @@ public class ServletConsultaBitacora extends HttpServlet {
 		String FechaFinal= request.getParameter("txtFechaF");
 		System.out.println("FechaInicio" + FechaInicio);
 		
-		Bitacora bitacora= new Bitacora();
+		Bitacora bitacora= new XML();
 		BaseDeDatos profe = new BaseDeDatos();
 		ArrayList<Profesor> profes= profe.selectProfe();
 		

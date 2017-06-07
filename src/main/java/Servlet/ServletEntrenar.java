@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.Visual;
 
 /**
@@ -42,7 +43,7 @@ public class ServletEntrenar extends HttpServlet {
 		String clase= request.getParameter("txtClass");
 		System.out.println("clasificador" + clasificador);
 		System.out.println("Clase" + clase);
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo un entrenamiento para reconocer los estudiantes del curso");
 		String rutaP=request.getParameter("x");
 		String rutaN=request.getParameter("y");

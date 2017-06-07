@@ -229,7 +229,11 @@
 			            
 			            <%if(preguntas!=null){ %>
 			            <%for(pregunta p:preguntas){ %> 
-			            	<% Desencriptar nDescripcion=new Desencriptar(p.getDescripcionPregunta().toLowerCase(),26); %>
+			            	<% 
+			            	entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(p.getDescripcionPregunta().toLowerCase(),26);
+							Desencriptar nDescripcion = new DesencriptarLlave();
+							nDescripcion.desencriptarCadena(objeto);
+			            	%>
 			                <option value="<%=p.getCodigoPregunta()%>"><%= nDescripcion.getPIN() %></option>
 			            
 				        <% } %>

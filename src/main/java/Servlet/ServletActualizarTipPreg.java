@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 
 /**
@@ -44,7 +46,7 @@ public class ServletActualizarTipPreg extends HttpServlet {
 		bd.actualizarTipPregunta(codigoTipPreg, nombreActualizar);
 		ArrayList<String> tipoPregunta = bd.selectTipoPregunta();
 		
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una actualizacion sobre el tipo de pregunta a " + nombreActualizar.toLowerCase());
 		
 		

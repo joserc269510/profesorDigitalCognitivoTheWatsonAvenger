@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
+import Bitacora.XML;
 import logicaDeNegocios.Evaluacion;
 import logicaDeNegocios.IVerificable;
 import logicaDeNegocios.pregunta;
@@ -38,7 +40,7 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
 		System.out.println(tipoPregunta);
 		System.out.println(descripcionPregunta);
 		
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro un nuevo tipo de pregunta " + descripcionPregunta.toLowerCase());
 		
 		

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Profesor;
@@ -54,7 +56,7 @@ public class ServletAsignarProfesor extends HttpServlet {
 		ArrayList<Curso> cursos = bd.selectCurso();
 		request.setAttribute("ListCursos", cursos);
 		
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se asigno un profesor a un curso");
 		
 		ArrayList<Profesor> profesores = bd.selectProfe();

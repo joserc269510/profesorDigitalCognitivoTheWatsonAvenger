@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Subtema;
@@ -45,7 +46,7 @@ public class ServletRegistrarSubtema extends HttpServlet {
 		Subtema subtema= new Subtema();
 		String codTema=request.getParameter("selCodigoTema");
 		subtema.registrarSubTema(codTema,nombreSubtema);
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro un nuevo subtema " + nombreSubtema.toLowerCase());
 		request.getRequestDispatcher("RegistrarSubtema.jsp").forward(request, response);
 	}

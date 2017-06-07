@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Tema;
 
@@ -45,7 +47,7 @@ public class ServletActualizarTipEval extends HttpServlet {
 		bd.actualizarTipEval(codigoTipEval, nombreActualizar);
 		ArrayList<String> tipoEvaluacion = bd.selectTipoEvaluacion();
 		
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una actualizacion sobre el tipo de evaluacion a " + nombreActualizar.toLowerCase());
 		
 		request.setAttribute("ListTipoEval", tipoEvaluacion);;

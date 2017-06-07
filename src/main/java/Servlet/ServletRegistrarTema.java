@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Tema;
@@ -43,7 +44,7 @@ public class ServletRegistrarTema extends HttpServlet
 		Tema tema= new Tema();
 		tema.registrarTema(pCodigoCurso, pDescripcion);
 		
-		Bitacora bitacora = new Bitacora();
+		Bitacora bitacora = new XML();
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro un nuevo tema " + pDescripcion.toLowerCase());
 		
 		request.getRequestDispatcher("RegistrarTema.jsp").forward(request, response);

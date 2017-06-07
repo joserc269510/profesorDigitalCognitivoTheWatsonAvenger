@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
+import Bitacora.XML;
 import Integracion.*;
 import Seguridad.*;
 import logicaDeNegocios.*;
@@ -60,7 +62,11 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				String descpAy=request.getParameter("txtDescripcionAyuda");
 	            
 				pregunta preg=new MarqueX();
-				Encriptar nEncripcion=new Encriptar(DescpPregunta.toLowerCase(),26);
+				
+				entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(DescpPregunta.toLowerCase(),26);
+				Encriptar  nEncripcion = new EncriptarLlave();
+				nEncripcion.encriptarCadena(objeto);
+				
 				preg.registrarPregunta(codPreg, subtema, nEncripcion.getPIN(), descpAy);
 				
 				String chk1= request.getParameter("chk1");
@@ -70,7 +76,10 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp1!=null){
 					System.out.println(resp1);
 					System.out.println(chk1);
-					Encriptar nEncripcion1=new Encriptar(resp1.toLowerCase(),26);
+					entradaEncriptarDesencriptar objeto1 = new entradaEncriptarDesencriptar(resp1.toLowerCase(),26);
+					Encriptar  nEncripcion1 = new EncriptarLlave();
+					nEncripcion1.encriptarCadena(objeto1);
+					
 					if(chk1!=null){
 						
 						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
@@ -87,12 +96,16 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp2!=null){
 					System.out.println(resp2);
 					System.out.println(chk2);
-					Encriptar nEncripcion1=new Encriptar(resp2.toLowerCase(),26);
+					
+					entradaEncriptarDesencriptar objeto2 = new entradaEncriptarDesencriptar(resp2.toLowerCase(),26);
+					Encriptar  nEncripcion2 = new EncriptarLlave();
+					nEncripcion2.encriptarCadena(objeto2);
+					
 					if(chk2!=null){
-						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
+						resp.registrarRespuesta(codPreg, nEncripcion2.getPIN(), correcta);
 					}
 					else
-						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), incorrect);
+						resp.registrarRespuesta(codPreg, nEncripcion2.getPIN(), incorrect);
 				}
 				String resp3=request.getParameter("txtRespuesta3");
 				String chk3= request.getParameter("chk3");
@@ -101,12 +114,16 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp3!=null){
 					System.out.println(resp3);
 					System.out.println(chk3);
-					Encriptar nEncripcion1=new Encriptar(resp3.toLowerCase(),26);
+					
+					entradaEncriptarDesencriptar objeto3 = new entradaEncriptarDesencriptar(resp3.toLowerCase(),26);
+					Encriptar  nEncripcion3 = new EncriptarLlave();
+					nEncripcion3.encriptarCadena(objeto3);
+					
 					if(chk3!=null){
-						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
+						resp.registrarRespuesta(codPreg, nEncripcion3.getPIN(), correcta);
 					}
 					else
-						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), incorrect);
+						resp.registrarRespuesta(codPreg, nEncripcion3.getPIN(), incorrect);
 				}
 				String resp4=request.getParameter("txtRespuesta4");
 				String chk4= request.getParameter("chk4");
@@ -115,18 +132,22 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				if (resp4!=null){
 					System.out.println(resp4);
 					System.out.println(chk4);
-					Encriptar nEncripcion1=new Encriptar(resp4.toLowerCase(),26);
+					
+					entradaEncriptarDesencriptar objeto4 = new entradaEncriptarDesencriptar(resp4.toLowerCase(),26);
+					Encriptar  nEncripcion4 = new EncriptarLlave();
+					nEncripcion4.encriptarCadena(objeto4);
+					
 					if(chk4!=null){
-						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
+						resp.registrarRespuesta(codPreg, nEncripcion4.getPIN(), correcta);
 					}
 					else
-						resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), incorrect);
+						resp.registrarRespuesta(codPreg, nEncripcion4.getPIN(), incorrect);
 				}
 				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();
 				
-				Bitacora bitacora = new Bitacora();
+				Bitacora bitacora = new XML();
 				bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una pregunta de marque con x");
 				
 				request.setAttribute("ListCursos", cursos);

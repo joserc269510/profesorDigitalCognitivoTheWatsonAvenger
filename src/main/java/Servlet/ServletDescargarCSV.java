@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Bitacora.Bitacora;
+import Bitacora.CSV;
+import Bitacora.TXT;
+import Bitacora.XML;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Profesor;
 
@@ -45,18 +48,21 @@ public class ServletDescargarCSV extends HttpServlet {
 	
 	public void CompararTipoArchivo(String tipo, String pUsuario,String pFechaI, String pFechaF)
 	{
-		Bitacora bitacora= new Bitacora();
+		
 		if (tipo.equals("CSV"))
 		{
-			bitacora.generarCSV(pUsuario,pFechaI,pFechaF);
+			Bitacora bitacora= new CSV();
+			bitacora.generarDocumento(pUsuario,pFechaI,pFechaF);
 		}
 		if (tipo.equals("XML"))
 		{
-			bitacora.generarXML(pUsuario,pFechaI,pFechaF);
+			Bitacora bitacora= new XML();
+			bitacora.generarDocumento(pUsuario,pFechaI,pFechaF);
 		}
 		if(tipo.equals("TXT"))
 		{
-			bitacora.generarArchivoPlano(pUsuario,pFechaI,pFechaF);
+			Bitacora bitacora= new TXT();
+			bitacora.generarDocumento(pUsuario,pFechaI,pFechaF);
 		}
 			
 	}
