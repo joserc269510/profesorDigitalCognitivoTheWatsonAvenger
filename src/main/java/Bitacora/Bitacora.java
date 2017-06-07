@@ -6,11 +6,12 @@ import Seguridad.Desencriptar;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Bitacora {
+public abstract class Bitacora {
 	public Date fecha;
 	public String user;
 	public String descripcion;
 	BaseDeDatos baseDeDatos;
+	
 	public Bitacora(Date pFecha, String pDescripcion, String pUser){
 		setFecha(pFecha);
 		setUser(pUser);
@@ -38,19 +39,7 @@ public class Bitacora {
 		
 	}
 	
-	public void generarXML(String pUsuario, String pFechaInicio, String pFechaFinal){
-		XML xml = new XML();
-		xml.generarXML(consultarBitacora(pUsuario,pFechaInicio, pFechaFinal));
-	}
-	public void generarCSV(String pUsuario, String pFechaInicio, String pFechaFinal){
-		CSV csv = new CSV();
-		csv.generarCSV(consultarBitacora(pUsuario,pFechaInicio, pFechaFinal));
-	}
-	public void generarArchivoPlano(String pUsuario, String pFechaInicio, String pFechaFinal){
-		TXT txt = new TXT();
-		txt.generarTXT(consultarBitacora(pUsuario,pFechaInicio, pFechaFinal));
-	}
-	
+	public abstract void generarDocumento(String pUsuario, String pFechaInicio, String pFechaFinal);
 	
 	public Date sacarFecha(){
 		Date fecha = new Date();

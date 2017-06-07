@@ -3,6 +3,7 @@ package Bitacora;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -16,7 +17,11 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class XML {
+public class XML extends Bitacora {
+	
+	public XML(Date pFecha, String pDescripcion, String pUser){
+		super( pFecha,  pDescripcion,  pUser);	
+	}
 	
 	public void generarXML(ArrayList<Bitacora>lista) {
 		try {
@@ -65,6 +70,12 @@ public class XML {
 		} catch (TransformerException tfe) {
 			tfe.printStackTrace();
 		}
+	}
+
+	@Override
+	public void generarDocumento(String pUsuario, String pFechaInicio, String pFechaFinal) {
+		generarXML(consultarBitacora(pUsuario,pFechaInicio, pFechaFinal));
+		
 	}
 
 }

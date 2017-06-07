@@ -1,17 +1,21 @@
 package Seguridad;
 
-public class Encriptar2 {
-String NuePIN="";
+public class EncriptarBinario extends Encriptar {
+	
+	public EncriptarBinario(){
+		super();
+	}
     
-    public Encriptar2(String Pin){
-        String Abc="abcdefghijklmnopqrstuvwxyz ";
-        int largo= Pin.length();
+	@Override
+	public void encriptarCadena(entradaEncriptarDesencriptar objetoEntrada) {
+		String Abc="abcdefghijklmnopqrstuvwxyz ";
+        int largo= objetoEntrada.getPin().length();
         int len=0;
         int Let=0;
         
         
         while(len!=largo){
-            char letra=Pin.charAt(len);
+            char letra=objetoEntrada.getPin().charAt(len);
             if (letra==Abc.charAt(Let)){
             	 if(letra==' '){
                  	 NuePIN=NuePIN+"*"+" ";
@@ -29,15 +33,6 @@ String NuePIN="";
                 Let++;
             }
         }
-    }
-    
-    public String getPIN(){
-        return NuePIN;
-    }
-    
-    public static void main(String args[]){
-        Encriptar2 PIN=new Encriptar2("esteban morales");
-        System.out.print("esteban morales : ");
-        System.out.println(PIN.getPIN());
-    }
+		
+	}
 }

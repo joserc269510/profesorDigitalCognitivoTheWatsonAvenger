@@ -11,6 +11,7 @@ import com.itextpdf.text.log.SysoLogger;
 
 import logicaDeNegocios.*;
 import Bitacora.Bitacora;
+import Bitacora.XML;
 import Seguridad.GenerarCodigo;
 
 public class BaseDeDatos {
@@ -1156,7 +1157,7 @@ public String ObtenerAleatorioEvaluacion(String pEvaluacion){
               //select * from bitacora where fecha between '2017-03-10 13:29:49' and '2017-07-07' and usuario = 'Jose'
               while (rs.next()) {
             	
-                Bitacora objetoBitacora = new Bitacora(rs.getTimestamp(2), rs.getString(3), rs.getString(4));
+                Bitacora objetoBitacora = new XML(rs.getTimestamp(2), rs.getString(3), rs.getString(4));
                 System.out.println(rs.getString(1));
                 bitacora.add(objetoBitacora);
               }

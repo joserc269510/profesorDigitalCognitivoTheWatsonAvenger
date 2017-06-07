@@ -4,8 +4,13 @@ package Bitacora;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
-public class CSV {
+public class CSV extends Bitacora {
+	
+	public CSV(Date pFecha, String pDescripcion, String pUser){
+		super( pFecha,  pDescripcion,  pUser);	
+	}
 	
 	public void generarCSV(ArrayList<Bitacora>lista){
 		final String NEXT_LINE = "\n";
@@ -23,6 +28,12 @@ public class CSV {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void generarDocumento(String pUsuario, String pFechaInicio, String pFechaFinal) {
+		generarCSV(consultarBitacora(pUsuario,pFechaInicio, pFechaFinal));
+		
 	}
 
 }
