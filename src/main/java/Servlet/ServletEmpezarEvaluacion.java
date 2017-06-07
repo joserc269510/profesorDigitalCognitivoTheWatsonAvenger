@@ -40,11 +40,14 @@ public class ServletEmpezarEvaluacion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String evaluacion=request.getParameter("x");
+		String carnet=request.getParameter("y");
 		BaseDeDatos bd = new BaseDeDatos();
 		ArrayList<pregunta> preguntas = bd.ObtenerPreguntasEvaluacion(evaluacion);
-		System.out.println(preguntas.size());
+		
 		request.setAttribute("ListPreguntas", preguntas);
 		request.setAttribute("CodEvaluacion", evaluacion);
+		request.setAttribute("carnet", carnet);
+		request.setAttribute("error", "0");
 		request.getRequestDispatcher("AutentificarEstudianteSMS.jsp").forward(request, response);
 	}
 

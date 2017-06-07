@@ -56,7 +56,7 @@ public class ServletAutentificarEstudiante extends HttpServlet {
 		Boolean resp;
 		resp= estudiante.AutentificarEstudiante(ruta);
 		
-		String evaluacion=request.getParameter("evaluacion");
+		String evaluacion=request.getParameter("x");
 		
 		request.setAttribute("estudiante", estudiante);
 		request.setAttribute("ruta", ruta);
@@ -75,11 +75,8 @@ public class ServletAutentificarEstudiante extends HttpServlet {
 		 { 
 			   GenerarCodigo sms = new GenerarCodigo();
 
-			   
-				request.getRequestDispatcher("AutentificarEstudianteSMS.jsp").forward(request, response);
+			   request.getRequestDispatcher("InformacionEstudiante.jsp").forward(request, response); 
 			   sms.enviarSMS(baseDeDatos.selectNumeroTelefonoEstudiante(nombreImagen), nombreImagen);/////
-			   RequestDispatcher dispatcher = request.getRequestDispatcher("/AutentificarEstudianteSMS.jsp");
-			   dispatcher.forward(request, response); 
 	      }
 		 else
 		 {

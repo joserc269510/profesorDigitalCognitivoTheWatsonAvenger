@@ -59,7 +59,13 @@ public abstract class Evaluacion implements IVerificarEvaluacion,IRegistableTipo
 	public abstract void registrarEvaluacion(String pCodigoEvaluacion, String pCodigoCurso, String pCodTipoEvaluacion,String pNombreEvaluacion, int pPuntajetotal, int pPorcentajenotafinal, String pFechaevaluacion, int pTiempominutos, String pAleatorio);
 	public abstract void registrarTipoEvaluacion(String pTipoEvaluacion, String pDescripcion);
 	public abstract void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje);
-	public abstract void registrarEstudiante(String pCedula, String pCodEvaluacion);
+	
+	public void registrarEstudiante(String pCedula, String pCodEvaluacion){
+		System.out.println(pCedula);
+		System.out.println(pCodEvaluacion);
+		System.out.println("insert into estudianteevaluacion (codevaluacion, cedula) values ('"+pCodEvaluacion+"','"+pCedula+"')");
+		getConexion().insertDelete("insert into estudianteevaluacion (codevaluacion, cedula) values ('"+pCodEvaluacion+"','"+pCedula+"')");
+	}
 	
 	
 	public void habilitarEvaluacion(String pCodigo)

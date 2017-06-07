@@ -74,12 +74,11 @@ public class Sumativa extends Evaluacion
 		getConexion().insertDelete("insert into evaluacion (codevaluacion, codigocurso, codtipoevaluacion, nombreevaluacion, puntajetotal, porcentajenotafinal, fechaevaluacion, tiempominutos,status,aleatorio) values ("+pCodigoEvaluacion+","+"'"+ pCodigoCurso+ "'"+","+ pCodTipoEvaluacion+","+"'"+ pNombreEvaluacion+"'"+","+  pPuntajetotal+","+  pPorcentajenotafinal+","+  "'"+pFechaevaluacion+"'"+","+  pTiempominutos +","+ "B'0'"+","+pAleatorio+ ")" );
 	}
 	
+	
+	
 	public void registrarPregunta(int pCodPregunta, int pCodEvaluacion, int pPuntaje)
 	{
 		getConexion().insertDelete("insert into evaluacionpregunta (codigopregunta, codevaluacion, puntajeasignado) values ("+pCodPregunta+","+pCodEvaluacion+","+pPuntaje+")");
 	}
-	
-	public void registrarEstudiante(String pCedula, String pCodEvaluacion){
-		getConexion().insertDelete("insert into estudianteevaluacion (codevaluacion, cedula) values ("+pCodEvaluacion+","+pCedula+")");
-	}
+
 }

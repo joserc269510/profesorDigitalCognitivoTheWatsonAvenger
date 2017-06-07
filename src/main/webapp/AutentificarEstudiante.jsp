@@ -77,9 +77,10 @@
 		
 			</div>
 			<div id="main">
+	              <%@ page import="java.util.ArrayList, logicaDeNegocios.*, Integracion.*" %>
+		          <% String evaluacion = (String) request.getParameter("x"); %>
 		
-		
-			  <form name="autentificarEstudiante"  action=autentificando method="post" enctype="multipart/form-data">
+			  <form name="autentificarEstudiante"  action="autentificando?x=<%=evaluacion%>" method="post" enctype="multipart/form-data">
 			    <div>
 			    	
 			    
@@ -87,8 +88,7 @@
 			      <div>
 			      <table>
 			   		  
-			   		<%@ page import="java.util.ArrayList, logicaDeNegocios.*, Integracion.*" %>
-		          <% String evaluacion = (String) request.getParameter("x"); %>
+			   	
 		          <% System.out.println(evaluacion); %>
 			     
                       <tr>

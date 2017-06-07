@@ -73,25 +73,27 @@
 		
 			</div>
 			<div id="main">
-				<% 
-                      	//String evaluacion = (String) request.getAttribute("Evaluacion");
-						String evaluacion="4001";
-                      	 %>
-		
-			  <form name="" action="empezarEvaluacion?x=<%=evaluacion%>" method="post">
-			  <table>
-			
-			       
-			      <h1> Autentificacion del Estudiante <font size="3"> </h1>
-			       <%@ page import="java.util.ArrayList,logicaDeNegocios.*" %>
+				<%@ page import="java.util.ArrayList,logicaDeNegocios.*" %>
 			            <%
 			            		Estudiante es=  (Estudiante)request.getAttribute("estudiante");
 			            		String ruta =(String)request.getAttribute("ruta");
 			            		String  carnet = (String)request.getAttribute("carnet");
+			            		String evaluacion = (String)request.getAttribute("CodEvaluacion");
+			            		System.out.println(ruta);
+			            		System.out.println(carnet);
+			            		System.out.println(evaluacion);
 			            		ArrayList<Estudiante> dato= (ArrayList<Estudiante>) request.getAttribute("dato"); 
 			              
 			          %>
-			             <%  for(Estudiante t:dato){ %>
+		
+			  <form name="" action="empezarEvaluacion?x=<%=evaluacion%>&y=<%=carnet%>" method="post">
+			  <table>
+			
+			       
+			      <h1> Autentificacion del Estudiante <font size="3"> </h1>
+
+			             <%  for(Estudiante t:dato){ 
+			             	System.out.println(t.getNumeroIdentificacion()+" "+t.getNombre()+" "+t.getApellido1()+" "+t.getApellido2());%>
 			            <tr><td ><h3>Informacion del estudiante:</h3></td></tr>
 			            <tr><td ><h3>Numero de identificacion:</h3></td>
 			            <td><h3><%= t.getNumeroIdentificacion() %></h3></td></tr>

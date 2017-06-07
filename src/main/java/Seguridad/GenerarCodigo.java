@@ -42,6 +42,9 @@ public class GenerarCodigo {
 	
 	public boolean validarCodigo(String codigo, String carnet){
 		String codigoBueno = baseDeDatos.selectCodigoSMS(carnet);
+		System.out.println(codigo);
+		System.out.println(carnet);
+		System.out.println(codigoBueno);
 		boolean esIgual = false;
 		if (codigoBueno.compareTo(codigo) == 0){
 			esIgual = true;

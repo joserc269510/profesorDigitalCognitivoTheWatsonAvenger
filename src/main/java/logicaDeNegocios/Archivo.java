@@ -63,8 +63,8 @@ public class Archivo
 	public String CargarImagen(HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
 		//Ruta donde se guardara el fichero
-		File destino=new File("/Users/joseramirezcalderon/Desktop/profesorDigitalCognitivoTheWatsonAvenger");
-		//File destino=new File("D:\\Users\\Esteban Morales\\git\\profesorDigitalCognitivoTheWatsonAvenger");
+		//File destino=new File("/Users/joseramirezcalderon/Desktop/profesorDigitalCognitivoTheWatsonAvenger");
+		File destino=new File("D:\\Users\\Esteban Morales\\git\\profesorDigitalCognitivoTheWatsonAvenger");
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
 
@@ -100,7 +100,7 @@ public class Archivo
 	public String obtenerNombreImagen(String imagen)
 	{
 		String path = imagen ;
-	     String file = path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf("."));
+	    String file = path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf("."));
 	    String nombreImagen= file;
 	    
 	    return nombreImagen;

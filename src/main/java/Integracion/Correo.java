@@ -12,15 +12,15 @@ import javax.mail.internet.MimeMessage;
 
 public class Correo {
 
-	 public static String Username = "thewatsonavergers@gmail.com";
+	 public static String Username = "thewatsonavengers@gmail.com";
 
 	 
 	    public static String PassWord = "proyecto1";
-	    String Mensage = "Usted tiene una evaluación pendiente en la aplicación del profesor digital cognitivo";
+	    
 	    //String To = "suramirez92@gmail.com";
-	    String Subject = "Notificación de Evaluación";
+	    
 
-	    public String SendMail(String pTo, String pEvaluacion) {
+	    public String SendMail(String pTo, String pSubject, String pMensaje) {
 	        Properties props = new Properties();
 	        props.put("mail.smtp.auth", "true");
 	        props.put("mail.smtp.starttls.enable", "true");
@@ -40,9 +40,9 @@ public class Correo {
 	            message.setFrom(new InternetAddress(Username));
 	            message.setRecipients(Message.RecipientType.TO,
 	                    InternetAddress.parse(pTo));
-	            message.setSubject(Subject);
-	            String Link="http://localhost:8080/JavaHelloWorldApp/AutentificarEstudiante.jsp?x="+pEvaluacion;
-	            message.setText(Mensage+"\n"+"Ingresar al siguiente Link"+"\n"+Link);
+	            message.setSubject(pSubject);
+	            
+	            message.setText(pMensaje);
 
 	            Transport.send(message);
 	            return  "Su mensaje ha sido enviado";
@@ -55,7 +55,7 @@ public class Correo {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Correo nuevo= new Correo();
-	    System.out.println(nuevo.SendMail("estebanmorales1594@hotmail.com","077"));
+	    
 
 	}
 

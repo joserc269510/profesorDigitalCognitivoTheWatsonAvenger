@@ -44,7 +44,7 @@
 </head>
 <body onload="ram()">
 		<div id="main">
-			  <form name="registroestudiante" method="post">
+			  <form name="RealizarEvaluacion" method="post">
 			    <div>
 			      <h2>Realizar Evaluacion</h2>
 			      <div>
@@ -56,8 +56,9 @@
 			        <%@ page import="java.util.ArrayList, logicaDeNegocios.*, Integracion.*, Seguridad.*" %>
 			        <%
 			            		ArrayList<pregunta> Preguntas= (ArrayList<pregunta>) request.getAttribute("ListPreguntas");
-			                    System.out.println(Preguntas.size());
+			                    
 			        			String codEvaluacion = (String) request.getAttribute("CodEvaluacion"); 
+			        			String carnet = (String) request.getAttribute("carnet"); 
 			        			ArrayList<Integer> ListPreguntas=new ArrayList<Integer>();
 			        %>
 			        <%for(int i=0;i<Preguntas.size();){
@@ -167,8 +168,8 @@
 		<% } %>
 		<% String duration=(String)s.getAttribute("duration"); %>
 		<% BaseDeDatos bd =new BaseDeDatos(); %>
-		<% //int a=Integer.parseInt(bd.ObtenerTiempoEvaluacion(codEvaluacion)); %>
-		<% int a=Integer.parseInt("1"); %>
+		<% int a=Integer.parseInt(bd.ObtenerTiempoEvaluacion(codEvaluacion)); %>
+		
 <script type="text/javascript">
 		var cmin=<%= a %>;
 		var total=cmin*60;

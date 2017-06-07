@@ -77,10 +77,18 @@
 		
 			</div>
 			<div id="main">
+			<%@ page import="java.util.ArrayList, logicaDeNegocios.*, Integracion.*" %>
+			        <%
+			            		ArrayList<pregunta> Preguntas= (ArrayList<pregunta>) request.getAttribute("ListPreguntas");
+			                    System.out.println(Preguntas.size());
+			        			String codEvaluacion = (String) request.getAttribute("CodEvaluacion"); 
+			        			ArrayList<Integer> ListPreguntas=new ArrayList<Integer>();
+			        			
+			        %>
 		<% String carnet = (String) request.getAttribute("carnet"); 
-		System.out.println(carnet + "joseeeeeeeeeeeeeeeeeeeee"); %>>
+			String errores = (String) request.getAttribute("error"); %>>
 		
-			  <form name="autentificarSMSest"  action= "autentificarSMS?x=<%= carnet%>" method="post" enctype="multipart/form-data">
+			  <form name="autentificarSMSest"  method="post">
 			    <div>
 			    	
 			    
@@ -90,7 +98,7 @@
 			   		  <tr>
 			            <td ><h3 >Codigo SMS</h3></td>
 			            <td ><input type="text" id="smsCodigo" name="smsCodigo" placeholder="Codigo"  required/></td>
-			            <td><button class="submit" type="submit">Verificar Codigo</button></td>
+			            <td><button class="submit" formaction="autentificarSMS?x=<%=codEvaluacion%>&y=<%=carnet%>&z=<%=errores%>" type="submit">Verificar Codigo</button></td>
 		              </tr>
 		              
 		              
@@ -99,13 +107,7 @@
 		              
 		              
 		              
-		            <%@ page import="java.util.ArrayList, logicaDeNegocios.*, Integracion.*" %>
-			        <%
-			            		ArrayList<pregunta> Preguntas= (ArrayList<pregunta>) request.getAttribute("ListPreguntas");
-			                    System.out.println(Preguntas.size());
-			        			String codEvaluacion = (String) request.getAttribute("CodEvaluacion"); 
-			        			ArrayList<Integer> ListPreguntas=new ArrayList<Integer>();
-			        %>
+		            
 			        <%for(int i=0;i<Preguntas.size();){
 			        	BaseDeDatos bd=new BaseDeDatos();
 			        	String isAleatorio=bd.ObtenerAleatorioEvaluacion(codEvaluacion);
