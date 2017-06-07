@@ -126,6 +126,9 @@ public class ServletRegistrarPreguntaM extends HttpServlet {
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();
 				
+				Bitacora bitacora = new Bitacora();
+				bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una pregunta de marque con x");
+				
 				request.setAttribute("ListCursos", cursos);
 				
 				request.getRequestDispatcher("RegistrarPreguntaMarqueX.jsp").forward(request, response);

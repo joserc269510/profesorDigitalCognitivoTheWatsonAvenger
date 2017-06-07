@@ -43,6 +43,11 @@ public class ServletActualizarTipPreg extends HttpServlet {
 		String nombreActualizar = request.getParameter("txtTipo");
 		bd.actualizarTipPregunta(codigoTipPreg, nombreActualizar);
 		ArrayList<String> tipoPregunta = bd.selectTipoPregunta();
+		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una actualizacion sobre el tipo de pregunta a " + nombreActualizar.toLowerCase());
+		
+		
 		request.setAttribute("ListTipoPreguntas", tipoPregunta);
 		request.getRequestDispatcher("ActualizarTipoPregunta.jsp").forward(request, response);
 	}

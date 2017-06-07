@@ -37,6 +37,9 @@ public class ServletRegistrarTipoEvaluacion extends HttpServlet {
 		String descripcionEvaluacion = request.getParameter("txtDescripcion");
 		System.out.println(tipoEvaluacion);
 		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro un tipo de evaluacion");
+		
 	    IVerificarEvaluacion evaluacion = new Evaluacion() {
 		
 		

@@ -555,5 +555,36 @@
     <url-pattern>/autentificarSMS</url-pattern>
   </servlet-mapping>
   
+	<servlet>
+    <description>ServletConsultarBitacoreo</description>
+    <display-name></display-name>
+    <servlet-name>ServletConsultaBitacora</servlet-name>
+    <servlet-class>Servlet.ServletConsultaBitacora</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletConsultaBitacora</servlet-name>
+    <url-pattern>/consultandoBit</url-pattern>
+  </servlet-mapping>
+  
+     <servlet>
+    <description>ServletConsultarBitacoreo</description>
+    <display-name></display-name>
+    <servlet-name>ServletDescargarCSV</servlet-name>
+    <servlet-class>Servlet.ServletDescargarCSV</servlet-class>   
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDescargarCSV</servlet-name>
+    <url-pattern>/descargandoCSV</url-pattern>
+  </servlet-mapping>
 
+<servlet>
+    <description>ServletCalificarEvaluacion</description>
+    <display-name></display-name>
+    <servlet-name>ServletCalificarEvaluacion</servlet-name>
+    <servlet-class>Servlet.ServletCalificarEvaluacion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletCalificarEvaluacion</servlet-name>
+    <url-pattern>/realizarEvaluacion</url-pattern>
+  </servlet-mapping>
 </web-app>

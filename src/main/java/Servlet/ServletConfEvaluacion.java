@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Bitacora.Bitacora;
 import Integracion.BaseDeDatos;
 import logicaDeNegocios.Curso;
 import logicaDeNegocios.Evaluacion;
@@ -85,17 +86,19 @@ public class ServletConfEvaluacion extends HttpServlet {
 		request.setAttribute("CodEval", codEval);
 
 		request.setAttribute("CodTipEval", tipoEval);
-		
+		Bitacora bitacora = new Bitacora();
 		Evaluacion evaluacion;
-		if(tipoEval.equals("1")){
+		if(tipoEval.equals("2")){
 			evaluacion=new Formativa();
 			
 			evaluacion.registrarPregunta(Integer.parseInt(codPregunta), Integer.parseInt(codEval), Integer.parseInt(puntaje));
+			bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se introdujeron preguntas a una evaluacion formativa" );
 		}
-		if(tipoEval.equals("2")){
+		if(tipoEval.equals("1")){
 			evaluacion=new Sumativa();
 			
 			evaluacion.registrarPregunta(Integer.parseInt(codPregunta), Integer.parseInt(codEval), Integer.parseInt(puntaje));
+			bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se introdujeron preguntas a una evaluacion sumativa" );
 
 		}
 		request.getRequestDispatcher("ConfigurarEvaluacion2.jsp").forward(request, response);

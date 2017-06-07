@@ -47,6 +47,10 @@ public class ServletActualizarCurso extends HttpServlet {
 		Curso curso = new Curso();
 		System.out.println(codigoCurso + "adskkkkkkkkkkk");
 		curso.actualizarCurso(codigoCurso, nombreActualizar);
+		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una actualizacion sobre el curso a " + nombreActualizar.toLowerCase());
+		
 		ArrayList<Curso> cursos = cursoBase.selectCurso();
 		request.setAttribute("ListCursos", cursos);
 		request.getRequestDispatcher("ActualizarCurso.jsp").forward(request, response);

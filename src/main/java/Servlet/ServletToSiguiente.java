@@ -90,6 +90,10 @@ public class ServletToSiguiente extends HttpServlet {
 			evaluacion=new Sumativa();
 			evaluacion.registrarEvaluacion(codEval, curso, tipoEval, nombre, Integer.parseInt(pts), Integer.parseInt(nota), fecha, Integer.parseInt(tiempo), aleatorio);
 		}
+		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una evaluacion");
+		
 		BaseDeDatos bd= new BaseDeDatos();
 		ArrayList<Curso> cursos = bd.selectCurso();
 		request.setAttribute("ListCursos", cursos);

@@ -67,7 +67,7 @@
 		
 			</div>
 		<div id="main">
-			  <form name="RealizarEvaluacion" method="post">
+			  <form name="" method="post">
 			    <div>
 			      <h2>Realizar Evaluacion</h2>
 			      <div>
@@ -171,7 +171,7 @@
 			       
 			          <tr>
 			            
-			            <td  ><button class="submit" type="submit" >Terminar Evaluacion</button></td>
+			            <td  ><button formaction="realizarEvaluacion?x=<%=request.getAttribute("CodEvaluacion")%>" class="submit" type="submit" >Terminar Evaluacion</button></td>
 		              </tr>
 		            </table>
 		          </div>

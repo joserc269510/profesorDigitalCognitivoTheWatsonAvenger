@@ -12,6 +12,9 @@ public class TXT extends Bitacora{
 	public TXT(Date pFecha, String pDescripcion, String pUser){
 		super( pFecha,  pDescripcion,  pUser);	
 	}
+	public TXT(){
+		super();
+	}
 	
 	public void generarTXT(ArrayList<Bitacora>lista){
         File archivo = new File("/Users/joseramirezcalderon/Desktop/bitacora.txt");

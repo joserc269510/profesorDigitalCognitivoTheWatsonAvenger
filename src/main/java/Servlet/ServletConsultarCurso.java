@@ -42,6 +42,10 @@ public class ServletConsultarCurso extends HttpServlet {
 		String codigoCurso = request.getParameter("selCodigo"); 	
 		BaseDeDatos curso = new BaseDeDatos();
 		String nombreCurso = curso.SelectPorCodigo(codigoCurso, "descripcioncurso", "Curso");
+		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una consulta sobre un curso");
+		
 		request.setAttribute("texto", nombreCurso);	
 		ArrayList<Curso> cursos = curso.selectCurso();
 		request.setAttribute("ListCursos", cursos);

@@ -51,6 +51,9 @@ public class ServletMatricular extends HttpServlet {
 		ArrayList<Estudiante> estudiantes = bd.selectEstudiante();
 		ArrayList<Curso> cursos = bd.selectCurso();
 		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se matriculo un estudiante a un curso");
+		
 		request.setAttribute("ListEstudiantes", estudiantes);
 		request.setAttribute("ListCursos", cursos);
 		request.getRequestDispatcher("MatricularEstudiante.jsp").forward(request, response);

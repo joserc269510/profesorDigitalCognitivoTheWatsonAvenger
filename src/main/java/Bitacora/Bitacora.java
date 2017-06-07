@@ -30,7 +30,7 @@ public abstract class Bitacora {
 		entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(pDescripcion,23);
 		Encriptar PIN = new EncriptarLlave();
 		PIN.encriptarCadena(objeto);
-		baseDeDatos.insertDelete("insert into bitacora (fecha, descripcion, usuario) values (" +"'"+ sacarFecha() + "'"+","+ "'" +objeto.getPin() +"'" +"," +"'" + pUser + "'"+")");
+		baseDeDatos.insertDelete("insert into bitacora (fecha, descripcion, usuario) values (" +"'"+ sacarFecha() + "'"+","+ "'" +PIN.getPIN() +"'" +"," +"'" + pUser + "'"+")");
 	}
 	
 	//2017-03-10 13:29:49
@@ -42,7 +42,7 @@ public abstract class Bitacora {
 			Desencriptar PIN= new DesencriptarLlave();
 			PIN.desencriptarCadena(objeto);
 			
-			listaBitacora.get(i).setDescripcion(objeto.getPin());//PIN.getPIN()
+			listaBitacora.get(i).setDescripcion(PIN.getPIN());
 		}
 		return listaBitacora;
 		

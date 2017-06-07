@@ -11,6 +11,9 @@ public class CSV extends Bitacora {
 	public CSV(Date pFecha, String pDescripcion, String pUser){
 		super( pFecha,  pDescripcion,  pUser);	
 	}
+	public CSV(){
+		super();
+	}
 	
 	public void generarCSV(ArrayList<Bitacora>lista){
 		final String NEXT_LINE = "\n";

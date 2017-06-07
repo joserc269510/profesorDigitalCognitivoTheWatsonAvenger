@@ -69,6 +69,9 @@ Respuesta resp= new Respuesta();
 				
 				resp.registrarRespuesta(codPreg, nEncripcion1.getPIN(), correcta);
 				
+				Bitacora bitacora = new Bitacora();
+				bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una pregunta corta");
+				
 				
 				BaseDeDatos bd= new BaseDeDatos();
 				ArrayList<Curso> cursos = bd.selectCurso();

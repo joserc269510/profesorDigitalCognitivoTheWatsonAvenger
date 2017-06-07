@@ -44,6 +44,10 @@ public class ServletActualizarTipEval extends HttpServlet {
 		String nombreActualizar = request.getParameter("txtTipo");
 		bd.actualizarTipEval(codigoTipEval, nombreActualizar);
 		ArrayList<String> tipoEvaluacion = bd.selectTipoEvaluacion();
+		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una actualizacion sobre el tipo de evaluacion a " + nombreActualizar.toLowerCase());
+		
 		request.setAttribute("ListTipoEval", tipoEvaluacion);;
 		request.getRequestDispatcher("ActualizarTipoEvaluacion.jsp").forward(request, response);
 	}

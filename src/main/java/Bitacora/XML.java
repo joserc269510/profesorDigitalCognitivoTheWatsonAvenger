@@ -22,7 +22,9 @@ public class XML extends Bitacora {
 	public XML(Date pFecha, String pDescripcion, String pUser){
 		super( pFecha,  pDescripcion,  pUser);	
 	}
-	
+	public XML(){
+		super();
+	}
 	public void generarXML(ArrayList<Bitacora>lista) {
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();

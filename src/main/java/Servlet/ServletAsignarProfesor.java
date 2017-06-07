@@ -53,6 +53,10 @@ public class ServletAsignarProfesor extends HttpServlet {
 		BaseDeDatos bd= new BaseDeDatos();
 		ArrayList<Curso> cursos = bd.selectCurso();
 		request.setAttribute("ListCursos", cursos);
+		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se asigno un profesor a un curso");
+		
 		ArrayList<Profesor> profesores = bd.selectProfe();
 		request.setAttribute("ListProfesores", profesores);
 		request.getRequestDispatcher("AsignarProfesor.jsp").forward(request, response);

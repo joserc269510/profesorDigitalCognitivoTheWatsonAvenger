@@ -35,6 +35,8 @@ public class ServletRegistroEstudiante extends HttpServlet {
 	   Estudiante estudiante= new Estudiante();
 	   estudiante.registrarEstudiante(numeroIdentificacion,nombre,apellido1,apellido2,numeroCarnet,fechaNacimiento,email,telefono);
 	 
+	   Bitacora bitacora = new Bitacora();
+	   bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo un registro de un estudiante " + nombre.toLowerCase() + " " + apellido1.toLowerCase() + " " + apellido2.toLowerCase());
 	   
 	   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegistrarEstudiante.jsp");
 	   dispatcher.forward(request, response);

@@ -68,7 +68,8 @@ public class ServletRegistrarPreguntaD extends HttpServlet {
 				Encriptar nEncripcion=new Encriptar(DescpPregunta.toLowerCase(),26);
 				preg.registrarPregunta(codPreg, subtema, nEncripcion.getPIN(), descpAy);
 				
-				
+				Bitacora bitacora = new Bitacora();
+				bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro una pregunta de desarrollo");
 				
 				String resp1=request.getParameter("txtRespuesta");
 				Encriptar nEncripcion1=new Encriptar(resp1.toLowerCase(),26);

@@ -38,6 +38,10 @@ public class ServletRegistrarTipoPregunta extends HttpServlet {
 		System.out.println(tipoPregunta);
 		System.out.println(descripcionPregunta);
 		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se registro un nuevo tipo de pregunta " + descripcionPregunta.toLowerCase());
+		
+		
 		IVerificable pregunta = new pregunta()
 	     { 
 	   

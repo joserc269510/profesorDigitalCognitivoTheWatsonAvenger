@@ -47,6 +47,11 @@ public class ServletActualizarSubtema extends HttpServlet {
 		Subtema subtema = new Subtema();
 		System.out.println(codigoSubtema + "adskkkkkkkkkkk");
 		subtema.actualizarSubtema(codigoSubtema, numeroTema, nombreActualizar);
+		
+		Bitacora bitacora = new Bitacora();
+		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se realizo una actualizacion sobre subtema a " + nombreActualizar.toLowerCase());
+		
+		
 		ArrayList<Subtema> subtemas = bd.selectSubTema();
 		request.setAttribute("ListSubtemas", subtemas);
 		request.getRequestDispatcher("ActualizarSubtema.jsp").forward(request, response);

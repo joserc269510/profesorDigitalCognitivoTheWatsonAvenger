@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -145,7 +147,7 @@
 			
 					<li><a>Bitacora</a>
 						<ul>
-							<li><a href="ConsultaBitacora.html"><span>Consultar Bitacora</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/ConsultarBitacora.jsp"><span>Consultar Bitacora</span></a></li>
 						</ul>
 					</li>
 		
@@ -159,60 +161,79 @@
 				
 			</div>
 	
-			<div id="main">
-			  <form name="ServletModuloAdministrador" action="ServletModuloAdministrador" method="post">
-			  <div>
-			  <h1> Consulta bitacora  <font size="3"> </h1>
-			  
-			  <table>
-				<tr>
-				<td> Fecha Inicio </td>
-				<td>
-					<input type= "date" id="txtFechaInicio">
-				</td>
-				</tr>
+				<div id="main">
+			  <form name="ConsultarBitacora" method="post">
+			    <div>
+			      <h2>Consulta Bitacora</h2>
+			      <div>
+			        <table>
+			          <tr>
+                        
+			            
+                        <tr>
+			            <td ><h3 >Fecha Inicio</h3></td>
+			            <td ><input type="text" id="txtFechaI" name="txtFechaI" placeholder="X-XXXX-XXXX"  required/></td>
+		            </tr>
 				
 				<tr>
-				<td> Fecha Final </td>
-				<td>
-					<input type= "date" id="txtFechaFinal">
-				</td>
-				</tr>
-				<tr>
-				<td> Acciones de la Bitacora  <td/>
-				<tr/>
-				
-				<tr>
-			           <td ></td>
-			           <td  ><button class="submit" type="submit" >Consulta Bitacora</button></td>
-		        </tr>
-				
-				 <tr>
-			           <td ></td>
-			           <td  ><button class="submit" type="submit" > Formato CSV</button></td>
-		        </tr>
-		        <tr>
-			           <td ></td>
-			           <td  ><button class="submit" type="submit" >Formato Trama plana</button></td>
-		        </tr>
-		        <tr>
-			           <td ></td>
-			           <td  ><button class="submit" type="submit" >Formato XML</button></td>
-		        </tr>
-				
-				
-			
-			</table>
-			</div>
-		    </form>
-			
-			<div id="footer">
-			</div>
-			
+			            <td ><h3 >Fecha Final</h3></td>
+			            <td ><input type="text" id="txtFechaF" name="txtFechaF" placeholder="X-XXXX-XXXX"  required/></td>
+		            </tr>
+                        <%@ page import="java.util.ArrayList, Bitacora.Bitacora" %>
+			            <%
+			            	ArrayList<Bitacora> bitacora= (ArrayList<Bitacora>) request.getAttribute("Listbitacoras"); 
+			           		 String fechaI = (String) request.getAttribute("FechaI");  		
+	             			String fechaF= (String) request.getAttribute("FechaF");	
+						%>
+                       
+		
+                      
+		           
+		             <% if(fechaI!=null&&fechaF!=null){ 
+		             System.out.println("True if");
+		             System.out.println(bitacora.size());
+		             %>
+		             <tr><td ><h3>Usuario:</h3></td>
+		              <td ><h3>Fecha de registro:</h3></td>
+		              <td ><h3>Descripcion:</h3></td>
+		              </tr>
+						 <% for(Bitacora t: bitacora)
+						 
+						 { System.out.println(bitacora.size());
+		                  System.out.println("True for"); %>
+		                  
+		              
+		               <tr>
+		               <td  ><h3><%= t.user %></h3></td>
+			            <td  ><h3><%= t.fecha %></h3></td>
+			            <td  ><h3><%= t.descripcion %></h3></td>
+			            </tr>
+			         
+				 
+				  <% } %>
+				  
+		              <% } %>
+		              <tr>
+			            <td  ><button class="submit" formaction="consultandoBit" type="submit" >Consultar Bitacora</button></td>
+		              </tr>
+		            
+		            
+		              <tr>
+		               <td ><h3 >Seleccione el formato en que desea descargar la bitacora</h3></td>
+			            <td  ><button class="submit" formaction="descargandoCSV?x=<%= fechaI %>&y=<%=fechaF%>&z=<%="CSV"%>"type="submit" >Formato CSV</button></td>
+			            <td  ><button class="submit" formaction="descargandoCSV?x=<%= fechaI %>&y=<%=fechaF%>&z=<%="XML"%>"type="submit" >Formato XML</button></td>
+			             <td  ><button class="submit" formaction="descargandoCSV?x=<%= fechaI %>&y=<%=fechaF%>&z=<%="TXT"%>"type="submit" >Formato TXT</button></td>
+		              </tr>
+		              
+		            </table>
+		          </div>
+		        </div>
+		      </form>
+		  </div>
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>

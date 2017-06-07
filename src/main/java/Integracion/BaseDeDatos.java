@@ -1171,7 +1171,86 @@ public String ObtenerAleatorioEvaluacion(String pEvaluacion){
 	  
   }
  
-
+  public String ObtenerDescripcionRespuesta(String pPregunta){
+	  String descripcion="";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select descripcionrespuesta from respuesta where codigopregunta='"+pPregunta+"'");
+              
+              while (rs.next()) {	
+                 descripcion=rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return descripcion;
+  }
+  
+  public int ObtenerPuntajeEvaluacion(String pEvaluacion,String pPregunta){
+	  int puntaje=0;
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select puntajeasignado from evaluacionpregunta  where codevaluacion='"+pEvaluacion+"'"+" and codigopregunta='"+pPregunta+"'");
+              
+              while (rs.next()) {	
+            	 
+  				puntaje=Integer.parseInt(rs.getString(1));
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          
+          return puntaje;
+  }
+  public int ObtenerStatusRespuesta (String pRespuesta){
+	  int puntaje=0;
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select status from respuesta  where codrespuesta='"+pRespuesta+"'");
+              
+              while (rs.next()) {	
+            	 
+  				puntaje=Integer.parseInt(rs.getString(1));
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          
+          return puntaje;
+  }
   public static void main(String[] args) {
     
      
