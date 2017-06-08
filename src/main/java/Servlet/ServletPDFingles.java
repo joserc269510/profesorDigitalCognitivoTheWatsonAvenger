@@ -112,7 +112,8 @@ public class ServletPDFingles extends HttpServlet {
 		   }
 		   doc.add(new Paragraph(traducir.Traduccion("Estudiantes"), bfBold19));
 		   for(Estudiante e:estudiantes){
-			   doc.add( new Paragraph(traducir.Traduccion("Carnet Estudiante = "+e.getNumeroCarnet()+", Nombre del Estudiante = ")+e.getNombre()+" "+e.getApellido1()+" "+e.getApellido2(), bfBold17));
+			   String nota=bd.ObtenerNotaEstudiante(e.getNumeroIdentificacion(),codEvaluacion);
+			   doc.add( new Paragraph(traducir.Traduccion("Carnet Estudiante = "+e.getNumeroCarnet()+", Nombre del Estudiante = ")+e.getNombre()+" "+e.getApellido1()+" "+e.getApellido2()+", Nota = "+nota, bfBold17));
 		   }
 		   
 		   doc.close();

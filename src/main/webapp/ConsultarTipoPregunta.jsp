@@ -146,6 +146,12 @@
 						</ul>
 					</li>
 					<li><a href="<%=request.getContextPath()%>/AsignandoProfesor" > Asignar Profesor Curso</a></li>
+					
+					<li><a>Bitacora</a>
+						<ul>
+							<li><a href="<%=request.getContextPath()%>/ConsultarBitacora.jsp"><span>Consultar Bitacora</span></a></li>
+						</ul>
+					</li>
 				</ul>
 				<!-- Navigation -->	
 				

@@ -1,5 +1,6 @@
 package logicaDeNegocios;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.itextpdf.text.log.SysoCounter;
@@ -71,12 +72,12 @@ public class Profesor {
 
 	public boolean validarUsuario(String pCorreo, String pContrasena){
 		
-        Profesor lista []=new Profesor [getConexion().getNumeroRegistros("profesor", "codprofesor")];
+        ArrayList<Profesor> lista =new ArrayList<Profesor>();
         lista=conexion.selectProfesor();
         //System.out.println(lista.length);
-        for (int i=0;i<lista.length;i++){
+        for (int i=0;i<lista.size();i++){
         	
-			if ((lista[i].getCorreo().equals(pContrasena))&&(lista[i].getContrasena().equals(pCorreo))){
+			if ((lista.get(i).getCorreo().equals(pContrasena))&&(lista.get(i).getContrasena().equals(pCorreo))){
 				
 				
 				

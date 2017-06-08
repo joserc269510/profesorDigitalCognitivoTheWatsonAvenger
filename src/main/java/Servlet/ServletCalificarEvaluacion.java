@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Integracion.BaseDeDatos;
+import Integracion.Correo;
 import Seguridad.Desencriptar;
 import Seguridad.DesencriptarLlave;
 import Seguridad.entradaEncriptarDesencriptar;
@@ -44,6 +45,7 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String evaluacion=request.getParameter("x");
+		String carnet=request.getParameter("y");
 		Respuesta Ev=new Respuesta();
 		BaseDeDatos bd = new BaseDeDatos();
 		ArrayList<pregunta> preguntas = bd.ObtenerPreguntasEvaluacion(evaluacion);
@@ -141,9 +143,15 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 			
 			
 		}
+		
+		Correo nCorreo=new Correo();
+		String identificacion=bd.ObtenerIdentificacion(carnet);
+		nCorreo.SendMail(bd.ObtenerCorreoEstudiante(identificacion), "Nota de Evaluacion "+evaluacion, "Ha terminado la evaluacion N "+evaluacion+" la nota obtenida fue de "+calificacion);
+		nCorreo.SendMail(bd.ObtenerCorreoProfesor(evaluacion), "Nota del estudiante "+carnet, "El estudiante con el N Carnet "+carnet+" Termino la evaluacion "+evaluacion+" la nota obtenida fue de "+calificacion);
+		bd.InsertarCalificacion(identificacion,evaluacion,calificacion);
 		System.out.println(calificacion);
 		request.setAttribute("calificacion", calificacion);
-		request.getRequestDispatcher("Calificacion.jsp").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }

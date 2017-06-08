@@ -108,12 +108,14 @@ public class ServletPDF extends HttpServlet {
 				entradaEncriptarDesencriptar objeto = new entradaEncriptarDesencriptar(p.getDescripcionPregunta().toLowerCase(),26);
 				Desencriptar nDescripcion = new DesencriptarLlave();
 				nDescripcion.desencriptarCadena(objeto);
+			
 			   doc.add( new Paragraph("Codigo de Pregunta = "+p.getCodigoPregunta()+", Descripcion de Pregunta = "+nDescripcion.getPIN(), bfBold17));
 		   }
 		   
 		   doc.add(new Paragraph("Estudiantes", bfBold19));
 		   for(Estudiante e:estudiantes){
-			   doc.add( new Paragraph("Carnet Estudiante = "+e.getNumeroCarnet()+", Nombre del Estudiante = "+e.getNombre()+" "+e.getApellido1()+" "+e.getApellido2(), bfBold17));
+			   String nota=bd.ObtenerNotaEstudiante(e.getNumeroIdentificacion(),codEvaluacion);
+			   doc.add( new Paragraph("Carnet Estudiante = "+e.getNumeroCarnet()+", Nombre del Estudiante = "+e.getNombre()+" "+e.getApellido1()+" "+e.getApellido2()+", Nota = "+nota, bfBold17));
 		   }
 		   
 		   

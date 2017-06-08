@@ -144,10 +144,11 @@
 							<li><a href="<%=request.getContextPath()%>/SubirArchivos.jsp"><span>Subir Archivos Positivos</span></a></li>
 						</ul>
 					</li>
+					<li><a href="<%=request.getContextPath()%>/AsignandoProfesor" > Asignar Profesor Curso</a></li>
 			
-					<li><a>Bitacora</a>
+					<li class="current-menu-item"><a>Bitacora</a>
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/ConsultarBitacora.jsp"><span>Consultar Bitacora</span></a></li>
+							<li class="current-menu-item"><a href="<%=request.getContextPath()%>/ConsultarBitacora.jsp"><span>Consultar Bitacora</span></a></li>
 						</ul>
 					</li>
 		

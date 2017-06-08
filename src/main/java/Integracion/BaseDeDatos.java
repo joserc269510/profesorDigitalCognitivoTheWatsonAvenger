@@ -107,8 +107,8 @@ public class BaseDeDatos {
         }
         return estudiante;
 }
-  public Profesor[] selectProfesor (){
-      Profesor profesor [] = new Profesor[getNumeroRegistros("profesor", "codprofesor")];
+  public ArrayList<Profesor> selectProfesor (){
+      ArrayList<Profesor> profesor= new ArrayList<Profesor>();
       try {
               Class.forName("org.postgresql.Driver");
           }
@@ -121,21 +121,21 @@ public class BaseDeDatos {
               Statement st = db.createStatement();
               ResultSet rs = st.executeQuery("Select * from profesor order by codprofesor asc");
               
-              int index = 0;
               while (rs.next()) {
                 Profesor objetoProfesor = new Profesor();
                 objetoProfesor.setCodProfesor(rs.getString(1));
                 objetoProfesor.setContrasena(rs.getString(3));
                 objetoProfesor.setCorreo(rs.getString(2));
-                profesor[index] = objetoProfesor;
-                index++;        
+                profesor.add(objetoProfesor);     
               }
+              
               rs.close();
               st.close();
               db.close();
           }catch (java.sql.SQLException e) {
               System.out.println(e.getMessage() + "adios");
           }
+          System.out.println("TAMAÑO= "+profesor.size());
           return profesor;
     }
   public ArrayList<Evaluacion> selectEvaluacion(){//revisar object
@@ -547,6 +547,32 @@ public class BaseDeDatos {
           return descripcion;
   }
   
+  public String ObtenerNotaEstudiante(String pIdEstudiante, String pEvaluacion){
+	  String nota="";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select nota from estudianteevaluacion where cedula='"+pIdEstudiante+"' and codevaluacion='"+pEvaluacion+"'");
+              
+              while (rs.next()) {	
+                 nota=rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return nota;
+  }
+  
   
 
   public ArrayList<pregunta> SelectTipoPreguntaEspecifica(String tipoPregunta){
@@ -917,6 +943,64 @@ public ArrayList<pregunta>SelectTipoPreguntaPorSubtema(String tipoPregunta, Stri
 	          return correo;
 	  }
 	
+public String ObtenerIdentificacion(String pCarnet){
+
+
+		
+		String correo = "";
+	      try {
+	              Class.forName("org.postgresql.Driver");
+	          }
+	          catch (java.lang.ClassNotFoundException e) {
+	              System.out.println(e.getMessage() + "hola");
+	          }
+	          try {
+	            System.out.println("daskdjkasjdsakl");
+	              Connection db = DriverManager.getConnection(url, username, password);
+	              Statement st = db.createStatement();
+	              ResultSet rs = st.executeQuery("Select cedula from estudiante where numerocarne = '"+pCarnet+"'");
+	              
+	              while (rs.next()) {	
+	            	  correo=rs.getString(1);
+	              }
+	              rs.close();
+	              st.close();
+	              db.close();
+	          }catch (java.sql.SQLException e) {
+	              System.out.println(e.getMessage() + "adios");
+	          }
+	          return correo;
+	  }
+
+public String ObtenerCorreoProfesor(String pEvaluacion){
+
+
+	
+	String correo = "";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select profesor.correoelectronico from profesorcurso join profesor on profesorcurso.codprofesor=profesor.codprofesor join curso on profesorcurso.codigocurso=curso.codigocurso join evaluacion on evaluacion.codigocurso=curso.codigocurso where codevaluacion= '"+pEvaluacion+"'");
+              
+              while (rs.next()) {	
+            	  correo=rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          return correo;
+  }
+	
 public String ObtenerTiempoEvaluacion(String pEvaluacion){
 
 
@@ -1251,6 +1335,11 @@ public String ObtenerAleatorioEvaluacion(String pEvaluacion){
           
           return puntaje;
   }
+  
+  public void InsertarCalificacion(String pCedula, String pEvaluacion, int pCalificacion){
+	  insertDelete("insert into estudianteevaluacion (codevaluacion, cedula, nota) values ('"+pEvaluacion+"','"+pCedula+"','"+pCalificacion+"')");
+  }
+  
   public static void main(String[] args) {
     
      

@@ -50,11 +50,12 @@
 	
 	
 		<!-- WRAPPER -->
+		<!-- WRAPPER -->
 		<div id="wrapper">
 			
 			<!-- HEADER -->
 			<div id="header">
-				<a href="<%=request.getContextPath()%>/index.jsp"><img id="logo" src="img/ModuloAdministrativo.png" alt="Nova" /></a>
+				<a href="<%=request.getContextPath()%>/ModuloAdministrativo.jsp"><img id="logo" src="img/ModuloAdministrativo.png" alt="Nova" /></a>
 				<!-- Social -->
 				<div id="social-holder">
 					
@@ -146,14 +147,12 @@
 						</ul>
 					</li>
 					<li><a href="<%=request.getContextPath()%>/AsignandoProfesor" > Asignar Profesor Curso</a></li>
+					<li><a href="<%=request.getContextPath()%>/crearPDF">Generar PDF</a></li>
 				</ul>
 				<!-- Navigation -->	
 				
 				
 				
-				
-				
-		
 				
 				<div id="slider-block">
 				</div>

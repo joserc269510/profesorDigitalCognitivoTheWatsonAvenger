@@ -63,8 +63,7 @@ public class ServletAutentificarSMSest extends HttpServlet {
 				EnviarSMS sms = new EnviarSMS(bd.selectNumeroTelefonoEstudiante(carnet), "Su evaluacion ha sido bloqueada");
 				//EnviarSMS sms = new EnviarSMS("87113820", "Su evaluacion N "+evaluacion+" ha sido bloqueada");
 				Correo nCorreo=new Correo();
-				nCorreo.SendMail("estebanmorales1594@hotmail.com", "Evaluacion Bloqueada", "La evaluacion N "+evaluacion+" del estudiante "+carnet+" ha sido bloqueada por errar 2 veces en la contraseña");
-				nCorreo.SendMail("cora2994@gmail.com", "Evaluacion Bloqueada", "La evaluacion N "+evaluacion+" del estudiante "+carnet+" ha sido bloqueada por errar 2 veces en la contraseña");
+				nCorreo.SendMail(bd.ObtenerCorreoProfesor(evaluacion), "Evaluacion Bloqueada", "La evaluacion N "+evaluacion+" del estudiante "+carnet+" ha sido bloqueada por errar 2 veces en la contraseña");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			

@@ -177,7 +177,7 @@
 			       
 			          <tr>
 			            
-			            <td  ><button formaction="realizarEvaluacion?x=<%=request.getAttribute("CodEvaluacion")%>" class="submit" type="submit" >Terminar Evaluacion</button></td>
+			            <td  ><button formaction="realizarEvaluacion?x=<%=codEvaluacion%>&y=<%=carnet%>" class="submit" type="submit" >Terminar Evaluacion</button></td>
 		              </tr>
 		            </table>
 		          </div>
@@ -214,12 +214,13 @@
 		total=total-1;ctr++;
 		if(ctr==60){ctr=0;cmin=cmin-1;}
 		if(total==0){
-		ram1();}
+		ram1();
 		setTimeout("ram()", 1000);
 		              }
 		function ram1(){
-		
-		window.location.replace("/hcl/TTimeUp.jsp");
+
+			document.location.href = "realizarEvaluacion?x="+<%=codEvaluacion%>+"&y="+<%=carnet%>; 
+			
 		
 		                }
 		</script>
