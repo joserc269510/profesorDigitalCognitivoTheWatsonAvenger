@@ -17,7 +17,7 @@ public class TXT extends Bitacora{
 	}
 	
 	public void generarTXT(ArrayList<Bitacora>lista){
-        File archivo = new File("/Users/joseramirezcalderon/Desktop/bitacora.txt");
+        File archivo = new File("C:/Users/Esteban Morales/Desktop/bitacora.txt");
         try {
         	for (int i=0; i<lista.size(); i++){
         		FileWriter escribirArchivo = new FileWriter(archivo, true);

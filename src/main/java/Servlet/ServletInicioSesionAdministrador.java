@@ -39,7 +39,7 @@ public class ServletInicioSesionAdministrador extends HttpServlet {
 		bitacora.insertarEnBitacora("thewatsonavengers@gmail.com", "se inicio sesion por parte del administrador");
 	   
 	   if(resp.equals(true)){
-		   RequestDispatcher dispatcher = request.getRequestDispatcher("/ModuloAdministrativo.html");
+		   RequestDispatcher dispatcher = request.getRequestDispatcher("/ModuloAdministrativo.jsp");
 		   dispatcher.forward(request, response);
        }else{
     	   String someMessage = "Credenciales invalidas vuelva a intentar";

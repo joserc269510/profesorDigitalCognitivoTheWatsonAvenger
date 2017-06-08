@@ -234,7 +234,7 @@
 					            <input type="radio" id="txtAleatorio1" name="txtAleatorio1" value="Si">Si
 					            
 					        
-					            <input type="radio" id="txtAleatorio2" name="txtAleatorio2" value="No">No
+					            <input type="radio" id="txtAleatorio1" name="txtAleatorio1" value="No">No
 					            
 					        
 			            </td>

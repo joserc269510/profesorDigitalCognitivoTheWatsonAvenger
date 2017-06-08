@@ -1337,7 +1337,7 @@ public String ObtenerAleatorioEvaluacion(String pEvaluacion){
   }
   
   public void InsertarCalificacion(String pCedula, String pEvaluacion, int pCalificacion){
-	  insertDelete("insert into estudianteevaluacion (codevaluacion, cedula, nota) values ('"+pEvaluacion+"','"+pCedula+"','"+pCalificacion+"')");
+	  insertDelete("Update estudianteevaluacion Set nota='"+pCalificacion+"' where codevaluacion='"+pEvaluacion+"' and cedula='"+pCedula+"'");
   }
   
   public static void main(String[] args) {

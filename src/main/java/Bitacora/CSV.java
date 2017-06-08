@@ -19,7 +19,7 @@ public class CSV extends Bitacora {
 		final String NEXT_LINE = "\n";
 		final String delim = ";";
 		try {
-			FileWriter archivo = new FileWriter("/Users/joseramirezcalderon/Desktop/bitacora.csv");
+			FileWriter archivo = new FileWriter("C:/Users/Esteban Morales/Desktop/bitacora.csv");
 			
 			for (int i=0; i<lista.size(); i++){
 				archivo.append(lista.get(i).getUser()).append(delim);

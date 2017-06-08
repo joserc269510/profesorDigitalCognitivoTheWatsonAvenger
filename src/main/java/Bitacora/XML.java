@@ -62,7 +62,7 @@ public class XML extends Bitacora {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File("/Users/joseramirezcalderon/Desktop/bitacora.xml"));
+			StreamResult result = new StreamResult(new File("C:/Users/Esteban Morales/Desktop/bitacora.xml"));
 			StreamResult hola = new StreamResult(System.out);
 			transformer.transform(source, result);
 		

@@ -28,7 +28,7 @@ public class GenerarCodigo {
 		try {
 			
 			String codigoEnviado = String.valueOf(generarCodigo());
-			EnviarSMS sms = new EnviarSMS(numeroTelefono, codigoEnviado);
+			EnviarSMS sms = new EnviarSMS(numeroTelefono, "Su codigo de verificacion es: "+codigoEnviado);
 			baseDeDatos.insertDelete("Update estudiante SET codigoespecial='" + codigoEnviado + "' where numerocarne='" +carnet+"'");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
