@@ -9,7 +9,7 @@ public class Formativa extends Evaluacion
 	private int codTipoEvaluacion;
 	private String tipoEvaluacion;
 	private String descripcionTipoEval;
-	BaseDeDatos conexion;
+	private BaseDeDatos conexion;
 	
 	public Formativa(int pCodEvaluacion, String pNombreEvaluacion,int pPuntajeTotal,int pPorcentajeNotaFinal,String pFechaEvaluacion,int pTiempoMinutos,boolean pStatus,int pCodTipoEvaluacion,String pTipoEvaluacion,String pDescripcionTipoEval)
 	{

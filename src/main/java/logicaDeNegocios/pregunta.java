@@ -8,8 +8,8 @@ public abstract class pregunta implements IVerificable, IRegistrableTipoPregunta
 	protected String descripcionPregunta;
 	protected String descripcionAyuda;
 	private Subtema subtema; //bidireccional
-	BaseDeDatos conexion;
-	FactoryTipoPregunta factory;
+	private BaseDeDatos conexion;
+	private FactoryTipoPregunta factory;
 	
 	public pregunta (int pCodigoPregunta, String pDescripcionPregunta, String pDescripcionAyuda){
 		setCodigoPregunta(pCodigoPregunta);
@@ -26,7 +26,7 @@ public abstract class pregunta implements IVerificable, IRegistrableTipoPregunta
 		return subtema;
 	}
 
-	public void anadirSubTema(int pCodSubtema, String pDescripcion){
+	protected void anadirSubTema(int pCodSubtema, String pDescripcion){
 		subtema = new Subtema( pCodSubtema, pDescripcion);
 	}
 	

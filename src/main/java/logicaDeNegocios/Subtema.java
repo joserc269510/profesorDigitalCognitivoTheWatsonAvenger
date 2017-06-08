@@ -9,9 +9,9 @@ import Integracion.BaseDeDatos;
 public class Subtema {
 	private int codSubTema;
 	private String descripcion;
-	ArrayList preguntas;
-	Tema tema;
-	BaseDeDatos conexion;
+	private ArrayList preguntas;
+	private Tema tema;
+	private BaseDeDatos conexion;
 	
 	
 	public Subtema(){
@@ -36,7 +36,6 @@ public class Subtema {
 	{
 		setCodSubTema(Integer.parseInt(pCodigo));
 		setDescripcion(pDescripcion);
-		//BaseDeDatos conexion= new BaseDeDatos();
 		getConexion().insertDelete("UPDATE subtema SET descripcion = '"+pDescripcion+"' , codtema = '"+pCodTema+"' WHERE codsubtema = '"+pCodigo+"'");
 		System.out.println("UPDATE curso SET descripcioncurso = '"+pDescripcion+"' WHERE codigocurso = '"+pCodigo+"'");
 	}

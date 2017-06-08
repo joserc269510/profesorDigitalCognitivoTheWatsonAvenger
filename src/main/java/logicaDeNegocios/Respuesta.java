@@ -6,11 +6,11 @@ import Integracion.BaseDeDatos;
 
 
 public class Respuesta {
-	int codRespuesta;
-	int codigoPregunta;
-	String descripcionRespuesta;
-	boolean status;
-	BaseDeDatos conexion;
+	private int codRespuesta;
+	private int codigoPregunta;
+	private String descripcionRespuesta;
+	private boolean status;
+	private BaseDeDatos conexion;
 	
 
 

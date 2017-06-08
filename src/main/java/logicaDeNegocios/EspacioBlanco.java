@@ -7,7 +7,7 @@ public class EspacioBlanco extends pregunta
 	private String tipoPregunta;
 	private String descripcionTipoPreg;
 	private int codigoTipoPregunta;
-	BaseDeDatos conexion;
+	private BaseDeDatos conexion;
 	
 
 	public EspacioBlanco(int pCodigoPregunta,int pCodigoTipoPregunta, String pDescripcionPregunta, String pDescripcionAyduda, String pTipoPregunta, String pDescripcionTipoPreg){

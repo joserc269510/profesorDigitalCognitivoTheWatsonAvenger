@@ -12,7 +12,7 @@ public class Curso
 	private ArrayList<Evaluacion> evaluaciones; //revisar
 	private ArrayList<Estudiante> estudiantes;
 	private Profesor profesor;
-	BaseDeDatos conexion;
+	private BaseDeDatos conexion;
 	
 	public Curso(String pCodigo, String pDescripcionCurso){
 		 temas = new ArrayList<Tema>();

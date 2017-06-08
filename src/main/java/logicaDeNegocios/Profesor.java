@@ -11,7 +11,7 @@ public class Profesor {
 	private String codProfesor=null;
 	private String correo=null;
 	private String contrasena=null;
-	BaseDeDatos conexion;
+	private BaseDeDatos conexion;
 
 	public Profesor(){	
 		conexion = new BaseDeDatos();
@@ -74,7 +74,6 @@ public class Profesor {
 		
         ArrayList<Profesor> lista =new ArrayList<Profesor>();
         lista=conexion.selectProfesor();
-        //System.out.println(lista.length);
         for (int i=0;i<lista.size();i++){
         	
 			if ((lista.get(i).getCorreo().equals(pContrasena))&&(lista.get(i).getContrasena().equals(pCorreo))){

@@ -18,10 +18,10 @@ public abstract class Evaluacion implements IVerificarEvaluacion,IRegistableTipo
 	protected int tiempoMinutos;
 	protected boolean status;
 	protected boolean aleatorio;
-	Curso curso;
-	ArrayList estudiantes;
-	ArrayList preguntas;
-	BaseDeDatos conexion;
+	private Curso curso;
+	private ArrayList estudiantes;
+	private ArrayList preguntas;
+	private BaseDeDatos conexion;
 
 	
 	public Evaluacion(int pCodEvaluacion, String pNombreEvaluacion,int pPuntajeTotal,int pPorcentajeNotaFinal,String pFechaEvaluacion,int pTiempoMinutos,boolean pStatus){

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import Integracion.BaseDeDatos;
 
 public class Tema {
-	int codTema;
-	String descripcionTema;
-	ArrayList subtemas;
-	ArrayList cursos;
-	BaseDeDatos conexion;
+	private int codTema;
+	private String descripcionTema;
+	private ArrayList subtemas;
+	private ArrayList cursos;
+	private BaseDeDatos conexion;
 	
 	public Tema(int pCodTema, String pDescripcionTema){
 		subtemas = new ArrayList<Subtema>();

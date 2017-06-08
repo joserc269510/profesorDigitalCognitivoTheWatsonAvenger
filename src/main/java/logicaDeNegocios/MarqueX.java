@@ -7,7 +7,7 @@ public class  MarqueX extends pregunta
 	private int codTipoPregunta;
 	private String tipoPregunta;
 	private String  descripcionTipoPreg;
-	BaseDeDatos conexion;
+	private BaseDeDatos conexion;
 	
 
 	public MarqueX(int pCodigoPregunta, int pCodigoTipoPregunta, String pDescripcionPregunta, String pDescripcionAyuda, String pTipoPregunta, String pDescripcionTipoPreg){
