@@ -25,18 +25,18 @@ public class GenerarCodigo {
 	
 
 	public void enviarSMS(String numeroTelefono, String carnet){
-		try {
+		//try {
 			
 			String codigoEnviado = String.valueOf(generarCodigo());
-			EnviarSMS sms = new EnviarSMS(numeroTelefono, "Su codigo de verificacion es: "+codigoEnviado);
+		//	EnviarSMS sms = new EnviarSMS(numeroTelefono, "Su codigo de verificacion es: "+codigoEnviado);
 			baseDeDatos.insertDelete("Update estudiante SET codigoespecial='" + codigoEnviado + "' where numerocarne='" +carnet+"'");
-		} catch (MalformedURLException e) {
+		//} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
+		//	e.printStackTrace();
+		//} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//	e.printStackTrace();
+		//}
 		
 	}
 	

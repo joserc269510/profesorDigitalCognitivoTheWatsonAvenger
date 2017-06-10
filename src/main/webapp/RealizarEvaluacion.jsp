@@ -67,7 +67,7 @@
 		
 			</div>
 		<div id="main">
-			  <form name="" method="post">
+			  <form name="forma" method="post">
 			    <div>
 			      <h2>Realizar Evaluacion</h2>
 			      <div>
@@ -218,8 +218,10 @@
 		setTimeout("ram()", 1000);
 		              }
 		function ram1(){
-
-			window.location.replace("/realizarEvaluacion?x="+<%=codEvaluacion%>+"&y="+<%=carnet%>); 
+			
+			
+			document.location.href = "/realizarEvaluacion?x="+<%=codEvaluacion%>+"&y="+<%=carnet%>;
+			
 		
 		                }
 		</script>

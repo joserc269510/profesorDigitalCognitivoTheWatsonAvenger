@@ -1336,8 +1336,68 @@ public String ObtenerAleatorioEvaluacion(String pEvaluacion){
           return puntaje;
   }
   
+  public String ObtenerRespuesta (String pRespuesta){
+	  String respuesta="";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select descripcionrespuesta from respuesta  where codrespuesta='"+pRespuesta+"'");
+              
+              while (rs.next()) {	
+            	 
+  				respuesta=rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          
+          return respuesta;
+  }
+  
+  public String ObtenerRespuestaIntroducida (String pEvaluacion, String pCedula, String pPregunta){
+	  String respuesta="";
+      try {
+              Class.forName("org.postgresql.Driver");
+          }
+          catch (java.lang.ClassNotFoundException e) {
+              System.out.println(e.getMessage() + "hola");
+          }
+          try {
+            System.out.println("daskdjkasjdsakl");
+              Connection db = DriverManager.getConnection(url, username, password);
+              Statement st = db.createStatement();
+              ResultSet rs = st.executeQuery("Select respuestaintroducida from respuestaestudiante where codevaluacion='"+pEvaluacion+"' and cedula='"+pCedula+"' and codigopregunta='"+pPregunta+"'");
+              
+              while (rs.next()) {	
+            	 
+  				respuesta=rs.getString(1);
+              }
+              rs.close();
+              st.close();
+              db.close();
+          }catch (java.sql.SQLException e) {
+              System.out.println(e.getMessage() + "adios");
+          }
+          
+          return respuesta;
+  }
+  
   public void InsertarCalificacion(String pCedula, String pEvaluacion, int pCalificacion){
 	  insertDelete("Update estudianteevaluacion Set nota='"+pCalificacion+"' where codevaluacion='"+pEvaluacion+"' and cedula='"+pCedula+"'");
+  }
+  
+  public void insertarRespuesta(String pEvaluacion, String pCedula, int pPregunta, String pRespuesta){
+	  insertDelete("Insert into respuestaestudiante (codevaluacion, cedula, codigopregunta, respuestaintroducida) values ('"+pEvaluacion+"','"+pCedula+"','"+pPregunta+"','"+pRespuesta+"')");
   }
   
   public static void main(String[] args) {

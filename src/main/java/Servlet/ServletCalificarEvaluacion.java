@@ -57,7 +57,9 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 			nDescripcion2.desencriptarCadena(objeto);
 			//System.out.println(nDescripcion2.getPIN());
 			resp.add( (String) request.getParameter(Integer.toString(preguntas.get(i).getCodigoPregunta())));
-		  //System.out.print("respuesta: ");
+			System.out.println("RESPUESTA ESTUDIANTE = "+(String) request.getParameter(Integer.toString(preguntas.get(i).getCodigoPregunta())));
+			//bd.insertarRespuesta(evaluacion, bd.ObtenerIdentificacion(carnet), preguntas.get(i).getCodigoPregunta(), request.getParameter(Integer.toString(preguntas.get(i).getCodigoPregunta())));
+			//System.out.print("respuesta: ");
 		  //System.out.println((String) request.getParameter(Integer.toString(preguntas.get(i).getCodigoPregunta())));
 		}
 		int calificacion=0;
@@ -86,6 +88,13 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 	    		int stt=0;
 	    		int pts=0;
 	    		stt=bd.ObtenerStatusRespuesta(resp.get(z).toLowerCase());
+	    		
+	    		entradaEncriptarDesencriptar objeto3 = new entradaEncriptarDesencriptar(bd.ObtenerRespuesta(resp.get(z).toLowerCase()),26);
+				Desencriptar nDescripcion3 = new DesencriptarLlave();
+				nDescripcion3.desencriptarCadena(objeto3);
+				
+	    		
+	    		bd.insertarRespuesta(evaluacion, bd.ObtenerIdentificacion(carnet), preguntas.get(z).getCodigoPregunta(), nDescripcion3.getPIN());
 	    		if(stt==1){
 	    			pts=bd.ObtenerPuntajeEvaluacion(evaluacion, Integer.toString(preguntas.get(z).getCodigoPregunta()));
 	    			System.out.println("correctaaaaaaaaaaaa");
@@ -107,6 +116,7 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 	    		Respuesta j=new Respuesta();
 	    		int pts=0;
 	    		boolean result=j.revisar(resp.get(z).toLowerCase(),nDescripcion3.getPIN());
+	    		bd.insertarRespuesta(evaluacion, bd.ObtenerIdentificacion(carnet), preguntas.get(z).getCodigoPregunta(), resp.get(z).toLowerCase());
 	    		if(result==true){
 	    			pts=bd.ObtenerPuntajeEvaluacion(evaluacion, Integer.toString(preguntas.get(z).getCodigoPregunta()));
 	    			System.out.println("correctaaaaaaaaaaaa");
@@ -126,6 +136,7 @@ public class ServletCalificarEvaluacion extends HttpServlet {
 	    		Respuesta j=new Respuesta();
 	    		boolean result=j.revisar(resp.get(z).toLowerCase(),nDescripcion4.getPIN());
 	    		int pts=0;
+	    		bd.insertarRespuesta(evaluacion, bd.ObtenerIdentificacion(carnet), preguntas.get(z).getCodigoPregunta(), resp.get(z).toLowerCase());
 	    		if(result==true){
 	    			pts=bd.ObtenerPuntajeEvaluacion(evaluacion, Integer.toString(preguntas.get(z).getCodigoPregunta()));
 	    			System.out.println("correctaaaaaaaaaaaa");
